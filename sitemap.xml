@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- 首页 -->
+  <url><loc>https://www.pandaguard.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <!-- 主要页面 -->
+  <url><loc>https://www.pandaguard.com/products-all.html</loc><changefreq>daily</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.pandaguard.com/products.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.pandaguard.com/function-hub.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.pandaguard.com/industry-hub.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.pandaguard.com/sport-hub.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <!-- 品牌页 -->
+  <url><loc>https://www.pandaguard.com/pandashield.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.pandaguard.com/pandaimpact.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.pandaguard.com/pandachem.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.pandaguard.com/pandabio.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.pandaguard.com/pandavolt.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.pandaguard.com/pandaheat.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.pandaguard.com/pandafrost.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.pandaguard.com/pandaeco.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <!-- 工厂体系 -->
+  <url><loc>https://www.pandaguard.com/equipment-hub.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.pandaguard.com/production-process.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.pandaguard.com/quality-control.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.pandaguard.com/materials.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <!-- 内容页 -->
+  <url><loc>https://www.pandaguard.com/research-center.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.pandaguard.com/sustainability.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.pandaguard.com/children-safety.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.pandaguard.com/standards.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://www.pandaguard.com/faq.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+</urlset>
