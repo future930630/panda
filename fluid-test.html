@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+  <title>液体防护性能测试 — 熊猫手护</title>
+  <meta name="description" content="熊猫手护通过专业液体渗透测试设备，验证手套对各类化学品、溶剂、油污的阻隔性能，保障穿戴者安全。" />
+  <meta name="description" content="Panda Guard uses professional fluid penetration testing equipment to verify glove barrier performance against chemicals, solvents and oils." lang="en" />
+  <meta property="og:title" content="液体防护性能测试 — 熊猫手护" />
+  <meta property="og:title" content="Fluid Protection Testing — Panda Guard" xml:lang="en" />
+  <meta property="og:description" content="熊猫手护通过专业液体渗透测试设备，验证手套对各类化学品、溶剂、油污的阻隔性能，保障穿戴者安全。" />
+  <meta property="og:description" content="Panda Guard uses professional fluid penetration testing equipment to verify glove barrier performance against chemicals, solvents and oils." xml:lang="en" />
+  <meta property="og:url" content="https://www.pandaguard.com/fluid-test.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="熊猫手护" />
+  <meta property="og:site_name" content="Panda Guard" xml:lang="en" />
+  <meta property="og:image" content="https://www.pandaguard.com/image/og-default.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Fluid Protection Testing — Panda Guard" />
+  <meta name="twitter:description" content="Panda Guard uses professional fluid penetration testing equipment to verify glove barrier performance against chemicals, solvents and oils." />
+  <meta name="twitter:image" content="https://www.pandaguard.com/image/og-default.jpg" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    /* 
+     * 流式布局核心：
+     * - 内容区宽度随视口等比缩放
+     * - 所有尺寸用 clamp() 做弹性边界
+     * - 不再依赖媒体查询断点
+     */
+    
+    :root {
+      /* 边栏比例：最小80px，理想15vw，最大200px */
+      --sidebar-width: clamp(80px, 15vw, 200px);
+      /* 内容区自动填充剩余空间 */
+      --content-padding: clamp(16px, 3vw, 48px);
+      
+      /* header 高度随视口缩放 */
+      --header-height: clamp(100px, 12vw, 180px);
+      --header-scrolled-height: clamp(70px, 8vw, 120px);
+      
+      /* 字体基准随视口缩放 */
+      --font-base: clamp(14px, 1vw + 10px, 18px);
+    }
+    
+    html { font-size: var(--font-base); }
+    body { font-family: system-ui, sans-serif; background: #f5f5f5; }
+    
+    /* 三栏布局容器 */
+    .page-wrapper {
+      display: grid;
+      grid-template-columns: var(--sidebar-width) 1fr var(--sidebar-width);
+      min-height: 100vh;
+    }
+    
+    /* 边栏 */
+    .sidebar {
+      background: #e8e8e8;
+      border-right: 1px solid #ddd;
+      padding: 20px;
+    }
+    .sidebar:last-child {
+      border-right: none;
+      border-left: 1px solid #ddd;
+    }
+    
+    /* 主内容区 */
+    .main-content {
+      background: white;
+      padding: var(--content-padding);
+    }
+    
+    /* Header - 绝对定位浮在内容上方 */
+    .header {
+      position: absolute;
+      top: 0;
+      left: var(--sidebar-width);
+      right: var(--sidebar-width);
+      height: var(--header-height);
+      background: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, transparent 100%);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 var(--content-padding);
+      z-index: 100;
+      border-bottom: 2px solid #E85D00;
+    }
+    
+    .header.scrolled {
+      position: fixed;
+      height: var(--header-scrolled-height);
+      background: #E85D00;
+    }
+    
+    /* Hero 区域 - 等比缩放 */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: calc(var(--header-height) + 2rem) var(--content-padding) 4rem;
+      color: white;
+    }
+    
+    .hero-title {
+      font-size: clamp(2rem, 5vw, 4rem);
+      font-weight: 800;
+      margin-bottom: clamp(1rem, 2vw, 2rem);
+      line-height: 1.2;
+    }
+    
+    .hero-desc {
+      font-size: clamp(1rem, 1.5vw, 1.25rem);
+      max-width: 600px;
+      margin-bottom: clamp(1.5rem, 3vw, 3rem);
+      opacity: 0.9;
+    }
+    
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: clamp(0.75rem, 1.5vw, 1rem) clamp(1.5rem, 3vw, 2rem);
+      background: #E85D00;
+      color: white;
+      border-radius: 8px;
+      font-size: clamp(0.875rem, 1.2vw, 1rem);
+      font-weight: 600;
+      text-decoration: none;
+      width: fit-content;
+    }
+    
+    /* 内容区块 */
+    .section {
+      padding: clamp(3rem, 6vw, 6rem) var(--content-padding);
+    }
+    
+    .section-title {
+      font-size: clamp(1.5rem, 3vw, 2.5rem);
+      margin-bottom: clamp(1.5rem, 3vw, 3rem);
+      color: #1a1a2e;
+    }
+    
+    /* 网格卡片 - 等比缩放 */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(clamp(200px, 25%, 300px), 1fr));
+      gap: clamp(1rem, 2vw, 2rem);
+    }
+    
+    .card {
+      background: #f8f9fa;
+      border-radius: clamp(8px, 1.5vw, 16px);
+      padding: clamp(1rem, 2vw, 2rem);
+      border: 1px solid #e9ecef;
+    }
+    
+    .card-icon {
+      width: clamp(40px, 5vw, 64px);
+      height: clamp(40px, 5vw, 64px);
+      background: #E85D00;
+      border-radius: 12px;
+      margin-bottom: clamp(0.75rem, 1.5vw, 1rem);
+    }
+    
+    .card-title {
+      font-size: clamp(1rem, 1.5vw, 1.25rem);
+      margin-bottom: 0.5rem;
+      color: #1a1a2e;
+    }
+    
+    .card-text {
+      font-size: clamp(0.875rem, 1.2vw, 1rem);
+      color: #6c757d;
+      line-height: 1.6;
+    }
+    
+    /* 移动端：边栏隐藏，内容全宽 */
+    @media (max-width: 768px) {
+      .page-wrapper {
+        grid-template-columns: 1fr;
+      }
+      .sidebar {
+        display: none;
+      }
+      .header {
+        left: 0;
+        right: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrapper">
+    <!-- 左边栏 -->
+    <aside class="sidebar sidebar-left">
+      <div style="position:sticky;top:20px;">
+        <p style="font-size:12px;color:#999;">左侧边栏</p>
+      </div>
+    </aside>
+    
+    <!-- 主内容区 -->
+    <main class="main-content">
+      <header class="header" id="header">
+        <div class="logo" style="font-weight:800;font-size:clamp(1.25rem,2vw,1.5rem);">🐼 Panda Hand Guard</div>
+        <nav style="display:flex;gap:clamp(1rem,2vw,2rem);">
+          <a href="#" style="color:white;text-decoration:none;font-size:clamp(0.875rem,1.2vw,1rem);">产品</a>
+          <a href="#" style="color:white;text-decoration:none;font-size:clamp(0.875rem,1.2vw,1rem);">解决方案</a>
+          <a href="#" style="color:white;text-decoration:none;font-size:clamp(0.875rem,1.2vw,1rem);">关于我们</a>
+        </nav>
+      </header>
+      
+      <section class="hero">
+        <div class="hero-tag" style="display:inline-flex;align-items:center;gap:8px;padding:8px 16px;background:rgba(232,93,0,0.2);border-radius:100px;font-size:clamp(0.75rem,1vw,0.875rem);margin-bottom:clamp(1rem,2vw,1.5rem);width:fit-content;">
+          <span style="width:8px;height:8px;background:#E85D00;border-radius:50%;"></span>
+          全球领先防护手套专家
+        </div>
+        <h1 class="hero-title">永远手护安全</h1>
+        <p class="hero-desc">为工业、医疗、运动等领域提供专业的手部防护解决方案。采用先进材料科技，守护每一位劳动者的双手。</p>
+        <a href="#" class="hero-cta">
+          探索产品
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M10 5l3 3-3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </section>
+      
+      <section class="section" style="background:#f8f9fa;">
+        <h2 class="section-title">核心产品系列</h2>
+        <div class="card-grid">
+          <div class="card">
+            <div class="card-icon"></div>
+            <h3 class="card-title">工业防护</h3>
+            <p class="card-text">防切割、防穿刺、耐油耐化学腐蚀，适用于制造业和建筑业。</p>
+          </div>
+          <div class="card">
+            <div class="card-icon"></div>
+            <h3 class="card-title">医疗防护</h3>
+            <p class="card-text">无菌、无粉、高弹性，满足医疗行业严格的卫生标准。</p>
+          </div>
+          <div class="card">
+            <div class="card-icon"></div>
+            <h3 class="card-title">运动防护</h3>
+            <p class="card-text">透气、耐磨、灵活，为户外运动爱好者提供专业保护。</p>
+          </div>
+          <div class="card">
+            <div class="card-icon"></div>
+            <h3 class="card-title">特种防护</h3>
+            <p class="card-text">耐高温、防静电、防辐射，满足特殊作业环境需求。</p>
+          </div>
+        </div>
+      </section>
+    </main>
+    
+    <!-- 右边栏 -->
+    <aside class="sidebar sidebar-right">
+      <div style="position:sticky;top:20px;">
+        <p style="font-size:12px;color:#999;">右侧边栏</p>
+      </div>
+    </aside>
+  </div>
+  
+  <script>
+    // 滚动时 header 变紧凑
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+  </script>
+</body>
+</html>

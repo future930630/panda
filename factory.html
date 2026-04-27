@@ -1,0 +1,288 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+  <title>智能工厂 — 熊猫手护</title>
+  <meta name="description" content="熊猫手护智能工厂集智能制造、数字化管理于一体，引进国际先进生产线，年产能超5000万双，交付稳定有保障。" />
+  <meta name="description" content="Panda Guard Smart Factory integrates intelligent manufacturing with digital management, with annual capacity exceeding 50 million pairs." lang="en" />
+  <meta property="og:title" content="智能工厂 — 熊猫手护" />
+  <meta property="og:title" content="Smart Factory — Panda Guard" xml:lang="en" />
+  <meta property="og:description" content="熊猫手护智能工厂集智能制造、数字化管理于一体，引进国际先进生产线，年产能超5000万双，交付稳定有保障。" />
+  <meta property="og:description" content="Panda Guard Smart Factory integrates intelligent manufacturing with digital management, with annual capacity exceeding 50 million pairs." xml:lang="en" />
+  <meta property="og:url" content="https://www.pandaguard.com/factory.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="熊猫手护" />
+  <meta property="og:site_name" content="Panda Guard" xml:lang="en" />
+  <meta property="og:image" content="https://www.pandaguard.com/image/og-default.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Smart Factory — Panda Guard" />
+  <meta name="twitter:description" content="Panda Guard Smart Factory integrates intelligent manufacturing with digital management, with annual capacity exceeding 50 million pairs." />
+  <meta name="twitter:image" content="https://www.pandaguard.com/image/og-default.jpg" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="factoryPageTitle">熊猫手护工厂与设备 | Panda Guard Factory</title>
+  <link rel="stylesheet" href="styles.css?v=20260423" />
+  <link rel="stylesheet" href="subpage.css" />
+  <script>
+    if (!localStorage.getItem('pg_lang')) {
+      localStorage.setItem('pg_lang', 'zh');
+    }
+  </script>
+    <script src="i18n.js?v=20260424-avatar"></script>
+  <style>
+    /* 工厂页特有样式 */
+    .factory-hero { background: linear-gradient(145deg, #0D0D0D 0%, #1A0A00 100%); }
+    .factory-hero-grid {
+      position: absolute; inset: 0; opacity: 0.06;
+      background-image: linear-gradient(rgba(232,93,0,0.5) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(232,93,0,0.5) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+    .factory-kpi .kpi-num { color: #E85D00; }
+    .factory-section { padding: 72px 0; }
+    .factory-section:nth-child(even) { background: rgba(232,93,0,0.03); }
+    .factory-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 40px; }
+    .factory-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(232,93,0,0.15);
+      border-radius: 12px;
+      padding: 28px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .factory-card:hover { border-color: rgba(232,93,0,0.5); transform: translateY(-2px); }
+    .factory-card-icon { font-size: 2rem; margin-bottom: 16px; }
+    .factory-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; color: #E85D00; }
+    .factory-card p { font-size: 0.9rem; color: rgba(255,255,255,0.6); line-height: 1.6; }
+    .factory-stat-row { display: flex; flex-wrap: wrap; gap: 32px; justify-content: center; margin: 40px 0; }
+    .factory-stat { text-align: center; }
+    .factory-stat-num { font-size: 2.5rem; font-weight: 900; color: #E85D00; display: block; }
+    .factory-stat-label { font-size: 0.85rem; color: rgba(255,255,255,0.6); }
+    .factory-line-list { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin-top: 24px; }
+    .factory-line-list li {
+      background: rgba(232,93,0,0.06);
+      border-left: 3px solid #E85D00;
+      padding: 12px 16px;
+      border-radius: 0 8px 8px 0;
+      font-size: 0.9rem;
+    }
+    .factory-cta-bar {
+      background: linear-gradient(135deg, rgba(232,93,0,0.12), rgba(232,93,0,0.04));
+      border: 1px solid rgba(232,93,0,0.2);
+      border-radius: 16px;
+      padding: 40px;
+      text-align: center;
+      margin: 40px 0;
+    }
+    .factory-cta-bar h2 { margin-bottom: 12px; }
+    .factory-cta-bar p { color: rgba(255,255,255,0.65); margin-bottom: 24px; }
+    .btn-factory { display: inline-block; padding: 13px 32px; background: #E85D00; color: white; border-radius: 8px; font-weight: 700; text-decoration: none; transition: background 0.2s; }
+    .btn-factory:hover { background: #FF7A20; }
+    .btn-factory-outline { display: inline-block; padding: 13px 32px; border: 1.5px solid rgba(232,93,0,0.5); color: #FF7A20; border-radius: 8px; font-weight: 600; text-decoration: none; margin-left: 12px; transition: border-color 0.2s; }
+    .btn-factory-outline:hover { border-color: #E85D00; }
+    .qc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 32px; }
+    .qc-item {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px;
+      padding: 24px 20px;
+      text-align: center;
+    }
+    .qc-item .qc-icon { font-size: 1.8rem; margin-bottom: 12px; }
+    .qc-item h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 6px; }
+    .qc-item p { font-size: 0.82rem; color: rgba(255,255,255,0.55); }
+    .cert-badges { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+    .cert-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(232,93,0,0.1); border: 1px solid rgba(232,93,0,0.25);
+      padding: 8px 16px; border-radius: 6px; font-size: 0.85rem; font-weight: 600;
+    }
+    .cert-badge span { font-size: 1.1rem; }
+  </style>
+  <link rel="stylesheet" href="responsive.css?v=1">
+</head>
+<body class="subpage-body">
+
+<div id="site-nav"></div>
+<script src="nav-shared.js?v=20260404-1958"></script>
+
+<!-- HERO -->
+<section class="subpage-hero factory-hero" style="position:relative;overflow:hidden;">
+  <div class="factory-hero-grid"></div>
+  <div class="container" style="position:relative;z-index:1;">
+    <div class="breadcrumb">
+      <a href="index.html" data-i18n="breadcrumbHome">首页</a>
+      <span>›</span>
+      <span data-i18n="factoryPageTitle">工厂与设备</span>
+    </div>
+    <div class="sp-hero-tag" style="border-color:rgba(232,93,0,0.4);background:rgba(232,93,0,0.1);color:#FF7A20" data-i18n="factoryTagSmart">智能制造</div>
+    <h1><span data-i18n="factoryHeroTitle1">熊猫手护</span><br/><span class="accent-orange" data-i18n="factoryHeroTitle2">智能制造基地</span></h1>
+    <p data-i18n="factoryHeroSub">现代化工厂 · 精密设备 · 严格品控 — 每一双手套，都在这里诞生</p>
+    <div class="sp-hero-kpi factory-kpi">
+      <div class="kpi-item">
+        <span class="kpi-num">2000<small style="font-size:1.2rem">万</small></span>
+        <span class="kpi-label" data-i18n="factoryCap1">年产能</span>
+      </div>
+      <div class="kpi-div"></div>
+      <div class="kpi-item">
+        <span class="kpi-num">18</span>
+        <span class="kpi-label" data-i18n="factoryCap2">自动化产线</span>
+      </div>
+      <div class="kpi-div"></div>
+      <div class="kpi-item">
+        <span class="kpi-num">5<small style="font-size:1.2rem">万㎡</small></span>
+        <span class="kpi-label" data-i18n="factoryCap3">现代厂房</span>
+      </div>
+      <div class="kpi-div"></div>
+      <div class="kpi-item">
+        <span class="kpi-num">99.8<small style="font-size:1.2rem">%</small></span>
+        <span class="kpi-label" data-i18n="factoryKpiQC">出货合格率</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 生产设施 -->
+<section class="factory-section">
+  <div class="container">
+    <div class="section-header" style="margin-bottom:0;">
+      <h2 data-i18n="factoryColFacility">生产设施</h2>
+      <p data-i18n="factoryFacilityDesc">从原材料到成品，全流程自动化生产，确保每批产品一致的高品质</p>
+    </div>
+    <div class="factory-grid">
+      <div class="factory-card">
+        <div class="factory-card-icon">🧶</div>
+        <h3 data-i18n="factoryLine1">针织手套生产线</h3>
+        <p data-i18n="factoryLine1Desc">采用高精度针织机，支持多种纤维混纺，可生产3至18针各规格手套，产线自动化率超95%。</p>
+      </div>
+      <div class="factory-card">
+        <div class="factory-card-icon">🎨</div>
+        <h3 data-i18n="factoryLine2">涂层浸渍生产线</h3>
+        <p data-i18n="factoryLine2Desc">丁腈、乳胶、PU等多种涂层工艺，精确控制涂层厚度与均匀度，通过EN388等国际认证标准。</p>
+      </div>
+      <div class="factory-card">
+        <div class="factory-card-icon">✂️</div>
+        <h3 data-i18n="factoryLine3">裁缝缝制车间</h3>
+        <p data-i18n="factoryLine3Desc">精密裁切设备配合熟练缝制工艺，支持定制尺寸、特殊防护版型及品牌LOGO绣花加工。</p>
+      </div>
+      <div class="factory-card">
+        <div class="factory-card-icon">🔥</div>
+        <h3 data-i18n="factoryLine4">热压成型设备</h3>
+        <p data-i18n="factoryLine4Desc">用于冲击防护、TPR保护条等硬质部件成型，精确模具保证每件产品尺寸公差≤0.5mm。</p>
+      </div>
+      <div class="factory-card">
+        <div class="factory-card-icon">📦</div>
+        <h3 data-i18n="factoryLine5">自动化包装线</h3>
+        <p data-i18n="factoryLine5Desc">扫码追溯、自动配对、防混料系统全程在线，确保每双手套与包装标签100%匹配准确。</p>
+      </div>
+      <div class="factory-card">
+        <div class="factory-card-icon">🌿</div>
+        <h3 data-i18n="factoryLineEco">环保处理系统</h3>
+        <p data-i18n="factoryLineEcoDesc">废水零排放处理系统、废气净化装置、可再生能源利用，通过ISO 14001环境管理认证。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 品质管控 -->
+<section class="factory-section">
+  <div class="container">
+    <div class="section-header" style="margin-bottom:0;">
+      <h2 data-i18n="factoryColQC">品质管控</h2>
+      <p data-i18n="factoryQCDesc">从原材料入库到出货，全程100+道质量检验节点，确保每批产品达标</p>
+    </div>
+    <div class="qc-grid" style="margin-top:32px;">
+      <div class="qc-item">
+        <div class="qc-icon">⚗️</div>
+        <h4 data-i18n="factoryQC1">力学性能测试室</h4>
+        <p data-i18n="factoryQC1Desc">切割、穿刺、耐磨、撕裂强度全面测试，对应EN388/ISO 13997等国际标准。</p>
+      </div>
+      <div class="qc-item">
+        <div class="qc-icon">🧪</div>
+        <h4 data-i18n="factoryQC2">化学品耐受测试</h4>
+        <p data-i18n="factoryQC2Desc">超过200种化学品渗透测试，符合EN374-1/2/3及ASTM F739标准要求。</p>
+      </div>
+      <div class="qc-item">
+        <div class="qc-icon">🔪</div>
+        <h4 data-i18n="factoryQC3">切割等级检测</h4>
+        <p data-i18n="factoryQC3Desc">EN388:2016新版A-F级及ISO 13997切割力矩测试，第三方实验室双重验证。</p>
+      </div>
+      <div class="qc-item">
+        <div class="qc-icon">🔥</div>
+        <h4 data-i18n="factoryQC4">阻燃隔热测试</h4>
+        <p data-i18n="factoryQC4Desc">极限温度性能测试，覆盖-40°C到500°C范围，符合EN407阻燃手套标准。</p>
+      </div>
+      <div class="qc-item">
+        <div class="qc-icon">🔍</div>
+        <h4 data-i18n="factoryQC5">出货全检标准</h4>
+        <p data-i18n="factoryQC5Desc">外观、尺寸、标签、配对全面目检，AQL 1.5标准抽检，不合格品100%隔离返工。</p>
+      </div>
+      <div class="qc-item">
+        <div class="qc-icon">📋</div>
+        <h4 data-i18n="factoryQCTrace">质量追溯系统</h4>
+        <p data-i18n="factoryQCTraceDesc">每双手套绑定生产批次、操作工位、检验结果，扫码即可查询全程生产记录。</p>
+      </div>
+    </div>
+    <div class="cert-badges">
+      <div class="cert-badge"><span>🏅</span> ISO 9001:2015</div>
+      <div class="cert-badge"><span>🏅</span> ISO 14001:2015</div>
+      <div class="cert-badge"><span>🏅</span> EN388:2016</div>
+      <div class="cert-badge"><span>🏅</span> EN374</div>
+      <div class="cert-badge"><span>🏅</span> EN407</div>
+      <div class="cert-badge"><span>🏅</span> CE Certified</div>
+      <div class="cert-badge"><span>🏅</span> ANSI/ISEA 105</div>
+    </div>
+  </div>
+</section>
+
+<!-- 产能数据 -->
+<section class="factory-section" style="background:linear-gradient(180deg,rgba(232,93,0,0.04),transparent);">
+  <div class="container">
+    <div class="section-header" style="margin-bottom:0;">
+      <h2 data-i18n="factoryColCapacity">产能与规模</h2>
+    </div>
+    <div class="factory-stat-row">
+      <div class="factory-stat">
+        <span class="factory-stat-num">2000<span style="font-size:1.5rem">万</span></span>
+        <span class="factory-stat-label" data-i18n="factoryStatPairs">年产量（双）</span>
+      </div>
+      <div class="factory-stat">
+        <span class="factory-stat-num">18</span>
+        <span class="factory-stat-label" data-i18n="factoryStatLines">自动化生产线</span>
+      </div>
+      <div class="factory-stat">
+        <span class="factory-stat-num">5万</span>
+        <span class="factory-stat-label" data-i18n="factoryStatArea">厂房面积（㎡）</span>
+      </div>
+      <div class="factory-stat">
+        <span class="factory-stat-num">120<span style="font-size:1.5rem">+</span></span>
+        <span class="factory-stat-label" data-i18n="factoryStatCountries">出口国家/地区</span>
+      </div>
+      <div class="factory-stat">
+        <span class="factory-stat-num">1200<span style="font-size:1.5rem">+</span></span>
+        <span class="factory-stat-label" data-i18n="factoryStatStaff">专业员工</span>
+      </div>
+      <div class="factory-stat">
+        <span class="factory-stat-num">99.8<span style="font-size:1.5rem">%</span></span>
+        <span class="factory-stat-label" data-i18n="factoryStatQuality">合格率</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 参观预约 CTA -->
+<section class="factory-section">
+  <div class="container">
+    <div class="factory-cta-bar">
+      <h2 data-i18n="factoryCTATitle">欢迎亲临参观我们的制造基地</h2>
+      <p data-i18n="factoryCTADesc">我们欢迎合作伙伴、采购商及媒体来厂参观。现场感受熊猫手护的智能制造能力，亲眼见证每一道严格的品质把关。</p>
+      <a href="auth.html" class="btn-factory" data-i18n="factoryCap4">工厂参观预约</a>
+      <a href="research-center.html" class="btn-factory-outline" data-i18n="factoryFooter2">下载设备清单</a>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+<script src="footer-shared.js?v=20260403-1006"></script>
+
+</body>
+</html>
