@@ -1,0 +1,32 @@
+[     250ms] Invalid or unexpected token
+[    1626ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://cdn.jsdelivr.net/npm/alibaba-puhuiti-2/Alibaba-PuHuiTi-Medium/Alibaba-PuHuiTi-Medium.ttf:0
+[    1628ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://cdn.jsdelivr.net/npm/alibaba-puhuiti-2/Alibaba-PuHuiTi-Bold/Alibaba-PuHuiTi-Bold.ttf:0
+[    1628ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://cdn.jsdelivr.net/npm/alibaba-puhuiti-2/Alibaba-PuHuiTi-Regular/Alibaba-PuHuiTi-Regular.ttf:0
+[    1631ms] [LOG] [BackToTop] ✓ Button element found @ http://localhost:3000/:1615
+[    1642ms] [LOG] [BackToTop] ✓ All handlers attached @ http://localhost:3000/:1641
+[    1845ms] [LOG] [Back-to-Top] Button element: ✓ Found @ http://localhost:3000/script.js?v=20260404-1958:92
+[    1845ms] [LOG] [Back-to-Top] Initial visibility: hidden @ http://localhost:3000/script.js?v=20260404-1958:94
+[    1846ms] [LOG] [Back-to-Top] Initial opacity: 0 @ http://localhost:3000/script.js?v=20260404-1958:95
+[    1846ms] [LOG] [Back-to-Top] Click handler attached ✓ @ http://localhost:3000/script.js?v=20260404-1958:147
+[    1940ms] [LOG] [Stats] 开始初始化统计栏动画 @ http://localhost:3000/script.js?v=20260404-1958:353
+[    2240ms] [LOG] [FontSize] Applied: 1 @ http://localhost:3000/script.js?v=20260404-1958:539
+[    2372ms] [LOG] [Stats] 找到 6 个统计数字元素 @ http://localhost:3000/script.js?v=20260404-1958:426
+[    2373ms] [LOG] [Stats] 动画目标值: 30 （固定值） @ http://localhost:3000/script.js?v=20260404-1958:366
+[    2374ms] [LOG] [Stats] 启动动画 @ http://localhost:3000/script.js?v=20260404-1958:406
+[    2375ms] [LOG] [Stats] 动画目标值: 10 （固定值） @ http://localhost:3000/script.js?v=20260404-1958:366
+[    2375ms] [LOG] [Stats] 启动动画 @ http://localhost:3000/script.js?v=20260404-1958:406
+[    2376ms] [LOG] [Stats] 动画目标值: 120 （固定值） @ http://localhost:3000/script.js?v=20260404-1958:366
+[    2376ms] [LOG] [Stats] 启动动画 @ http://localhost:3000/script.js?v=20260404-1958:406
+[    2376ms] [LOG] [Stats] 动画目标值: 17 （固定值） @ http://localhost:3000/script.js?v=20260404-1958:366
+[    2376ms] [LOG] [Stats] 启动动画 @ http://localhost:3000/script.js?v=20260404-1958:406
+[    2376ms] [LOG] [Stats] 动画目标值: 300 （固定值） @ http://localhost:3000/script.js?v=20260404-1958:366
+[    2377ms] [LOG] [Stats] 启动动画 @ http://localhost:3000/script.js?v=20260404-1958:406
+[    2377ms] [LOG] [Stats] 动画目标值: 60 （固定值） @ http://localhost:3000/script.js?v=20260404-1958:366
+[    2377ms] [LOG] [Stats] 启动动画 @ http://localhost:3000/script.js?v=20260404-1958:406
+[    2377ms] [LOG] [Stats] 统计数字动画已执行（仅一次） @ http://localhost:3000/script.js?v=20260404-1958:439
+[    4185ms] [LOG] [Stats] 动画完成，最终值: 30 @ http://localhost:3000/script.js?v=20260404-1958:402
+[    4186ms] [LOG] [Stats] 动画完成，最终值: 10 @ http://localhost:3000/script.js?v=20260404-1958:402
+[    4186ms] [LOG] [Stats] 动画完成，最终值: 120 @ http://localhost:3000/script.js?v=20260404-1958:402
+[    4186ms] [LOG] [Stats] 动画完成，最终值: 17 @ http://localhost:3000/script.js?v=20260404-1958:402
+[    4187ms] [LOG] [Stats] 动画完成，最终值: 300 @ http://localhost:3000/script.js?v=20260404-1958:402
+[    4187ms] [LOG] [Stats] 动画完成，最终值: 60 @ http://localhost:3000/script.js?v=20260404-1958:402

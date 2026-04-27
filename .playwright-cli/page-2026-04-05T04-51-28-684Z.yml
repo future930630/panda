@@ -1,0 +1,1535 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]:
+        - link "熊猫手护" [ref=e5] [cursor=pointer]:
+          - /url: index.html
+          - img "熊猫手护" [ref=e7]
+        - navigation [ref=e8]:
+          - list [ref=e9]:
+            - listitem [ref=e10]:
+              - link "工厂与设备" [ref=e11] [cursor=pointer]:
+                - /url: "#"
+                - generic [ref=e12]: 工厂与设备
+                - img [ref=e13]
+              - generic:
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic:
+                        - img:
+                          - generic: 智能制造基地
+                      - generic:
+                        - generic: 智能制造
+                        - heading "专业生产能力" [level=3]
+                        - paragraph:
+                          - text: 现代化生产线 · 精密设备
+                          - text: 严格品质管控体系
+                        - link "了解工厂 →":
+                          - /url: factory.html
+                    - generic:
+                      - link "🏭 生产线":
+                        - /url: factory.html
+                        - generic: 🏭
+                        - generic: 生产线
+                      - link "⚙️ 设备":
+                        - /url: factory.html
+                        - generic: ⚙️
+                        - generic: 设备
+                      - link "🔬 实验室":
+                        - /url: factory.html
+                        - generic: 🔬
+                        - generic: 实验室
+                      - link "📦 仓储":
+                        - /url: factory.html
+                        - generic: 📦
+                        - generic: 仓储
+                      - link "🌿 环保":
+                        - /url: sustainability.html
+                        - generic: 🌿
+                        - generic: 环保
+                      - link "📹 参观":
+                        - /url: factory.html
+                        - generic: 📹
+                        - generic: 参观
+                  - generic:
+                    - generic:
+                      - heading "生产设施" [level=4]
+                      - list:
+                        - listitem:
+                          - link "针织手套生产线":
+                            - /url: factory.html
+                        - listitem:
+                          - link "涂层浸渍生产线":
+                            - /url: factory.html
+                        - listitem:
+                          - link "裁缝缝制车间":
+                            - /url: factory.html
+                        - listitem:
+                          - link "热压成型设备":
+                            - /url: factory.html
+                        - listitem:
+                          - link "自动化包装线":
+                            - /url: factory.html
+                    - generic:
+                      - heading "品质管控" [level=4]
+                      - list:
+                        - listitem:
+                          - link "力学性能测试室":
+                            - /url: factory.html
+                        - listitem:
+                          - link "化学品耐受测试":
+                            - /url: factory.html
+                        - listitem:
+                          - link "切割等级检测":
+                            - /url: factory.html
+                        - listitem:
+                          - link "阻燃隔热测试":
+                            - /url: factory.html
+                        - listitem:
+                          - link "出货全检标准":
+                            - /url: factory.html
+                    - generic:
+                      - heading "产能与规模" [level=4]
+                      - list:
+                        - listitem:
+                          - link "年产能2000万双":
+                            - /url: factory.html
+                        - listitem:
+                          - link "18条自动化产线":
+                            - /url: factory.html
+                        - listitem:
+                          - link "5万㎡现代厂房":
+                            - /url: factory.html
+                        - listitem:
+                          - link "工厂参观预约":
+                            - /url: factory.html
+                - generic:
+                  - generic: 快速了解：
+                  - link "生产流程视频":
+                    - /url: factory.html
+                  - link "设备清单":
+                    - /url: factory.html
+                  - link "工厂认证":
+                    - /url: factory.html
+                  - link "预约参观 →":
+                    - /url: factory.html
+            - listitem [ref=e15]:
+              - link "材料与创新" [ref=e16] [cursor=pointer]:
+                - /url: "#"
+                - generic [ref=e17]: 材料与创新
+                - img [ref=e18]
+              - generic:
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic:
+                        - img:
+                          - generic: Ar
+                          - generic: PE
+                          - generic: NB
+                          - generic: 专利材料科学
+                      - generic:
+                        - generic: 专利材料
+                        - heading "尖端材料科学" [level=3]
+                        - paragraph:
+                          - text: 芳纶 · UHMWPE · 丁腈
+                          - text: 持续研发 · 领先创新
+                        - link "研究中心 →":
+                          - /url: materials.html
+                    - generic:
+                      - link "🧪 芳纶":
+                        - /url: materials.html
+                        - generic: 🧪
+                        - generic: 芳纶
+                      - link "⚗️ UHMWPE":
+                        - /url: materials.html
+                        - generic: ⚗️
+                        - generic: UHMWPE
+                      - link "🔬 丁腈":
+                        - /url: materials.html
+                        - generic: 🔬
+                        - generic: 丁腈
+                      - link "🌡️ 隔热棉":
+                        - /url: materials.html
+                        - generic: 🌡️
+                        - generic: 隔热棉
+                      - link "♻️ rPET":
+                        - /url: sustainability.html
+                        - generic: ♻️
+                        - generic: rPET
+                      - link "🏆 专利":
+                        - /url: research-center.html
+                        - generic: 🏆
+                        - generic: 专利
+                  - generic:
+                    - generic:
+                      - heading "核心材料" [level=4]
+                      - list:
+                        - listitem:
+                          - link "对位芳纶（Kevlar®同级）":
+                            - /url: materials.html
+                        - listitem:
+                          - link "超高分子量聚乙烯 UHMWPE":
+                            - /url: materials.html
+                        - listitem:
+                          - link "丁腈/氯丁复合橡胶":
+                            - /url: materials.html
+                        - listitem:
+                          - link "Thinsulate™ 隔热棉":
+                            - /url: materials.html
+                        - listitem:
+                          - link "再生 rPET 生态纤维":
+                            - /url: materials.html
+                    - generic:
+                      - heading "技术创新" [level=4]
+                      - list:
+                        - listitem:
+                          - link "纳米涂层技术":
+                            - /url: materials.html
+                        - listitem:
+                          - link "复合纤维编织工艺":
+                            - /url: materials.html
+                        - listitem:
+                          - link "仿生人机工学设计":
+                            - /url: materials.html
+                        - listitem:
+                          - link "智能传感集成研究":
+                            - /url: materials.html
+                        - listitem:
+                          - link "生物基材料探索":
+                            - /url: materials.html
+                    - generic:
+                      - heading "研发成果" [level=4]
+                      - list:
+                        - listitem:
+                          - link "120+ 项专利技术":
+                            - /url: materials.html
+                        - listitem:
+                          - link "全球研究中心":
+                            - /url: research-center.html
+                        - listitem:
+                          - link "材料性能白皮书":
+                            - /url: materials.html
+                        - listitem:
+                          - link "与高校联合研发":
+                            - /url: materials.html
+                - generic:
+                  - generic: 快速了解：
+                  - link "材料对比指南":
+                    - /url: materials.html
+                  - link "研究中心":
+                    - /url: research-center.html
+                  - link "专利列表":
+                    - /url: materials.html
+                  - link "下载技术白皮书 →":
+                    - /url: materials.html
+            - listitem [ref=e20]:
+              - link "认证与服务" [ref=e21] [cursor=pointer]:
+                - /url: "#"
+                - generic [ref=e22]: 认证与服务
+                - img [ref=e23]
+              - generic:
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic:
+                        - img:
+                          - generic: 50+ 国家覆盖
+                      - generic:
+                        - generic: 7×24全球响应
+                        - heading "全球客户服务网络" [level=3]
+                        - paragraph:
+                          - text: 50+国家服务覆盖
+                          - text: 专属客户成功经理
+                        - link "会员中心 →":
+                          - /url: auth.html
+                    - generic:
+                      - link "👤 注册会员":
+                        - /url: auth.html
+                        - generic: 👤
+                        - generic: 注册会员
+                      - link "📋 客户档案":
+                        - /url: auth.html
+                        - generic: 📋
+                        - generic: 客户档案
+                      - link "🛠️ 技术支持":
+                        - /url: auth.html
+                        - generic: 🛠️
+                        - generic: 技术支持
+                      - link "📦 样品申请":
+                        - /url: auth.html
+                        - generic: 📦
+                        - generic: 样品申请
+                      - link "🌿 可持续":
+                        - /url: sustainability.html
+                        - generic: 🌿
+                        - generic: 可持续
+                      - link "🔬 研究中心":
+                        - /url: research-center.html
+                        - generic: 🔬
+                        - generic: 研究中心
+                  - generic:
+                    - generic:
+                      - heading "客户服务" [level=4]
+                      - list:
+                        - listitem:
+                          - link "技术支持":
+                            - /url: auth.html
+                        - listitem:
+                          - link "产品培训":
+                            - /url: auth.html
+                        - listitem:
+                          - link "安全咨询":
+                            - /url: auth.html
+                        - listitem:
+                          - link "售后服务":
+                            - /url: auth.html
+                        - listitem:
+                          - link "客户档案管理":
+                            - /url: auth.html
+                    - generic:
+                      - heading "资源下载" [level=4]
+                      - list:
+                        - listitem:
+                          - link "产品手册":
+                            - /url: search.html?q=brochure
+                        - listitem:
+                          - link "安全数据表(SDS)":
+                            - /url: search.html?q=SDS
+                        - listitem:
+                          - link "合规认证文件":
+                            - /url: search.html?q=cert
+                        - listitem:
+                          - link "安装使用指南":
+                            - /url: search.html?q=guide
+                    - generic:
+                      - heading "关于我们" [level=4]
+                      - list:
+                        - listitem:
+                          - link "可持续发展":
+                            - /url: sustainability.html
+                        - listitem:
+                          - link "全球研究中心":
+                            - /url: research-center.html
+                        - listitem:
+                          - link "新闻中心":
+                            - /url: research-center.html
+                        - listitem:
+                          - link "加入我们":
+                            - /url: auth.html
+                - generic:
+                  - generic: 快速链接：
+                  - link "注册会员":
+                    - /url: auth.html
+                  - link "申请演示":
+                    - /url: auth.html
+                  - link "下载产品目录":
+                    - /url: search.html
+                  - link "联系我们 →":
+                    - /url: auth.html
+            - listitem [ref=e25]:
+              - link "解决方案" [ref=e26] [cursor=pointer]:
+                - /url: "#"
+                - generic [ref=e27]: 解决方案
+                - img [ref=e28]
+              - generic:
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic:
+                        - img:
+                          - generic: 全链路安全防护
+                      - generic:
+                        - generic: 全链路服务
+                        - heading "系统化安全防护" [level=3]
+                        - paragraph:
+                          - text: 从风险评估到持续维护
+                          - text: 一站式行业解决方案
+                        - link "了解更多 →":
+                          - /url: industry-hub.html
+                    - generic:
+                      - link "🏭 石油化工":
+                        - /url: ind-petro.html
+                        - generic: 🏭
+                        - generic: 石油化工
+                      - link "🚗 汽车制造":
+                        - /url: ind-auto.html
+                        - generic: 🚗
+                        - generic: 汽车制造
+                      - link "🏗️ 建筑施工":
+                        - /url: ind-construction.html
+                        - generic: 🏗️
+                        - generic: 建筑施工
+                      - link "🏥 医疗健康":
+                        - /url: ind-medical.html
+                        - generic: 🏥
+                        - generic: 医疗健康
+                      - link "⚡ 电子电气":
+                        - /url: ind-electronics.html
+                        - generic: ⚡
+                        - generic: 电子电气
+                      - link "🌊 海洋工程":
+                        - /url: industry-hub.html
+                        - generic: 🌊
+                        - generic: 海洋工程
+                  - generic:
+                    - generic:
+                      - heading "行业解决方案" [level=4]
+                      - list:
+                        - listitem:
+                          - link "工业制造整体防护":
+                            - /url: industry-hub.html
+                        - listitem:
+                          - link "危化品处理方案":
+                            - /url: ind-petro.html
+                        - listitem:
+                          - link "智能工厂防护":
+                            - /url: factory.html
+                        - listitem:
+                          - link "医疗防护解决方案":
+                            - /url: ind-medical.html
+                        - listitem:
+                          - link "海洋工程防护":
+                            - /url: industry-hub.html
+                    - generic:
+                      - heading "定制化服务" [level=4]
+                      - list:
+                        - listitem:
+                          - link "企业批量定制":
+                            - /url: auth.html
+                        - listitem:
+                          - link "OEM/ODM合作":
+                            - /url: auth.html
+                        - listitem:
+                          - link "专业安全评估":
+                            - /url: auth.html
+                        - listitem:
+                          - link "合规认证支持":
+                            - /url: auth.html
+                    - generic:
+                      - heading "增值服务" [level=4]
+                      - list:
+                        - listitem:
+                          - link "RFID智能追踪":
+                            - /url: auth.html
+                        - listitem:
+                          - link "IoT数字化管理":
+                            - /url: auth.html
+                        - listitem:
+                          - link "安全培训认证":
+                            - /url: auth.html
+                        - listitem:
+                          - link "以旧换新计划":
+                            - /url: auth.html
+                - generic:
+                  - generic: 快速入口：
+                  - link "免费安全评估":
+                    - /url: auth.html
+                  - link "申请样品":
+                    - /url: auth.html
+                  - link "定制报价":
+                    - /url: auth.html
+                  - link "联系销售顾问 →":
+                    - /url: auth.html
+            - listitem [ref=e30]:
+              - link "品牌与产品" [ref=e31] [cursor=pointer]:
+                - /url: products.html
+                - generic [ref=e32]: 品牌与产品
+                - img [ref=e33]
+              - generic:
+                - generic:
+                  - generic:
+                    - generic:
+                      - heading "品牌系列" [level=4]
+                      - generic:
+                        - link "PandaSHIELD™ SHD · 防切割/撕裂/磨损":
+                          - /url: pandakev.html
+                          - generic: PandaSHIELD™
+                          - generic:
+                            - generic: SHD
+                            - generic: ·
+                            - generic: 防切割/撕裂/磨损
+                        - link "PandaPIERCE™ PIR · 防穿刺":
+                          - /url: pandadyn.html
+                          - generic: PandaPIERCE™
+                          - generic:
+                            - generic: PIR
+                            - generic: ·
+                            - generic: 防穿刺
+                        - link "PandaIMPACT™ IMP · 防冲击":
+                          - /url: pandadyn.html
+                          - generic: PandaIMPACT™
+                          - generic:
+                            - generic: IMP
+                            - generic: ·
+                            - generic: 防冲击
+                        - link "PandaCHEM™ CHM · 防油污/酸碱/溶剂":
+                          - /url: pandachem.html
+                          - generic: PandaCHEM™
+                          - generic:
+                            - generic: CHM
+                            - generic: ·
+                            - generic: 防油污/酸碱/溶剂
+                        - link "PandaBIO™ BIO · 防生物污染":
+                          - /url: pandachem.html
+                          - generic: PandaBIO™
+                          - generic:
+                            - generic: BIO
+                            - generic: ·
+                            - generic: 防生物污染
+                        - link "PandaVOLT™ VOL · 防电/绝缘/静电":
+                          - /url: pandachem.html
+                          - generic: PandaVOLT™
+                          - generic:
+                            - generic: VOL
+                            - generic: ·
+                            - generic: 防电/绝缘/静电
+                        - link "PandaHEAT™ HEA · 防火/阻燃/耐高温":
+                          - /url: pandanom.html
+                          - generic: PandaHEAT™
+                          - generic:
+                            - generic: HEA
+                            - generic: ·
+                            - generic: 防火/阻燃/耐高温
+                        - link "PandaFROST™ FRS · 防寒/保暖":
+                          - /url: pandatherm.html
+                          - generic: PandaFROST™
+                          - generic:
+                            - generic: FRS
+                            - generic: ·
+                            - generic: 防寒/保暖
+                        - link "PandaGRIP™ GRP · 防震/防滑":
+                          - /url: pandatherm.html
+                          - generic: PandaGRIP™
+                          - generic:
+                            - generic: GRP
+                            - generic: ·
+                            - generic: 防震/防滑
+                        - link "PandaECO™ ECO · 环保可持续":
+                          - /url: pandaeco.html
+                          - generic: PandaECO™
+                          - generic:
+                            - generic: ECO
+                            - generic: ·
+                            - generic: 环保可持续
+                    - generic:
+                      - heading "按功能和危害" [level=4]
+                      - generic:
+                        - list:
+                          - listitem:
+                            - link "切割":
+                              - /url: func-cut.html
+                              - generic:
+                                - img
+                              - generic: 切割
+                          - listitem:
+                            - link "穿刺":
+                              - /url: func-puncture.html
+                              - generic:
+                                - img
+                              - generic: 穿刺
+                          - listitem:
+                            - link "撕裂":
+                              - /url: func-cut.html
+                              - generic:
+                                - img
+                              - generic: 撕裂
+                          - listitem:
+                            - link "磨损":
+                              - /url: func-wear.html
+                              - generic:
+                                - img
+                              - generic: 磨损
+                          - listitem:
+                            - link "冲击":
+                              - /url: func-shock.html
+                              - generic:
+                                - img
+                              - generic: 冲击
+                          - listitem:
+                            - link "油污":
+                              - /url: func-chem.html
+                              - generic:
+                                - img
+                              - generic: 油污
+                          - listitem:
+                            - link "酸碱":
+                              - /url: func-chem.html
+                              - generic:
+                                - img
+                              - generic: 酸碱
+                          - listitem:
+                            - link "溶剂":
+                              - /url: func-chem.html
+                              - generic:
+                                - img
+                              - generic: 溶剂
+                          - listitem:
+                            - link "生物污染":
+                              - /url: func-infection.html
+                              - generic:
+                                - img
+                              - generic: 生物污染
+                        - list:
+                          - listitem:
+                            - link "绝缘":
+                              - /url: func-electric.html
+                              - generic:
+                                - img
+                              - generic: 绝缘
+                          - listitem:
+                            - link "静电":
+                              - /url: func-electric.html
+                              - generic:
+                                - img
+                              - generic: 静电
+                          - listitem:
+                            - link "阻燃":
+                              - /url: func-heat.html
+                              - generic:
+                                - img
+                              - generic: 阻燃
+                          - listitem:
+                            - link "高温":
+                              - /url: func-heat.html
+                              - generic:
+                                - img
+                              - generic: 高温
+                          - listitem:
+                            - link "极寒":
+                              - /url: func-cold.html
+                              - generic:
+                                - img
+                              - generic: 极寒
+                          - listitem:
+                            - link "震动":
+                              - /url: func-shock.html
+                              - generic:
+                                - img
+                              - generic: 震动
+                          - listitem:
+                            - link "防滑":
+                              - /url: func-shock.html
+                              - generic:
+                                - img
+                              - generic: 防滑
+                          - listitem:
+                            - link "环保":
+                              - /url: sustainability.html
+                              - generic:
+                                - img
+                              - generic: 环保
+                    - generic:
+                      - heading "按行业" [level=4]
+                      - generic:
+                        - list:
+                          - listitem:
+                            - link "石油化工":
+                              - /url: ind-petro.html
+                              - img
+                              - generic: 石油化工
+                          - listitem:
+                            - link "汽车制造":
+                              - /url: ind-auto.html
+                              - img
+                              - generic: 汽车制造
+                          - listitem:
+                            - link "建筑施工":
+                              - /url: ind-construction.html
+                              - img
+                              - generic: 建筑施工
+                          - listitem:
+                            - link "食品加工":
+                              - /url: ind-food.html
+                              - img
+                              - generic: 食品加工
+                          - listitem:
+                            - link "电子电气":
+                              - /url: ind-electronics.html
+                              - img
+                              - generic: 电子电气
+                          - listitem:
+                            - link "医疗清洁":
+                              - /url: ind-medical.html
+                              - img
+                              - generic: 医疗清洁
+                          - listitem:
+                            - link "航空航天":
+                              - /url: ind-aerospace.html
+                              - img
+                              - generic: 航空航天
+                        - list:
+                          - listitem:
+                            - link "物流仓储":
+                              - /url: industry-hub.html
+                              - img
+                              - generic: 物流仓储
+                          - listitem:
+                            - link "金属加工":
+                              - /url: industry-hub.html
+                              - img
+                              - generic: 金属加工
+                          - listitem:
+                            - link "消防救援":
+                              - /url: industry-hub.html
+                              - img
+                              - generic: 消防救援
+                          - listitem:
+                            - link "电力能源":
+                              - /url: industry-hub.html
+                              - img
+                              - generic: 电力能源
+                          - listitem:
+                            - link "船舶制造":
+                              - /url: industry-hub.html
+                              - img
+                              - generic: 船舶制造
+                          - listitem:
+                            - link "农业林业":
+                              - /url: industry-hub.html
+                              - img
+                              - generic: 农业林业
+                          - listitem:
+                            - link "实验室科研":
+                              - /url: industry-hub.html
+                              - img
+                              - generic: 实验室科研
+                    - generic:
+                      - heading "按运动" [level=4]
+                      - generic:
+                        - list:
+                          - listitem:
+                            - link "攀岩/登山":
+                              - /url: sport-climbing.html
+                              - img
+                              - generic: 攀岩/登山
+                          - listitem:
+                            - link "射击/击剑":
+                              - /url: sport-shooting.html
+                              - img
+                              - generic: 射击/击剑
+                          - listitem:
+                            - link "拳击/搏击":
+                              - /url: sport-boxing.html
+                              - img
+                              - generic: 拳击/搏击
+                          - listitem:
+                            - link "足球/棒球":
+                              - /url: sport-ball.html
+                              - img
+                              - generic: 足球/棒球
+                          - listitem:
+                            - link "骑行/滑板":
+                              - /url: sport-cycling.html
+                              - img
+                              - generic: 骑行/滑板
+                          - listitem:
+                            - link "骑马/马术":
+                              - /url: sport-equestrian.html
+                              - img
+                              - generic: 骑马/马术
+                          - listitem:
+                            - link "极限运动":
+                              - /url: sport-extreme.html
+                              - img
+                              - generic: 极限运动
+                        - list:
+                          - listitem:
+                            - link "狩猎":
+                              - /url: sport-hunting.html
+                              - img
+                              - generic: 狩猎
+                          - listitem:
+                            - link "跑步":
+                              - /url: sport-running.html
+                              - img
+                              - generic: 跑步
+                          - listitem:
+                            - link "钓鱼":
+                              - /url: sport-fishing.html
+                              - img
+                              - generic: 钓鱼
+                          - listitem:
+                            - link "滑雪":
+                              - /url: sport-skiing.html
+                              - img
+                              - generic: 滑雪
+                          - listitem:
+                            - link "健身":
+                              - /url: sport-fitness.html
+                              - img
+                              - generic: 健身
+                          - listitem:
+                            - link "战术":
+                              - /url: sport-tactical.html
+                              - img
+                              - generic: 战术
+                          - listitem:
+                            - link "摩托车":
+                              - /url: sport-motorcycle.html
+                              - img
+                              - generic: 摩托车
+                          - listitem:
+                            - link "高尔夫":
+                              - /url: sport-golf.html
+                              - img
+                              - generic: 高尔夫
+                    - generic:
+                      - heading "对比与图解" [level=4]
+                      - list:
+                        - listitem:
+                          - link "防护等级对比表":
+                            - /url: search.html
+                        - listitem:
+                          - link "性能参数数据":
+                            - /url: products.html
+                        - listitem:
+                          - link "材料对比指南":
+                            - /url: materials.html
+                        - listitem:
+                          - link "选型推荐表":
+                            - /url: product-selector.html
+                        - listitem:
+                          - link "产品规格速查":
+                            - /url: search.html
+                        - listitem:
+                          - link "应用场景图解":
+                            - /url: products.html
+                        - listitem:
+                          - link "认证标准信息":
+                            - /url: research-center.html
+                - generic:
+                  - generic:
+                    - generic: 热门搜索：
+                    - link "磨损":
+                      - /url: search.html?q=磨损
+                    - link "切割":
+                      - /url: search.html?q=切割
+                    - link "油污":
+                      - /url: search.html?q=油污
+                    - link "防滑":
+                      - /url: search.html?q=防滑
+                    - link "冲击":
+                      - /url: search.html?q=冲击
+                  - link "查看所有Panda产品":
+                    - /url: products-all.html
+                    - img
+                    - generic: 查看所有Panda产品
+                    - img
+            - listitem [ref=e35]:
+              - link "客户案例" [ref=e36] [cursor=pointer]:
+                - /url: "#"
+                - generic [ref=e37]: 客户案例
+                - img [ref=e38]
+              - generic:
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic:
+                        - img:
+                          - generic: “
+                          - generic: ★★★★★
+                          - generic: 全球500强合作
+                      - generic:
+                        - generic: 500强合作
+                        - heading "真实客户验证" [level=3]
+                        - paragraph:
+                          - text: 50+国家企业信赖
+                          - text: 行业标杆客户实证
+                        - link "查看全部案例 →":
+                          - /url: industry-hub.html
+                    - generic:
+                      - link "🏭 石化":
+                        - /url: ind-petro.html
+                        - generic: 🏭
+                        - generic: 石化
+                      - link "🚗 汽车":
+                        - /url: ind-auto.html
+                        - generic: 🚗
+                        - generic: 汽车
+                      - link "🏥 医疗":
+                        - /url: ind-medical.html
+                        - generic: 🏥
+                        - generic: 医疗
+                      - link "🔧 制造":
+                        - /url: industry-hub.html
+                        - generic: 🔧
+                        - generic: 制造
+                      - link "🌊 海工":
+                        - /url: industry-hub.html
+                        - generic: 🌊
+                        - generic: 海工
+                      - link "⚡ 电气":
+                        - /url: ind-electronics.html
+                        - generic: ⚡
+                        - generic: 电气
+                  - generic:
+                    - generic:
+                      - heading "精选案例" [level=4]
+                      - list:
+                        - listitem:
+                          - link "某大型炼油厂切割防护升级":
+                            - /url: ind-petro.html
+                        - listitem:
+                          - link "汽车OEM装配线防护解决方案":
+                            - /url: ind-auto.html
+                        - listitem:
+                          - link "医疗器械厂无菌防护项目":
+                            - /url: ind-medical.html
+                        - listitem:
+                          - link "大型基建施工安全计划":
+                            - /url: ind-construction.html
+                        - listitem:
+                          - link "全球食品企业卫生防护":
+                            - /url: ind-food.html
+                    - generic:
+                      - heading "成功故事" [level=4]
+                      - list:
+                        - listitem:
+                          - link "防护升级降低工伤率 60%":
+                            - /url: industry-hub.html
+                        - listitem:
+                          - link "年节约手套采购成本 40%":
+                            - /url: industry-hub.html
+                        - listitem:
+                          - link "通过 EN388/ISO 认证全程支持":
+                            - /url: research-center.html
+                        - listitem:
+                          - link "ESG绿色采购转型案例":
+                            - /url: sustainability.html
+                        - listitem:
+                          - link "定制化OEM品牌合作":
+                            - /url: auth.html
+                    - generic:
+                      - heading "客户评价" [level=4]
+                      - list:
+                        - listitem:
+                          - link "\"性能稳定，降本显著\"":
+                            - /url: ind-petro.html
+                        - listitem:
+                          - link "\"交期准时，定制灵活\"":
+                            - /url: ind-auto.html
+                        - listitem:
+                          - link "\"卫生合规，全程追溯\"":
+                            - /url: ind-food.html
+                        - listitem:
+                          - link "\"防护升级，员工认可\"":
+                            - /url: ind-medical.html
+                - generic:
+                  - generic: 快速查找：
+                  - link "按行业浏览":
+                    - /url: industry-hub.html
+                  - link "按产品浏览":
+                    - /url: products.html
+                  - link "下载案例报告":
+                    - /url: search.html?q=case
+                  - link "提交您的案例 →":
+                    - /url: auth.html
+            - listitem [ref=e40]:
+              - link "品牌授权" [ref=e41] [cursor=pointer]:
+                - /url: "#"
+                - generic [ref=e42]: 品牌授权
+                - img [ref=e43]
+              - generic:
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic:
+                        - img:
+                          - generic: PHG
+                          - generic: 50+ 国家加盟商
+                      - generic:
+                        - generic: 全球统一形象
+                        - heading "品牌全球化输出" [level=3]
+                        - paragraph:
+                          - text: 统一产品 · 统一VI · 统一服务
+                          - text: 像麦当劳一样复制成功
+                        - link "申请加盟 →":
+                          - /url: auth.html
+                    - generic:
+                      - link "🌍 欧洲市场":
+                        - /url: auth.html
+                        - generic: 🌍
+                        - generic: 欧洲市场
+                      - link "🌎 美洲市场":
+                        - /url: auth.html
+                        - generic: 🌎
+                        - generic: 美洲市场
+                      - link "🌏 亚太市场":
+                        - /url: auth.html
+                        - generic: 🌏
+                        - generic: 亚太市场
+                      - link "🕌 中东市场":
+                        - /url: auth.html
+                        - generic: 🕌
+                        - generic: 中东市场
+                      - link "🌍 非洲市场":
+                        - /url: auth.html
+                        - generic: 🌍
+                        - generic: 非洲市场
+                      - link "📋 加盟申请":
+                        - /url: auth.html
+                        - generic: 📋
+                        - generic: 加盟申请
+                  - generic:
+                    - generic:
+                      - heading "加盟模式" [level=4]
+                      - list:
+                        - listitem:
+                          - link "区域独家代理":
+                            - /url: auth.html
+                            - strong: 区域独家代理
+                        - listitem:
+                          - link "国家级总代理商":
+                            - /url: auth.html
+                        - listitem:
+                          - link "城市/省级经销商":
+                            - /url: auth.html
+                        - listitem:
+                          - link "电商渠道合作":
+                            - /url: auth.html
+                        - listitem:
+                          - link "工业品采购平台":
+                            - /url: auth.html
+                    - generic:
+                      - heading "品牌支持" [level=4]
+                      - list:
+                        - listitem:
+                          - link "全套VI视觉设计手册":
+                            - /url: auth.html
+                        - listitem:
+                          - link "统一门店形象标准":
+                            - /url: auth.html
+                        - listitem:
+                          - link "多语言营销物料":
+                            - /url: auth.html
+                        - listitem:
+                          - link "产品培训认证体系":
+                            - /url: auth.html
+                        - listitem:
+                          - link "数字营销支持包":
+                            - /url: auth.html
+                    - generic:
+                      - heading "加盟条件" [level=4]
+                      - list:
+                        - listitem:
+                          - link "最低年采购量要求":
+                            - /url: auth.html
+                        - listitem:
+                          - link "专属销售区域保护":
+                            - /url: auth.html
+                        - listitem:
+                          - link "库存管理系统接入":
+                            - /url: auth.html
+                        - listitem:
+                          - link "定期产品更新支持":
+                            - /url: auth.html
+                        - listitem:
+                          - link "法务合规支持":
+                            - /url: auth.html
+                - generic:
+                  - generic: 快速了解：
+                  - link "加盟流程":
+                    - /url: auth.html
+                  - link "利润模型":
+                    - /url: auth.html
+                  - link "成功案例":
+                    - /url: auth.html
+                  - link "常见问答":
+                    - /url: auth.html
+                  - link "立即申请加盟 →":
+                    - /url: auth.html
+      - generic [ref=e45]:
+        - generic [ref=e46]:
+          - generic [ref=e47]:
+            - button "A" [ref=e48] [cursor=pointer]
+            - button "A" [ref=e49] [cursor=pointer]
+            - button "A" [ref=e50] [cursor=pointer]
+          - link "购物车" [ref=e51] [cursor=pointer]:
+            - /url: cart.html
+            - img [ref=e52]
+          - link "注册/登录" [ref=e56] [cursor=pointer]:
+            - /url: auth.html
+            - img [ref=e57]
+          - button "中文" [ref=e61] [cursor=pointer]:
+            - img [ref=e62]
+            - generic [ref=e65]: 中文
+        - button "搜索" [ref=e67] [cursor=pointer]:
+          - img [ref=e68]
+  - generic [ref=e91]:
+    - generic [ref=e94]: 全球领先防护手套专家
+    - heading "人类以双手创造世界，我们守护双手未来" [level=1] [ref=e95]
+    - paragraph [ref=e96]: 熊猫手护以尖端材料科学与创新工艺，为全球工业、医疗、运动领域提供最可靠的防护手套解决方案。
+    - link "探索产品" [ref=e98] [cursor=pointer]:
+      - /url: "#products"
+      - text: 探索产品
+      - img [ref=e99]
+  - generic [ref=e102]:
+    - generic [ref=e103]:
+      - generic [ref=e104]:
+        - text: "1"
+        - superscript [ref=e105]: +
+      - generic [ref=e106]: 国际安全标准
+    - generic [ref=e108]:
+      - generic [ref=e109]:
+        - text: "0"
+        - superscript
+      - generic [ref=e110]: 品牌系列
+    - generic [ref=e112]:
+      - generic [ref=e113]:
+        - text: "5"
+        - superscript [ref=e114]: +
+      - generic [ref=e115]: 产品型号
+    - generic [ref=e117]:
+      - generic [ref=e118]:
+        - text: "0"
+        - superscript [ref=e119]: +
+      - generic [ref=e120]: 技术专利
+    - generic [ref=e122]:
+      - generic [ref=e123]:
+        - text: "13"
+        - superscript [ref=e124]: +
+      - generic [ref=e125]: 全球客户
+    - generic [ref=e127]:
+      - generic [ref=e128]:
+        - text: "2"
+        - superscript [ref=e129]: "%+"
+      - generic [ref=e130]: 复购率
+  - generic [ref=e132]:
+    - generic [ref=e133]:
+      - generic [ref=e134]: 核心品牌矩阵
+      - heading "专利材料 · 分级防护 · 精准匹配" [level=2] [ref=e135]
+      - paragraph [ref=e136]: 每款品牌系列基于独特材料科学，针对特定风险场景精心研发，提供有据可查的防护性能。
+    - generic [ref=e137]:
+      - generic [ref=e138]:
+        - img [ref=e140]
+        - generic [ref=e144]: PandaKEV™
+        - heading "超高切割防护" [level=3] [ref=e145]
+        - paragraph [ref=e146]: 对位芳纶纤维，EN 388 A6最高切割等级，广泛用于金属加工、汽车制造。
+        - link "查看系列 →" [ref=e147] [cursor=pointer]:
+          - /url: pandakev.html
+      - generic [ref=e148]:
+        - img [ref=e150]
+        - generic [ref=e154]: PandaDYN™
+        - heading "超强耐磨抗撕" [level=3] [ref=e155]
+        - paragraph [ref=e156]: 超高分子量聚乙烯纤维，强度是钢的15倍，适用于重型施工和海洋工程。
+        - link "查看系列 →" [ref=e157] [cursor=pointer]:
+          - /url: pandadyn.html
+      - generic [ref=e158]:
+        - img [ref=e160]
+        - generic [ref=e163]: PandaNOM™
+        - heading "阻燃隔热防护" [level=3] [ref=e164]
+        - paragraph [ref=e165]: 间位芳纶纤维，持续接触温度 300°C，适用于冶炼、消防、焊接作业。
+        - link "查看系列 →" [ref=e166] [cursor=pointer]:
+          - /url: pandanom.html
+      - generic [ref=e167]:
+        - img [ref=e169]
+        - generic [ref=e173]: PandaTHERM™
+        - heading "极温保暖防寒" [level=3] [ref=e174]
+        - paragraph [ref=e175]: Thinsulate™隔热棉结构，适用 -40°C 极寒，冷链物流与极地作业专属。
+        - link "查看系列 →" [ref=e176] [cursor=pointer]:
+          - /url: pandatherm.html
+      - generic [ref=e177]:
+        - img [ref=e179]
+        - generic [ref=e183]: PandaCHEM™
+        - heading "化学品防护" [level=3] [ref=e184]
+        - paragraph [ref=e185]: 多层复合丁腈橡胶，抗酸碱与溶剂渗透，符合 EN 374 Type B/C 标准。
+        - link "查看系列 →" [ref=e186] [cursor=pointer]:
+          - /url: pandachem.html
+      - generic [ref=e187]:
+        - img [ref=e189]
+        - generic [ref=e192]: PandaECO™
+        - heading "可持续环保系列" [level=3] [ref=e193]
+        - paragraph [ref=e194]: 再生聚酯纤维与生物基橡胶，碳足迹降低 60%，满足 ESG 合规需求。
+        - link "查看系列 →" [ref=e195] [cursor=pointer]:
+          - /url: pandaeco.html
+  - generic [ref=e197]:
+    - generic [ref=e198]:
+      - generic [ref=e199]: 产品中心
+      - heading "全场景防护手套矩阵" [level=2] [ref=e200]
+      - paragraph [ref=e201]: 精准对标全球安全标准，从工业重防护到运动轻防护，一站式覆盖
+    - generic [ref=e202]:
+      - button "按功能" [ref=e203] [cursor=pointer]
+      - button "按行业" [ref=e204] [cursor=pointer]
+      - button "按运动类别" [ref=e205] [cursor=pointer]
+    - generic [ref=e207]:
+      - link "PandaKEV™ 切割防护 A6 手套 EN 388:2016 最高切割等级，Kevlar® 内衬 + PU 涂层掌部 A6切割 EN 388 食品级" [ref=e208] [cursor=pointer]:
+        - /url: pandakev.html
+        - img [ref=e210]
+        - generic [ref=e213]:
+          - generic [ref=e214]: PandaKEV™
+          - heading "切割防护 A6 手套" [level=3] [ref=e215]
+          - paragraph [ref=e216]: EN 388:2016 最高切割等级，Kevlar® 内衬 + PU 涂层掌部
+          - generic [ref=e217]:
+            - generic [ref=e218]: A6切割
+            - generic [ref=e219]: EN 388
+            - generic [ref=e220]: 食品级
+      - link "PandaNOM™ 阻燃焊接手套 耐持续开放火焰，接触温度 ≤300°C，焊接飞溅防护 阻燃F1 EN 407 焊接" [ref=e221] [cursor=pointer]:
+        - /url: pandanom.html
+        - img [ref=e223]
+        - generic [ref=e227]:
+          - generic [ref=e228]: PandaNOM™
+          - heading "阻燃焊接手套" [level=3] [ref=e229]
+          - paragraph [ref=e230]: 耐持续开放火焰，接触温度 ≤300°C，焊接飞溅防护
+          - generic [ref=e231]:
+            - generic [ref=e232]: 阻燃F1
+            - generic [ref=e233]: EN 407
+            - generic [ref=e234]: 焊接
+      - link "PandaCHEM™ 化学品防护手套 丁腈 + 氯丁橡胶复合，抵抗超过 120 种危险化学品 Type B EN 374 化工" [ref=e235] [cursor=pointer]:
+        - /url: pandachem.html
+        - img [ref=e237]
+        - generic [ref=e241]:
+          - generic [ref=e242]: PandaCHEM™
+          - heading "化学品防护手套" [level=3] [ref=e243]
+          - paragraph [ref=e244]: 丁腈 + 氯丁橡胶复合，抵抗超过 120 种危险化学品
+          - generic [ref=e245]:
+            - generic [ref=e246]: Type B
+            - generic [ref=e247]: EN 374
+            - generic [ref=e248]: 化工
+      - link "PandaDYN™ 抗冲击机械手套 背部 TPR 防冲击设计，D3O® 凝胶衬垫，振动衰减 ≥40% 抗冲击 EN 388 重工" [ref=e249] [cursor=pointer]:
+        - /url: pandadyn.html
+        - img [ref=e251]
+        - generic [ref=e254]:
+          - generic [ref=e255]: PandaDYN™
+          - heading "抗冲击机械手套" [level=3] [ref=e256]
+          - paragraph [ref=e257]: 背部 TPR 防冲击设计，D3O® 凝胶衬垫，振动衰减 ≥40%
+          - generic [ref=e258]:
+            - generic [ref=e259]: 抗冲击
+            - generic [ref=e260]: EN 388
+            - generic [ref=e261]: 重工
+      - link "PandaKEV™ 防静电精密操作手套 碳纤维导电纱编织，表面电阻 10⁶-10⁸Ω，触屏兼容 防静电 EN 16350 电子" [ref=e262] [cursor=pointer]:
+        - /url: pandachem.html
+        - img [ref=e264]
+        - generic [ref=e268]:
+          - generic [ref=e269]: PandaKEV™
+          - heading "防静电精密操作手套" [level=3] [ref=e270]
+          - paragraph [ref=e271]: 碳纤维导电纱编织，表面电阻 10⁶-10⁸Ω，触屏兼容
+          - generic [ref=e272]:
+            - generic [ref=e273]: 防静电
+            - generic [ref=e274]: EN 16350
+            - generic [ref=e275]: 电子
+      - link "PandaTHERM™ 低温冷储保暖手套 -40°C 极寒环境，200g Thinsulate™ 填充，防水防滑 -40°C EN 511 冷链" [ref=e276] [cursor=pointer]:
+        - /url: pandatherm.html
+        - img [ref=e278]
+        - generic [ref=e281]:
+          - generic [ref=e282]: PandaTHERM™
+          - heading "低温冷储保暖手套" [level=3] [ref=e283]
+          - paragraph [ref=e284]: "-40°C 极寒环境，200g Thinsulate™ 填充，防水防滑"
+          - generic [ref=e285]:
+            - generic [ref=e286]: "-40°C"
+            - generic [ref=e287]: EN 511
+            - generic [ref=e288]: 冷链
+    - generic [ref=e289]:
+      - link "查看全部产品" [ref=e290] [cursor=pointer]:
+        - /url: products.html
+      - link "下载产品目录" [ref=e291] [cursor=pointer]:
+        - /url: search.html
+  - generic [ref=e294]:
+    - generic [ref=e295]:
+      - generic [ref=e296]: 解决方案
+      - heading "系统化安全防护体系" [level=2] [ref=e297]
+      - paragraph [ref=e298]: 不只是一双手套，而是基于风险评估的全链路防护解决方案
+    - generic [ref=e299]:
+      - generic [ref=e300]:
+        - img [ref=e302]
+        - generic [ref=e305]: "01"
+        - heading "风险评估 & 选型服务" [level=3] [ref=e306]
+        - paragraph [ref=e307]: 派遣专业安全工程师驻场评估，出具EN/ISO标准合规报告，精准匹配防护等级
+        - list [ref=e308]:
+          - listitem [ref=e309]: 现场危害识别
+          - listitem [ref=e310]: 防护等级计算
+          - listitem [ref=e311]: 法规符合性验证
+      - generic [ref=e312]:
+        - img [ref=e314]
+        - generic [ref=e318]: "02"
+        - heading "企业批量定制" [level=3] [ref=e319]
+        - paragraph [ref=e320]: 从颜色、尺码到LOGO，满足企业视觉识别需求，最小起订量500双
+        - list [ref=e321]:
+          - listitem [ref=e322]: 品牌定制刺绣/印字
+          - listitem [ref=e323]: 专属包装方案
+          - listitem [ref=e324]: 快速打样7天交货
+      - generic [ref=e325]:
+        - img [ref=e327]
+        - generic [ref=e331]: "03"
+        - heading "智能防护管理系统" [level=3] [ref=e332]
+        - paragraph [ref=e333]: RFID芯片嵌入追踪手套使用寿命，到期自动预警，数字化安全管理
+        - list [ref=e334]:
+          - listitem [ref=e335]: RFID全生命周期追踪
+          - listitem [ref=e336]: IoT实时监测平台
+          - listitem [ref=e337]: 合规报表自动生成
+      - generic [ref=e338]:
+        - img [ref=e340]
+        - generic [ref=e343]: "04"
+        - heading "培训 & 认证服务" [level=3] [ref=e344]
+        - paragraph [ref=e345]: 在线/线下双轨培训，涵盖正确穿戴、检测维护、废弃处置全流程
+        - list [ref=e346]:
+          - listitem [ref=e347]: 专业安全培训课程
+          - listitem [ref=e348]: 考核认证证书
+          - listitem [ref=e349]: 持续教育服务
+  - generic [ref=e352]:
+    - generic [ref=e353]:
+      - generic [ref=e354]: 为什么选择熊猫手护
+      - heading "全球认证 · 中国智造" [level=2] [ref=e355]
+      - paragraph [ref=e356]: 熊猫手护是中国领先的防护手套制造商，持有 CE、ANSI/ISEA、AS/NZS 等全球主要市场认证，产品出口 50 余个国家。
+      - generic [ref=e357]:
+        - generic [ref=e358]:
+          - strong [ref=e359]: CE
+          - text: EN 388 / 374 / 407
+        - generic [ref=e360]:
+          - strong [ref=e361]: ANSI/ISEA
+          - text: A1–A9 切割标准
+        - generic [ref=e362]:
+          - strong [ref=e363]: ISO 9001
+          - text: 质量管理体系
+        - generic [ref=e364]:
+          - strong [ref=e365]: ISO 14001
+          - text: 环境管理体系
+      - link "了解我们" [ref=e366] [cursor=pointer]:
+        - /url: factory.html
+    - generic [ref=e368]:
+      - generic [ref=e369]:
+        - strong [ref=e371]: CE
+        - strong [ref=e373]: ANSI
+        - strong [ref=e375]: AS/NZS
+        - strong [ref=e377]: GOST
+        - strong [ref=e379]: JIS
+        - strong [ref=e381]: BS
+      - generic [ref=e382]:
+        - generic [ref=e383]: ISO 9001
+        - generic [ref=e384]: ISO 14001
+        - generic [ref=e385]: OHSAS
+        - generic [ref=e386]: NFPA
+      - generic [ref=e387]:
+        - generic [ref=e388]: EN388
+        - generic [ref=e389]: EN374
+        - generic [ref=e390]: EN407
+        - generic [ref=e391]: A6切割
+        - generic [ref=e392]: EN511
+      - generic [ref=e393]:
+        - generic [ref=e394]: 🐼
+        - generic [ref=e395]:
+          - text: 全球认证
+          - text: 中国智造
+  - generic [ref=e397]:
+    - generic [ref=e398]:
+      - generic [ref=e399]: 新闻与洞察
+      - heading "行业资讯 · 技术前沿" [level=2] [ref=e400]
+    - generic [ref=e401]:
+      - generic [ref=e402]:
+        - generic [ref=e403]:
+          - generic [ref=e404]: 可持续发展
+          - img:
+            - generic: ESG
+        - generic [ref=e405]:
+          - generic [ref=e406]: 2026.03.01
+          - heading "熊猫手护发布 2025 年 ESG 报告：碳排放强度降低 35%" [level=3] [ref=e407]
+          - paragraph [ref=e408]: 公司在材料循环利用和绿色生产工艺方面取得重大突破，PandaECO™ 系列年销量突破 500 万双。
+          - link "阅读全文 →" [ref=e409] [cursor=pointer]:
+            - /url: sustainability.html
+      - generic [ref=e410]:
+        - generic [ref=e411]:
+          - generic [ref=e412]: 技术创新
+          - img:
+            - generic: R&D
+        - generic [ref=e413]:
+          - generic [ref=e414]: 2026.02.18
+          - heading "熊猫手护全球研究中心在京揭牌，聚焦下一代防护材料" [level=3] [ref=e415]
+          - paragraph [ref=e416]: 量子点传感手套与智能温控材料即将进入量产阶段。
+          - link "阅读全文 →" [ref=e417] [cursor=pointer]:
+            - /url: research-center.html
+      - generic [ref=e418]:
+        - generic [ref=e419]:
+          - generic [ref=e420]: 行业标准
+          - img:
+            - generic: STD
+        - generic [ref=e421]:
+          - generic [ref=e422]: 2026.01.30
+          - heading "参与制定 GB/T 12624 最新修订版，推动国内防护标准升级" [level=3] [ref=e423]
+          - paragraph [ref=e424]: 熊猫手护作为主要起草单位，推动中国手部防护标准与国际接轨。
+          - link "阅读全文 →" [ref=e425] [cursor=pointer]:
+            - /url: research-center.html
+  - contentinfo [ref=e426]:
+    - generic [ref=e428]:
+      - generic [ref=e429]:
+        - generic [ref=e430]:
+          - img "熊猫手护" [ref=e432]
+          - generic [ref=e433]:
+            - generic [ref=e434]: 熊猫手护
+            - generic [ref=e435]: 永远手护安全
+          - paragraph [ref=e436]: 熊猫手护（北京）科技有限公司
+          - generic [ref=e437]:
+            - link "微信" [ref=e438] [cursor=pointer]:
+              - /url: https://www.wechat.com
+              - img [ref=e439]
+            - link "微博" [ref=e441] [cursor=pointer]:
+              - /url: https://www.weibo.com
+              - img [ref=e442]
+            - link "LinkedIn" [ref=e444] [cursor=pointer]:
+              - /url: https://www.linkedin.com
+              - img [ref=e445]
+        - generic [ref=e447]:
+          - heading "联系我们" [level=4] [ref=e448]
+          - list [ref=e449]:
+            - listitem [ref=e450]: 📍 北京市朝阳区望京科技园
+            - listitem [ref=e451]: 📞 400-888-PANDA
+            - listitem [ref=e452]: 📧 info@pandaguard.cn
+            - listitem [ref=e453]: 🌐 www.pandaguard.cn
+      - generic [ref=e454]:
+        - heading "品牌和产品" [level=4] [ref=e455]
+        - list [ref=e456]:
+          - listitem [ref=e457]:
+            - link "PandaKEV™ 切割防护" [ref=e458] [cursor=pointer]:
+              - /url: pandakev.html
+          - listitem [ref=e459]:
+            - link "PandaNOM™ 阻燃焊接" [ref=e460] [cursor=pointer]:
+              - /url: pandanom.html
+          - listitem [ref=e461]:
+            - link "PandaCHEM™ 化学防护" [ref=e462] [cursor=pointer]:
+              - /url: pandachem.html
+          - listitem [ref=e463]:
+            - link "PandaTHERM™ 极温保暖" [ref=e464] [cursor=pointer]:
+              - /url: pandatherm.html
+          - listitem [ref=e465]:
+            - link "PandaDYN™ 机械防护" [ref=e466] [cursor=pointer]:
+              - /url: pandadyn.html
+          - listitem [ref=e467]:
+            - link "PandaECO™ 可持续系列" [ref=e468] [cursor=pointer]:
+              - /url: pandaeco.html
+      - generic [ref=e469]:
+        - heading "解决方案" [level=4] [ref=e470]
+        - list [ref=e471]:
+          - listitem [ref=e472]:
+            - link "工业制造整体防护" [ref=e473] [cursor=pointer]:
+              - /url: industry-hub.html
+          - listitem [ref=e474]:
+            - link "危化品处理方案" [ref=e475] [cursor=pointer]:
+              - /url: func-chem.html
+          - listitem [ref=e476]:
+            - link "医疗防护解决方案" [ref=e477] [cursor=pointer]:
+              - /url: ind-medical.html
+          - listitem [ref=e478]:
+            - link "智能工厂防护" [ref=e479] [cursor=pointer]:
+              - /url: factory.html
+          - listitem [ref=e480]:
+            - link "企业批量定制" [ref=e481] [cursor=pointer]:
+              - /url: auth.html
+          - listitem [ref=e482]:
+            - link "合规认证支持" [ref=e483] [cursor=pointer]:
+              - /url: research-center.html
+      - generic [ref=e484]:
+        - heading "服务" [level=4] [ref=e485]
+        - list [ref=e486]:
+          - listitem [ref=e487]:
+            - link "技术支持" [ref=e488] [cursor=pointer]:
+              - /url: auth.html
+          - listitem [ref=e489]:
+            - link "产品培训" [ref=e490] [cursor=pointer]:
+              - /url: auth.html
+          - listitem [ref=e491]:
+            - link "安全咨询" [ref=e492] [cursor=pointer]:
+              - /url: auth.html
+          - listitem [ref=e493]:
+            - link "售后服务" [ref=e494] [cursor=pointer]:
+              - /url: auth.html
+          - listitem [ref=e495]:
+            - link "资源下载" [ref=e496] [cursor=pointer]:
+              - /url: research-center.html
+          - listitem [ref=e497]:
+            - link "全球研究中心" [ref=e498] [cursor=pointer]:
+              - /url: research-center.html
+      - generic [ref=e499]:
+        - heading "品牌授权" [level=4] [ref=e500]
+        - list [ref=e501]:
+          - listitem [ref=e502]:
+            - link "区域独家代理" [ref=e503] [cursor=pointer]:
+              - /url: auth.html
+          - listitem [ref=e504]:
+            - link "国家级总代理商" [ref=e505] [cursor=pointer]:
+              - /url: auth.html
+          - listitem [ref=e506]:
+            - link "城市 / 省级经销商" [ref=e507] [cursor=pointer]:
+              - /url: auth.html
+          - listitem [ref=e508]:
+            - link "全套VI设计手册" [ref=e509] [cursor=pointer]:
+              - /url: auth.html
+          - listitem [ref=e510]:
+            - link "加盟流程说明" [ref=e511] [cursor=pointer]:
+              - /url: auth.html
+          - listitem [ref=e512]:
+            - link "立即申请加盟" [ref=e513] [cursor=pointer]:
+              - /url: auth.html
+      - generic [ref=e514]:
+        - heading "熊猫账号" [level=4] [ref=e515]
+        - list [ref=e516]:
+          - listitem [ref=e517]:
+            - link "登录会员" [ref=e518] [cursor=pointer]:
+              - /url: auth.html
+          - listitem [ref=e519]:
+            - link "注册采购会员" [ref=e520] [cursor=pointer]:
+              - /url: auth.html
+          - listitem [ref=e521]:
+            - link "订单管理" [ref=e522] [cursor=pointer]:
+              - /url: auth.html
+          - listitem [ref=e523]:
+            - link "新闻中心" [ref=e524] [cursor=pointer]:
+              - /url: research-center.html
+          - listitem [ref=e525]:
+            - link "管理员后台" [ref=e526] [cursor=pointer]:
+              - /url: admin.html
+      - generic [ref=e527]:
+        - heading "未来发展" [level=4] [ref=e528]
+        - list [ref=e529]:
+          - listitem [ref=e530]:
+            - link "可持续发展" [ref=e531] [cursor=pointer]:
+              - /url: sustainability.html
+          - listitem [ref=e532]:
+            - link "市场准入" [ref=e533] [cursor=pointer]:
+              - /url: research-center.html
+          - listitem [ref=e534]:
+            - link "安全和隐私" [ref=e535] [cursor=pointer]:
+              - /url: research-center.html
+          - listitem [ref=e536]:
+            - link "手护公民" [ref=e537] [cursor=pointer]:
+              - /url: research-center.html
+          - listitem [ref=e538]:
+            - link "社会责任" [ref=e539] [cursor=pointer]:
+              - /url: sustainability.html
+          - listitem [ref=e540]:
+            - link "儿童手护" [ref=e541] [cursor=pointer]:
+              - /url: children-safety.html
+          - listitem [ref=e542]:
+            - link "数说Panda" [ref=e543] [cursor=pointer]:
+              - /url: research-center.html
+          - listitem [ref=e544]:
+            - link "Panda安全学院" [ref=e545] [cursor=pointer]:
+              - /url: research-center.html
+      - generic [ref=e546]:
+        - heading "关于我们" [level=4] [ref=e547]
+        - list [ref=e548]:
+          - listitem [ref=e549]:
+            - link "品牌故事" [ref=e550] [cursor=pointer]:
+              - /url: factory.html
+          - listitem [ref=e551]:
+            - link "公司介绍" [ref=e552] [cursor=pointer]:
+              - /url: factory.html
+          - listitem [ref=e553]:
+            - link "品牌" [ref=e554] [cursor=pointer]:
+              - /url: products.html
+          - listitem [ref=e555]:
+            - link "新闻中心" [ref=e556] [cursor=pointer]:
+              - /url: research-center.html
+          - listitem [ref=e557]:
+            - link "人才招聘" [ref=e558] [cursor=pointer]:
+              - /url: auth.html
+    - generic [ref=e560]:
+      - generic [ref=e561]: © 2026 熊猫手护（北京）科技有限公司 | Panda Guard (Beijing) Technology Co., Ltd. All rights reserved.
+      - generic [ref=e562]:
+        - link "隐私政策" [ref=e563] [cursor=pointer]:
+          - /url: research-center.html
+        - link "使用条款" [ref=e564] [cursor=pointer]:
+          - /url: research-center.html
+        - link "Cookie设置" [ref=e565] [cursor=pointer]:
+          - /url: research-center.html
+        - link "京ICP备XXXXXXXX号" [ref=e566] [cursor=pointer]:
+          - /url: https://beian.miit.gov.cn/

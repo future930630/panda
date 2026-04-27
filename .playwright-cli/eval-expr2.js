@@ -1,0 +1,1 @@
+(() => { const sb = document.getElementById('headerSearchBtn'); const lr = document.querySelector('.header-logo').getBoundingClientRect(); const sr = sb ? sb.getBoundingClientRect() : null; return 'WIN=' + window.innerWidth + ' LOGO_L=' + Math.round(lr.left) + ' LOGO_R=' + Math.round(lr.right) + ' SEARCH_R=' + (sr ? Math.round(sr.right) : '?'); })()
