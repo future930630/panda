@@ -1,0 +1,8 @@
+✓ New database created
+✓ Admin account created: admin@pandashield.com / admin123!
+✓ Database tables ready
+============================================
+  PandaShield B2B API Server
+  http://localhost:3000
+  Admin: admin@pandashield.com / admin123!
+============================================
