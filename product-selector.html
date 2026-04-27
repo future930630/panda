@@ -1,0 +1,1120 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+  <title>产品智能选型 — 熊猫手护</title>
+  <meta name="description" content="熊猫手护智能产品选型工具，根据您的应用场景、危害类型和行业需求，智能推荐最适合的防护手套解决方案。" />
+  <meta name="description" content="Panda Guard smart product selector recommends the best safety gloves based on your application scenario, hazard type and industry needs." lang="en" />
+  <meta property="og:title" content="产品智能选型 — 熊猫手护" />
+  <meta property="og:title" content="Smart Product Selector — Panda Guard" xml:lang="en" />
+  <meta property="og:description" content="熊猫手护智能产品选型工具，根据您的应用场景、危害类型和行业需求，智能推荐最适合的防护手套解决方案。" />
+  <meta property="og:description" content="Panda Guard smart product selector recommends the best safety gloves based on your application scenario, hazard type and industry needs." xml:lang="en" />
+  <meta property="og:url" content="https://www.pandaguard.com/product-selector.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="熊猫手护" />
+  <meta property="og:site_name" content="Panda Guard" xml:lang="en" />
+  <meta property="og:image" content="https://www.pandaguard.com/image/og-default.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Smart Product Selector — Panda Guard" />
+  <meta name="twitter:description" content="Panda Guard smart product selector recommends the best safety gloves based on your application scenario, hazard type and industry needs." />
+  <meta name="twitter:image" content="https://www.pandaguard.com/image/og-default.jpg" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css?v=20260423" />
+  <link rel="stylesheet" href="subpage.css" />
+  <script>if (!localStorage.getItem('pg_lang')) localStorage.setItem('pg_lang', 'zh');</script>
+  <script src="i18n.js?v=20260424-avatar"></script>
+  <style>
+  /* ================================================
+     PRODUCT SELECTOR — 智能选品向导
+     参考霍尼韦尔 "Build your solution" 交互模式
+  ================================================ */
+  * { box-sizing: border-box; }
+
+  /* ── Hero ── */
+  .ps-hero {
+    background: linear-gradient(135deg, #1A1108 0%, #331800 50%, #1A1108 100%);
+    padding: 52px 0 44px; position: relative; overflow: hidden;
+  }
+  .ps-hero::before {
+    content: ''; position: absolute; inset: 0; pointer-events: none;
+    background:
+      radial-gradient(ellipse 70% 100% at 0% 60%, rgba(232,93,0,0.18) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 60% at 90% 20%, rgba(255,200,80,0.08) 0%, transparent 60%);
+  }
+  .ps-hero-inner {
+    max-width: 1200px; margin: 0 auto; padding: 0 24px;
+    position: relative; z-index: 2; text-align: center;
+  }
+  .ps-hero-label {
+    display: inline-flex; align-items: center; gap: 7px;
+    background: rgba(232,93,0,0.18); border: 1px solid rgba(232,93,0,0.35);
+    padding: 5px 16px; border-radius: 20px; margin-bottom: 20px;
+  }
+  .ps-hero-label span { font-size: 0.8rem; color: #E85D00; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+  .ps-hero h1 { font-size: 2.8rem; font-weight: 900; color: #fff; margin: 0 0 12px; line-height: 1.2; }
+  .ps-hero h1 em { color: #E85D00; font-style: normal; }
+  .ps-hero-sub { color: rgba(255,255,255,0.6); font-size: 1.05rem; max-width: 580px; margin: 0 auto; line-height: 1.7; }
+
+  /* ── 进度条 ── */
+  .ps-progress-wrap {
+    background: #fff; border-bottom: 1px solid #eee; padding: 0;
+    position: sticky; top: 120px; z-index: 50;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .ps-progress-inner {
+    max-width: 900px; margin: 0 auto; padding: 20px 24px;
+    display: flex; align-items: center; gap: 0;
+  }
+  .ps-step-item {
+    display: flex; align-items: center; flex: 1;
+  }
+  .ps-step-dot {
+    width: 32px; height: 32px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.82rem; font-weight: 800; flex-shrink: 0;
+    transition: all 0.35s ease;
+    cursor: pointer;
+  }
+  .ps-step-dot.done { background: #0a6e3f; color: #fff; }
+  .ps-step-dot.active { background: #E85D00; color: #fff; box-shadow: 0 0 0 4px rgba(232,93,0,0.2); }
+  .ps-step-dot.pending { background: #f0ece4; color: #bbb; }
+  .ps-step-info { margin-left: 8px; }
+  .ps-step-num-text { font-size: 0.7rem; color: #bbb; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; }
+  .ps-step-name { font-size: 0.83rem; font-weight: 700; color: #bbb; line-height: 1.2; }
+  .ps-step-item.active .ps-step-name { color: #E85D00; }
+  .ps-step-item.done .ps-step-name { color: #0a6e3f; }
+  .ps-step-connector {
+    flex: 1; height: 2px; background: #e8e4dc;
+    margin: 0 8px; max-width: 60px; transition: background 0.35s;
+  }
+  .ps-step-connector.done { background: #0a6e3f; }
+  .ps-progress-bar {
+    height: 3px; background: linear-gradient(90deg, #E85D00, #c94d00);
+    transition: width 0.5s ease;
+    position: absolute; bottom: 0; left: 0;
+  }
+
+  /* ── 主体 ── */
+  .ps-body { background: #F5F4F0; min-height: 70vh; padding: 40px 0 80px; }
+  .ps-container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── 步骤卡片 ── */
+  .ps-step-card {
+    background: #fff; border-radius: 20px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    border: 1px solid rgba(0,0,0,0.05);
+    padding: 36px 40px;
+    margin-bottom: 20px;
+    display: none;
+    animation: psSlideIn 0.4s cubic-bezier(0.34,1.2,0.64,1);
+  }
+  .ps-step-card.active { display: block; }
+  @keyframes psSlideIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .ps-card-header { margin-bottom: 28px; }
+  .ps-card-step-label {
+    font-size: 0.78rem; font-weight: 700; color: #E85D00;
+    letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px;
+  }
+  .ps-card-title { font-size: 1.5rem; font-weight: 800; color: #1A1108; margin: 0 0 8px; }
+  .ps-card-subtitle { font-size: 0.92rem; color: #888; line-height: 1.6; margin: 0; }
+
+  /* ── 行业选择网格 ── */
+  .ps-industry-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px;
+    margin-bottom: 28px;
+  }
+  .ps-industry-card {
+    border: 2px solid #e8e4dc; border-radius: 14px; padding: 18px 14px;
+    cursor: pointer; transition: all 0.25s; text-align: center; background: #fff;
+    position: relative; overflow: hidden;
+  }
+  .ps-industry-card::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(232,93,0,0.06), rgba(232,93,0,0.02));
+    opacity: 0; transition: opacity 0.25s;
+  }
+  .ps-industry-card:hover { border-color: #E85D00; transform: translateY(-2px); box-shadow: 0 6px 18px rgba(232,93,0,0.15); }
+  .ps-industry-card:hover::before { opacity: 1; }
+  .ps-industry-card.selected { border-color: #E85D00; background: #fff8f5; box-shadow: 0 0 0 3px rgba(232,93,0,0.15); }
+  .ps-industry-card.selected::before { opacity: 1; }
+  .ps-ind-icon { font-size: 2rem; margin-bottom: 8px; display: block; }
+  .ps-ind-name { font-size: 0.88rem; font-weight: 700; color: #1A1108; line-height: 1.3; }
+  .ps-ind-sub { font-size: 0.74rem; color: #aaa; margin-top: 3px; }
+  .ps-industry-card.selected .ps-ind-name { color: #E85D00; }
+  .ps-industry-card .ps-check {
+    position: absolute; top: 8px; right: 8px;
+    width: 20px; height: 20px; background: #E85D00; border-radius: 50%;
+    display: none; align-items: center; justify-content: center; color: #fff; font-size: 11px;
+  }
+  .ps-industry-card.selected .ps-check { display: flex; }
+
+  /* ── 功能多选 ── */
+  .ps-func-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px;
+    margin-bottom: 28px;
+  }
+  .ps-func-item {
+    display: flex; align-items: center; gap: 12px;
+    border: 2px solid #e8e4dc; border-radius: 12px; padding: 14px 16px;
+    cursor: pointer; transition: all 0.22s; background: #fff;
+  }
+  .ps-func-item:hover { border-color: #E85D00; background: #fff8f5; }
+  .ps-func-item.selected { border-color: #E85D00; background: #fff3ed; }
+  .ps-func-icon {
+    width: 40px; height: 40px; border-radius: 10px; display: flex;
+    align-items: center; justify-content: center; font-size: 1.2rem;
+    background: #f5f0e8; flex-shrink: 0; transition: background 0.22s;
+  }
+  .ps-func-item.selected .ps-func-icon { background: rgba(232,93,0,0.15); }
+  .ps-func-text h4 { font-size: 0.9rem; font-weight: 700; color: #1A1108; margin: 0 0 2px; }
+  .ps-func-text p { font-size: 0.75rem; color: #aaa; margin: 0; }
+  .ps-func-item.selected .ps-func-text h4 { color: #E85D00; }
+  .ps-func-cb { display: none; }
+
+  /* ── 滑块 / 数字输入 ── */
+  .ps-range-wrap { margin-bottom: 28px; }
+  .ps-range-label {
+    font-size: 0.88rem; font-weight: 600; color: #555;
+    margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;
+  }
+  .ps-range-val {
+    font-size: 1.1rem; font-weight: 800; color: #E85D00;
+    background: #fff3ed; padding: 2px 10px; border-radius: 8px;
+  }
+  input[type=range] {
+    -webkit-appearance: none; width: 100%; height: 6px;
+    border-radius: 3px; background: #e8e4dc; outline: none; cursor: pointer;
+  }
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none; width: 20px; height: 20px;
+    border-radius: 50%; background: #E85D00;
+    box-shadow: 0 2px 8px rgba(232,93,0,0.4); cursor: pointer;
+    border: 2px solid #fff;
+  }
+  .ps-range-ticks { display: flex; justify-content: space-between; margin-top: 6px; }
+  .ps-range-ticks span { font-size: 0.74rem; color: #bbb; }
+
+  /* ── 下拉/输入组 ── */
+  .ps-form-group { margin-bottom: 20px; }
+  .ps-form-label { font-size: 0.85rem; font-weight: 700; color: #444; margin-bottom: 8px; display: block; }
+  .ps-select, .ps-input {
+    width: 100%; padding: 11px 16px; border: 1.5px solid #e0ddd8;
+    border-radius: 10px; font-size: 0.92rem; color: #1A1108;
+    background: #faf9f7; outline: none; transition: border-color 0.2s;
+    -webkit-appearance: none;
+  }
+  .ps-select:focus, .ps-input:focus { border-color: #E85D00; background: #fff; box-shadow: 0 0 0 3px rgba(232,93,0,0.1); }
+  .ps-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+  /* ── 环境条件标签 ── */
+  .ps-env-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+  .ps-env-chip {
+    padding: 7px 16px; border: 1.5px solid #e8e4dc; border-radius: 24px;
+    font-size: 0.85rem; font-weight: 600; color: #555; cursor: pointer;
+    transition: all 0.2s; background: #fff;
+  }
+  .ps-env-chip:hover { border-color: #E85D00; color: #E85D00; }
+  .ps-env-chip.selected { border-color: #E85D00; background: #E85D00; color: #fff; }
+
+  /* ── 额外要求 ── */
+  .ps-extra-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+  .ps-extra-item {
+    display: flex; align-items: center; gap: 10px;
+    padding: 12px 14px; border: 1.5px solid #e8e4dc; border-radius: 10px;
+    cursor: pointer; transition: all 0.22s; background: #fff;
+  }
+  .ps-extra-item:hover { border-color: #E85D00; background: #fff8f5; }
+  .ps-extra-item.selected { border-color: #E85D00; background: #fff3ed; }
+  .ps-extra-item input { width: 15px; height: 15px; accent-color: #E85D00; flex-shrink: 0; }
+  .ps-extra-label { font-size: 0.85rem; font-weight: 600; color: #444; }
+  .ps-extra-item.selected .ps-extra-label { color: #E85D00; }
+
+  /* ── 操作按钮 ── */
+  .ps-actions { display: flex; gap: 12px; justify-content: space-between; align-items: center; margin-top: 8px; }
+  .ps-btn-prev {
+    padding: 11px 24px; border: 1.5px solid #ddd; color: #555;
+    border-radius: 10px; font-size: 0.92rem; font-weight: 700;
+    background: #fff; cursor: pointer; transition: 0.2s;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .ps-btn-prev:hover { border-color: #E85D00; color: #E85D00; }
+  .ps-btn-next {
+    padding: 12px 32px; background: linear-gradient(135deg, #E85D00, #c94d00);
+    color: #fff; border: none; border-radius: 10px; font-size: 0.95rem; font-weight: 800;
+    cursor: pointer; transition: all 0.25s; box-shadow: 0 4px 16px rgba(232,93,0,0.3);
+    display: flex; align-items: center; gap: 6px; letter-spacing: 0.01em;
+  }
+  .ps-btn-next:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(232,93,0,0.45); }
+  .ps-step-hint { font-size: 0.8rem; color: #aaa; }
+
+  /* ── 结果页 ── */
+  #stepResult { display: none; }
+  .ps-result-hero {
+    text-align: center; padding: 20px 0 32px;
+  }
+  .ps-result-icon {
+    width: 72px; height: 72px; background: linear-gradient(135deg, #E85D00, #c94d00);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 16px; font-size: 2rem; box-shadow: 0 8px 24px rgba(232,93,0,0.35);
+  }
+  .ps-result-h2 { font-size: 1.8rem; font-weight: 900; color: #1A1108; margin: 0 0 8px; }
+  .ps-result-sub { font-size: 0.95rem; color: #888; line-height: 1.6; }
+
+  /* 方案摘要条 */
+  .ps-summary-bar {
+    background: linear-gradient(135deg, #1A1108, #2E1800);
+    border-radius: 14px; padding: 20px 28px;
+    display: flex; gap: 24px; flex-wrap: wrap; margin-bottom: 28px;
+  }
+  .ps-sum-item { display: flex; align-items: center; gap: 10px; }
+  .ps-sum-item-icon { font-size: 1.2rem; }
+  .ps-sum-item-info { }
+  .ps-sum-item-label { font-size: 0.72rem; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.08em; }
+  .ps-sum-item-val { font-size: 0.95rem; font-weight: 700; color: #fff; }
+  .ps-sum-divider { width: 1px; background: rgba(255,255,255,0.1); flex-shrink: 0; }
+
+  /* 结果品牌分组 */
+  .ps-res-brand-section { margin-bottom: 24px; }
+  .ps-res-brand-bar {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 12px;
+    padding-bottom: 10px; border-bottom: 2px solid #E85D00;
+  }
+  .ps-res-brand-tag {
+    font-size: 0.78rem; font-weight: 700; padding: 3px 10px;
+    border-radius: 20px; letter-spacing: 0.06em;
+  }
+  .ps-res-brand-name { font-size: 1.05rem; font-weight: 800; color: #1A1108; }
+  .ps-res-brand-reason { font-size: 0.8rem; color: #888; margin-left: auto; }
+
+  /* 结果产品卡片网格 */
+  .ps-res-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px;
+  }
+  .ps-res-card {
+    background: #fff; border-radius: 14px; overflow: hidden;
+    border: 1.5px solid rgba(0,0,0,0.06); transition: all 0.28s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  .ps-res-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.12); }
+  .ps-res-card-top {
+    background: linear-gradient(135deg, #f8f4ee, #f0e8da);
+    padding: 20px; text-align: center; font-size: 2.5rem;
+    position: relative;
+  }
+  .ps-res-card-match {
+    position: absolute; top: 10px; right: 10px;
+    background: #0a6e3f; color: #fff; font-size: 0.72rem; font-weight: 800;
+    padding: 3px 8px; border-radius: 20px;
+  }
+  .ps-res-card-body { padding: 16px; }
+  .ps-res-card-brand { font-size: 0.72rem; font-weight: 700; color: #E85D00; letter-spacing: 0.08em; text-transform: uppercase; background: #fff3ed; padding: 2px 7px; border-radius: 4px; display: inline-block; margin-bottom: 6px; }
+  .ps-res-card-name { font-size: 0.95rem; font-weight: 700; color: #1A1108; margin: 0 0 6px; }
+  .ps-res-card-reason { font-size: 0.78rem; color: #0a6e3f; background: #e8f5ef; padding: 5px 9px; border-radius: 6px; margin-bottom: 10px; line-height: 1.4; }
+  .ps-res-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 12px; }
+  .ps-res-tag { font-size: 0.7rem; padding: 2px 7px; border-radius: 4px; background: #f2ede6; color: #666; }
+  .ps-res-card-footer { display: flex; gap: 8px; }
+  .ps-res-add-btn {
+    flex: 1; padding: 8px; background: #E85D00; color: #fff;
+    border: none; border-radius: 8px; font-size: 0.82rem; font-weight: 700;
+    cursor: pointer; transition: 0.2s;
+  }
+  .ps-res-add-btn:hover { background: #c94d00; }
+  .ps-res-add-btn.added { background: #0a6e3f; }
+  .ps-res-detail-btn {
+    padding: 8px 12px; border: 1.5px solid #ddd; color: #555;
+    border-radius: 8px; font-size: 0.82rem; font-weight: 600;
+    background: transparent; cursor: pointer; transition: 0.2s; text-decoration: none;
+    display: flex; align-items: center; white-space: nowrap;
+  }
+  .ps-res-detail-btn:hover { border-color: #E85D00; color: #E85D00; }
+
+  /* 结果底部操作 */
+  .ps-result-actions {
+    display: flex; gap: 12px; flex-wrap: wrap;
+    justify-content: center; margin-top: 32px; padding-top: 24px;
+    border-top: 1px solid #e8e4dc;
+  }
+  .ps-res-cta-primary {
+    padding: 14px 36px; background: linear-gradient(135deg, #E85D00, #c94d00);
+    color: #fff; border: none; border-radius: 10px; font-size: 1rem; font-weight: 800;
+    cursor: pointer; transition: all 0.25s; box-shadow: 0 4px 16px rgba(232,93,0,0.3);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .ps-res-cta-primary:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(232,93,0,0.45); }
+  .ps-res-cta-secondary {
+    padding: 14px 24px; border: 1.5px solid #1A1108; color: #1A1108;
+    border-radius: 10px; font-size: 0.95rem; font-weight: 700;
+    background: transparent; cursor: pointer; transition: 0.2s;
+  }
+  .ps-res-cta-secondary:hover { background: #1A1108; color: #fff; }
+  .ps-res-cta-ghost {
+    padding: 14px 24px; border: 1.5px solid #ddd; color: #888;
+    border-radius: 10px; font-size: 0.95rem; font-weight: 600;
+    background: transparent; cursor: pointer; transition: 0.2s;
+  }
+  .ps-res-cta-ghost:hover { border-color: #E85D00; color: #E85D00; }
+
+  /* ── 响应式 ── */
+  @media(max-width:700px){
+    .ps-step-card { padding: 24px 20px; }
+    .ps-hero h1 { font-size: 2rem; }
+    .ps-industry-grid { grid-template-columns: repeat(3, 1fr); }
+    .ps-func-grid { grid-template-columns: 1fr; }
+    .ps-extra-grid { grid-template-columns: 1fr; }
+    .ps-form-row { grid-template-columns: 1fr; }
+    .ps-summary-bar { gap: 14px; }
+    .ps-res-grid { grid-template-columns: 1fr 1fr; }
+    .ps-progress-inner { padding: 12px 16px; }
+    .ps-step-info { display: none; }
+  }
+  @media(max-width:480px){
+    .ps-industry-grid { grid-template-columns: repeat(2, 1fr); }
+    .ps-res-grid { grid-template-columns: 1fr; }
+    .ps-result-actions { flex-direction: column; align-items: stretch; }
+    .ps-result-actions button { text-align: center; justify-content: center; }
+  }
+  </style>
+  <link rel="stylesheet" href="responsive.css?v=1">
+</head>
+<body class="subpage-body">
+
+<div id="site-nav"></div>
+
+<!-- ═══ HERO ═══ -->
+<section class="ps-hero">
+  <div class="ps-hero-inner">
+    <div class="ps-hero-label">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#E85D00" stroke-width="2.5"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14"/></svg>
+      <span>AI 智能选品向导</span>
+    </div>
+    <h1>找到 <em>最适合</em> 您的防护方案</h1>
+    <p class="ps-hero-sub">回答 4 个问题，30 秒生成专属采购清单——覆盖行业合规要求、员工数量及作业环境</p>
+  </div>
+</section>
+
+<!-- ── 进度条 ── -->
+<div class="ps-progress-wrap" style="position:relative;">
+  <div class="ps-progress-inner">
+    <!-- Step 1 -->
+    <div class="ps-step-item active" id="si1" onclick="goToStep(1)">
+      <div class="ps-step-dot active" id="sd1">1</div>
+      <div class="ps-step-info">
+        <div class="ps-step-num-text">Step 1</div>
+        <div class="ps-step-name">选择行业</div>
+      </div>
+    </div>
+    <div class="ps-step-connector" id="sc1"></div>
+    <!-- Step 2 -->
+    <div class="ps-step-item" id="si2" onclick="goToStep(2)">
+      <div class="ps-step-dot pending" id="sd2">2</div>
+      <div class="ps-step-info">
+        <div class="ps-step-num-text">Step 2</div>
+        <div class="ps-step-name">防护需求</div>
+      </div>
+    </div>
+    <div class="ps-step-connector" id="sc2"></div>
+    <!-- Step 3 -->
+    <div class="ps-step-item" id="si3" onclick="goToStep(3)">
+      <div class="ps-step-dot pending" id="sd3">3</div>
+      <div class="ps-step-info">
+        <div class="ps-step-num-text">Step 3</div>
+        <div class="ps-step-name">规模与预算</div>
+      </div>
+    </div>
+    <div class="ps-step-connector" id="sc3"></div>
+    <!-- Step 4 -->
+    <div class="ps-step-item" id="si4" onclick="goToStep(4)">
+      <div class="ps-step-dot pending" id="sd4">4</div>
+      <div class="ps-step-info">
+        <div class="ps-step-num-text">Step 4</div>
+        <div class="ps-step-name">作业环境</div>
+      </div>
+    </div>
+    <div class="ps-step-connector" id="sc4"></div>
+    <!-- 结果 -->
+    <div class="ps-step-item" id="si5">
+      <div class="ps-step-dot pending" id="sd5">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <div class="ps-step-info">
+        <div class="ps-step-num-text">结果</div>
+        <div class="ps-step-name">推荐方案</div>
+      </div>
+    </div>
+  </div>
+  <div class="ps-progress-bar" id="progressBar" style="width:10%"></div>
+</div>
+
+<!-- ═══ BODY ═══ -->
+<div class="ps-body">
+  <div class="ps-container">
+
+    <!-- ════ STEP 1：行业选择 ════ -->
+    <div class="ps-step-card active" id="step1">
+      <div class="ps-card-header">
+        <div class="ps-card-step-label">第一步 · Step 1 of 4</div>
+        <h2 class="ps-card-title">您所在的行业是？</h2>
+        <p class="ps-card-subtitle">不同行业对防护标准的要求各异——告诉我们，我们将只展示符合合规要求的产品</p>
+      </div>
+
+      <div class="ps-industry-grid" id="industryGrid">
+        <div class="ps-industry-card" onclick="selectIndustry(this, 'petro')">
+          <div class="ps-check">✓</div>
+          <span class="ps-ind-icon">🏭</span>
+          <div class="ps-ind-name">石油化工</div>
+          <div class="ps-ind-sub">Oil &amp; Gas</div>
+        </div>
+        <div class="ps-industry-card" onclick="selectIndustry(this, 'auto')">
+          <div class="ps-check">✓</div>
+          <span class="ps-ind-icon">🚗</span>
+          <div class="ps-ind-name">汽车制造</div>
+          <div class="ps-ind-sub">Automotive</div>
+        </div>
+        <div class="ps-industry-card" onclick="selectIndustry(this, 'construction')">
+          <div class="ps-check">✓</div>
+          <span class="ps-ind-icon">🏗️</span>
+          <div class="ps-ind-name">建筑施工</div>
+          <div class="ps-ind-sub">Construction</div>
+        </div>
+        <div class="ps-industry-card" onclick="selectIndustry(this, 'food')">
+          <div class="ps-check">✓</div>
+          <span class="ps-ind-icon">🍖</span>
+          <div class="ps-ind-name">食品加工</div>
+          <div class="ps-ind-sub">Food &amp; Beverage</div>
+        </div>
+        <div class="ps-industry-card" onclick="selectIndustry(this, 'electronics')">
+          <div class="ps-check">✓</div>
+          <span class="ps-ind-icon">💻</span>
+          <div class="ps-ind-name">电子制造</div>
+          <div class="ps-ind-sub">Electronics</div>
+        </div>
+        <div class="ps-industry-card" onclick="selectIndustry(this, 'medical')">
+          <div class="ps-check">✓</div>
+          <span class="ps-ind-icon">🏥</span>
+          <div class="ps-ind-name">医疗健康</div>
+          <div class="ps-ind-sub">Medical</div>
+        </div>
+        <div class="ps-industry-card" onclick="selectIndustry(this, 'aerospace')">
+          <div class="ps-check">✓</div>
+          <span class="ps-ind-icon">✈️</span>
+          <div class="ps-ind-name">航空航天</div>
+          <div class="ps-ind-sub">Aerospace</div>
+        </div>
+        <div class="ps-industry-card" onclick="selectIndustry(this, 'logistics')">
+          <div class="ps-check">✓</div>
+          <span class="ps-ind-icon">📦</span>
+          <div class="ps-ind-name">物流仓储</div>
+          <div class="ps-ind-sub">Logistics</div>
+        </div>
+        <div class="ps-industry-card" onclick="selectIndustry(this, 'energy')">
+          <div class="ps-check">✓</div>
+          <span class="ps-ind-icon">⚡</span>
+          <div class="ps-ind-name">电力能源</div>
+          <div class="ps-ind-sub">Power &amp; Energy</div>
+        </div>
+        <div class="ps-industry-card" onclick="selectIndustry(this, 'other')">
+          <div class="ps-check">✓</div>
+          <span class="ps-ind-icon">🔧</span>
+          <div class="ps-ind-name">其他行业</div>
+          <div class="ps-ind-sub">Other</div>
+        </div>
+      </div>
+
+      <div class="ps-actions">
+        <span class="ps-step-hint">请选择一个行业</span>
+        <button class="ps-btn-next" id="nextBtn1" onclick="goToStep(2)" disabled>
+          下一步
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- ════ STEP 2：防护功能 ════ -->
+    <div class="ps-step-card" id="step2">
+      <div class="ps-card-header">
+        <div class="ps-card-step-label">第二步 · Step 2 of 4</div>
+        <h2 class="ps-card-title">需要哪些防护功能？</h2>
+        <p class="ps-card-subtitle">可多选——我们会为每类防护需求推荐最优品牌系列</p>
+      </div>
+
+      <div class="ps-func-grid" id="funcGrid">
+        <div class="ps-func-item" onclick="toggleFunc(this, 'cut')">
+          <div class="ps-func-icon">🔪</div>
+          <div class="ps-func-text">
+            <h4>防切割</h4>
+            <p>EN 388 · ANSI A1-A9</p>
+          </div>
+        </div>
+        <div class="ps-func-item" onclick="toggleFunc(this, 'puncture')">
+          <div class="ps-func-icon">📌</div>
+          <div class="ps-func-text">
+            <h4>防刺穿</h4>
+            <p>EN 388 · 针刺防护</p>
+          </div>
+        </div>
+        <div class="ps-func-item" onclick="toggleFunc(this, 'chem')">
+          <div class="ps-func-icon">⚗️</div>
+          <div class="ps-func-text">
+            <h4>防化学品</h4>
+            <p>ISO 374 · 酸碱溶剂</p>
+          </div>
+        </div>
+        <div class="ps-func-item" onclick="toggleFunc(this, 'heat')">
+          <div class="ps-func-icon">🔥</div>
+          <div class="ps-func-text">
+            <h4>防高温 / 阻燃</h4>
+            <p>EN 407 · 焊接冶炼</p>
+          </div>
+        </div>
+        <div class="ps-func-item" onclick="toggleFunc(this, 'cold')">
+          <div class="ps-func-icon">❄️</div>
+          <div class="ps-func-text">
+            <h4>防寒防冻</h4>
+            <p>EN 511 · -40°C</p>
+          </div>
+        </div>
+        <div class="ps-func-item" onclick="toggleFunc(this, 'electric')">
+          <div class="ps-func-icon">⚡</div>
+          <div class="ps-func-text">
+            <h4>电气绝缘 / 防静电</h4>
+            <p>IEC 60903 · ESD</p>
+          </div>
+        </div>
+        <div class="ps-func-item" onclick="toggleFunc(this, 'shock')">
+          <div class="ps-func-icon">🔨</div>
+          <div class="ps-func-text">
+            <h4>防振动</h4>
+            <p>EN ISO 10819 · HAVS</p>
+          </div>
+        </div>
+        <div class="ps-func-item" onclick="toggleFunc(this, 'infection')">
+          <div class="ps-func-icon">🦠</div>
+          <div class="ps-func-text">
+            <h4>防感染 / 防病毒</h4>
+            <p>ISO 374-5 · 医疗级</p>
+          </div>
+        </div>
+        <div class="ps-func-item" onclick="toggleFunc(this, 'abrasion')">
+          <div class="ps-func-icon">🪨</div>
+          <div class="ps-func-text">
+            <h4>耐磨损</h4>
+            <p>EN 388 · 仓储物流</p>
+          </div>
+        </div>
+        <div class="ps-func-item" onclick="toggleFunc(this, 'eco')">
+          <div class="ps-func-icon">🌿</div>
+          <div class="ps-func-text">
+            <h4>可持续 / ESG</h4>
+            <p>rPET · 碳减排认证</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="ps-actions">
+        <button class="ps-btn-prev" onclick="goToStep(1)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          上一步
+        </button>
+        <button class="ps-btn-next" id="nextBtn2" onclick="goToStep(3)" disabled>
+          下一步
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- ════ STEP 3：规模与预算 ════ -->
+    <div class="ps-step-card" id="step3">
+      <div class="ps-card-header">
+        <div class="ps-card-step-label">第三步 · Step 3 of 4</div>
+        <h2 class="ps-card-title">采购规模与基本信息</h2>
+        <p class="ps-card-subtitle">帮助我们估算用量并为您匹配最优价格档位</p>
+      </div>
+
+      <!-- 员工数量滑块 -->
+      <div class="ps-range-wrap">
+        <div class="ps-range-label">
+          <span>需要防护的员工数量</span>
+          <span class="ps-range-val" id="empVal">100 人</span>
+        </div>
+        <input type="range" id="empSlider" min="1" max="5000" value="100" step="1"
+          oninput="document.getElementById('empVal').textContent = this.value + ' 人'; updateState('employees', this.value)">
+        <div class="ps-range-ticks">
+          <span>1人</span><span>50人</span><span>200人</span><span>1000人</span><span>5000+人</span>
+        </div>
+      </div>
+
+      <!-- 更换频率 -->
+      <div class="ps-form-row">
+        <div class="ps-form-group">
+          <label class="ps-form-label">手套更换频率</label>
+          <select class="ps-select" onchange="updateState('frequency', this.value)">
+            <option value="">请选择</option>
+            <option value="daily">每日更换</option>
+            <option value="weekly">每周更换</option>
+            <option value="monthly">每月更换</option>
+            <option value="quarterly">每季度更换</option>
+            <option value="annual">按年采购</option>
+          </select>
+        </div>
+        <div class="ps-form-group">
+          <label class="ps-form-label">采购预算级别</label>
+          <select class="ps-select" onchange="updateState('budget', this.value)">
+            <option value="">请选择</option>
+            <option value="economy">经济型（基础防护）</option>
+            <option value="standard">标准型（品质均衡）</option>
+            <option value="premium">专业型（高防护等级）</option>
+            <option value="enterprise">企业级（定制 OEM）</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- 公司信息 -->
+      <div class="ps-form-row">
+        <div class="ps-form-group">
+          <label class="ps-form-label">公司名称（选填）</label>
+          <input type="text" class="ps-input" placeholder="便于发送专属报价" oninput="updateState('company', this.value)">
+        </div>
+        <div class="ps-form-group">
+          <label class="ps-form-label">联系邮箱（选填）</label>
+          <input type="email" class="ps-input" placeholder="name@company.com" oninput="updateState('email', this.value)">
+        </div>
+      </div>
+
+      <!-- 是否需要样品 -->
+      <div class="ps-form-group">
+        <label class="ps-form-label">是否需要免费样品？</label>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <div class="ps-env-chip" onclick="toggleChip(this, 'sample', 'yes')" data-group="sample" data-val="yes">需要免费样品（5-7工作日）</div>
+          <div class="ps-env-chip" onclick="toggleChip(this, 'sample', 'no')" data-group="sample" data-val="no">暂不需要</div>
+          <div class="ps-env-chip" onclick="toggleChip(this, 'sample', 'urgent')" data-group="sample" data-val="urgent">急单，无需样品</div>
+        </div>
+      </div>
+
+      <div class="ps-actions">
+        <button class="ps-btn-prev" onclick="goToStep(2)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          上一步
+        </button>
+        <button class="ps-btn-next" onclick="goToStep(4)">
+          下一步
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- ════ STEP 4：作业环境 ════ -->
+    <div class="ps-step-card" id="step4">
+      <div class="ps-card-header">
+        <div class="ps-card-step-label">第四步 · Step 4 of 4</div>
+        <h2 class="ps-card-title">作业环境与特殊要求</h2>
+        <p class="ps-card-subtitle">精确匹配需要考虑作业场景细节——最后一步！</p>
+      </div>
+
+      <!-- 环境条件 -->
+      <div class="ps-form-group">
+        <label class="ps-form-label">作业环境条件（可多选）</label>
+        <div class="ps-env-grid" id="envChips">
+          <div class="ps-env-chip" onclick="toggleChip(this)" data-val="wet">潮湿 / 油污环境</div>
+          <div class="ps-env-chip" onclick="toggleChip(this)" data-val="dry">干燥环境</div>
+          <div class="ps-env-chip" onclick="toggleChip(this)" data-val="cold">低温冷库</div>
+          <div class="ps-env-chip" onclick="toggleChip(this)" data-val="hot">高温炉前</div>
+          <div class="ps-env-chip" onclick="toggleChip(this)" data-val="outdoor">户外露天</div>
+          <div class="ps-env-chip" onclick="toggleChip(this)" data-val="cleanroom">洁净室</div>
+          <div class="ps-env-chip" onclick="toggleChip(this)" data-val="chemical">化学品接触</div>
+          <div class="ps-env-chip" onclick="toggleChip(this)" data-val="electrical">带电作业</div>
+          <div class="ps-env-chip" onclick="toggleChip(this)" data-val="vibration">振动机械</div>
+          <div class="ps-env-chip" onclick="toggleChip(this)" data-val="touchscreen">触屏操作</div>
+        </div>
+      </div>
+
+      <!-- 额外要求 -->
+      <div class="ps-form-group">
+        <label class="ps-form-label">额外要求（可多选）</label>
+        <div class="ps-extra-grid">
+          <div class="ps-extra-item" onclick="toggleExtra(this)">
+            <input type="checkbox"> <span class="ps-extra-label">需要 CE / EU 认证文件</span>
+          </div>
+          <div class="ps-extra-item" onclick="toggleExtra(this)">
+            <input type="checkbox"> <span class="ps-extra-label">需要 ANSI 认证文件</span>
+          </div>
+          <div class="ps-extra-item" onclick="toggleExtra(this)">
+            <input type="checkbox"> <span class="ps-extra-label">OEM 定制（客户贴标）</span>
+          </div>
+          <div class="ps-extra-item" onclick="toggleExtra(this)">
+            <input type="checkbox"> <span class="ps-extra-label">多尺码混合采购</span>
+          </div>
+          <div class="ps-extra-item" onclick="toggleExtra(this)">
+            <input type="checkbox"> <span class="ps-extra-label">库存预存服务</span>
+          </div>
+          <div class="ps-extra-item" onclick="toggleExtra(this)">
+            <input type="checkbox"> <span class="ps-extra-label">ESG 碳足迹报告</span>
+          </div>
+          <div class="ps-extra-item" onclick="toggleExtra(this)">
+            <input type="checkbox"> <span class="ps-extra-label">员工安全培训支持</span>
+          </div>
+          <div class="ps-extra-item" onclick="toggleExtra(this)">
+            <input type="checkbox"> <span class="ps-extra-label">分批交货安排</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="ps-actions">
+        <button class="ps-btn-prev" onclick="goToStep(3)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          上一步
+        </button>
+        <button class="ps-btn-next" onclick="generateResult()" style="background:linear-gradient(135deg,#0a6e3f,#0d8f52);">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          生成采购方案
+        </button>
+      </div>
+    </div>
+
+    <!-- ════ 结果页 ════ -->
+    <div class="ps-step-card" id="stepResult">
+      <div class="ps-result-hero">
+        <div class="ps-result-icon">🎯</div>
+        <h2 class="ps-result-h2">专属采购方案已生成</h2>
+        <p class="ps-result-sub">根据您的行业、防护需求与规模，为您推荐以下产品组合</p>
+      </div>
+
+      <!-- 方案摘要 -->
+      <div class="ps-summary-bar" id="summaryBar">
+        <div class="ps-sum-item">
+          <span class="ps-sum-item-icon">🏭</span>
+          <div class="ps-sum-item-info">
+            <div class="ps-sum-item-label">行业</div>
+            <div class="ps-sum-item-val" id="sumIndustry">石油化工</div>
+          </div>
+        </div>
+        <div class="ps-sum-divider"></div>
+        <div class="ps-sum-item">
+          <span class="ps-sum-item-icon">👥</span>
+          <div class="ps-sum-item-info">
+            <div class="ps-sum-item-label">员工数量</div>
+            <div class="ps-sum-item-val" id="sumEmp">100 人</div>
+          </div>
+        </div>
+        <div class="ps-sum-divider"></div>
+        <div class="ps-sum-item">
+          <span class="ps-sum-item-icon">🛡️</span>
+          <div class="ps-sum-item-info">
+            <div class="ps-sum-item-label">防护需求</div>
+            <div class="ps-sum-item-val" id="sumFuncs">防切割、防化学</div>
+          </div>
+        </div>
+        <div class="ps-sum-divider"></div>
+        <div class="ps-sum-item">
+          <span class="ps-sum-item-icon">📦</span>
+          <div class="ps-sum-item-info">
+            <div class="ps-sum-item-label">推荐产品数</div>
+            <div class="ps-sum-item-val" id="sumCount">6 款</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 推荐产品（动态生成） -->
+      <div id="resultProductList"></div>
+
+      <!-- 底部操作 -->
+      <div class="ps-result-actions">
+        <button class="ps-res-cta-primary" onclick="sendToCart()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          全部加入采购清单
+        </button>
+        <button class="ps-res-cta-secondary" onclick="location.href='cart.html'">
+          查看采购清单
+        </button>
+        <button class="ps-res-cta-ghost" onclick="restartSelector()">
+          重新选择
+        </button>
+      </div>
+    </div>
+
+  </div><!-- /ps-container -->
+</div>
+
+<div id="site-footer"></div>
+
+<script src="nav-shared.js?v=20260404-1958"></script>
+<script src="footer-shared.js?v=20260403-1006"></script>
+<script>
+// ════════════════════════════════
+// 状态管理
+// ════════════════════════════════
+const state = {
+  industry: null,
+  funcs: [],
+  employees: 100,
+  frequency: '',
+  budget: '',
+  company: '',
+  email: '',
+  envs: [],
+  extras: [],
+  sample: ''
+};
+let currentStep = 1;
+
+// 产品数据库
+const PRODUCTS = {
+  cut: [
+    { sku:'SHD-N', brand:'PandaSHIELD™', brandColor:'#E85D00', brandBg:'#fff3ed', name:'SHD-N 丁腈涂层切割手套', reason:'EN 388 F级切割，最适合您行业的标准', tags:['EN 388 F级','芳纶','丁腈涂层'], link:'pandashield.html', match:'98%' },
+    { sku:'SHD-P', brand:'PandaSHIELD™', brandColor:'#E85D00', brandBg:'#fff3ed', name:'SHD-P PU涂层精密切割手套', reason:'触屏友好，精密操作场景最优选择', tags:['EN 388 F级','触屏','PU涂层'], link:'pandashield.html', match:'94%' },
+    { sku:'PIR-W', brand:'PandaPIERCE™', brandColor:'#0369a1', brandBg:'#e0f2fe', name:'PIR-W UHMWPE耐磨手套', reason:'切割C级+耐磨4级，重体力场景推荐', tags:['EN 388','切割C级','耐磨4级'], link:'pandapierce.html', match:'91%' },
+  ],
+  puncture: [
+    { sku:'PIR-P', brand:'PandaPIERCE™', brandColor:'#0369a1', brandBg:'#e0f2fe', name:'PIR-P 刺穿防护手套', reason:'刺穿4级，UHMWPE针刺防护，建筑施工首选', tags:['EN 388','刺穿4级','UHMWPE'], link:'pandapierce.html', match:'96%' },
+  ],
+  impact: [
+    { sku:'IMP-D', brand:'PandaIMPACT™', brandColor:'#7C3AED', brandBg:'#f5f0ff', name:'IMP-D TPR全面覆盖冲击手套', reason:'EN 13552 HRC认证，采矿/工程机械首选', tags:['EN 13552 HRC','TPR覆盖','EVA衬垫'], link:'pandaimpact.html', match:'97%' },
+  ],
+  chem: [
+    { sku:'CHEM-N', brand:'PandaCHEM™', brandColor:'#7c3aed', brandBg:'#f0e8ff', name:'CHEM-N 丁腈化学防护手套', reason:'EN 374-1 A型，防酸碱溶剂，石化行业标配', tags:['EN 374-1 A','防酸碱','耐溶剂'], link:'pandachem.html', match:'97%' },
+  ],
+  bio: [
+    { sku:'BIO-N', brand:'PandaBIO™', brandColor:'#059669', brandBg:'#d1fae5', name:'BIO-N 医疗级丁腈手套', reason:'EN 374-5 病毒+EN 455认证，医疗行业首选', tags:['EN 374-5','EN 455','病毒级'], link:'pandabio.html', match:'98%' },
+  ],
+  electric: [
+    { sku:'VOL-I', brand:'PandaVOLT™', brandColor:'#CA8A04', brandBg:'#fefce8', name:'VOL-I 绝缘防护手套', reason:'IEC 60903 Class 0，1000V，电力作业必备', tags:['IEC 60903','Class 0~4','1000V'], link:'pandavolt.html', match:'100%' },
+  ],
+  heat: [
+    { sku:'HEA-S', brand:'PandaHEAT™', brandColor:'#b91c1c', brandBg:'#fff0f0', name:'HEA-S 标准阻燃手套', reason:'EN 407 阻燃4级，炼化行业标准配置', tags:['EN 407','阻燃4级','接触热4级'], link:'pandaheat.html', match:'95%' },
+    { sku:'HEA-H', brand:'PandaHEAT™', brandColor:'#b91c1c', brandBg:'#fff0f0', name:'HEA-H 冶金重型手套', reason:'EN 407 全项4级，牛皮加固，焊接冶炼最优选', tags:['EN 407','冶金级','铝箔反射'], link:'pandaheat.html', match:'93%' },
+  ],
+  cold: [
+    { sku:'FRS-T', brand:'PandaFROST™', brandColor:'#0369a1', brandBg:'#e0f2fe', name:'FRS-T Thinsulate极温手套', reason:'EN 511 接触冷4级，-40°C冷库专用', tags:['EN 511','-40°C','Thinsulate','IP67'], link:'pandafrost.html', match:'99%' },
+  ],
+  shock: [
+    { sku:'GRP-V', brand:'PandaGRIP™', brandColor:'#2563EB', brandBg:'#dbeafe', name:'GRP-V 防振防滑手套', reason:'EN ISO 10819认证，HAVS预防专业首选', tags:['EN ISO 10819','防HAVS','EVA减震'], link:'pandagrip.html', match:'95%' },
+  ],
+  eco: [
+    { sku:'ECO-R', brand:'PandaECO™', brandColor:'#0a6e3f', brandBg:'#e8f5ef', name:'ECO-R rPET再生手套', reason:'100% rPET，碳足迹减少约40%，ESG采购首选', tags:['rPET','ESG','GRS认证'], link:'pandaeco.html', match:'96%' },
+  ],
+};
+
+const INDUSTRY_NAMES = {
+  petro:'石油化工', auto:'汽车制造', construction:'建筑施工', food:'食品加工',
+  electronics:'电子制造', medical:'医疗健康', aerospace:'航空航天',
+  logistics:'物流仓储', energy:'电力能源', other:'其他行业'
+};
+
+// ════════════════════════════════
+// 步骤导航
+// ════════════════════════════════
+const STEPS = 4;
+const PROGRESS = { 1:10, 2:35, 3:60, 4:85, 5:100 };
+
+function goToStep(step) {
+  // 隐藏当前
+  document.querySelectorAll('.ps-step-card').forEach(el => el.classList.remove('active'));
+  document.getElementById('stepResult').style.display = 'none';
+  document.getElementById('step' + step).classList.add('active');
+  currentStep = step;
+  updateProgress(step);
+  window.scrollTo({ top: 200, behavior: 'smooth' });
+}
+
+function updateProgress(step) {
+  const pct = PROGRESS[step] || 10;
+  document.getElementById('progressBar').style.width = pct + '%';
+  for (let i = 1; i <= STEPS + 1; i++) {
+    const dot = document.getElementById('sd' + i);
+    const item = document.getElementById('si' + i);
+    if (!dot) continue;
+    dot.className = 'ps-step-dot';
+    if (!item) continue;
+    item.className = 'ps-step-item';
+    if (i < step) { dot.classList.add('done'); item.classList.add('done'); dot.innerHTML = '✓'; }
+    else if (i === step) { dot.classList.add('active'); item.classList.add('active'); dot.textContent = i <= STEPS ? i : '★'; }
+    else { dot.classList.add('pending'); dot.textContent = i <= STEPS ? i : '★'; }
+    const conn = document.getElementById('sc' + i);
+    if (conn) conn.className = 'ps-step-connector' + (i < step ? ' done' : '');
+  }
+}
+
+// ════════════════════════════════
+// Step 1 — 行业选择
+// ════════════════════════════════
+function selectIndustry(card, id) {
+  document.querySelectorAll('.ps-industry-card').forEach(c => c.classList.remove('selected'));
+  card.classList.add('selected');
+  state.industry = id;
+  document.getElementById('nextBtn1').disabled = false;
+}
+
+// ════════════════════════════════
+// Step 2 — 功能多选
+// ════════════════════════════════
+function toggleFunc(item, func) {
+  item.classList.toggle('selected');
+  if (item.classList.contains('selected')) {
+    if (!state.funcs.includes(func)) state.funcs.push(func);
+  } else {
+    state.funcs = state.funcs.filter(f => f !== func);
+  }
+  document.getElementById('nextBtn2').disabled = state.funcs.length === 0;
+}
+
+// ════════════════════════════════
+// Step 3 — 状态更新
+// ════════════════════════════════
+function updateState(key, val) { state[key] = val; }
+
+// ════════════════════════════════
+// 通用 Chip / Extra 切换
+// ════════════════════════════════
+function toggleChip(chip, group, val) {
+  if (group) {
+    document.querySelectorAll('[data-group="' + group + '"]').forEach(c => c.classList.remove('selected'));
+    chip.classList.add('selected');
+    state[group] = val;
+  } else {
+    chip.classList.toggle('selected');
+    const v = chip.dataset.val;
+    if (chip.classList.contains('selected')) { if (!state.envs.includes(v)) state.envs.push(v); }
+    else { state.envs = state.envs.filter(e => e !== v); }
+  }
+}
+function toggleExtra(item) {
+  item.classList.toggle('selected');
+  const cb = item.querySelector('input[type=checkbox]');
+  cb.checked = item.classList.contains('selected');
+}
+
+// ════════════════════════════════
+// 生成结果
+// ════════════════════════════════
+function generateResult() {
+  // 显示结果区
+  document.querySelectorAll('.ps-step-card').forEach(el => el.classList.remove('active'));
+  const resultEl = document.getElementById('stepResult');
+  resultEl.style.display = 'block';
+  resultEl.classList.add('active');
+  updateProgress(5);
+  window.scrollTo({ top: 200, behavior: 'smooth' });
+
+  // 填充摘要条
+  document.getElementById('sumIndustry').textContent = INDUSTRY_NAMES[state.industry] || '未选择';
+  document.getElementById('sumEmp').textContent = state.employees + ' 人';
+  const funcNames = { cut:'防切割', puncture:'防刺穿', chem:'防化学', heat:'防高温', cold:'防寒', electric:'防电气', shock:'防振动', infection:'防感染', abrasion:'耐磨', eco:'ESG' };
+  document.getElementById('sumFuncs').textContent = state.funcs.map(f => funcNames[f] || f).join('、') || '综合防护';
+
+  // 收集产品（按品牌分组，去重）
+  const byBrand = {};
+  const seenSku = new Set();
+  state.funcs.forEach(func => {
+    (PRODUCTS[func] || []).forEach(p => {
+      if (seenSku.has(p.sku)) return;
+      seenSku.add(p.sku);
+      if (!byBrand[p.brand]) byBrand[p.brand] = { brandColor: p.brandColor, brandBg: p.brandBg, items: [] };
+      byBrand[p.brand].items.push(p);
+    });
+  });
+
+  // 如果没有选功能，给默认推荐
+  if (Object.keys(byBrand).length === 0) {
+    ['cut','abrasion'].forEach(func => {
+      (PRODUCTS[func] || []).slice(0,2).forEach(p => {
+        if (seenSku.has(p.sku)) return;
+        seenSku.add(p.sku);
+        if (!byBrand[p.brand]) byBrand[p.brand] = { brandColor: p.brandColor, brandBg: p.brandBg, items: [] };
+        byBrand[p.brand].items.push(p);
+      });
+    });
+  }
+
+  document.getElementById('sumCount').textContent = seenSku.size + ' 款';
+
+  // 渲染
+  const container = document.getElementById('resultProductList');
+  container.innerHTML = '';
+  Object.entries(byBrand).forEach(([brandName, data]) => {
+    const section = document.createElement('div');
+    section.className = 'ps-res-brand-section';
+    section.innerHTML = `
+      <div class="ps-res-brand-bar">
+        <span class="ps-res-brand-tag" style="background:${data.brandBg};color:${data.brandColor};">${brandName}</span>
+        <span class="ps-res-brand-name">${getBrandDesc(brandName)}</span>
+        <span class="ps-res-brand-reason">${data.items.length} 款产品匹配</span>
+      </div>
+      <div class="ps-res-grid">
+        ${data.items.map(p => `
+          <div class="ps-res-card">
+            <div class="ps-res-card-top">
+              🧤
+              <span class="ps-res-card-match">${p.match} 匹配</span>
+            </div>
+            <div class="ps-res-card-body">
+              <span class="ps-res-card-brand" style="background:${p.brandBg};color:${p.brandColor};">${p.brand}</span>
+              <div class="ps-res-card-name">${p.name}</div>
+              <div class="ps-res-card-reason">✓ ${p.reason}</div>
+              <div class="ps-res-tags">${p.tags.map(t => '<span class="ps-res-tag">'+t+'</span>').join('')}</div>
+              <div class="ps-res-card-footer">
+                <button class="ps-res-add-btn" onclick="addResItem(this,'${p.sku}','${p.brand.replace(/'/g,'\\\'')}')" data-sku="${p.sku}">加入清单</button>
+                <a href="${p.link}" class="ps-res-detail-btn" target="_blank">详情</a>
+              </div>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+    container.appendChild(section);
+  });
+}
+
+function getBrandDesc(brand) {
+  const map = {
+    'PandaSHIELD™':'防切割/撕裂/磨损',
+    'PandaPIERCE™':'防穿刺/耐磨',
+    'PandaIMPACT™':'防冲击/防碰撞',
+    'PandaCHEM™':'防油污/酸碱/溶剂',
+    'PandaBIO™':'防生物污染/病毒',
+    'PandaVOLT™':'防电/绝缘/静电',
+    'PandaHEAT™':'防火/阻燃/耐高温',
+    'PandaFROST™':'防寒/保暖',
+    'PandaGRIP™':'防震/防滑',
+    'PandaECO™':'环保可持续',
+  };
+  return map[brand] || brand;
+}
+
+// ── 单个产品加入清单 ──
+function addResItem(btn, sku, brand) {
+  btn.textContent = '已加入 ✓';
+  btn.classList.add('added');
+  btn.disabled = true;
+  // 保存到 localStorage
+  let cart = JSON.parse(localStorage.getItem('pg_cart') || '[]');
+  const existing = cart.find(i => i.sku === sku);
+  if (existing) existing.qty++;
+  else cart.push({ sku, brand, qty: 1 });
+  localStorage.setItem('pg_cart', JSON.stringify(cart));
+}
+
+// ── 全部加入清单 ──
+function sendToCart() {
+  document.querySelectorAll('.ps-res-add-btn:not(.added)').forEach(btn => {
+    btn.click();
+  });
+  setTimeout(() => location.href = 'cart.html', 600);
+}
+
+// ── 重新开始 ──
+function restartSelector() {
+  state.industry = null; state.funcs = []; state.envs = [];
+  document.querySelectorAll('.ps-industry-card').forEach(c => c.classList.remove('selected'));
+  document.querySelectorAll('.ps-func-item').forEach(c => c.classList.remove('selected'));
+  document.querySelectorAll('.ps-env-chip').forEach(c => c.classList.remove('selected'));
+  document.getElementById('stepResult').style.display = 'none';
+  document.getElementById('nextBtn1').disabled = true;
+  document.getElementById('nextBtn2').disabled = true;
+  goToStep(1);
+}
+</script>
+</body>
+</html>

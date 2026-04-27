@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>发布产品 — 熊猫手护</title>
+  <link rel="stylesheet" href="admin.css">
+  <link rel="stylesheet" href="product-publish.css">
+  <script src="i18n.js?v=20260414"></script>
+  <script src="wwwroot/api.js"></script>
+</head>
+<body class="pub-body">
+
+<!-- Header -->
+<header class="pub-header">
+  <a href="admin.html" class="pub-back">
+    <svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 4L6 10l6 6"/></svg>
+    返回列表
+  </a>
+  <div class="pub-title-block">
+    <div class="pub-logo-icon">🐼</div>
+    <div>
+      <div class="pub-title-main">熊猫手护</div>
+      <div class="pub-title-sub">产品发布系统</div>
+    </div>
+  </div>
+  <div class="pub-header-right">
+    <a href="index.html" target="_blank" class="pub-btn-ghost">预览官网</a>
+  </div>
+</header>
+
+<div class="pub-container">
+  <form id="pub-form" novalidate>
+
+    <!-- 01 基本信息 -->
+    <section class="pub-section">
+      <h2 class="pub-section-title">
+        <span class="pub-section-num">01</span>
+        基本信息
+      </h2>
+      <div class="pub-grid-3">
+        <div class="pub-field">
+          <label class="pub-label">SKU 型号 *</label>
+          <input type="text" id="p-sku" class="pub-input" placeholder="如: SHIELD-CUT5" required>
+        </div>
+        <div class="pub-field">
+          <label class="pub-label">品牌系列 *</label>
+          <select id="p-brand" class="pub-select">
+            <option value="">-- 选择品牌 --</option>
+            <option value="panda-shield">PandaSHIELD™ 防切割系列</option>
+            <option value="panda-cut">PandaCUT™ 精密切割系列</option>
+            <option value="panda-heat">PandaHEAT™ 耐高温系列</option>
+            <option value="panda-chem">PandaCHEM™ 化学防护系列</option>
+            <option value="panda-bio">PandaBIO™ 生物防护系列</option>
+            <option value="panda-volt">PandaVOLT™ 绝缘防护系列</option>
+            <option value="panda-frost">PandaFROST™ 防寒防护系列</option>
+            <option value="panda-eco">PandaECO™ 环保经济系列</option>
+          </select>
+        </div>
+        <div class="pub-field">
+          <label class="pub-label">产品功能</label>
+          <select id="p-function" class="pub-select">
+            <option value="">-- 选择功能 --</option>
+            <option>防切割</option><option>耐高温</option><option>防化学</option>
+            <option>防静电</option><option>防寒</option><option>防振动</option>
+            <option>防水</option><option>通用防护</option>
+          </select>
+        </div>
+      </div>
+      <div class="pub-grid-2">
+        <div class="pub-field">
+          <label class="pub-label">产品名称（中文）*</label>
+          <input type="text" id="p-name-zh" class="pub-input" placeholder="防切割防护手套 5级" required>
+        </div>
+        <div class="pub-field">
+          <label class="pub-label">产品名称（英文）</label>
+          <input type="text" id="p-name-en" class="pub-input" placeholder="Cut-Resistant Safety Gloves Level 5">
+        </div>
+      </div>
+      <div class="pub-field">
+        <label class="pub-label">一句话简介（中文）</label>
+        <input type="text" id="p-short-zh" class="pub-input" placeholder="一句话概括产品核心卖点">
+      </div>
+      <div class="pub-field">
+        <label class="pub-label">一句话简介（英文）</label>
+        <input type="text" id="p-short-en" class="pub-input" placeholder="Brief product highlight">
+      </div>
+      <div class="pub-grid-3">
+        <div class="pub-field">
+          <label class="pub-label">参考价（USD）</label>
+          <input type="number" id="p-price" class="pub-input" placeholder="0.00" step="0.01" min="0">
+        </div>
+        <div class="pub-field">
+          <label class="pub-label">最小起订量（MOQ）</label>
+          <input type="number" id="p-moq" class="pub-input" placeholder="50" value="50" min="1">
+        </div>
+        <div class="pub-field">
+          <label class="pub-label">货期（天）</label>
+          <input type="number" id="p-lead" class="pub-input" placeholder="7" value="7" min="1">
+        </div>
+      </div>
+      <div class="pub-grid-3">
+        <div class="pub-field">
+          <label class="pub-label">状态</label>
+          <select id="p-status" class="pub-select">
+            <option value="active">直接上架</option>
+            <option value="draft">存为草稿</option>
+          </select>
+        </div>
+        <div class="pub-field">
+          <label class="pub-label">可见性</label>
+          <select id="p-visibility" class="pub-select">
+            <option value="visible">公开可见</option>
+            <option value="hidden">隐藏</option>
+          </select>
+        </div>
+        <div class="pub-field">
+          <label class="pub-label">销售单位</label>
+          <select id="p-unit" class="pub-select">
+            <option>对（pair）</option>
+            <option>双（pair）</option>
+            <option>只（单只）</option>
+            <option>打（12双）</option>
+            <option>箱（carton）</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 产品规格 -->
+    <section class="pub-section">
+      <h2 class="pub-section-title">
+        <span class="pub-section-num">02</span>
+        产品规格（重要属性）
+      </h2>
+      <div class="pub-grid-2">
+        <div class="pub-field"><label class="pub-label">型号</label><input type="text" id="p-model" class="pub-input" placeholder="如: PandaShield-G01"></div>
+        <div class="pub-field"><label class="pub-label">面料/材质</label><input type="text" id="p-material" class="pub-input" placeholder="如: HPPE 不锈钢丝编织 + 丁腈涂层"></div>
+        <div class="pub-field"><label class="pub-label">克重</label><input type="text" id="p-weight" class="pub-input" placeholder="如: 65g / pair"></div>
+        <div class="pub-field"><label class="pub-label">长度</label><input type="text" id="p-length" class="pub-input" placeholder="如: 240mm（可定制）"></div>
+        <div class="pub-field"><label class="pub-label">厚度</label><input type="text" id="p-thickness" class="pub-input" placeholder="如: 0.8mm（中码参考）"></div>
+        <div class="pub-field"><label class="pub-label">颜色</label><input type="text" id="p-color" class="pub-input" placeholder="如: 橙色 / 蓝色 / 黄色（可定制）"></div>
+        <div class="pub-field"><label class="pub-label">涂层类型</label><input type="text" id="p-coating" class="pub-input" placeholder="如: 掌面丁腈微孔浸胶"></div>
+        <div class="pub-field"><label class="pub-label">包装规格</label><input type="text" id="p-package" class="pub-input" placeholder="如: 12 pairs / 盒，120 pairs / 箱"></div>
+        <div class="pub-field"><label class="pub-label">质地</label><input type="text" id="p-texture" class="pub-input" placeholder="如: 有纹理的"></div>
+        <div class="pub-field"><label class="pub-label">纹理位置</label><input type="text" id="p-texture-loc" class="pub-input" placeholder="如: 完整版"></div>
+        <div class="pub-field"><label class="pub-label">原产地</label><input type="text" id="p-origin" class="pub-input" placeholder="如: 中国山东"></div>
+        <div class="pub-field"><label class="pub-label">品牌</label><input type="text" id="p-brand-attr" class="pub-input" placeholder="如: SNELL"></div>
+        <div class="pub-field"><label class="pub-label">衬里材料</label><input type="text" id="p-liner" class="pub-input" placeholder="如: 氨纶/尼龙"></div>
+        <div class="pub-field"><label class="pub-label">涂层材料</label><input type="text" id="p-coating-mat" class="pub-input" placeholder="如: 泡沫圆点丁腈"></div>
+        <div class="pub-field"><label class="pub-label">应用领域</label><input type="text" id="p-app-area" class="pub-input" placeholder="如: 车间、喷绘印刷、五金工具、组装"></div>
+        <div class="pub-field"><label class="pub-label">产品名称</label><input type="text" id="p-prod-name" class="pub-input" placeholder="如: 丁腈涂层工作手套"></div>
+        <div class="pub-field"><label class="pub-label">关键词</label><input type="text" id="p-keywords" class="pub-input" placeholder="如: 防护手套 手部手套"></div>
+        <div class="pub-field"><label class="pub-label">尺寸</label><input type="text" id="p-size-attr" class="pub-input" placeholder="如: 6/XL-11/XXL"></div>
+      </div>
+    </section>
+
+    <!-- 03 技术参数 -->
+    <section class="pub-section">
+      <h2 class="pub-section-title">
+        <span class="pub-section-num">03</span>
+        技术参数
+      </h2>
+      <div class="pub-grid-2">
+        <div class="pub-field"><label class="pub-label">防护等级</label><input type="text" id="p-level" class="pub-input" placeholder="如: EN388:2016 Level 5 / ANSI A4"></div>
+        <div class="pub-field"><label class="pub-label">耐温范围</label><input type="text" id="p-temp" class="pub-input" placeholder="如: -10°C 至 +80°C"></div>
+        <div class="pub-field"><label class="pub-label">尺码范围</label><input type="text" id="p-size" class="pub-input" placeholder="如: S / M / L / XL / 2XL（支持定制）"></div>
+        <div class="pub-field"><label class="pub-label">执行标准</label><input type="text" id="p-standard" class="pub-input" placeholder="如: GB/T 29512-2013 / ISO 13997"></div>
+        <div class="pub-field"><label class="pub-label">适用场景</label><input type="text" id="p-scenes" class="pub-input" placeholder="如: 金属加工 / 玻璃处理 / 机械装配 / 建筑施工"></div>
+        <div class="pub-field"><label class="pub-label">保质期</label><input type="text" id="p-warranty" class="pub-input" placeholder="如: 正常使用条件下 3 年"></div>
+        <div class="pub-field"><label class="pub-label">功能</label><input type="text" id="p-function" class="pub-input" placeholder="如: 防油，出色抓地力"></div>
+        <div class="pub-field"><label class="pub-label">应用程序类型</label><input type="text" id="p-app-type" class="pub-input" placeholder="如: 通用用途，防油，防滑"></div>
+        <div class="pub-field"><label class="pub-label">其他功能</label><input type="text" id="p-other-func" class="pub-input" placeholder="如: 催泪性, 经久耐用, 防滑, 透气, 耐磨性"></div>
+        <div class="pub-field"><label class="pub-label">不含硅</label><input type="text" id="p-no-silicone" class="pub-input" placeholder="如: 是"></div>
+      </div>
+      <div class="pub-field"><label class="pub-label">认证标准（逗号分隔）</label><input type="text" id="p-certs" class="pub-input" placeholder="如: EN388, ANSI A4, CE, REACH, ISO 9001"></div>
+      <div class="pub-grid-3">
+        <div class="pub-field">
+          <label class="pub-label">EN388 耐磨（0-4）</label>
+          <select id="p-en388-abrasion" class="pub-select"><option value="">--</option><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option></select>
+        </div>
+        <div class="pub-field">
+          <label class="pub-label">EN388 防切割（0-5）</label>
+          <select id="p-en388-cut" class="pub-select"><option value="">--</option><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+        </div>
+        <div class="pub-field"><label class="pub-label">EN388 撕裂（N）</label><input type="text" id="p-en388-tear" class="pub-input" placeholder="如: 25N"></div>
+        <div class="pub-field">
+          <label class="pub-label">EN388 穿刺（0-4）</label>
+          <select id="p-en388-puncture" class="pub-select"><option value="">--</option><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option></select>
+        </div>
+        <div class="pub-field"><label class="pub-label">ISO 13997 切割（牛顿）</label><input type="text" id="p-iso-cut" class="pub-input" placeholder="如: 15N"></div>
+        <div class="pub-field"><label class="pub-label">ANSI/ISEA 105 等级</label><input type="text" id="p-ansi-level" class="pub-input" placeholder="如: A4"></div>
+      </div>
+    </section>
+
+    <!-- 04 定制选项 -->
+    <section class="pub-section">
+      <h2 class="pub-section-title">
+        <span class="pub-section-num">04</span>
+        定制选项
+      </h2>
+      <div class="pub-grid-3">
+        <div class="pub-field"><label class="pub-label">定制 Logo</label>
+          <select id="p-custom-logo" class="pub-select"><option value="no">不支持</option><option value="yes">支持定制 Logo</option></select>
+        </div>
+        <div class="pub-field"><label class="pub-label">定制包装</label>
+          <select id="p-custom-pack" class="pub-select"><option value="no">不支持</option><option value="yes">支持定制包装</option></select>
+        </div>
+        <div class="pub-field"><label class="pub-label">图形自定义</label>
+          <select id="p-custom-graphic" class="pub-select"><option value="no">不支持</option><option value="yes">支持图形自定义</option></select>
+        </div>
+        <div class="pub-field"><label class="pub-label">无粉</label>
+          <select id="p-powder-free" class="pub-select"><option value="">--</option><option value="是">是</option><option value="否">否</option></select>
+        </div>
+        <div class="pub-field"><label class="pub-label">无菌/非无菌</label>
+          <select id="p-sterile" class="pub-select"><option value="">--</option><option value="是">是</option><option value="否">否</option></select>
+        </div>
+        <div class="pub-field"><label class="pub-label">可定制或不</label>
+          <select id="p-customizable" class="pub-select"><option value="">--</option><option value="无">无</option><option value="支持定制">支持定制</option></select>
+        </div>
+        <div class="pub-field"><label class="pub-label">产品类型</label>
+          <select id="p-prod-type" class="pub-select"><option value="">--</option><option value="园艺户外多功能手套">园艺户外多功能手套</option><option value="防护手套">防护手套</option><option value="其他">其他</option></select>
+        </div>
+      </div>
+      <div class="pub-field"><label class="pub-label">定制最低起订量（pairs）</label><input type="number" id="p-custom-moq" class="pub-input" placeholder="如: 3000" min="1"></div>
+      <div class="pub-field"><label class="pub-label">标签（逗号分隔）</label><input type="text" id="p-tags" class="pub-input" placeholder="如: cut5, heat, chemical, pu-coated"></div>
+      <div class="pub-field"><label class="pub-label">适用行业（逗号分隔）</label><input type="text" id="p-industries" class="pub-input" placeholder="如: 金属加工, 建筑施工, 汽车维修, 食品加工"></div>
+    </section>
+
+    <!-- 05 包装与物流 -->
+    <section class="pub-section">
+      <h2 class="pub-section-title">
+        <span class="pub-section-num">05</span>
+        包装与物流
+      </h2>
+      <div class="pub-grid-3">
+        <div class="pub-field"><label class="pub-label">单个包装尺寸（cm）</label><input type="text" id="p-pkg-size" class="pub-input" placeholder="如: 25X15X1"></div>
+        <div class="pub-field"><label class="pub-label">单个产品毛重（kg）</label><input type="text" id="p-gross-weight" class="pub-input" placeholder="如: 1.000"></div>
+        <div class="pub-field"><label class="pub-label">整箱尺寸（cm）</label><input type="text" id="p-carton-size" class="pub-input" placeholder="如: 50X30X25"></div>
+      </div>
+    </section>
+
+    <!-- 06 产品描述 -->
+    <section class="pub-section">
+      <h2 class="pub-section-title">
+        <span class="pub-section-num">06</span>
+        产品描述
+      </h2>
+      <div class="pub-field">
+        <label class="pub-label">详细描述（中文）</label>
+        <textarea id="p-desc-zh" class="pub-textarea" rows="6" placeholder="详细描述产品功能、材质、使用场景、优势亮点..."></textarea>
+      </div>
+      <div class="pub-field">
+        <label class="pub-label">详细描述（英文）</label>
+        <textarea id="p-desc-en" class="pub-textarea" rows="6" placeholder="Detailed description in English..."></textarea>
+      </div>
+    </section>
+
+    <!-- 07 产品图片 -->
+    <section class="pub-section">
+      <h2 class="pub-section-title">
+        <span class="pub-section-num">07</span>
+        产品图片
+      </h2>
+      <div class="pub-field">
+        <label class="pub-label">产品图片（最多 10 张）</label>
+        <div class="pub-upload-zone" id="pub-upload-zone">
+          <svg viewBox="0 0 48 48" width="40" height="40" fill="none" stroke="#C8C0B8" stroke-width="1.5">
+            <rect x="6" y="10" width="36" height="30" rx="4"/>
+            <circle cx="16" cy="22" r="4"/>
+            <path d="M6 34l10-8 8 6 6-5 12 9"/>
+          </svg>
+          <p class="pub-upload-hint">拖拽图片到此处，或<span class="pub-upload-browse">浏览文件</span></p>
+          <p class="pub-upload-tip">支持 JPG / PNG / WebP，单张 ≤ 5MB</p>
+          <input type="file" id="p-images" accept="image/*" multiple style="display:none;">
+        </div>
+        <div class="pub-img-preview" id="pub-img-preview"></div>
+      </div>
+    </section>
+
+    <!-- 提交 -->
+    <div class="pub-actions">
+      <button type="button" class="pub-btn-ghost-lg" onclick="location.href='admin.html'">取消</button>
+      <button type="button" class="pub-btn-ghost-lg" id="pub-draft-btn">存入草稿</button>
+      <button type="submit" class="pub-btn-primary-lg" id="pub-submit-btn">发布产品</button>
+    </div>
+
+  </form>
+</div>
+
+<script>
+(async () => {
+  const token = localStorage.getItem('panda_token');
+  const user = JSON.parse(localStorage.getItem('panda_user') || '{}');
+  if (!token || user.role !== 'admin') {
+    alert('请先以管理员身份登录');
+    location.href = 'auth.html';
+    return;
+  }
+  window.__pubToken = token;
+
+  // 存入草稿
+  document.getElementById('pub-draft-btn').addEventListener('click', async function() {
+    const btn = document.getElementById('pub-draft-btn');
+    btn.disabled = true;
+    btn.textContent = '保存中...';
+    document.getElementById('p-status').value = 'draft';
+    try {
+      const payload = {
+        sku: document.getElementById('p-sku').value.trim() || ('DRAFT-' + Date.now()),
+        name_zh: document.getElementById('p-name-zh').value.trim() || '未命名草稿',
+        status: 'draft',
+        brand: document.getElementById('p-brand').value,
+      };
+      const r = await fetch('/api/products', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + window.__pubToken },
+        body: JSON.stringify(payload)
+      });
+      if (!r.ok) { alert('保存草稿失败'); btn.disabled = false; btn.textContent = '存入草稿'; return; }
+      alert('已存入草稿');
+      location.href = 'admin.html';
+    } catch(err) {
+      alert('网络错误：' + err.message);
+      btn.disabled = false;
+      btn.textContent = '存入草稿';
+    }
+  });
+})();
+
+// Image preview
+const uploadZone = document.getElementById('pub-upload-zone');
+const fileInput = document.getElementById('p-images');
+const preview = document.getElementById('pub-img-preview');
+
+uploadZone.addEventListener('click', () => fileInput.click());
+uploadZone.addEventListener('dragover', e => { e.preventDefault(); uploadZone.style.borderColor = '#E85D00'; });
+uploadZone.addEventListener('dragleave', () => { uploadZone.style.borderColor = '#E0D9D2'; });
+uploadZone.addEventListener('drop', e => {
+  e.preventDefault();
+  uploadZone.style.borderColor = '#E0D9D2';
+  fileInput.files = e.dataTransfer.files;
+  renderPreviews();
+});
+fileInput.addEventListener('change', renderPreviews);
+
+function renderPreviews() {
+  preview.innerHTML = '';
+  Array.from(fileInput.files).slice(0, 10).forEach((f) => {
+    const reader = new FileReader();
+    reader.onload = e => {
+      const div = document.createElement('div');
+      div.className = 'pub-img-thumb';
+      div.innerHTML = `<img src="${e.target.result}" alt="">`;
+      preview.appendChild(div);
+    };
+    reader.readAsDataURL(f);
+  });
+}
+
+// Submit
+document.getElementById('pub-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn = document.getElementById('pub-submit-btn');
+  btn.disabled = true;
+  btn.textContent = '发布中...';
+  const orig = btn.textContent;
+
+  try {
+    const payload = {
+      sku: document.getElementById('p-sku').value.trim(),
+      brand: document.getElementById('p-brand').value,
+      name_zh: document.getElementById('p-name-zh').value.trim(),
+      name_en: document.getElementById('p-name-en').value.trim(),
+      short_desc_zh: document.getElementById('p-short-zh').value.trim(),
+      short_desc_en: document.getElementById('p-short-en').value.trim(),
+      price_usd: parseFloat(document.getElementById('p-price').value) || 0,
+      moq: parseInt(document.getElementById('p-moq').value) || 50,
+      lead_time_days: parseInt(document.getElementById('p-lead').value) || 7,
+      status: document.getElementById('p-status').value,
+      visibility: document.getElementById('p-visibility').value,
+      tags: document.getElementById('p-tags').value.trim(),
+      industries: document.getElementById('p-industries').value.trim(),
+      certifications: document.getElementById('p-certs').value.trim(),
+      desc_zh: document.getElementById('p-desc-zh').value.trim(),
+      desc_en: document.getElementById('p-desc-en').value.trim(),
+      // 所有规格/技术参数写入 specs（与详情页 attributes 两两对应）
+      specs: {
+        model:             document.getElementById('p-model').value.trim(),
+        material:          document.getElementById('p-material').value.trim(),
+        weight:            document.getElementById('p-weight').value.trim(),
+        length:            document.getElementById('p-length').value.trim(),
+        thickness:         document.getElementById('p-thickness').value.trim(),
+        color:             document.getElementById('p-color').value.trim(),
+        coating:           document.getElementById('p-coating').value.trim(),
+        package_spec:      document.getElementById('p-package').value.trim(),
+        protection_level:  document.getElementById('p-level').value.trim(),
+        temp_range:        document.getElementById('p-temp').value.trim(),
+        size_range:        document.getElementById('p-size').value.trim(),
+        standard:          document.getElementById('p-standard').value.trim(),
+        scenes:            document.getElementById('p-scenes').value.trim(),
+        warranty:          document.getElementById('p-warranty').value.trim(),
+        en388_abrasion:    document.getElementById('p-en388-abrasion').value,
+        en388_cut:         document.getElementById('p-en388-cut').value,
+        en388_tear:        document.getElementById('p-en388-tear').value.trim(),
+        en388_puncture:    document.getElementById('p-en388-puncture').value,
+        iso13997_cut:      document.getElementById('p-iso-cut').value.trim(),
+        ansi_level:        document.getElementById('p-ansi-level').value.trim(),
+        custom_logo:       document.getElementById('p-custom-logo').value,
+        custom_packaging:  document.getElementById('p-custom-pack').value,
+        custom_graphic:    document.getElementById('p-custom-graphic').value,
+        custom_moq:        parseInt(document.getElementById('p-custom-moq').value) || 0,
+        package_size:      document.getElementById('p-pkg-size').value.trim(),
+        gross_weight:      document.getElementById('p-gross-weight').value.trim(),
+        carton_size:       document.getElementById('p-carton-size').value.trim(),
+        texture:           document.getElementById('p-texture').value.trim(),
+        texture_loc:       document.getElementById('p-texture-loc').value.trim(),
+        origin:             document.getElementById('p-origin').value.trim(),
+        brand_attr:        document.getElementById('p-brand-attr').value.trim(),
+        liner:             document.getElementById('p-liner').value.trim(),
+        coating_mat:       document.getElementById('p-coating-mat').value.trim(),
+        app_area:          document.getElementById('p-app-area').value.trim(),
+        prod_name:          document.getElementById('p-prod-name').value.trim(),
+        keywords:          document.getElementById('p-keywords').value.trim(),
+        size_attr:         document.getElementById('p-size-attr').value.trim(),
+        function_attr:      document.getElementById('p-function').value.trim(),
+        app_type:          document.getElementById('p-app-type').value.trim(),
+        other_func:        document.getElementById('p-other-func').value.trim(),
+        no_silicone:       document.getElementById('p-no-silicone').value.trim(),
+        powder_free:       document.getElementById('p-powder-free').value,
+        sterile:           document.getElementById('p-sterile').value,
+        customizable:      document.getElementById('p-customizable').value,
+        prod_type:         document.getElementById('p-prod-type').value,
+      }
+    };
+
+    if (!payload.sku || !payload.name_zh) {
+      alert('SKU 和产品名称（中文）为必填项');
+      btn.disabled = false; btn.textContent = '发布产品'; return;
+    }
+
+    const r = await fetch('/api/products', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + window.__pubToken },
+      body: JSON.stringify(payload)
+    });
+    const data = await r.json();
+    if (!r.ok) { alert(data.error || '发布失败'); btn.disabled = false; btn.textContent = '发布产品'; return; }
+
+    if (fileInput.files.length > 0) {
+      const fd = new FormData();
+      Array.from(fileInput.files).forEach(f => fd.append('images', f));
+      await fetch(`/api/products/${data.id}/images`, {
+        method: 'POST',
+        headers: { 'Authorization': 'Bearer ' + window.__pubToken },
+        body: fd
+      });
+    }
+
+    alert('产品发布成功！');
+    location.href = 'admin.html';
+  } catch(err) {
+    alert('网络错误：' + err.message);
+    btn.disabled = false;
+    btn.textContent = '发布产品';
+  }
+});
+</script>
+</body>
+</html>
