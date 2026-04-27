@@ -1,0 +1,946 @@
+{
+  "shd": {
+    "id": "shd",
+    "name": "PandaSHIELD™",
+    "code": "SHD",
+    "tagline": "防切割/撕裂/磨损",
+    "heroAccent": "#E85D00",
+    "heroGlow": "rgba(232,93,0,0.15)",
+    "meta": {
+      "title": "PandaSHIELD™ 防切割/撕裂/磨损 — 熊猫手护",
+      "description": "PandaSHIELD™系列采用超高分子量聚乙烯纤维，提供卓越防切割、防撕裂、防磨损性能，广泛应用于工业制造与物流搬运场景。",
+      "titleEn": "PandaSHIELD™ Cut & Tear & Abrasion Protection — Panda Guard",
+      "descEn": "PandaSHIELD™ series uses UHMWPE fiber for superior cut, tear and abrasion resistance, widely used in industrial manufacturing and logistics."
+    },
+    "breadcrumb": "PandaSHIELD™ 防切割手套",
+    "hero": {
+      "brandPill": "PandaSHIELD™",
+      "brandPillColor": "#E85D00",
+      "title": "Aramid · <span style=\"color:#E85D00;\">切割防护</span>",
+      "subtitle": "对位芳纶纤维编织，EN 388 最高防护等级。强度是同等重量钢丝的 5 倍，广泛应用于金属加工、玻璃制造、精密电子等高风险作业场景。",
+      "stats": [
+        {"val": "F级", "label": "EN 388 切割等级"},
+        {"val": "5×", "label": "强于同重量钢丝"},
+        {"val": "~35g", "label": "单手重量（M码）"},
+        {"val": "6 码", "label": "XS—XXL 尺码"}
+      ],
+      "btnPrimary": "立即询价",
+      "btnPrimaryHref": "auth.html",
+      "btnSecondary": "← 返回总览",
+      "btnSecondaryHref": "products.html"
+    },
+    "intro": {
+      "overline": "MATERIAL TECHNOLOGY",
+      "h2": "为什么选择芳纶？",
+      "body": "对位芳纶（Para-Aramid）是一种有机合成纤维，商用品牌如 Kevlar®，以其极高的拉伸强度、良好的耐热性和出色的抗切割性能著称。PandaSHIELD™ 采用与 Kevlar® 同性能等级的芳纶纱线，经高精度圆筒编织工艺制成手套底衬，再根据使用场景配合丁腈涂层或聚氨酯涂层，兼顾手感与防护性能。",
+      "features": [
+        {"text": "切割强度（ASTM D5034） > 6000 mN，达到 EN 388 F 级"},
+        {"text": "极限工作温度 160°C，短暂接触可耐 250°C"},
+        {"text": "密度仅 1.44 g/cm³，远轻于钢丝同防护等级产品"},
+        {"text": "丁腈涂层版提供 EN 374 B 级化学防护"}
+      ]
+    },
+    "specs": [
+      {"label": "执行标准", "value": "EN 388:2016 + ISO 13997"},
+      {"label": "切割防护", "value": "<span class=\"bp-grade orange\">F级</span>（>6000 mN）"},
+      {"label": "耐磨防护", "value": "<span class=\"bp-grade gray\">3级</span>（2000—5000 cycles）"},
+      {"label": "抗撕裂", "value": "<span class=\"bp-grade gray\">3级</span>（50—75 N）"},
+      {"label": "刺穿防护", "value": "<span class=\"bp-grade gray\">2级</span>（20—60 N）"},
+      {"label": "核心材料", "value": "对位芳纶纤维 + 丁腈/PU 涂层"},
+      {"label": "单手重量", "value": "~35 g（M 码）"},
+      {"label": "尺码范围", "value": "XS / S / M / L / XL / XXL"},
+      {"label": "颜色", "value": "橙黑 / 灰黑 / 白色（定制）"}
+    ],
+    "variants": [
+      {
+        "icon": "✂️",
+        "headBg": "linear-gradient(135deg,#E85D00,#C04800)",
+        "title": "SHD-N",
+        "tag": "丁腈涂层",
+        "desc": "丁腈满浸涂层，在切割防护基础上增加防油、防污、轻度化学品防护，适合机加工、汽车零件处理。",
+        "specs": ["切割 F 级 + 耐磨 3 级", "防油防污", "手感舒适，透气性好"]
+      },
+      {
+        "icon": "🔬",
+        "headBg": "linear-gradient(135deg,#D97706,#92400E)",
+        "title": "SHD-P",
+        "tag": "PU 涂层",
+        "desc": "超薄聚氨酯涂层，精密触感与灵活性最佳，适合电子元件装配、玻璃精加工等对手感要求极高的场景。",
+        "specs": ["切割 F 级 + 灵活性 A 级", "0.3 mm 超薄涂层", "适合精密操作"]
+      },
+      {
+        "icon": "🏗️",
+        "headBg": "linear-gradient(135deg,#1A1108,#3D2410)",
+        "title": "SHD-H",
+        "tag": "双面粗面",
+        "desc": "双面砂磨粗面处理，极大增强湿滑环境的抓握力，适合建筑钢结构、物流搬运等户外高强度作业。",
+        "specs": ["切割 F 级 + 耐磨 4 级", "湿滑抓握力提升 60%", "加长袖口可选"]
+      }
+    ],
+    "industries": [
+      {"icon": "⚙️", "strong": "金属加工", "small": "钣金冲压、车削铣削"},
+      {"icon": "🪟", "strong": "玻璃制造", "small": "平板玻璃、光学加工"},
+      {"icon": "📱", "strong": "电子制造", "small": "精密组装、PCB 处理"},
+      {"icon": "🚗", "strong": "汽车制造", "small": "冲压件处理、总装"},
+      {"icon": "🏗️", "strong": "建筑施工", "small": "钢筋混凝土、钢结构"},
+      {"icon": "📦", "strong": "物流仓储", "small": "分拣搬运、刀片开箱"},
+      {"icon": "🔬", "strong": "实验室", "small": "玻璃器皿、解剖操作"},
+      {"icon": "🏚️", "strong": "食品加工", "small": "屠宰分割、去骨处理"}
+    ],
+    "cta": {
+      "h2": "需要定制或批量采购？",
+      "p": "我们的行业专家将在 24 小时内为您提供专属报价方案",
+      "btnPrimary": "立即联系",
+      "btnPrimaryHref": "auth.html",
+      "btnSecondary": "查看其他品牌",
+      "btnSecondaryHref": "products.html"
+    }
+  },
+  "bio": {
+    "id": "bio",
+    "name": "PandaBIO™",
+    "code": "BIO",
+    "tagline": "一次性防护手套",
+    "heroAccent": "#2E7D32",
+    "heroGlow": "rgba(46,125,50,0.15)",
+    "meta": {
+      "title": "PandaBIO™ 一次性防护手套 — 熊猫手护",
+      "description": "PandaBIO™系列一次性手套采用优质丁腈/乳胶材料，提供出色的触觉敏感性和防护性能，广泛应用于医疗、食品加工、实验室等场景。",
+      "titleEn": "PandaBIO™ Disposable Protection Gloves — Panda Guard",
+      "descEn": "PandaBIO™ disposable gloves offer excellent tactile sensitivity and protection, widely used in medical, food processing and laboratory settings."
+    },
+    "breadcrumb": "PandaBIO™ 一次性防护手套",
+    "hero": {
+      "brandPill": "PandaBIO™",
+      "brandPillColor": "#2E7D32",
+      "title": "Latex · <span style=\"color:#2E7D32;\">一次性防护</span>",
+      "subtitle": "优质乳胶/丁腈材料，舒适贴合，灵敏触感。一次性使用设计，避免交叉感染，适用于医疗检查、食品处理、清洁卫生等场景。",
+      "stats": [
+        {"val": "AQL 1.5", "label": "高品质标准"},
+        {"val": "4g", "label": "单只重量（M码）"},
+        {"val": "24cm", "label": "加长袖口"},
+        {"val": "S—XL", "label": "多尺码可选"}
+      ],
+      "btnPrimary": "立即询价",
+      "btnPrimaryHref": "auth.html",
+      "btnSecondary": "← 返回总览",
+      "btnSecondaryHref": "products.html"
+    },
+    "intro": {
+      "overline": "MATERIAL TECHNOLOGY",
+      "h2": "为什么选择一次性手套？",
+      "body": "一次性手套在医疗、食品、清洁等领域至关重要，可有效防止交叉感染和接触污染。PandaBIO™ 系列采用优质天然乳胶或合成丁腈材料，经过特殊工艺处理，提供舒适的贴合感和出色的触觉敏感性。",
+      "features": [
+        {"text": "优质乳胶/丁腈，柔软舒适"},
+        {"text": "指尖纹理处理，防滑抓握"},
+        {"text": "卷边袖口设计，易于穿戴"},
+        {"text": "多种厚度可选，适应不同场景"}
+      ]
+    },
+    "specs": [
+      {"label": "材质", "value": "天然乳胶 / 丁腈"},
+      {"label": "执行标准", "value": "EN 455 / FDA 510(k)"},
+      {"label": "防护等级", "value": "食品级、医疗级"},
+      {"label": "克重", "value": "4.0—6.5 g（M 码）"},
+      {"label": "袖口长度", "value": "≥240 mm"},
+      {"label": "尺码范围", "value": "S / M / L / XL"},
+      {"label": "颜色", "value": "透明 / 蓝色 / 白色"}
+    ],
+    "variants": [
+      {
+        "icon": "💉",
+        "headBg": "linear-gradient(135deg,#2E7D32,#1B5E20)",
+        "title": "BIO-L",
+        "tag": "乳胶手套",
+        "desc": "天然乳胶制成，柔软舒适，弹性极佳。适合医疗检查、一般防护使用。",
+        "specs": ["食品级材料", "高弹性贴合", "舒适透气"]
+      },
+      {
+        "icon": "🧪",
+        "headBg": "linear-gradient(135deg,#388E3C,#2E7D32)",
+        "title": "BIO-N",
+        "tag": "丁腈手套",
+        "desc": "合成丁腈材料，不含乳胶蛋白，低致敏性。适合对乳胶过敏人群。",
+        "specs": ["无乳胶蛋白", "低致敏性", "耐化学性好"]
+      },
+      {
+        "icon": "🏥",
+        "headBg": "linear-gradient(135deg,#43A047,#2E7D32)",
+        "title": "BIO-P",
+        "tag": "粉末手套",
+        "desc": "表面附有食品级粉末，易于穿戴。适合食品加工、餐饮服务等场景。",
+        "specs": ["易于穿戴", "表面润滑", "经济实惠"]
+      }
+    ],
+    "industries": [
+      {"icon": "🏥", "strong": "医疗护理", "small": "检查、手术、护理"},
+      {"icon": "🍽️", "strong": "食品加工", "small": "烹饪、摆盘、服务"},
+      {"icon": "🧹", "strong": "清洁卫生", "small": "保洁、消毒、除污"},
+      {"icon": "🔬", "strong": "实验室", "small": "检测、配置、采样"},
+      {"icon": "💇", "strong": "美容美发", "small": "染发、护理、美甲"},
+      {"icon": "🏭", "strong": "工业制造", "small": "轻加工、装配、包装"},
+      {"icon": "🚗", "strong": "汽车维修", "small": "保养、维修、清洗"},
+      {"icon": "🏠", "strong": "家庭使用", "small": "清洁、园艺、养殖"}
+    ],
+    "cta": {
+      "h2": "需要定制或批量采购？",
+      "p": "我们的行业专家将在 24 小时内为您提供专属报价方案",
+      "btnPrimary": "立即联系",
+      "btnPrimaryHref": "auth.html",
+      "btnSecondary": "查看其他品牌",
+      "btnSecondaryHref": "products.html"
+    }
+  },
+  "chem": {
+    "id": "chem",
+    "name": "PandaCHEM™",
+    "code": "CHM",
+    "tagline": "化学防护手套",
+    "heroAccent": "#7B1FA2",
+    "heroGlow": "rgba(123,31,162,0.15)",
+    "meta": {
+      "title": "PandaCHEM™ 化学防护手套 — 熊猫手护",
+      "description": "PandaCHEM™系列化学品防护手套采用特殊丁腈/氯丁橡胶材质，提供卓越的化学品防护性能，适用于化工、制药、印刷等场景。",
+      "titleEn": "PandaCHEM™ Chemical Protection Gloves — Panda Guard",
+      "descEn": "PandaCHEM™ chemical gloves offer superior chemical resistance with nitrile/neoprene materials, suitable for chemical, pharmaceutical and printing industries."
+    },
+    "breadcrumb": "PandaCHEM™ 化学防护手套",
+    "hero": {
+      "brandPill": "PandaCHEM™",
+      "brandPillColor": "#7B1FA2",
+      "title": "Neoprene · <span style=\"color:#7B1FA2;\">化学防护</span>",
+      "subtitle": "氯丁橡胶/丁腈复合材质，阻抗 40+ 种化学品。专为化工、制药、印刷、电子等高风险化学接触作业设计。",
+      "stats": [
+        {"val": "40+", "label": "阻抗化学品种类"},
+        {"val": "0.38mm", "label": "标准厚度"},
+        {"val": "330mm", "label": "加长袖口"},
+        {"val": "EN 374", "label": "认证标准"}
+      ],
+      "btnPrimary": "立即询价",
+      "btnPrimaryHref": "auth.html",
+      "btnSecondary": "← 返回总览",
+      "btnSecondaryHref": "products.html"
+    },
+    "intro": {
+      "overline": "MATERIAL TECHNOLOGY",
+      "h2": "为什么选择氯丁橡胶？",
+      "body": "氯丁橡胶（Neoprene）是一种合成橡胶，具有优异的耐油、耐臭氧、耐候和阻燃性能。PandaCHEM™ 系列采用纯氯丁橡胶或氯丁橡胶/棉衬复合结构，提供舒适的贴合感和长期的化学品防护。",
+      "features": [
+        {"text": "阻抗多种酸、碱、溶剂"},
+        {"text": "柔软舒适，穿着方便"},
+        {"text": "耐磨、抗刺穿性能出色"},
+        {"text": "可重复使用，经济耐用"}
+      ]
+    },
+    "specs": [
+      {"label": "材质", "value": "氯丁橡胶 / 丁腈"},
+      {"label": "执行标准", "value": "EN 374 / ASTM D6319"},
+      {"label": "厚度", "value": "0.38—0.78 mm"},
+      {"label": "长度", "value": "330—450 mm"},
+      {"label": "尺码范围", "value": "7 / 8 / 9 / 10 / 11"},
+      {"label": "颜色", "value": "黑色 / 绿色 / 蓝色"}
+    ],
+    "variants": [
+      {
+        "icon": "🧪",
+        "headBg": "linear-gradient(135deg,#7B1FA2,#4A148C)",
+        "title": "CHM-N",
+        "tag": "丁腈化工",
+        "desc": "丁腈材质，经济实惠。适合轻度化学品接触场景，如清洗、维护。",
+        "specs": ["耐油性好", "经济实惠", "轻便灵活"]
+      },
+      {
+        "icon": "⚗️",
+        "headBg": "linear-gradient(135deg,#8E24AA,#6A1B9A)",
+        "title": "CHM-C",
+        "tag": "氯丁橡胶",
+        "desc": "纯氯丁橡胶，高防护等级。适合强酸碱、溶剂等高风险化学品处理。",
+        "specs": ["耐强酸碱", "阻燃性好", "超长寿命"]
+      },
+      {
+        "icon": "🏭",
+        "headBg": "linear-gradient(135deg,#9C27B0,#7B1FA2)",
+        "title": "CHM-F",
+        "tag": "棉衬防护",
+        "desc": "氯丁橡胶外层，棉质内衬。舒适透气，适合长时间穿戴的化工作业。",
+        "specs": ["舒适透气", "吸湿排汗", "适合长时间"]
+      }
+    ],
+    "industries": [
+      {"icon": "🧪", "strong": "化工生产", "small": "原料处理、反应釜操作"},
+      {"icon": "💊", "strong": "制药行业", "small": "药品配制、实验操作"},
+      {"icon": "🖨️", "strong": "印刷电路", "small": "PCB清洗、蚀刻工艺"},
+      {"icon": "⚗️", "strong": "实验室", "small": "化学实验、样品处理"},
+      {"icon": "🚗", "strong": "汽车维修", "small": "油液处理、清洗作业"},
+      {"icon": "🏗️", "strong": "建筑施工", "small": "油漆施工、涂层作业"},
+      {"icon": "🧹", "strong": "清洁服务", "small": "工业清洗、化学清洁"},
+      {"icon": "🐟", "strong": "水产养殖", "small": "消毒作业、饲料处理"}
+    ],
+    "cta": {
+      "h2": "需要定制或批量采购？",
+      "p": "我们的行业专家将在 24 小时内为您提供专属报价方案",
+      "btnPrimary": "立即联系",
+      "btnPrimaryHref": "auth.html",
+      "btnSecondary": "查看其他品牌",
+      "btnSecondaryHref": "products.html"
+    }
+  },
+  "eco": {
+    "id": "eco",
+    "name": "PandaECO™",
+    "code": "ECO",
+    "tagline": "环保可降解手套",
+    "heroAccent": "#388E3C",
+    "heroGlow": "rgba(56,142,60,0.15)",
+    "meta": {
+      "title": "PandaECO™ 环保可降解手套 — 熊猫手护",
+      "description": "PandaECO™系列采用环保可降解材料，在提供必要防护的同时减少环境污染。专为食品加工、餐饮服务、清洁卫生等场景设计。",
+      "titleEn": "PandaECO™ Eco-Friendly Degradable Gloves — Panda Guard",
+      "descEn": "PandaECO™ gloves use eco-degradable materials providing necessary protection while reducing environmental impact, ideal for food processing and cleaning."
+    },
+    "breadcrumb": "PandaECO™ 环保可降解手套",
+    "hero": {
+      "brandPill": "PandaECO™",
+      "brandPillColor": "#388E3C",
+      "title": "Bio-Based · <span style=\"color:#388E3C;\">绿色环保</span>",
+      "subtitle": "采用植物基可降解材料，使用后可在特定条件下自然降解。兼顾防护性能与环境保护，是可持续发展的重要选择。",
+      "stats": [
+        {"val": "100%", "label": "植物基材料"},
+        {"val": "90天", "label": "可降解周期"},
+        {"val": "食品级", "label": "安全认证"},
+        {"val": "S—XL", "label": "多尺码可选"}
+      ],
+      "btnPrimary": "立即询价",
+      "btnPrimaryHref": "auth.html",
+      "btnSecondary": "← 返回总览",
+      "btnSecondaryHref": "products.html"
+    },
+    "intro": {
+      "overline": "MATERIAL TECHNOLOGY",
+      "h2": "为什么选择环保手套？",
+      "body": "传统一次性手套难以降解，对环境造成长期负担。PandaECO™ 系列采用创新的植物基材料，在使用后可在工业堆肥条件下在90天内降解为水和二氧化碳，大幅降低环境负担。",
+      "features": [
+        {"text": "100%植物基可降解材料"},
+        {"text": "通过食品级安全认证"},
+        {"text": "可工业堆肥降解"},
+        {"text": "性能媲美传统一次性手套"}
+      ]
+    },
+    "specs": [
+      {"label": "材质", "value": "植物基 PLA / PBAT"},
+      {"label": "执行标准", "value": "EN 13432 / FDA"},
+      {"label": "降解周期", "value": "90天（工业堆肥）"},
+      {"label": "克重", "value": "3.5—5.0 g（M 码）"},
+      {"label": "尺码范围", "value": "S / M / L / XL"},
+      {"label": "颜色", "value": "透明 / 白色"}
+    ],
+    "variants": [
+      {
+        "icon": "🌱",
+        "headBg": "linear-gradient(135deg,#388E3C,#2E7D32)",
+        "title": "ECO-P",
+        "tag": "PLA材质",
+        "desc": "聚乳酸材质，植物基可降解。适合食品加工、餐饮服务等场景。",
+        "specs": ["植物基材料", "食品级安全", "可降解环保"]
+      },
+      {
+        "icon": "♻️",
+        "headBg": "linear-gradient(135deg,#43A047,#388E3C)",
+        "title": "ECO-C",
+        "tag": "复合材料",
+        "desc": "PLA/PBAT复合，强度更高。适合需要更高强度的防护场景。",
+        "specs": ["高强度", "韧性好", "耐热性佳"]
+      },
+      {
+        "icon": "🌿",
+        "headBg": "linear-gradient(135deg,#4CAF50,#388E3C)",
+        "title": "ECO-N",
+        "tag": "增韧改性",
+        "desc": "增韧改性处理，耐穿刺性能提升。适合清洁、工业防护等场景。",
+        "specs": ["耐穿刺", "弹性好", "结实耐用"]
+      }
+    ],
+    "industries": [
+      {"icon": "🍽️", "strong": "餐饮服务", "small": "烹饪、摆盘、服务"},
+      {"icon": "🥗", "strong": "食品加工", "small": "配菜、包装、质量检验"},
+      {"icon": "🏥", "strong": "医疗护理", "small": "检查、护理、清洁"},
+      {"icon": "🧹", "strong": "清洁卫生", "small": "保洁、消毒、家政"},
+      {"icon": "🌿", "strong": "绿色农业", "small": "种植、采摘、分拣"},
+      {"icon": "🏭", "strong": "环保工业", "small": "可降解包装、回收处理"},
+      {"icon": "💅", "strong": "美容美发", "small": "美甲、护理、染发"},
+      {"icon": "🏠", "strong": "家庭使用", "small": "厨房、园艺、清洁"}
+    ],
+    "cta": {
+      "h2": "需要定制或批量采购？",
+      "p": "我们的行业专家将在 24 小时内为您提供专属报价方案",
+      "btnPrimary": "立即联系",
+      "btnPrimaryHref": "auth.html",
+      "btnSecondary": "查看其他品牌",
+      "btnSecondaryHref": "products.html"
+    }
+  },
+  "frost": {
+    "id": "frost",
+    "name": "PandaFROST™",
+    "code": "FRS",
+    "tagline": "冷冻防护手套",
+    "heroAccent": "#0288D1",
+    "heroGlow": "rgba(2,136,209,0.15)",
+    "meta": {
+      "title": "PandaFROST™ 冷冻防护手套 — 熊猫手护",
+      "description": "PandaFROST™系列冷冻防护手套专为冷链物流、冷库作业、冰雪作业等低温环境设计，提供卓越的保暖和防护性能。",
+      "titleEn": "PandaFROST™ Cold Protection Gloves — Panda Guard",
+      "descEn": "PandaFROST™ cold protection gloves are designed for cold chain logistics, cold storage and ice operations, offering superior warmth and protection."
+    },
+    "breadcrumb": "PandaFROST™ 冷冻防护手套",
+    "hero": {
+      "brandPill": "PandaFROST™",
+      "brandPillColor": "#0288D1",
+      "title": "Thermal · <span style=\"color:#0288D1;\">低温防护</span>",
+      "subtitle": "高性能保温材料，配合防渗透外层，专为冷链搬运、冷库操作、冰雪作业设计。在-40°C环境下仍保持柔软和防护性能。",
+      "stats": [
+        {"val": "-40°C", "label": "最低防护温度"},
+        {"val": "3层", "label": "复合保温结构"},
+        {"val": "IP67", "label": "防渗等级"},
+        {"val": "S—XXL", "label": "多尺码可选"}
+      ],
+      "btnPrimary": "立即询价",
+      "btnPrimaryHref": "auth.html",
+      "btnSecondary": "← 返回总览",
+      "btnSecondaryHref": "products.html"
+    },
+    "intro": {
+      "overline": "MATERIAL TECHNOLOGY",
+      "h2": "为什么选择专业冷冻防护？",
+      "body": "低温环境对人体危害极大，冻伤风险随温度下降急剧上升。PandaFROST™ 系列采用三明治结构设计：外层阻水防风，中间层高效保温，内层柔软亲肤。在极端低温下仍保持优异的灵活性和防护性能。",
+      "features": [
+        {"text": "三明治复合结构，保温性能优异"},
+        {"text": "外层防水防风，适应雨雪环境"},
+        {"text": "内层加绒亲肤，佩戴舒适"},
+        {"text": "指尖支持触屏操作，无需摘手套"}
+      ]
+    },
+    "specs": [
+      {"label": "防护温度", "value": "-40°C 至 -5°C"},
+      {"label": "外层材质", "value": "尼龙 / PU 涂层"},
+      {"label": "保温层", "value": "抓绒 / Thinsulate™"},
+      {"label": "内层材质", "value": "加绒聚酯纤维"},
+      {"label": "防渗等级", "value": "IP67"},
+      {"label": "尺码范围", "value": "S / M / L / XL / XXL"}
+    ],
+    "variants": [
+      {
+        "icon": "❄️",
+        "headBg": "linear-gradient(135deg,#0288D1,#01579B)",
+        "title": "FRS-C",
+        "tag": "冷库专用",
+        "desc": "专为冷库设计，-30°C以上环境。适合冷链分拣、库存管理等。",
+        "specs": ["-30°C防护", "轻便灵活", "透气不闷"]
+      },
+      {
+        "icon": "🧊",
+        "headBg": "linear-gradient(135deg,#03A9F4,#0288D1)",
+        "title": "FRS-D",
+        "tag": "深度冷冻",
+        "desc": "深度冷冻防护，-40°C极限低温。适合LNG、液氮等极低温作业。",
+        "specs": ["-40°C极限", "多层保温", "防化学渗入"]
+      },
+      {
+        "icon": "🏔️",
+        "headBg": "linear-gradient(135deg,#4FC3F7,#0288D1)",
+        "title": "FRS-I",
+        "tag": "冰雪作业",
+        "desc": "冰雪作业专用，防滑耐磨。适合除冰、扫雪、冬季户外作业。",
+        "specs": ["防滑掌面", "耐磨外层", "触屏操作"]
+      }
+    ],
+    "industries": [
+      {"icon": "🚛", "strong": "冷链物流", "small": "冷库分拣、装卸搬运"},
+      {"icon": "❄️", "strong": "冷冻加工", "small": "速冻食品、冷藏物流"},
+      {"icon": "⛏️", "strong": "冰雪作业", "small": "除冰、扫雪、破冰"},
+      {"icon": "🏔️", "strong": "户外工程", "small": "冬季施工、矿业采掘"},
+      {"icon": "🛢️", "strong": "能源行业", "small": "LNG处理、油田冬季作业"},
+      {"icon": "🎿", "strong": "冰雪运动", "small": "滑雪、滑冰、雪地摩托"},
+      {"icon": "🐟", "strong": "水产捕捞", "small": "渔网整理、冰下捕鱼"},
+      {"icon": "🌲", "strong": "林业防护", "small": "冬季采伐、苗木防寒"}
+    ],
+    "cta": {
+      "h2": "需要定制或批量采购？",
+      "p": "我们的行业专家将在 24 小时内为您提供专属报价方案",
+      "btnPrimary": "立即联系",
+      "btnPrimaryHref": "auth.html",
+      "btnSecondary": "查看其他品牌",
+      "btnSecondaryHref": "products.html"
+    }
+  },
+  "grip": {
+    "id": "grip",
+    "name": "PandaGRIP™",
+    "code": "GRP",
+    "tagline": "防滑抓握手套",
+    "heroAccent": "#E65100",
+    "heroGlow": "rgba(230,81,0,0.15)",
+    "meta": {
+      "title": "PandaGRIP™ 防滑抓握手套 — 熊猫手护",
+      "description": "PandaGRIP™系列防滑抓握手套采用特殊纹理设计，提供卓越的干湿抓握性能。广泛应用于建筑、物流、制造、维修等需要高抓握力的场景。",
+      "titleEn": "PandaGRIP™ Anti-Slip Grip Gloves — Panda Guard",
+      "descEn": "PandaGRIP™ anti-slip gloves feature special texture design for superior dry and wet grip, widely used in construction, logistics, manufacturing and maintenance."
+    },
+    "breadcrumb": "PandaGRIP™ 防滑抓握手套",
+    "hero": {
+      "brandPill": "PandaGRIP™",
+      "brandPillColor": "#E65100",
+      "title": "Grip Tech · <span style=\"color:#E65100;\">强力抓握</span>",
+      "subtitle": "专利纹理技术，干湿环境均提供卓越抓握力。掌心特殊涂层处理，防油防滑。适用于建筑、物流、维修等高强度抓握需求场景。",
+      "stats": [
+        {"val": "360°", "label": "全掌纹理"},
+        {"val": "防油", "label": "特殊涂层"},
+        {"val": "EN 388", "label": "耐磨等级4级"},
+        {"val": "S—XXL", "label": "多尺码可选"}
+      ],
+      "btnPrimary": "立即询价",
+      "btnPrimaryHref": "auth.html",
+      "btnSecondary": "← 返回总览",
+      "btnSecondaryHref": "products.html"
+    },
+    "intro": {
+      "overline": "MATERIAL TECHNOLOGY",
+      "h2": "为什么抓握力这么重要？",
+      "body": "在建筑、物流、维修等领域，手套的抓握力直接关系到作业效率和安全性。PandaGRIP™ 系列采用仿生学纹理设计，模仿蜥蜴脚掌的微观结构，在干燥、潮湿、油污环境下都能提供稳定的抓握力。",
+      "features": [
+        {"text": "仿生学纹理设计，抓握力提升60%"},
+        {"text": "掌心硅胶/PU涂层，防油防滑"},
+        {"text": "指尖触感设计，支持精细操作"},
+        {"text": "透气耐磨，适合长时间使用"}
+      ]
+    },
+    "specs": [
+      {"label": "外层材质", "value": "尼龙 + 氨纶 + 涂层"},
+      {"label": "涂层材质", "value": "硅胶 / PU"},
+      {"label": "执行标准", "value": "EN 388"},
+      {"label": "耐磨等级", "value": "4级"},
+      {"label": "抓握等级", "value": "干态A级/湿态B级"},
+      {"label": "尺码范围", "value": "S / M / L / XL / XXL"}
+    ],
+    "variants": [
+      {
+        "icon": "🏗️",
+        "headBg": "linear-gradient(135deg,#E65100,#BF360C)",
+        "title": "GRP-S",
+        "tag": "硅胶涂层",
+        "desc": "硅胶掌心涂层，耐高温，防油污。适合建筑施工、重型搬运。",
+        "specs": ["耐高温硅胶", "防油污", "强力抓握"]
+      },
+      {
+        "icon": "🔧",
+        "headBg": "linear-gradient(135deg,#FF6D00,#E65100)",
+        "title": "GRP-P",
+        "tag": "PU涂层",
+        "desc": "PU涂层，柔软轻薄，触感好。适合装配、维修等精细操作。",
+        "specs": ["轻薄柔软", "精细触感", "灵活操作"]
+      },
+      {
+        "icon": "🧤",
+        "headBg": "linear-gradient(135deg,#FF9E40,#E65100)",
+        "title": "GRP-W",
+        "tag": "全浸涂层",
+        "desc": "全掌浸胶涂层，防水防滑。适合户外作业、雨雪环境。",
+        "specs": ["全掌防护", "防水设计", "防滑耐磨"]
+      }
+    ],
+    "industries": [
+      {"icon": "🏗️", "strong": "建筑施工", "small": "钢筋绑扎、模板安装"},
+      {"icon": "📦", "strong": "物流仓储", "small": "搬运装卸、分拣打包"},
+      {"icon": "🔧", "strong": "设备维修", "small": "机械维修、电工操作"},
+      {"icon": "🚗", "strong": "汽车维修", "small": "保养、维修、装配"},
+      {"icon": "🪵", "strong": "木材加工", "small": "切割、打磨、组装"},
+      {"icon": "🚛", "strong": "运输行业", "small": "货物固定、设备搬运"},
+      {"icon": "🏭", "strong": "工业制造", "small": "装配线、质检包装"},
+      {"icon": "🌲", "strong": "园林园艺", "small": "修剪、种植、搬运"}
+    ],
+    "cta": {
+      "h2": "需要定制或批量采购？",
+      "p": "我们的行业专家将在 24 小时内为您提供专属报价方案",
+      "btnPrimary": "立即联系",
+      "btnPrimaryHref": "auth.html",
+      "btnSecondary": "查看其他品牌",
+      "btnSecondaryHref": "products.html"
+    }
+  },
+  "heat": {
+    "id": "heat",
+    "name": "PandaHEAT™",
+    "code": "HEA",
+    "tagline": "高温防护手套",
+    "heroAccent": "#D32F2F",
+    "heroGlow": "rgba(211,47,47,0.15)",
+    "meta": {
+      "title": "PandaHEAT™ 高温防护手套 — 熊猫手护",
+      "description": "PandaHEAT™系列高温防护手套采用耐热纤维和隔热材料，专为焊接、铸造、热处理等高温作业场景设计，可承受500°C以上高温。",
+      "titleEn": "PandaHEAT™ Heat Protection Gloves — Panda Guard",
+      "descEn": "PandaHEAT™ heat protection gloves use heat-resistant fibers and insulation materials, designed for welding, foundry and heat treatment operations up to 500°C+."
+    },
+    "breadcrumb": "PandaHEAT™ 高温防护手套",
+    "hero": {
+      "brandPill": "PandaHEAT™",
+      "brandPillColor": "#D32F2F",
+      "title": "Heat Barrier · <span style=\"color:#D32F2F;\">高温隔热</span>",
+      "subtitle": "耐热纤维+气凝胶隔热层，可承受500°C以上高温。专为焊接、铸造、热处理、玻璃加工等高温作业设计，保障工人安全。",
+      "stats": [
+        {"val": "500°C+", "label": "最高防护温度"},
+        {"val": "7层", "label": "复合隔热结构"},
+        {"val": "长袖口", "label": "手臂防护"},
+        {"val": "EN 407", "label": "耐热认证"}
+      ],
+      "btnPrimary": "立即询价",
+      "btnPrimaryHref": "auth.html",
+      "btnSecondary": "← 返回总览",
+      "btnSecondaryHref": "products.html"
+    },
+    "intro": {
+      "overline": "MATERIAL TECHNOLOGY",
+      "h2": "为什么高温防护这么重要？",
+      "body": "高温作业环境中，热辐射和热传导是造成烧伤的主要原因。PandaHEAT™ 系列采用多层复合结构：外层阻燃抗熔滴，中间层高效隔热，内层舒适亲肤。三层协同工作，有效降低热传导速度，保护手部安全。",
+      "features": [
+        {"text": "耐热纤维，最高可承受500°C+"},
+        {"text": "多层复合结构，隔热性能优异"},
+        {"text": "阻燃抗熔滴，防止二次伤害"},
+        {"text": "加长袖口设计，手臂防护更全面"}
+      ]
+    },
+    "specs": [
+      {"label": "防护温度", "value": "500°C（短时接触）"},
+      {"label": "主材质", "value": "芳纶 + 玻璃纤维 + 气凝胶"},
+      {"label": "外层", "value": "阻燃涂层"},
+      {"label": "执行标准", "value": "EN 407 / ISO 11612"},
+      {"label": "袖口长度", "value": "300—450 mm"},
+      {"label": "尺码范围", "value": "M / L / XL / XXL"}
+    ],
+    "variants": [
+      {
+        "icon": "🔥",
+        "headBg": "linear-gradient(135deg,#D32F2F,#B71C1C)",
+        "title": "HEA-W",
+        "tag": "焊接专用",
+        "desc": "专为焊接作业设计，阻燃隔热。适合电弧焊、气保焊等。",
+        "specs": ["EN 407认证", "阻燃抗溅", "AR级别"]
+      },
+      {
+        "icon": "🏭",
+        "headBg": "linear-gradient(135deg,#E53935,#D32F2F)",
+        "title": "HEA-F",
+        "tag": "铸造防护",
+        "desc": "铸造车间专用，高温隔热。适合熔融金属、铸造操作。",
+        "specs": ["高温隔热", "耐磨外层", "长袖防护"]
+      },
+      {
+        "icon": "🫖",
+        "headBg": "linear-gradient(135deg,#EF5350,#E53935)",
+        "title": "HEA-G",
+        "tag": "玻璃加工",
+        "desc": "玻璃加工专用，耐热柔软。适合玻璃吹制、热弯加工。",
+        "specs": ["耐热柔软", "精密触感", "灵活操作"]
+      }
+    ],
+    "industries": [
+      {"icon": "⚡", "strong": "焊接作业", "small": "电弧焊、气保焊、氩弧焊"},
+      {"icon": "🏭", "strong": "铸造锻造", "small": "熔炼、浇铸、锻造"},
+      {"icon": "🔥", "strong": "热处理", "small": "淬火、退火、回火"},
+      {"icon": "🪟", "strong": "玻璃加工", "small": "吹制、热弯、钢化"},
+      {"icon": "🍳", "strong": "食品加工", "small": "烘焙、烹饪、杀菌"},
+      {"icon": "🛢️", "strong": "石油化工", "small": "高温反应、蒸馏操作"},
+      {"icon": "🔩", "strong": "金属加工", "small": "热轧、锻造、挤压"},
+      {"icon": "🧯", "strong": "消防救援", "small": "火灾救援、高温作业"}
+    ],
+    "cta": {
+      "h2": "需要定制或批量采购？",
+      "p": "我们的行业专家将在 24 小时内为您提供专属报价方案",
+      "btnPrimary": "立即联系",
+      "btnPrimaryHref": "auth.html",
+      "btnSecondary": "查看其他品牌",
+      "btnSecondaryHref": "products.html"
+    }
+  },
+  "impact": {
+    "id": "impact",
+    "name": "PandaIMPACT™",
+    "code": "IMP",
+    "tagline": "防冲击手套",
+    "heroAcccent": "#1565C0",
+    "heroGlow": "rgba(21,101,192,0.15)",
+    "meta": {
+      "title": "PandaIMPACT™ 防冲击手套 — 熊猫手护",
+      "description": "PandaIMPACT™系列防冲击手套采用TPR关节保护设计，有效吸收冲击能量。专为装配作业、重型机械操作、户外施工等高冲击风险场景设计。",
+      "titleEn": "PandaIMPACT™ Impact Protection Gloves — Panda Guard",
+      "descEn": "PandaIMPACT™ impact gloves feature TPR joint protection design for effective shock absorption, designed for assembly, heavy machinery and outdoor construction."
+    },
+    "breadcrumb": "PandaIMPACT™ 防冲击手套",
+    "hero": {
+      "brandPill": "PandaIMPACT™",
+      "brandPillColor": "#1565C0",
+      "title": "Impact Guard · <span style=\"color:#1565C0;\">关节保护</span>",
+      "subtitle": "TPR关节保护系统，有效吸收冲击能量。掌心加强设计，耐磨抗撕裂。专为装配作业、重型机械操作等高冲击风险场景设计。",
+      "stats": [
+        {"val": "TPR", "label": "关节保护系统"},
+        {"val": "EN 388", "label": "冲击防护等级"},
+        {"val": "耐磨4级", "label": "高耐久性"},
+        {"val": "S—XXL", "label": "多尺码可选"}
+      ],
+      "btnPrimary": "立即询价",
+      "btnPrimaryHref": "auth.html",
+      "btnSecondary": "← 返回总览",
+      "btnSecondaryHref": "products.html"
+    },
+    "intro": {
+      "overline": "MATERIAL TECHNOLOGY",
+      "h2": "为什么需要防冲击保护？",
+      "body": "在装配作业、重型机械操作等场景中，手部关节是最容易受到冲击伤害的部位。PandaIMPACT™ 系列在指节和手背关节处采用热塑性橡胶（TPR）缓冲设计，可有效分散和吸收冲击能量，降低骨折和扭伤风险。",
+      "features": [
+        {"text": "TPR关节缓冲，有效分散冲击"},
+        {"text": "掌心加强层，耐磨抗撕裂"},
+        {"text": "符合EN 388冲击防护标准"},
+        {"text": "透气设计，长时间佩戴舒适"}
+      ]
+    },
+    "specs": [
+      {"label": "保护类型", "value": "指节 + 手背关节"},
+      {"label": "缓冲材质", "value": "TPR（热塑性橡胶）"},
+      {"label": "执行标准", "value": "EN 388 / ANSI SP-49"},
+      {"label": "耐磨等级", "value": "4级"},
+      {"label": "抗撕裂", "value": "4级"},
+      {"label": "尺码范围", "value": "S / M / L / XL / XXL"}
+    ],
+    "variants": [
+      {
+        "icon": "🔩",
+        "headBg": "linear-gradient(135deg,#1565C0,#0D47A1)",
+        "title": "IMP-A",
+        "tag": "装配作业",
+        "desc": "标准防冲击设计，适合一般装配作业。平衡保护与灵活性。",
+        "specs": ["TPR指节保护", "耐磨掌心", "灵活操作"]
+      },
+      {
+        "icon": "⚙️",
+        "headBg": "linear-gradient(135deg,#1976D2,#1565C0)",
+        "title": "IMP-H",
+        "tag": "重型机械",
+        "desc": "加强型防冲击，适合重负荷作业。掌心加厚，耐磨性能更强。",
+        "specs": ["加厚掌心", "加强指节", "重负荷设计"]
+      },
+      {
+        "icon": "🏗️",
+        "headBg": "linear-gradient(135deg,#1E88E5,#1565C0)",
+        "title": "IMP-C",
+        "tag": "建筑施工",
+        "desc": "建筑施工专用，防水防污。适合户外施工、重型搬运。",
+        "specs": ["防水涂层", "防污耐磨", "户外适用"]
+      }
+    ],
+    "industries": [
+      {"icon": "🔧", "strong": "设备装配", "small": "机械装配、设备安装"},
+      {"icon": "🚜", "strong": "重型机械", "small": "工程机械、矿山机械"},
+      {"icon": "🏗️", "strong": "建筑施工", "small": "钢结构、混凝土作业"},
+      {"icon": "🚗", "strong": "汽车制造", "small": "总装线、零部件搬运"},
+      {"icon": "🏭", "strong": "工业制造", "small": "锻造、冲压、切割"},
+      {"icon": "🪵", "strong": "木材加工", "small": "大板搬运、重型切割"},
+      {"icon": "🚛", "strong": "物流搬运", "small": "集装箱装卸、重物搬运"},
+      {"icon": "⛏️", "strong": "矿业采掘", "small": "矿石搬运、巷道作业"}
+    ],
+    "cta": {
+      "h2": "需要定制或批量采购？",
+      "p": "我们的行业专家将在 24 小时内为您提供专属报价方案",
+      "btnPrimary": "立即联系",
+      "btnPrimaryHref": "auth.html",
+      "btnSecondary": "查看其他品牌",
+      "btnSecondaryHref": "products.html"
+    }
+  },
+  "pierce": {
+    "id": "pierce",
+    "name": "PandaPIERCE™",
+    "code": "PIR",
+    "tagline": "防穿刺手套",
+    "heroAccent": "#5D4037",
+    "heroGlow": "rgba(93,64,55,0.15)",
+    "meta": {
+      "title": "PandaPIERCE™ 防穿刺手套 — 熊猫手护",
+      "description": "PandaPIERCE™系列防穿刺手套采用高强度HPPE纤维和不锈钢丝，内衬Kevlar®防护层，提供卓越的防穿刺、防切割性能，适用于废物处理、金属加工等场景。",
+      "titleEn": "PandaPIERCE™ Puncture Protection Gloves — Panda Guard",
+      "descEn": "PandaPIERCE™ puncture gloves use HPPE and stainless steel wire with Kevlar® lining for superior puncture and cut resistance, suitable for waste handling and metal processing."
+    },
+    "breadcrumb": "PandaPIERCE™ 防穿刺手套",
+    "hero": {
+      "brandPill": "PandaPIERCE™",
+      "brandPillColor": "#5D4037",
+      "title": "Steel Core · <span style=\"color:#5D4037;\">防穿刺</span>",
+      "subtitle": "HPPE纤维+不锈钢丝+KEVLAR®内衬，三重防护结构。EN 388防穿刺最高等级，有效防止针刺、刀片、金属碎片伤害。",
+      "stats": [
+        {"val": "HPPE", "label": "高强度纤维"},
+        {"val": "3级", "label": "EN 388防穿刺"},
+        {"val": "不锈钢", "label": "防金属穿刺"},
+        {"val": "S—XXL", "label": "多尺码可选"}
+      ],
+      "btnPrimary": "立即询价",
+      "btnPrimaryHref": "auth.html",
+      "btnSecondary": "← 返回总览",
+      "btnSecondaryHref": "products.html"
+    },
+    "intro": {
+      "overline": "MATERIAL TECHNOLOGY",
+      "h2": "为什么需要防穿刺保护？",
+      "body": "废物处理、金属加工、餐饮屠宰等场景中存在大量尖锐物品（针头、刀片、金属碎片、玻璃碎片），极易造成手部刺穿伤害。PandaPIERCE™ 系列采用HPPE纤维包覆不锈钢丝，内衬Kevlar®防护层，提供三重防护。",
+      "features": [
+        {"text": "HPPE包覆不锈钢丝，防金属穿刺"},
+        {"text": "Kevlar®内衬，防纤维穿刺"},
+        {"text": "EN 388防穿刺3级认证"},
+        {"text": "舒适内衬，长时间佩戴不疲劳"}
+      ]
+    },
+    "specs": [
+      {"label": "外层材质", "value": "HPPE + 不锈钢丝"},
+      {"label": "内衬材质", "value": "Kevlar®纤维"},
+      {"label": "执行标准", "value": "EN 388"},
+      {"label": "防穿刺等级", "value": "3级（>60N）"},
+      {"label": "防切割等级", "value": "5级"},
+      {"label": "尺码范围", "value": "S / M / L / XL / XXL"}
+    ],
+    "variants": [
+      {
+        "icon": "💉",
+        "headBg": "linear-gradient(135deg,#5D4037,#3E2723)",
+        "title": "PIR-M",
+        "tag": "医疗废物",
+        "desc": "医疗废物处理专用，防针刺设计。掌心加强，适合抓握尖锐物品。",
+        "specs": ["防针刺", "掌心加强", "医疗级"]
+      },
+      {
+        "icon": "🔪",
+        "headBg": "linear-gradient(135deg,#6D4C41,#5D4037)",
+        "title": "PIR-S",
+        "tag": "不锈钢防护",
+        "desc": "全不锈钢丝编织，最高防护等级。适合金属加工、玻璃处理。",
+        "specs": ["全钢编织", "最高防护", "耐切割"]
+      },
+      {
+        "icon": "🐟",
+        "headBg": "linear-gradient(135deg,#795548,#5D4037)",
+        "title": "PIR-F",
+        "tag": "食品加工",
+        "desc": "食品安全级防穿刺，适合屠宰、水产加工。可直接接触食品。",
+        "specs": ["食品级", "防刀刺", "易清洁"]
+      }
+    ],
+    "industries": [
+      {"icon": "🏥", "strong": "医疗废物处理", "small": "针头回收、废物分拣"},
+      {"icon": "🥩", "strong": "肉类加工", "small": "屠宰、分割、去骨"},
+      {"icon": "🐟", "strong": "水产加工", "small": "鱼虾处理、贝壳开取"},
+      {"icon": "🥬", "strong": "蔬菜加工", "small": "罐头生产、净菜加工"},
+      {"icon": "🔧", "strong": "金属加工", "small": "冲压件、切割打磨"},
+      {"icon": "🪵", "strong": "木材加工", "small": "模板处理、木屑清理"},
+      {"icon": "📦", "strong": "包装行业", "small": "废纸打包、回收处理"},
+      {"icon": "🔨", "strong": "维修作业", "small": "设备维修、零件处理"}
+    ],
+    "cta": {
+      "h2": "需要定制或批量采购？",
+      "p": "我们的行业专家将在 24 小时内为您提供专属报价方案",
+      "btnPrimary": "立即联系",
+      "btnPrimaryHref": "auth.html",
+      "btnSecondary": "查看其他品牌",
+      "btnSecondaryHref": "products.html"
+    }
+  },
+  "volt": {
+    "id": "volt",
+    "name": "PandaVOLT™",
+    "code": "VOL",
+    "tagline": "电绝缘手套",
+    "heroAccent": "#FFA000",
+    "heroGlow": "rgba(255,160,0,0.15)",
+    "meta": {
+      "title": "PandaVOLT™ 电绝缘手套 — 熊猫手护",
+      "description": "PandaVOLT™系列电绝缘手套采用优质天然乳胶，具有优异的电绝缘性能，符合IEC 60903标准。专为电气安装、维修、试验等带电作业设计。",
+      "titleEn": "PandaVOLT™ Electrical Insulation Gloves — Panda Guard",
+      "descEn": "PandaVOLT™ electrical insulation gloves use premium natural latex with excellent electrical insulation, compliant with IEC 60903 standard for electrical work."
+    },
+    "breadcrumb": "PandaVOLT™ 电绝缘手套",
+    "hero": {
+      "brandPill": "PandaVOLT™",
+      "brandPillColor": "#FFA000",
+      "title": "Insulated · <span style=\"color:#FFA000;\">电气防护</span>",
+      "subtitle": "天然乳胶电绝缘材料，IEC 60903认证，Class 0至Class 4多等级可选。专为电气安装、维修、试验等带电作业设计，保护电工免受电击伤害。",
+      "stats": [
+        {"val": "IEC 60903", "label": "国际认证标准"},
+        {"val": "Class 0-4", "label": "多防护等级"},
+        {"val": "36kV", "label": "最高测试电压"},
+        {"val": "羊皮外护", "label": "机械防护"}
+      ],
+      "btnPrimary": "立即询价",
+      "btnPrimaryHref": "auth.html",
+      "btnSecondary": "← 返回总览",
+      "btnSecondaryHref": "products.html"
+    },
+    "intro": {
+      "overline": "MATERIAL TECHNOLOGY",
+      "h2": "为什么电绝缘手套这么重要？",
+      "body": "电气作业中的电击风险随时存在，合格的绝缘手套是电工的最后一道防线。PandaVOLT™ 系列采用高纯度天然乳胶，经过特殊工艺处理和严格测试，确保每个等级的手套都能提供可靠的电绝缘保护。同时配有羊皮外护层，防止机械损伤。",
+      "features": [
+        {"text": "天然乳胶，优异绝缘性能"},
+        {"text": "IEC 60903标准认证"},
+        {"text": "Class 0-4多等级可选"},
+        {"text": "羊皮外护层，防机械损伤"}
+      ]
+    },
+    "specs": [
+      {"label": "材质", "value": "天然乳胶 + 羊皮外护"},
+      {"label": "认证标准", "value": "IEC 60903 / EN 60903"},
+      {"label": "防护等级", "value": "Class 00 / 0 / 1 / 2 / 3 / 4"},
+      {"label": "适用范围", "value": "交流≤750V/直流≤1500V"},
+      {"label": "检测电压", "value": "2.5kV—30kV（各等级不同）"},
+      {"label": "尺码范围", "value": "7 / 8 / 9 / 10 / 11"}
+    ],
+    "variants": [
+      {
+        "icon": "⚡",
+        "headBg": "linear-gradient(135deg,#FFA000,#FF6F00)",
+        "title": "VOL-0",
+        "tag": "Class 0",
+        "desc": "入门级绝缘手套，交流≤750V。适合低压电气作业。",
+        "specs": ["Class 0级", "≤750V AC", "轻便灵活"]
+      },
+      {
+        "icon": "💡",
+        "headBg": "linear-gradient(135deg,#FFB300,#FFA000)",
+        "title": "VOL-2",
+        "tag": "Class 2",
+        "desc": "中级绝缘手套，交流≤17000V。适合中压电气作业。",
+        "specs": ["Class 2级", "≤17kV AC", "标准配置"]
+      },
+      {
+        "icon": "🔌",
+        "headBg": "linear-gradient(135deg,#FFCA28,#FFB300)",
+        "title": "VOL-4",
+        "tag": "Class 4",
+        "desc": "高级绝缘手套，交流≤36000V。适合高压电气作业。",
+        "specs": ["Class 4级", "≤36kV AC", "最高防护"]
+      }
+    ],
+    "industries": [
+      {"icon": "⚡", "strong": "电力行业", "small": "输电线路、变电站维护"},
+      {"icon": "🏭", "strong": "工厂电气", "small": "设备维护电气检修"},
+      {"icon": "🚇", "strong": "轨道交通", "small": "信号系统、接触网维护"},
+      {"icon": "🏗️", "strong": "建筑施工", "small": "临时用电、现场配电"},
+      {"icon": "📡", "strong": "通信行业", "small": "基站维护、线路安装"},
+      {"icon": "🔧", "strong": "维修服务", "small": "家电维修、机电维修"},
+      {"icon": "🚗", "strong": "新能源汽车", "small": "电动车维修、充电桩维护"},
+      {"icon": "🏠", "strong": "家庭用电", "small": "配电箱维护、开关更换"}
+    ],
+    "cta": {
+      "h2": "需要定制或批量采购？",
+      "p": "我们的行业专家将在 24 小时内为您提供专属报价方案",
+      "btnPrimary": "立即联系",
+      "btnPrimaryHref": "auth.html",
+      "btnSecondary": "查看其他品牌",
+      "btnSecondaryHref": "products.html"
+    }
+  }
+}
