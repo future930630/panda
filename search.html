@@ -1,0 +1,882 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <title>搜索产品与服务 — 熊猫手护</title>
+  <meta name="description" content="在熊猫手护全站搜索产品型号、认证标准、行业应用，快速定位最适合您的防护手套解决方案。" />
+  <meta name="description" content="Search Panda Guard full site for product models, certification standards and industry applications to quickly find your ideal safety glove solution." lang="en" />
+  <meta property="og:title" content="搜索产品与服务 — 熊猫手护" />
+  <meta property="og:title" content="Search Products & Services — Panda Guard" xml:lang="en" />
+  <meta property="og:description" content="在熊猫手护全站搜索产品型号、认证标准、行业应用。" />
+  <meta property="og:description" content="Search Panda Guard full site for product models, certification standards." xml:lang="en" />
+  <meta property="og:url" content="https://www.pandaguard.com/search.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="熊猫手护" />
+  <meta property="og:image" content="https://www.pandaguard.com/image/og-default.jpg" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23E85D00'/><text x='16' y='23' text-anchor='middle' font-family='Arial,sans-serif' font-size='22' font-weight='900' fill='white'>H</text></svg>" />
+  <link rel="stylesheet" href="styles.css?v=20260423" />
+    <link rel="stylesheet" href="responsive.css?v=20260423" />
+<link rel="stylesheet" href="subpage.css" />
+  <script>if (!localStorage.getItem('pg_lang')) localStorage.setItem('pg_lang', 'zh');</script>
+  <script src="i18n.js?v=20260424-avatar"></script>
+  <style>
+    /* ── 搜索页专属样式 ── */
+    .search-hero {
+      background: linear-gradient(160deg, #1A1108 0%, #2c1a06 40%, #E85D00 100%);
+      padding: 52px 24px 44px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .search-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(232,93,0,0.35) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .search-hero::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+    }
+    .search-hero-inner {
+      max-width: 720px; margin: 0 auto; position: relative; z-index: 1;
+    }
+    .search-breadcrumb {
+      display: flex; align-items: center; justify-content: center; gap: 6px;
+      margin-bottom: 18px; font-size: 13px; color: rgba(255,255,255,0.55);
+    }
+    .search-breadcrumb a { color: rgba(255,255,255,0.55); text-decoration: none; transition: color 0.2s; }
+    .search-breadcrumb a:hover { color: rgba(255,255,255,0.9); }
+    .bc-sep { color: rgba(255,255,255,0.3); font-size: 11px; }
+    .bc-cur { color: rgba(255,255,255,0.85); }
+    .search-hero-icon { font-size: 40px; margin-bottom: 14px; display: block; }
+    .search-hero-title {
+      font-size: 34px; font-weight: 800; color: #fff; margin-bottom: 8px;
+      letter-spacing: -0.5px; line-height: 1.2;
+    }
+    .search-hero-title .title-accent { color: #ffb570; }
+    .search-hero-subtitle {
+      font-size: 14px; color: rgba(255,255,255,0.6); margin-bottom: 32px; font-weight: 400;
+    }
+
+    /* 搜索框主体 */
+    .search-box-wrapper {
+      position: relative;
+      max-width: 640px; margin: 0 auto;
+    }
+    .search-box-main {
+      position: relative;
+      background: rgba(255,255,255,0.97);
+      border-radius: 18px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.3), 0 2px 8px rgba(0,0,0,0.15);
+      transition: box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+      border: 2px solid transparent;
+      display: flex; align-items: center;
+      padding: 0 10px 0 20px; gap: 8px;
+    }
+    .search-box-main:focus-within {
+      border-color: rgba(232,93,0,0.5);
+      box-shadow: 0 12px 48px rgba(0,0,0,0.35), 0 0 0 4px rgba(232,93,0,0.12);
+      transform: translateY(-2px);
+    }
+    .search-icon-inner { color: #ccc; flex-shrink: 0; }
+    .search-box-main input {
+      flex: 1; height: 64px; border: none; font-size: 16px;
+      color: #1A1108; background: transparent; outline: none; min-width: 0;
+    }
+    .search-box-main input::placeholder { color: #bbb; }
+    .search-clear-btn {
+      width: 30px; height: 30px; border: none; background: #f0f0f0;
+      border-radius: 50%; cursor: pointer;
+      display: none; align-items: center; justify-content: center;
+      transition: background 0.2s; flex-shrink: 0;
+    }
+    .search-clear-btn:hover { background: #e0e0e0; }
+    .search-clear-btn svg { width: 13px; height: 13px; stroke: #666; }
+    .search-submit-btn {
+      height: 48px; padding: 0 24px; border: none;
+      background: linear-gradient(135deg, #E85D00, #c94d00);
+      color: white; font-size: 15px; font-weight: 700;
+      border-radius: 12px; cursor: pointer;
+      display: flex; align-items: center; gap: 7px;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 16px rgba(232,93,0,0.4); flex-shrink: 0;
+    }
+    .search-submit-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(232,93,0,0.5); }
+    .search-submit-btn svg { width: 16px; height: 16px; stroke: white; }
+
+    /* ══ 即时预览下拉 ══ */
+    .instant-dropdown {
+      position: absolute;
+      top: calc(100% + 8px); left: 0; right: 0;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 16px 48px rgba(0,0,0,0.18), 0 4px 12px rgba(0,0,0,0.1);
+      border: 1px solid #f0f0f0;
+      z-index: 999;
+      overflow: hidden;
+      display: none;
+      max-height: 420px;
+      overflow-y: auto;
+    }
+    .instant-dropdown.active { display: block; }
+    .instant-dropdown-header {
+      padding: 12px 20px 8px;
+      font-size: 11px; font-weight: 700; color: #ccc; text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .instant-item {
+      display: flex; align-items: center; gap: 14px;
+      padding: 12px 20px;
+      cursor: pointer; text-decoration: none;
+      transition: background 0.15s;
+      border-bottom: 1px solid #f8f8f8;
+    }
+    .instant-item:last-child { border-bottom: none; }
+    .instant-item:hover, .instant-item.focused { background: #faf8f6; }
+    .instant-item-icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      background: linear-gradient(135deg, rgba(232,93,0,0.08), rgba(232,93,0,0.04));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; flex-shrink: 0;
+    }
+    .instant-item-body { flex: 1; min-width: 0; }
+    .instant-item-type {
+      font-size: 10px; font-weight: 600; color: #E85D00;
+      text-transform: uppercase; letter-spacing: 0.3px; margin-bottom: 2px;
+    }
+    .instant-item-title {
+      font-size: 14px; font-weight: 600; color: #1A1108; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .instant-item-title mark {
+      background: rgba(232,93,0,0.12); color: #E85D00; padding: 0 2px; border-radius: 2px; font-weight: 700;
+    }
+    .instant-item-desc {
+      font-size: 12px; color: #aaa; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 2px;
+    }
+    .instant-item-arrow { color: #ccc; font-size: 16px; flex-shrink: 0; }
+    .instant-footer {
+      padding: 10px 20px;
+      background: #fafafa;
+      border-top: 1px solid #f0f0f0;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .instant-footer-hint {
+      font-size: 12px; color: #bbb;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .kbd {
+      display: inline-flex; align-items: center;
+      background: #eee; border: 1px solid #ddd;
+      border-radius: 4px; padding: 1px 5px;
+      font-size: 11px; color: #999; font-family: monospace;
+    }
+    .instant-footer-enter {
+      font-size: 12px; color: #E85D00; font-weight: 600;
+    }
+
+    /* 热门标签 */
+    .hot-searches {
+      margin-top: 20px;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      flex-wrap: wrap;
+    }
+    .hot-searches-label { font-size: 13px; color: rgba(255,255,255,0.5); }
+    .hot-tags { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+    .hot-tag {
+      padding: 5px 14px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 20px; font-size: 13px;
+      color: rgba(255,255,255,0.75); cursor: pointer;
+      transition: all 0.2s; backdrop-filter: blur(4px);
+    }
+    .hot-tag:hover { background: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.45); color: #fff; }
+
+    /* 分类标签栏 */
+    .search-category-bar {
+      background: #fafafa; border-bottom: 1px solid #f0f0f0; padding: 0 24px;
+    }
+    .search-category-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; gap: 0; overflow-x: auto; scrollbar-width: none;
+    }
+    .search-category-inner::-webkit-scrollbar { display: none; }
+    .search-cat-btn {
+      display: flex; align-items: center; gap: 6px; padding: 14px 20px;
+      font-size: 14px; color: #666; background: none; border: none;
+      border-bottom: 2px solid transparent; cursor: pointer;
+      white-space: nowrap; transition: all 0.2s;
+    }
+    .search-cat-btn:hover { color: #E85D00; }
+    .search-cat-btn.active { color: #E85D00; border-bottom-color: #E85D00; font-weight: 600; }
+    .cat-count {
+      background: #f0f0f0; border-radius: 10px; padding: 1px 7px;
+      font-size: 11px; color: #999;
+    }
+    .search-cat-btn.active .cat-count { background: rgba(232,93,0,0.12); color: #E85D00; }
+
+    /* 结果区域 */
+    .search-results-section {
+      max-width: 1200px; margin: 0 auto; padding: 32px 24px 80px;
+    }
+    .search-info-bar {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid #f0f0f0;
+      flex-wrap: wrap; gap: 12px;
+    }
+    .search-info-text { font-size: 14px; color: #666; }
+    .search-info-text strong { color: #E85D00; font-weight: 600; }
+    .search-sort-wrap { display: flex; align-items: center; gap: 8px; }
+    .search-sort-label { font-size: 13px; color: #999; }
+    .search-sort-select {
+      padding: 6px 28px 6px 10px; border: 1px solid #e0e0e0;
+      border-radius: 8px; font-size: 13px; color: #444; background: white;
+      cursor: pointer; outline: none; appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23999' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 8px center;
+    }
+
+    /* 结果卡片 */
+    .results-list { display: flex; flex-direction: column; gap: 14px; }
+    .result-card {
+      background: white; border-radius: 14px; padding: 22px 24px;
+      border: 1px solid #f0f0f0; transition: all 0.3s ease; cursor: pointer;
+      display: flex; gap: 20px; align-items: flex-start;
+      text-decoration: none;
+    }
+    .result-card:hover {
+      border-color: rgba(232,93,0,0.2);
+      box-shadow: 0 6px 24px rgba(0,0,0,0.06);
+      transform: translateY(-2px);
+    }
+    .result-card-icon {
+      width: 52px; height: 52px; border-radius: 12px;
+      background: linear-gradient(135deg, rgba(232,93,0,0.08), rgba(232,93,0,0.04));
+      border: 1px solid rgba(232,93,0,0.1);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px; flex-shrink: 0;
+    }
+    .result-card-body { flex: 1; min-width: 0; }
+    .result-card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+    .result-category-badge {
+      padding: 3px 10px; background: rgba(232,93,0,0.08); color: #E85D00;
+      font-size: 11px; font-weight: 600; border-radius: 10px;
+    }
+    .result-brand-chip {
+      padding: 2px 8px; border-radius: 8px; font-size: 11px; font-weight: 600;
+    }
+    .result-title {
+      font-size: 17px; font-weight: 600; color: #1A1108;
+      margin-bottom: 7px; line-height: 1.4;
+    }
+    .result-title mark {
+      background: rgba(232,93,0,0.12); color: #E85D00;
+      padding: 0 3px; border-radius: 3px; font-weight: 600;
+    }
+    .result-desc {
+      color: #666; font-size: 13px; line-height: 1.7; margin-bottom: 12px;
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+    }
+    .result-desc mark { background: rgba(232,93,0,0.08); color: #c94d00; padding: 0 2px; border-radius: 2px; }
+    .result-footer { display: flex; align-items: center; justify-content: space-between; }
+    .result-meta { display: flex; gap: 14px; font-size: 12px; color: #aaa; }
+    .result-meta span { display: flex; align-items: center; gap: 4px; }
+    .result-action {
+      color: #E85D00; font-size: 13px; font-weight: 600;
+      display: flex; align-items: center; gap: 4px;
+      opacity: 0; transform: translateX(-4px); transition: all 0.2s;
+    }
+    .result-card:hover .result-action { opacity: 1; transform: translateX(0); }
+
+    /* 空状态 */
+    .empty-state { text-align: center; padding: 72px 24px; }
+    .empty-icon {
+      width: 100px; height: 100px; margin: 0 auto 28px;
+      background: linear-gradient(135deg, #faf8f6, #f5f0ec); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; font-size: 44px;
+    }
+    .empty-title { font-size: 20px; font-weight: 700; color: #1A1108; margin-bottom: 8px; }
+    .empty-desc { color: #888; font-size: 14px; margin-bottom: 28px; }
+    .empty-suggestions {
+      display: flex; flex-wrap: wrap; gap: 10px;
+      justify-content: center; max-width: 500px; margin: 0 auto;
+    }
+    .suggestion-pill {
+      padding: 9px 18px; background: white; border: 1px solid #e8e8e8;
+      border-radius: 22px; font-size: 13px; color: #666; cursor: pointer; transition: all 0.2s;
+    }
+    .suggestion-pill:hover { border-color: #E85D00; color: #E85D00; box-shadow: 0 2px 8px rgba(232,93,0,0.1); }
+
+    /* 加载状态 */
+    .loading-state { text-align: center; padding: 72px 24px; }
+    .loading-spinner {
+      width: 44px; height: 44px; border: 3px solid #f3f3f3; border-top-color: #E85D00;
+      border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 18px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .loading-text { color: #888; font-size: 14px; }
+
+    /* 分页 */
+    .pagination { display: flex; justify-content: center; gap: 8px; margin-top: 44px; }
+    .page-number {
+      min-width: 38px; height: 38px; display: flex; align-items: center; justify-content: center;
+      border: 1px solid #e8e8e8; background: white; border-radius: 9px;
+      font-size: 14px; color: #666; cursor: pointer; transition: all 0.2s;
+    }
+    .page-number:hover, .page-number.active { border-color: #E85D00; background: #E85D00; color: white; }
+
+    /* 欢迎状态 */
+    .search-welcome { padding: 48px 24px 80px; max-width: 1200px; margin: 0 auto; }
+    .search-welcome-title {
+      font-size: 16px; font-weight: 700; color: #1A1108; margin-bottom: 20px;
+    }
+    .search-welcome-title span {
+      display: inline-block; width: 4px; height: 16px; background: #E85D00;
+      border-radius: 2px; margin-right: 10px; vertical-align: middle;
+    }
+    .search-shortcut-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 48px;
+    }
+    .search-shortcut-card {
+      padding: 20px; background: white; border-radius: 14px; border: 1px solid #f0f0f0;
+      cursor: pointer; transition: all 0.25s; text-decoration: none; display: block;
+    }
+    .search-shortcut-card:hover {
+      border-color: rgba(232,93,0,0.2); box-shadow: 0 6px 20px rgba(0,0,0,0.06); transform: translateY(-3px);
+    }
+    .ssc-icon { font-size: 28px; margin-bottom: 10px; display: block; }
+    .ssc-title { font-size: 14px; font-weight: 700; color: #1A1108; margin-bottom: 4px; }
+    .ssc-desc { font-size: 12px; color: #999; line-height: 1.5; }
+    .ssc-arrow { display: inline-block; margin-top: 10px; font-size: 12px; color: #E85D00; font-weight: 600; }
+    .search-brand-row { display: flex; gap: 12px; flex-wrap: wrap; }
+    .search-brand-chip {
+      padding: 8px 18px; border-radius: 22px; font-size: 13px; font-weight: 600;
+      cursor: pointer; transition: all 0.2s; text-decoration: none; border: 1.5px solid;
+    }
+    .sbc-kev  { color: #E85D00; border-color: rgba(232,93,0,0.3); background: rgba(232,93,0,0.05); }
+    .sbc-pierce  { color: #0369a1; border-color: rgba(3,105,161,0.3); background: rgba(3,105,161,0.05); }
+    .sbc-chem { color: #7c3aed; border-color: rgba(124,58,237,0.3); background: rgba(124,58,237,0.05); }
+    .sbc-heat { color: #dc2626; border-color: rgba(220,38,38,0.3); background: rgba(220,38,38,0.05); }
+    .sbc-frost{ color: #0891b2; border-color: rgba(8,145,178,0.3); background: rgba(8,145,178,0.05); }
+    .sbc-grip { color: #2563eb; border-color: rgba(37,99,235,0.3); background: rgba(37,99,235,0.05); }
+    .sbc-eco  { color: #16a34a; border-color: rgba(22,163,74,0.3); background: rgba(22,163,74,0.05); }
+    .search-brand-chip:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+
+    /* 响应式 */
+    @media (max-width: 768px) {
+      .search-hero { padding: 36px 20px 32px; }
+      .search-hero-title { font-size: 24px; }
+      .search-hero-icon { font-size: 32px; margin-bottom: 10px; }
+      .search-box-main { border-radius: 14px; }
+      .search-box-main input { height: 54px; font-size: 15px; padding-left: 16px; }
+      .search-submit-btn { height: 42px; padding: 0 14px; font-size: 14px; border-radius: 10px; }
+      .search-submit-btn .btn-label { display: none; }
+      .search-submit-btn svg { width: 20px; height: 20px; }
+      .search-shortcut-grid { grid-template-columns: repeat(2, 1fr); }
+      .result-card { flex-direction: column; gap: 12px; padding: 18px 20px; }
+      .result-card-icon { display: none; }
+      .search-info-bar { flex-direction: column; align-items: flex-start; }
+      .instant-dropdown { border-radius: 14px; max-height: 60vh; }
+      .instant-item { padding: 10px 16px; }
+    }
+    @media (max-width: 480px) {
+      .search-shortcut-grid { grid-template-columns: 1fr 1fr; }
+      .hot-searches { flex-direction: column; gap: 10px; }
+    }
+  </style>
+</head>
+<body class="subpage-body">
+
+  <div id="site-nav"></div>
+  <script src="nav-shared.js?v=20260404-1958"></script>
+
+  <!-- ══ 搜索 Hero ══ -->
+  <section class="search-hero">
+    <div class="search-hero-inner">
+      <div class="site-breadcrumb">
+        <a href="index.html" data-i18n="navHome">首页</a>
+        <span class="bc-sep">›</span>
+        <span class="bc-cur">产品搜索</span>
+      </div>
+      <span class="search-hero-icon">🔍</span>
+      <h1 class="search-hero-title"><span data-i18n="searchPageTitle">搜索产品与解决方案</span></h1>
+      <p class="search-hero-subtitle">探索熊猫手护全系列防护手套与行业解决方案</p>
+
+      <div class="search-box-wrapper">
+        <div class="search-box-main">
+          <svg class="search-icon-inner" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+            <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35" stroke-linecap="round"/>
+          </svg>
+          <input type="search" id="searchInput"
+            placeholder="输入关键词，如：磨损、切割、油污..."
+            autocomplete="off"
+            autocorrect="off"
+            autocapitalize="off"
+            spellcheck="false"
+            enterkeyhint="search"
+          />
+          <button class="search-clear-btn" id="clearBtn" title="清空" type="button">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+              <line x1="18" y1="6" x2="6" y2="18" stroke-linecap="round" stroke="currentColor"/>
+              <line x1="6" y1="6" x2="18" y2="18" stroke-linecap="round" stroke="currentColor"/>
+            </svg>
+          </button>
+          <button class="search-submit-btn" id="submitBtn" type="button">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+              <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35" stroke-linecap="round"/>
+            </svg>
+            <span class="btn-label">搜索</span>
+          </button>
+        </div>
+
+        <!-- 即时预览下拉 -->
+        <div class="instant-dropdown" id="instantDropdown">
+          <div class="instant-dropdown-header" id="instantHeader">推荐结果</div>
+          <div id="instantList"></div>
+          <div class="instant-footer">
+            <div class="instant-footer-hint">
+              <span class="kbd">↑↓</span> 导航
+              <span class="kbd">↵</span> 打开
+              <span class="kbd">Esc</span> 关闭
+            </div>
+            <span class="instant-footer-enter" id="instantFooterText">按 Enter 查看全部结果</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hot-searches">
+        <span class="hot-searches-label">热门：</span>
+        <div class="hot-tags">
+          <span class="hot-tag" data-keyword="防切割">防切割</span>
+          <span class="hot-tag" data-keyword="阻燃">阻燃</span>
+          <span class="hot-tag" data-keyword="化学品">化学品</span>
+          <span class="hot-tag" data-keyword="防寒">防寒</span>
+          <span class="hot-tag" data-keyword="防滑">防滑</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 分类标签栏 ══ -->
+  <div class="search-category-bar" id="categoryBar" style="display:none;">
+    <div class="search-category-inner">
+      <button class="search-cat-btn active" data-filter="all">全部 <span class="cat-count" id="catAll">0</span></button>
+      <button class="search-cat-btn" data-filter="product">产品 <span class="cat-count" id="catProduct">0</span></button>
+      <button class="search-cat-btn" data-filter="function">功能 <span class="cat-count" id="catFunction">0</span></button>
+      <button class="search-cat-btn" data-filter="industry">行业 <span class="cat-count" id="catIndustry">0</span></button>
+      <button class="search-cat-btn" data-filter="sport">运动 <span class="cat-count" id="catSport">0</span></button>
+      <button class="search-cat-btn" data-filter="factory">工厂 <span class="cat-count" id="catFactory">0</span></button>
+      <button class="search-cat-btn" data-filter="tech">技术 <span class="cat-count" id="catTech">0</span></button>
+    </div>
+  </div>
+
+  <!-- ══ 主体区域 ══ -->
+  <main>
+    <div class="search-welcome" id="welcomeState">
+      <h2 class="search-welcome-title"><span></span>热门分类</h2>
+      <div class="search-shortcut-grid">
+        <a href="function-hub.html"    class="search-shortcut-card"><span class="ssc-icon">✂️</span><div class="ssc-title">按功能浏览</div><div class="ssc-desc">切割、化学、防寒、阻燃等防护功能分类</div><span class="ssc-arrow">浏览全部 →</span></a>
+        <a href="industry-hub.html"    class="search-shortcut-card"><span class="ssc-icon">🏭</span><div class="ssc-title">按行业浏览</div><div class="ssc-desc">石化、汽车、建筑、食品等行业解决方案</div><span class="ssc-arrow">浏览全部 →</span></a>
+        <a href="sport-hub.html"       class="search-shortcut-card"><span class="ssc-icon">🏔️</span><div class="ssc-title">按运动浏览</div><div class="ssc-desc">攀岩、骑行、射击等14种运动防护</div><span class="ssc-arrow">浏览全部 →</span></a>
+        <a href="products.html"        class="search-shortcut-card"><span class="ssc-icon">🧤</span><div class="ssc-title">所有产品</div><div class="ssc-desc">查看完整产品线与品牌矩阵</div><span class="ssc-arrow">浏览全部 →</span></a>
+      </div>
+      <h2 class="search-welcome-title"><span></span>品牌系列</h2>
+      <div class="search-brand-row">
+        <a href="pandashield.html" class="search-brand-chip sbc-kev">PandaSHIELD™ 防切割</a>
+        <a href="pandapierce.html" class="search-brand-chip sbc-pierce">PandaPIERCE™ 防穿刺</a>
+        <a href="pandachem.html"   class="search-brand-chip sbc-chem">PandaCHEM™ 防油污</a>
+        <a href="pandaimpact.html" class="search-brand-chip sbc-chem">PandaIMPACT™ 防冲击</a>
+        <a href="pandaheat.html"   class="search-brand-chip sbc-heat">PandaHEAT™ 阻燃</a>
+        <a href="pandafrost.html"  class="search-brand-chip sbc-frost">PandaFROST™ 防寒</a>
+        <a href="pandavolt.html"   class="search-brand-chip sbc-kev">PandaVOLT™ 防电</a>
+        <a href="pandagrip.html"   class="search-brand-chip sbc-grip">PandaGRIP™ 防震</a>
+        <a href="pandaeco.html"   class="search-brand-chip sbc-eco">PandaECO™ 可持续</a>
+        <a href="pandabio.html"    class="search-brand-chip sbc-eco">PandaBIO™ 防生物</a>
+      </div>
+    </div>
+
+    <div class="search-results-section" id="resultsSection" style="display:none;">
+      <div class="search-info-bar" id="infoBar">
+        <div class="search-info-text">找到 <strong id="resultCount">0</strong> 个与"<strong id="searchKeyword">-</strong>"相关的结果</div>
+        <div class="search-sort-wrap">
+          <span class="search-sort-label">排序：</span>
+          <select class="search-sort-select" id="sortSelect">
+            <option value="relevance">相关度</option>
+            <option value="score">匹配分</option>
+          </select>
+        </div>
+      </div>
+      <div class="loading-state" id="loadingState" style="display:none;">
+        <div class="loading-spinner"></div>
+        <p class="loading-text">正在搜索...</p>
+      </div>
+      <div class="results-list" id="resultsList"></div>
+      <div class="empty-state" id="emptyState" style="display:none;">
+        <div class="empty-icon">🔍</div>
+        <h2 class="empty-title">未找到相关结果</h2>
+        <p class="empty-desc">请尝试其他关键词，或选择以下推荐</p>
+        <div class="empty-suggestions">
+          <span class="suggestion-pill" data-keyword="防切割">防切割</span>
+          <span class="suggestion-pill" data-keyword="阻燃">阻燃</span>
+          <span class="suggestion-pill" data-keyword="化学品">化学品</span>
+          <span class="suggestion-pill" data-keyword="防寒">防寒</span>
+          <span class="suggestion-pill" data-keyword="防滑">防滑</span>
+        </div>
+      </div>
+      <div class="pagination" id="pagination" style="display:none;">
+        <button class="page-number" id="prevPage">上一页</button>
+        <div id="pageNumbers"></div>
+        <button class="page-number" id="nextPage">下一页</button>
+      </div>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="footer-shared.js?v=20260403-1006"></script>
+
+  <script>
+  // ── Fuse.js 核心搜索逻辑 ──
+  </script>
+  <script src="fuse.min.js"></script>
+  <script src="search-index.js"></script>
+  <script>
+  // ══ Fuse.js 配置 ══
+  const fuse = new Fuse(SEARCH_INDEX, {
+    keys: [
+      { name: 'title',    weight: 0.5 },
+      { name: 'titleEn', weight: 0.2 },
+      { name: 'desc',    weight: 0.2 },
+      { name: 'keywords',weight: 0.1 },
+    ],
+    threshold: 0.4,
+    includeScore: true,
+    minMatchCharLength: 1,
+  });
+
+  // ══ 页面类型 → 中文名 ══
+  const PAGE_TYPE_NAMES = {
+    '首页':'首页', '品牌':'品牌', '产品':'产品', '分类':'分类',
+    '功能':'功能', '行业':'行业', '运动':'运动', '工具':'工具',
+    '工厂':'工厂', '设备':'设备', '技术':'技术', '内容':'内容', '页面':'页面',
+  };
+
+  // ══ 分类 → emoji ══
+  const CAT_EMOJI = {
+    'product': '🧤', 'function': '✂️', 'industry': '🏭',
+    'sport': '🏅', 'factory': '🏭', 'tech': '🔬',
+    'brand': '🏢', 'page': '📄', 'content': '📖',
+  };
+
+  // ══ 分类颜色 ══
+  const CAT_COLORS = {
+    'product': '#E85D00', 'function': '#dc2626', 'industry': '#7c3aed',
+    'sport': '#2563eb', 'factory': '#f59e0b', 'tech': '#0891b2',
+    'brand': '#E85D00', 'page': '#666', 'content': '#16a34a',
+  };
+
+  // ══ DOM ══
+  const searchInput      = document.getElementById('searchInput');
+  const clearBtn         = document.getElementById('clearBtn');
+  const submitBtn        = document.getElementById('submitBtn');
+  const resultsList      = document.getElementById('resultsList');
+  const loadingState      = document.getElementById('loadingState');
+  const emptyState        = document.getElementById('emptyState');
+  const infoBar           = document.getElementById('infoBar');
+  const pagination        = document.getElementById('pagination');
+  const welcomeState      = document.getElementById('welcomeState');
+  const resultsSection    = document.getElementById('resultsSection');
+  const categoryBar       = document.getElementById('categoryBar');
+  const instantDropdown   = document.getElementById('instantDropdown');
+  const instantList       = document.getElementById('instantList');
+  const instantHeader     = document.getElementById('instantHeader');
+  const instantFooterText  = document.getElementById('instantFooterText');
+
+  let currentFilter  = 'all';
+  let focusedInstant = -1;
+  let instantItems   = [];
+  let searchTimer    = null;
+
+  // ══ URL 参数 ══
+  function getParam(name) {
+    return new URLSearchParams(window.location.search).get(name) || '';
+  }
+
+  // ══ 关键词高亮 ══
+  function highlight(text, keyword) {
+    if (!keyword || !text) return text;
+    const escaped = keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    return text.replace(new RegExp(`(${escaped})`, 'gi'), '<mark>$1</mark>');
+  }
+
+  // ══ 品牌色 chip ══
+  function brandChip(item) {
+    if (!item.brand) return '';
+    return `<span class="result-brand-chip" style="color:${item.brandColor};background:${item.brandColor}18;border:1px solid ${item.brandColor}40;">${item.brand}</span>`;
+  }
+
+  // ══ 渲染即时预览 ══
+  function renderInstant(results, keyword) {
+    instantItems = results.slice(0, 6);
+    focusedInstant = -1;
+
+    if (instantItems.length === 0) {
+      instantDropdown.classList.remove('active');
+      return;
+    }
+
+    const typeNames = { product:'产品', function:'功能', industry:'行业', sport:'运动', factory:'工厂', tech:'技术', brand:'品牌', page:'页面', content:'内容' };
+
+    instantList.innerHTML = instantItems.map((item, i) => `
+      <a href="${item.item.url}" class="instant-item" data-idx="${i}">
+        <div class="instant-item-icon">${CAT_EMOJI[item.item.category] || '📄'}</div>
+        <div class="instant-item-body">
+          <div class="instant-item-type">${typeNames[item.item.category] || item.item.pageType || ''}</div>
+          <div class="instant-item-title">${highlight(item.item.title, keyword)}</div>
+          <div class="instant-item-desc">${highlight(item.item.desc, keyword)}</div>
+        </div>
+        <span class="instant-item-arrow">→</span>
+      </a>
+    `).join('');
+
+    instantHeader.textContent = `找到 ${results.length} 个结果，前 ${instantItems.length} 条`;
+    instantDropdown.classList.add('active');
+  }
+
+  // ══ 关闭即时预览 ══
+  function closeInstant() {
+    instantDropdown.classList.remove('active');
+    focusedInstant = -1;
+    document.querySelectorAll('.instant-item.focused').forEach(el => el.classList.remove('focused'));
+  }
+
+  // ══ 即时搜索触发 ══
+  function triggerInstant(keyword) {
+    clearTimeout(searchTimer);
+    if (!keyword.trim()) {
+      closeInstant();
+      updateClearBtn();
+      return;
+    }
+    updateClearBtn();
+    const raw = fuse.search(keyword.trim());
+    renderInstant(raw, keyword.trim());
+  }
+
+  // ══ 正式搜索（回车/按钮/标签点击） ══
+  function doSearch(keyword, filter) {
+    filter = filter || currentFilter;
+    closeInstant();
+
+    if (!keyword.trim()) {
+      welcomeState.style.display = '';
+      resultsSection.style.display = 'none';
+      categoryBar.style.display = 'none';
+      return;
+    }
+
+    welcomeState.style.display = 'none';
+    resultsSection.style.display = '';
+    categoryBar.style.display = '';
+
+    loadingState.style.display = 'block';
+    resultsList.innerHTML = '';
+    emptyState.style.display = 'none';
+    pagination.style.display = 'none';
+
+    setTimeout(function() {
+      loadingState.style.display = 'none';
+
+      const allResults = fuse.search(keyword.trim());
+      updateCatCounts(allResults);
+
+      const results = filter === 'all'
+        ? allResults
+        : allResults.filter(r => r.item.category === filter);
+
+      document.getElementById('resultCount').textContent = results.length;
+      document.getElementById('searchKeyword').textContent = keyword.trim();
+
+      if (results.length === 0) {
+        emptyState.style.display = 'block';
+        return;
+      }
+
+      renderResults(results, keyword.trim(), filter);
+      if (results.length > 8) pagination.style.display = 'flex';
+    }, 120);
+  }
+
+  // ══ 渲染正式结果 ══
+  function renderResults(results, keyword, filter) {
+    const typeNames = { product:'产品', function:'功能', industry:'行业', sport:'运动', factory:'工厂', tech:'技术', brand:'品牌', page:'页面', content:'内容' };
+
+    resultsList.innerHTML = results.map(r => {
+      const item = r.item;
+      const scorePct = Math.round((1 - r.score) * 100);
+      return `
+      <a href="${item.url}" class="result-card">
+        <div class="result-card-icon">${CAT_EMOJI[item.category] || '📄'}</div>
+        <div class="result-card-body">
+          <div class="result-card-header">
+            <span class="result-category-badge">${typeNames[item.category] || item.pageType || ''}</span>
+            ${brandChip(item)}
+          </div>
+          <h3 class="result-title">${highlight(item.title, keyword)}</h3>
+          <p class="result-desc">${highlight(item.desc, keyword)}</p>
+          <div class="result-footer">
+            <div class="result-meta">
+              <span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                匹配度 ${scorePct}%
+              </span>
+            </div>
+            <span class="result-action">
+              查看详情 →
+            </span>
+          </div>
+        </div>
+      </a>`;
+    }).join('');
+  }
+
+  // ══ 更新分类计数 ══
+  function updateCatCounts(results) {
+    const cnt = { all: results.length, product:0, function:0, industry:0, sport:0, factory:0, tech:0 };
+    results.forEach(r => {
+      const c = r.item.category;
+      if (c in cnt) cnt[c]++;
+    });
+    ['All','Product','Function','Industry','Sport','Factory','Tech'].forEach(k => {
+      const el = document.getElementById('cat' + k);
+      if (el) el.textContent = cnt[k.charAt(0).toLowerCase() + k.slice(1)] || 0;
+    });
+  }
+
+  // ══ 清空按钮可见性 ══
+  function updateClearBtn() {
+    clearBtn.style.display = searchInput.value ? 'flex' : 'none';
+  }
+
+  // ══ 事件绑定 ══
+  searchInput.addEventListener('input', function() {
+    triggerInstant(searchInput.value);
+  });
+
+  searchInput.addEventListener('keydown', function(e) {
+    const items = instantList.querySelectorAll('.instant-item');
+
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      closeInstant();
+      resultsSection.style.display = '';
+      categoryBar.style.display = '';
+      welcomeState.style.display = 'none';
+      if (!searchInput.value.trim()) return;
+      doSearch(searchInput.value.trim(), currentFilter);
+    }
+
+    if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      closeInstant();
+    }
+
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      const kw = searchInput.value.trim();
+      window.history.replaceState({}, '', kw ? `?q=${encodeURIComponent(kw)}` : '?');
+      doSearch(kw, currentFilter);
+    }
+
+    if (e.key === 'Escape') {
+      closeInstant();
+      searchInput.blur();
+    }
+  });
+
+  // 即时预览键盘导航
+  instantList.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowDown') { e.preventDefault(); focusedInstant = Math.min(focusedInstant + 1, instantItems.length - 1); updateFocus(); }
+    if (e.key === 'ArrowUp')   { e.preventDefault(); focusedInstant = Math.max(focusedInstant - 1, 0); updateFocus(); }
+    if (e.key === 'Enter' && focusedInstant >= 0) {
+      const link = instantList.querySelectorAll('.instant-item')[focusedInstant];
+      if (link) location.href = link.href;
+    }
+    if (e.key === 'Escape') { closeInstant(); searchInput.focus(); }
+  });
+
+  function updateFocus() {
+    instantList.querySelectorAll('.instant-item').forEach((el, i) => {
+      el.classList.toggle('focused', i === focusedInstant);
+    });
+    if (focusedInstant >= 0) {
+      instantList.querySelectorAll('.instant-item')[focusedInstant].scrollIntoView({ block: 'nearest' });
+    }
+  }
+
+  // 点击其他地方关闭预览
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.search-box-wrapper')) closeInstant();
+  });
+
+  // 点击预览项跳转
+  instantList.addEventListener('click', function(e) {
+    const item = e.target.closest('.instant-item');
+    if (item) { closeInstant(); }
+  });
+
+  submitBtn.addEventListener('click', function() {
+    const kw = searchInput.value.trim();
+    window.history.replaceState({}, '', kw ? `?q=${encodeURIComponent(kw)}` : '?');
+    doSearch(kw, currentFilter);
+  });
+
+  clearBtn.addEventListener('click', function() {
+    searchInput.value = '';
+    updateClearBtn();
+    closeInstant();
+    window.history.replaceState({}, '', '?');
+    doSearch('');
+    searchInput.focus();
+  });
+
+  // 热门/推荐标签
+  document.querySelectorAll('.hot-tag, .suggestion-pill').forEach(function(tag) {
+    tag.addEventListener('click', function() {
+      const kw = tag.dataset.keyword;
+      searchInput.value = kw;
+      updateClearBtn();
+      currentFilter = 'all';
+      document.querySelectorAll('.search-cat-btn').forEach(b => b.classList.remove('active'));
+      document.querySelector('.search-cat-btn[data-filter="all"]').classList.add('active');
+      window.history.replaceState({}, '', `?q=${encodeURIComponent(kw)}`);
+      doSearch(kw, 'all');
+    });
+  });
+
+  // 分类筛选
+  document.querySelectorAll('.search-cat-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.search-cat-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentFilter = btn.dataset.filter;
+      const kw = searchInput.value.trim();
+      if (kw) doSearch(kw, currentFilter);
+    });
+  });
+
+  // ══ 初始化 ══
+  const initKw = getParam('q');
+  if (initKw) {
+    searchInput.value = initKw;
+    updateClearBtn();
+    doSearch(initKw);
+  }
+  searchInput.focus();
+  </script>
+</body>
+</html>

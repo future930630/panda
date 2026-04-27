@@ -1,0 +1,971 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+  <title>认证与检测标准 — 熊猫手护</title>
+  <meta name="description" content="熊猫手护全系产品通过EN 388、EN 407、ANSI A4等国际认证，每一款防护手套均经过严格质量检测，确保防护性能稳定可靠。" />
+  <meta name="description" content="All Panda Guard products meet EN 388, EN 407, ANSI A4 and other international standards, with rigorous quality testing for reliable protection." lang="en" />
+  <meta property="og:title" content="认证与检测标准 — 熊猫手护" />
+  <meta property="og:title" content="Certifications & Testing Standards — Panda Guard" xml:lang="en" />
+  <meta property="og:description" content="熊猫手护全系产品通过EN 388、EN 407、ANSI A4等国际认证，每一款防护手套均经过严格质量检测，确保防护性能稳定可靠。" />
+  <meta property="og:description" content="All Panda Guard products meet EN 388, EN 407, ANSI A4 and other international standards, with rigorous quality testing for reliable protection." xml:lang="en" />
+  <meta property="og:url" content="https://www.pandaguard.com/standards.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="熊猫手护" />
+  <meta property="og:site_name" content="Panda Guard" xml:lang="en" />
+  <meta property="og:image" content="https://www.pandaguard.com/image/og-default.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Certifications & Testing Standards — Panda Guard" />
+  <meta name="twitter:description" content="All Panda Guard products meet EN 388, EN 407, ANSI A4 and other international standards, with rigorous quality testing for reliable protection." />
+  <meta name="twitter:image" content="https://www.pandaguard.com/image/og-default.jpg" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="standards.title">安全防护标准体系 - 熊猫手护</title>
+  <link rel="stylesheet" href="styles.css?v=20260423" />
+  <link rel="stylesheet" href="subpage.css" />
+  <link rel="stylesheet" href="brand-page.css" />
+  <style>
+    /* ── 页面专用样式 ── */
+    .standards-hero {
+      background: linear-gradient(135deg, #1A1108 0%, #2E1E0E 100%);
+      padding: 100px 0 72px;
+      position: relative;
+      overflow: hidden;
+    }
+    .standards-hero-bg {
+      position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 60% 60% at 10% 50%, rgba(232,93,0,0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 50% at 90% 30%, rgba(255,180,50,0.06) 0%, transparent 70%);
+    }
+    .standards-hero-content { position: relative; z-index: 2; text-align: center; }
+    .breadcrumb {
+      font-size: 0.82rem; color: rgba(255,255,255,0.45); margin-bottom: 24px;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      flex-wrap: wrap;
+    }
+    .breadcrumb a { color: rgba(255,255,255,0.55); text-decoration: none; transition: color 0.2s; }
+    .breadcrumb a:hover { color: #E85D00; }
+    .breadcrumb span { color: rgba(255,255,255,0.3); }
+    .standards-hero h1 {
+      font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; color: #fff;
+      margin-bottom: 16px; line-height: 1.2;
+    }
+    .standards-hero h1 em { color: #E85D00; font-style: normal; }
+    .standards-hero-sub {
+      font-size: 1.1rem; color: rgba(255,255,255,0.65); max-width: 640px;
+      margin: 0 auto; line-height: 1.7;
+    }
+
+    /* ── 主内容区 ── */
+    .standards-main {
+      padding: 60px 0 80px;
+      background: #fafaf8;
+    }
+    .standards-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── 操作栏 ── */
+    .standards-toolbar {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .standards-toolbar .toolbar-hint {
+      font-size: 0.85rem;
+      color: #888;
+      margin-left: auto;
+    }
+    .btn-toolbar {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1.5px solid #e0dbd5;
+      background: #fff;
+      color: #1A1108;
+      transition: all 0.2s;
+    }
+    .btn-toolbar:hover {
+      border-color: #E85D00;
+      color: #E85D00;
+    }
+    .btn-toolbar.active {
+      background: #E85D00;
+      border-color: #E85D00;
+      color: #fff;
+    }
+
+    /* ── 三级树形结构 ── */
+    .std-tree {
+      background: #fff;
+      border-radius: 16px;
+      border: 1.5px solid #ede8e2;
+      overflow: hidden;
+    }
+
+    /* 一级：国家/地区 */
+    .std-l1 {
+      border-bottom: 1px solid #f0ece6;
+    }
+    .std-l1:last-child {
+      border-bottom: none;
+    }
+    .std-l1-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 18px 24px;
+      cursor: pointer;
+      background: linear-gradient(90deg, rgba(232,93,0,0.04) 0%, transparent 100%);
+      transition: background 0.2s;
+    }
+    .std-l1-header:hover {
+      background: linear-gradient(90deg, rgba(232,93,0,0.08) 0%, rgba(232,93,0,0.02) 100%);
+    }
+    .std-l1-header .std-toggle {
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      border: 2px solid #ddd;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: all 0.2s;
+      background: #fff;
+    }
+    .std-l1-header .std-toggle::after {
+      content: '+';
+      font-size: 16px;
+      font-weight: 700;
+      color: #ccc;
+      line-height: 1;
+    }
+    .std-l1.expanded .std-toggle {
+      background: #E85D00;
+      border-color: #E85D00;
+    }
+    .std-l1.expanded .std-toggle::after {
+      content: '−';
+      color: #fff;
+    }
+    .std-l1-header input[type="checkbox"] {
+      display: none;
+    }
+    .std-l1 .std-checkbox {
+      width: 20px;
+      height: 20px;
+      border-radius: 5px;
+      border: 2px solid #ccc;
+      flex-shrink: 0;
+      cursor: pointer;
+      transition: all 0.2s;
+      position: relative;
+    }
+    .std-l1 .std-checkbox.checked {
+      background: #E85D00;
+      border-color: #E85D00;
+    }
+    .std-l1 .std-checkbox.checked::after {
+      content: '✓';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .std-l1-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #1A1108;
+      flex: 1;
+    }
+    .std-l1-meta {
+      font-size: 0.75rem;
+      color: #999;
+      background: #f5f3f0;
+      padding: 4px 10px;
+      border-radius: 12px;
+    }
+
+    /* 二级：具体标准 */
+    .std-l2 {
+      display: none;
+      border-top: 1px dashed #f0ece6;
+      background: #fefefe;
+    }
+    .std-l1.expanded .std-l2 {
+      display: block;
+    }
+    .std-l2-item {
+      border-bottom: 1px solid #f5f2ee;
+    }
+    .std-l2-item:last-child {
+      border-bottom: none;
+    }
+    .std-l2-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 24px 14px 48px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .std-l2-header:hover {
+      background: rgba(232,93,0,0.04);
+    }
+    .std-l2 .std-toggle {
+      width: 20px;
+      height: 20px;
+      border-radius: 5px;
+      border: 2px solid #ddd;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: all 0.2s;
+      background: #fff;
+    }
+    .std-l2 .std-toggle::after {
+      content: '+';
+      font-size: 14px;
+      font-weight: 700;
+      color: #ccc;
+      line-height: 1;
+    }
+    .std-l2.expanded .std-toggle {
+      background: #E85D00;
+      border-color: #E85D00;
+    }
+    .std-l2.expanded .std-toggle::after {
+      content: '−';
+      color: #fff;
+    }
+    .std-l2 .std-checkbox {
+      width: 18px;
+      height: 18px;
+      border-radius: 4px;
+      border: 2px solid #ccc;
+      flex-shrink: 0;
+      cursor: pointer;
+      transition: all 0.2s;
+      position: relative;
+    }
+    .std-l2 .std-checkbox.checked {
+      background: #E85D00;
+      border-color: #E85D00;
+    }
+    .std-l2 .std-checkbox.checked::after {
+      content: '✓';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .std-l2-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #1A1108;
+      flex: 1;
+    }
+
+    /* 三级：具体等级 */
+    .std-l3 {
+      display: none;
+      background: #fafaf8;
+      border-top: 1px dashed #ede8e2;
+    }
+    .std-l2.expanded .std-l3 {
+      display: block;
+    }
+    .std-l3-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 12px 24px 16px 78px;
+    }
+    .std-l3-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      background: #fff;
+      border: 1.5px solid #e8e4de;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 0.82rem;
+      color: #555;
+    }
+    .std-l3-item:hover {
+      border-color: #E85D00;
+      color: #E85D00;
+    }
+    .std-l3-item.checked {
+      background: rgba(232,93,0,0.08);
+      border-color: #E85D00;
+      color: #E85D00;
+    }
+    .std-l3 .std-checkbox {
+      width: 14px;
+      height: 14px;
+      border-radius: 3px;
+      border: 2px solid #ccc;
+      flex-shrink: 0;
+      transition: all 0.2s;
+      position: relative;
+    }
+    .std-l3-item.checked .std-checkbox {
+      background: #E85D00;
+      border-color: #E85D00;
+    }
+    .std-l3-item.checked .std-checkbox::after {
+      content: '✓';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #fff;
+      font-size: 9px;
+      font-weight: 700;
+    }
+
+    /* ── 选中摘要 ── */
+    .std-summary {
+      margin-top: 24px;
+      padding: 20px 24px;
+      background: linear-gradient(135deg, rgba(232,93,0,0.08) 0%, rgba(232,93,0,0.03) 100%);
+      border: 1.5px solid rgba(232,93,0,0.15);
+      border-radius: 12px;
+    }
+    .std-summary-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #E85D00;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .std-summary-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .std-summary-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px 10px;
+      background: #fff;
+      border: 1px solid #e0dbd5;
+      border-radius: 6px;
+      font-size: 0.78rem;
+      color: #666;
+    }
+    .std-summary-tag .remove {
+      cursor: pointer;
+      color: #999;
+      font-weight: 700;
+      margin-left: 2px;
+    }
+    .std-summary-tag .remove:hover {
+      color: #E85D00;
+    }
+    .std-summary-empty {
+      font-size: 0.85rem;
+      color: #999;
+      font-style: italic;
+    }
+
+    /* ── 响应式 ── */
+    @media (max-width: 768px) {
+      .standards-hero { padding: 80px 0 56px; }
+      .standards-container { padding: 0 16px; }
+      .std-l1-header { padding: 14px 16px; }
+      .std-l2-header { padding: 12px 16px 12px 36px; }
+      .std-l3-grid { padding: 10px 16px 14px 46px; }
+      .std-l1-title { font-size: 1rem; }
+      .std-l2-title { font-size: 0.88rem; }
+      .std-l3-item { font-size: 0.78rem; padding: 5px 10px; }
+    }
+  </style>
+  <link rel="stylesheet" href="responsive.css?v=1">
+</head>
+<body class="subpage-body">
+  <div id="site-nav"></div>
+  <script src="nav-shared.js?v=20260404-1958"></script>
+
+  <!-- 英雄区域 -->
+  <section class="standards-hero">
+    <div class="standards-hero-bg"></div>
+    <div class="standards-hero-content container">
+      <nav class="breadcrumb">
+        <a href="index.html" data-i18n="nav.home">首页</a>
+        <span>/</span>
+        <a href="quality-control.html" data-i18n="nav.quality">品质管控</a>
+        <span>/</span>
+        <span data-i18n="standards.breadcrumb">安全防护标准</span>
+      </nav>
+      <h1><em>🛡️</em> <span data-i18n="standards.hero.title">安全防护标准体系</span></h1>
+      <p class="standards-hero-sub" data-i18n="standards.hero.subtitle">覆盖全球主要市场的认证标准，支持勾选对比不同标准要求</p>
+    </div>
+  </section>
+
+  <!-- 主内容 -->
+  <main class="standards-main">
+    <div class="standards-container">
+      <!-- 操作栏 -->
+      <div class="standards-toolbar">
+        <button class="btn-toolbar" id="expandAll">
+          <span>⊞</span> <span data-i18n="standards.btnExpand">全部展开</span>
+        </button>
+        <button class="btn-toolbar" id="collapseAll">
+          <span>⊟</span> <span data-i18n="standards.btnCollapse">全部收起</span>
+        </button>
+        <button class="btn-toolbar" id="clearAll">
+          <span>✕</span> <span data-i18n="standards.btnClear">清除选择</span>
+        </button>
+        <span class="toolbar-hint" data-i18n="standards.toolbarHint">点击国家名称展开，点击复选框选择</span>
+      </div>
+
+      <!-- 标准树 -->
+      <div class="std-tree" id="stdTree">
+        <!-- 动态生成 -->
+      </div>
+
+      <!-- 选中摘要 -->
+      <div class="std-summary">
+        <div class="std-summary-title" data-i18n="standards.selected">已选择的标准</div>
+        <div class="std-summary-tags" id="stdSummaryTags">
+          <span class="std-summary-empty" data-i18n="standards.noSelect">请勾选需要的标准</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="i18n.js?v=20260424-avatar"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // 标准数据（三级结构）
+    const STANDARDS_DATA = [
+      {
+        id: 'eu-ce',
+        title: 'EU欧盟-CE',
+        meta: '🇪🇺 欧盟',
+        children: [
+          {
+            id: 'eu-1',
+            title: 'EN 420:2003+A1:2009 / EN ISO 21420:2020',
+            children: []
+          },
+          {
+            id: 'eu-2',
+            title: 'EN 388:2016+A1:2018',
+            children: [
+              { id: 'eu-2-lvl', title: '耐磨性：0-4级' },
+              { id: 'eu-2-cut', title: '耐切割性：0-5级' },
+              { id: 'eu-2-tear', title: '抗撕裂性：0-4级' },
+              { id: 'eu-2-punct', title: '抗穿刺性：0-4级' },
+              { id: 'eu-2-iso', title: '耐切割性 A-F级（ISO 13997）' },
+              { id: 'eu-2-impact', title: '冲击保护：P标识' }
+            ]
+          },
+          {
+            id: 'eu-3',
+            title: 'EN 374:2016系列',
+            children: [
+              { id: 'eu-3-1', title: 'EN 374-1 防化学品渗透' },
+              { id: 'eu-3-2', title: 'EN 374-2 防渗透（气密/水密）' },
+              { id: 'eu-3-3', title: 'EN 374-3 化学品渗透性能' }
+            ]
+          },
+          {
+            id: 'eu-4',
+            title: 'EN 407:2020',
+            children: [
+              { id: 'eu-4-1', title: '阻燃性：0-4级' },
+              { id: 'eu-4-2', title: '耐接触热性：0-4级' },
+              { id: 'eu-4-3', title: '耐对流热性：0-4级' },
+              { id: 'eu-4-4', title: '耐辐射热性：0-4级' },
+              { id: 'eu-4-5', title: '耐熔融金属飞溅：0-4级' }
+            ]
+          },
+          {
+            id: 'eu-5',
+            title: 'EN 511:2006 防寒手套',
+            children: []
+          },
+          {
+            id: 'eu-6',
+            title: 'EN 12477:2001+A1:2005 焊接防护',
+            children: []
+          },
+          {
+            id: 'eu-7',
+            title: 'ISO 10819:2013 振动防护',
+            children: []
+          }
+        ]
+      },
+      {
+        id: 'gb-ukca',
+        title: 'GB英国-UKCA',
+        meta: '🇬🇧 英国',
+        children: [
+          {
+            id: 'gb-1',
+            title: 'BS EN 388:2016+A1:2018',
+            children: []
+          },
+          {
+            id: 'gb-2',
+            title: 'BS EN ISO 21420:2020',
+            children: []
+          },
+          {
+            id: 'gb-3',
+            title: 'BS EN 374系列',
+            children: [
+              { id: 'gb-3-1', title: 'BS EN 374-1' },
+              { id: 'gb-3-2', title: 'BS EN 374-2' },
+              { id: 'gb-3-3', title: 'BS EN 374-3' }
+            ]
+          },
+          {
+            id: 'gb-4',
+            title: 'BS EN 407:2020',
+            children: []
+          },
+          {
+            id: 'gb-5',
+            title: 'BS EN 511:2006',
+            children: []
+          }
+        ]
+      },
+      {
+        id: 'us-ansi',
+        title: 'US美国-ANSI/ISEA 105（2024最新版）',
+        meta: '🇺🇸 美国',
+        children: [
+          {
+            id: 'us-1',
+            title: '切割防护等级：A1-A9级',
+            children: [
+              { id: 'us-1-1', title: 'A1-A3：轻级防护（200-1,499克）' },
+              { id: 'us-1-2', title: 'A4-A6：中级防护（1,500-3,999克）' },
+              { id: 'us-1-3', title: 'A7-A9：重级防护（4,000-6,000+克）' }
+            ]
+          },
+          {
+            id: 'us-2',
+            title: '穿刺防护等级：0-5级',
+            children: []
+          },
+          {
+            id: 'us-3',
+            title: '耐磨防护等级：0-6级',
+            children: []
+          },
+          {
+            id: 'us-4',
+            title: '抗撕裂性能分级',
+            children: [
+              { id: 'us-4-1', title: 'ASTM F2992-15 TDM-100' },
+              { id: 'us-4-2', title: 'ASTM D3389-10 / D3884-09' },
+              { id: 'us-4-3', title: 'ASTM D689 / D1938' },
+              { id: 'us-4-4', title: 'ASTM D2582' }
+            ]
+          },
+          {
+            id: 'us-5',
+            title: 'ANSI/ISEA 138-2019 冲击防护',
+            children: []
+          }
+        ]
+      },
+      {
+        id: 'cn-la',
+        title: 'CN中国-LA',
+        meta: '🇨🇳 中国',
+        children: [
+          { id: 'cn-1', title: 'GB 24541-2022', children: [] },
+          { id: 'cn-2', title: 'GB 24539-2021', children: [] },
+          { id: 'cn-3', title: 'GB 28881-2023', children: [] },
+          { id: 'cn-4', title: 'GB/T 38306-2019', children: [] },
+          { id: 'cn-5', title: 'GB/T 38304-2019', children: [] }
+        ]
+      },
+      {
+        id: 'ca-csa',
+        title: 'CA加拿大-CSA',
+        meta: '🇨🇦 加拿大',
+        children: [
+          { id: 'ca-1', title: 'CSA Z259.4-1979', children: [] },
+          { id: 'ca-2', title: 'CAN/CSA-ISO 10819:2016', children: [] },
+          { id: 'ca-3', title: 'CSA Z94.4系列', children: [] },
+          { id: 'ca-4', title: 'CSA Z316.11', children: [] },
+          {
+            id: 'ca-5',
+            title: '参考标准',
+            children: [
+              { id: 'ca-5-1', title: '机械防护：参考 ANSI/ISEA 105' },
+              { id: 'ca-5-2', title: '化学防护：参考 ASTM/ISO' }
+            ]
+          }
+        ]
+      },
+      {
+        id: 'aunz-as',
+        title: 'AUNZ澳新-AS/NZS',
+        meta: '🇦🇺 澳大利亚',
+        children: [
+          { id: 'au-1', title: 'AS/NZS 2161.2:2020', children: [] },
+          { id: 'au-2', title: 'AS/NZS 2161.3:2020', children: [] },
+          { id: 'au-3', title: 'AS/NZS 2161.4:1999(R2016)', children: [] },
+          { id: 'au-4', title: 'AS/NZS 2161.5:1998', children: [] },
+          { id: 'au-5', title: 'AS/NZS 2161.10.2:2025', children: [] }
+        ]
+      },
+      {
+        id: 'jp-jis',
+        title: 'JP日本-JIS',
+        meta: '🇯🇵 日本',
+        children: [
+          { id: 'jp-1', title: 'JIS T 8008:2024', children: [] },
+          { id: 'jp-2', title: 'JIS T 8116:2005', children: [] },
+          { id: 'jp-3', title: 'JIS T 8121-2:2007', children: [] },
+          { id: 'jp-4', title: 'JIS T 8112:2014', children: [] },
+          {
+            id: 'jp-5',
+            title: '相关测试标准',
+            children: [
+              { id: 'jp-5-1', title: 'JIS L 1096' },
+              { id: 'jp-5-2', title: 'JIS K 6328' }
+            ]
+          }
+        ]
+      }
+    ];
+
+    // 已选中的标准
+    const selected = new Set();
+
+    // 渲染树
+    function renderTree() {
+      const container = document.getElementById('stdTree');
+      container.innerHTML = '';
+
+      STANDARDS_DATA.forEach(l1 => {
+        const l1El = document.createElement('div');
+        l1El.className = 'std-l1';
+        l1El.dataset.id = l1.id;
+
+        l1El.innerHTML = `
+          <div class="std-l1-header">
+            <div class="std-toggle"></div>
+            <div class="std-checkbox" data-id="${l1.id}"></div>
+            <span class="std-l1-title">${l1.title}</span>
+            <span class="std-l1-meta">${l1.meta}</span>
+          </div>
+          <div class="std-l2-list"></div>
+        `;
+
+        const l2List = l1El.querySelector('.std-l2-list');
+
+        l1.children.forEach(l2 => {
+          const l2El = document.createElement('div');
+          l2El.className = 'std-l2';
+          l2El.dataset.id = l2.id;
+          const hasChildren = l2.children && l2.children.length > 0;
+
+          let l3Html = '';
+          if (hasChildren) {
+            l3Html = `<div class="std-l3">
+              <div class="std-l3-grid">
+                ${l2.children.map(l3 => `
+                  <div class="std-l3-item" data-id="${l3.id}">
+                    <div class="std-checkbox"></div>
+                    <span>${l3.title}</span>
+                  </div>
+                `).join('')}
+              </div>
+            </div>`;
+          }
+
+          l2El.innerHTML = `
+            <div class="std-l2-header">
+              ${hasChildren ? '<div class="std-toggle"></div>' : '<div style="width:20px"></div>'}
+              <div class="std-checkbox" data-id="${l2.id}"></div>
+              <span class="std-l2-title">${l2.title}</span>
+            </div>
+            ${l3Html}
+          `;
+
+          l2List.appendChild(l2El);
+        });
+
+        container.appendChild(l1El);
+      });
+
+      bindEvents();
+      updateAllCheckboxes();
+    }
+
+    // 绑定事件
+    function bindEvents() {
+      // 一级展开/收起
+      document.querySelectorAll('.std-l1-header').forEach(header => {
+        header.addEventListener('click', function(e) {
+          if (e.target.classList.contains('std-checkbox')) return;
+          const l1 = this.closest('.std-l1');
+          l1.classList.toggle('expanded');
+        });
+      });
+
+      // 二级展开/收起
+      document.querySelectorAll('.std-l2-header').forEach(header => {
+        header.addEventListener('click', function(e) {
+          if (e.target.classList.contains('std-checkbox')) return;
+          const l2 = this.closest('.std-l2');
+          if (l2.querySelector('.std-l3')) {
+            l2.classList.toggle('expanded');
+          }
+        });
+      });
+
+      // 一级复选框
+      document.querySelectorAll('.std-l1 .std-checkbox').forEach(cb => {
+        cb.addEventListener('click', function(e) {
+          e.stopPropagation();
+          const l1 = this.closest('.std-l1');
+          const id = this.dataset.id;
+          const isChecked = this.classList.toggle('checked');
+
+          // 选中/取消该一级下所有二级和三级的勾选
+          if (isChecked) {
+            selected.add(id);
+            l1.querySelectorAll('.std-l2 .std-checkbox').forEach(cb2 => {
+              selected.add(cb2.dataset.id);
+              cb2.classList.add('checked');
+            });
+            l1.querySelectorAll('.std-l3-item').forEach(item => {
+              selected.add(item.dataset.id);
+              item.classList.add('checked');
+            });
+          } else {
+            selected.delete(id);
+            l1.querySelectorAll('.std-l2 .std-checkbox').forEach(cb2 => {
+              selected.delete(cb2.dataset.id);
+              cb2.classList.remove('checked');
+            });
+            l1.querySelectorAll('.std-l3-item').forEach(item => {
+              selected.delete(item.dataset.id);
+              item.classList.remove('checked');
+            });
+          }
+
+          updateSummary();
+        });
+      });
+
+      // 二级复选框
+      document.querySelectorAll('.std-l2 .std-checkbox').forEach(cb => {
+        cb.addEventListener('click', function(e) {
+          e.stopPropagation();
+          const l2 = this.closest('.std-l2');
+          const l1 = l2.closest('.std-l1');
+          const id = this.dataset.id;
+          const isChecked = this.classList.toggle('checked');
+
+          if (isChecked) {
+            selected.add(id);
+            // 同时选中其三级
+            l2.querySelectorAll('.std-l3-item').forEach(item => {
+              selected.add(item.dataset.id);
+              item.classList.add('checked');
+            });
+          } else {
+            selected.delete(id);
+            l2.querySelectorAll('.std-l3-item').forEach(item => {
+              selected.delete(item.dataset.id);
+              item.classList.remove('checked');
+            });
+          }
+
+          updateL1Checkbox(l1);
+          updateSummary();
+        });
+      });
+
+      // 三级复选框
+      document.querySelectorAll('.std-l3-item').forEach(item => {
+        item.addEventListener('click', function() {
+          const id = this.dataset.id;
+          const cb = this.querySelector('.std-checkbox');
+          const isChecked = this.classList.toggle('checked');
+          cb.classList.toggle('checked');
+
+          if (isChecked) {
+            selected.add(id);
+          } else {
+            selected.delete(id);
+          }
+
+          // 更新父级复选框状态
+          const l2 = this.closest('.std-l2');
+          const l1 = l2.closest('.std-l1');
+          updateL2Checkbox(l2);
+          updateL1Checkbox(l1);
+          updateSummary();
+        });
+      });
+
+      // 展开/收起全部
+      document.getElementById('expandAll').addEventListener('click', function() {
+        document.querySelectorAll('.std-l1').forEach(l1 => l1.classList.add('expanded'));
+        document.querySelectorAll('.std-l2').forEach(l2 => l2.classList.add('expanded'));
+      });
+
+      document.getElementById('collapseAll').addEventListener('click', function() {
+        document.querySelectorAll('.std-l1').forEach(l1 => l1.classList.remove('expanded'));
+        document.querySelectorAll('.std-l2').forEach(l2 => l2.classList.remove('expanded'));
+      });
+
+      document.getElementById('clearAll').addEventListener('click', function() {
+        selected.clear();
+        document.querySelectorAll('.std-checkbox.checked').forEach(cb => cb.classList.remove('checked'));
+        document.querySelectorAll('.std-l3-item.checked').forEach(item => item.classList.remove('checked'));
+        updateSummary();
+      });
+    }
+
+    // 更新一级复选框状态
+    function updateL1Checkbox(l1) {
+      const l2Checkboxes = l1.querySelectorAll('.std-l2 .std-checkbox');
+      const checkedCount = Array.from(l2Checkboxes).filter(cb => cb.classList.contains('checked')).length;
+      const l1Cb = l1.querySelector('.std-l1 .std-checkbox');
+
+      if (checkedCount === l2Checkboxes.length && l2Checkboxes.length > 0) {
+        l1Cb.classList.add('checked');
+        selected.add(l1.dataset.id);
+      } else {
+        l1Cb.classList.remove('checked');
+        selected.delete(l1.dataset.id);
+      }
+    }
+
+    // 更新二级复选框状态
+    function updateL2Checkbox(l2) {
+      const l3Items = l2.querySelectorAll('.std-l3-item');
+      if (l3Items.length === 0) return;
+
+      const checkedCount = Array.from(l3Items).filter(item => item.classList.contains('checked')).length;
+      const l2Cb = l2.querySelector('.std-checkbox');
+
+      if (checkedCount === l3Items.length) {
+        l2Cb.classList.add('checked');
+        selected.add(l2.dataset.id);
+      } else if (checkedCount > 0) {
+        l2Cb.classList.remove('checked');
+        selected.delete(l2.dataset.id);
+      } else {
+        l2Cb.classList.remove('checked');
+        selected.delete(l2.dataset.id);
+      }
+    }
+
+    // 更新所有复选框状态
+    function updateAllCheckboxes() {
+      document.querySelectorAll('.std-l1').forEach(l1 => {
+        updateL1Checkbox(l1);
+      });
+    }
+
+    // 更新摘要
+    function updateSummary() {
+      const container = document.getElementById('stdSummaryTags');
+
+      if (selected.size === 0) {
+        container.innerHTML = `<span class="std-summary-empty" data-i18n="standards.noSelect">请勾选需要的标准</span>`;
+        return;
+      }
+
+      const tags = [];
+      selected.forEach(id => {
+        // 找到对应的标题
+        for (const l1 of STANDARDS_DATA) {
+          if (l1.id === id) {
+            tags.push({ id, title: l1.title });
+            break;
+          }
+          for (const l2 of l1.children) {
+            if (l2.id === id) {
+              tags.push({ id, title: `${l1.title} › ${l2.title}` });
+              break;
+            }
+            if (l2.children) {
+              for (const l3 of l2.children) {
+                if (l3.id === id) {
+                  tags.push({ id, title: l3.title });
+                  break;
+                }
+              }
+            }
+          }
+        }
+      });
+
+      container.innerHTML = tags.map(tag => `
+        <span class="std-summary-tag" data-id="${tag.id}">
+          ${tag.title}
+          <span class="remove" onclick="removeSelection('${tag.id}')">✕</span>
+        </span>
+      `).join('');
+    }
+
+    // 移除单个选择
+    window.removeSelection = function(id) {
+      selected.delete(id);
+      document.querySelector(`.std-checkbox[data-id="${id}"]`)?.classList.remove('checked');
+      document.querySelector(`.std-l3-item[data-id="${id}"]`)?.classList.remove('checked');
+      document.querySelector(`.std-l3-item[data-id="${id}"] .std-checkbox`)?.classList.remove('checked');
+
+      // 更新父级
+      for (const l1 of STANDARDS_DATA) {
+        if (l1.id === id) {
+          const l1El = document.querySelector(`.std-l1[data-id="${id}"]`);
+          l1El.querySelectorAll('.std-checkbox.checked').forEach(cb => cb.classList.remove('checked'));
+          l1El.querySelectorAll('.std-l3-item.checked').forEach(item => item.classList.remove('checked'));
+          l1El.querySelectorAll('.std-l3-item .std-checkbox.checked').forEach(cb => cb.classList.remove('checked'));
+          break;
+        }
+      }
+
+      updateSummary();
+    };
+
+    // 初始化
+    renderTree();
+
+    // 导航初始化
+    if (window.__pandaInitNav) window.__pandaInitNav();
+  });
+  </script>
+</body>
+</html>
