@@ -1,0 +1,612 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+  <title>智能化编织设备 — 熊猫手护</title>
+  <meta name="description" content="采用国际领先智能化编织设备，实现手套主体精密编织，纤维结构均匀稳定，为防护性能提供坚实基础。" />
+  <meta name="description" content="Using internationally leading intelligent knitting equipment for precise glove body knitting with uniform and stable fiber structure." lang="en" />
+  <meta property="og:title" content="智能化编织设备 — 熊猫手护" />
+  <meta property="og:title" content="Intelligent Knitting Equipment — Panda Guard" xml:lang="en" />
+  <meta property="og:description" content="采用国际领先智能化编织设备，实现手套主体精密编织，纤维结构均匀稳定，为防护性能提供坚实基础。" />
+  <meta property="og:description" content="Using internationally leading intelligent knitting equipment for precise glove body knitting with uniform and stable fiber structure." xml:lang="en" />
+  <meta property="og:url" content="https://www.pandaguard.com/equipment-knitting.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="熊猫手护" />
+  <meta property="og:site_name" content="Panda Guard" xml:lang="en" />
+  <meta property="og:image" content="https://www.pandaguard.com/image/og-default.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Intelligent Knitting Equipment — Panda Guard" />
+  <meta name="twitter:description" content="Using internationally leading intelligent knitting equipment for precise glove body knitting with uniform and stable fiber structure." />
+  <meta name="twitter:image" content="https://www.pandaguard.com/image/og-default.jpg" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="equipmentKnittingTitle">针织生产线 | Panda Hand Guard Knitting Equipment</title>
+  <link rel="stylesheet" href="styles.css?v=20260423" />
+  <link rel="stylesheet" href="subpage.css" />
+  <link rel="stylesheet" href="filter-page.css" />
+  <script>
+    if (!localStorage.getItem('pg_lang')) {
+      localStorage.setItem('pg_lang', 'zh');
+    }
+  </script>
+  <script src="i18n.js?v=20260424-avatar"></script>
+  <style>
+    /* ── 针织设备专题样式 ── */
+    .eq-detail-hero {
+      background: linear-gradient(135deg, #1A0A00 0%, #0D0D0D 100%);
+      --fp-glow: rgba(232,93,0,0.15);
+      --fp-accent: #E85D00;
+    }
+    
+    /* 设备详情布局 */
+    .eq-detail-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      margin: 80px 0;
+    }
+    
+    .eq-detail-left {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+    
+    .eq-detail-right {
+      background: rgba(232,93,0,0.08);
+      border: 1.5px solid rgba(232,93,0,0.2);
+      border-radius: 16px;
+      padding: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .eq-detail-right::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(232,93,0,0.1), transparent);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    
+    .eq-detail-right > * {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .eq-detail-image {
+      width: 100%;
+      height: 380px;
+      background: linear-gradient(135deg, rgba(232,93,0,0.15), rgba(232,93,0,0.05));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 6rem;
+      margin-bottom: 20px;
+    }
+    
+    .eq-detail-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #E85D00;
+      margin-bottom: 12px;
+      letter-spacing: -0.01em;
+    }
+    
+    .eq-detail-intro {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+    
+    /* 规格表 */
+    .eq-specs-section {
+      background: rgba(232,93,0,0.06);
+      border: 1px solid rgba(232,93,0,0.15);
+      border-radius: 12px;
+      padding: 28px;
+      margin: 40px 0;
+    }
+    
+    .eq-specs-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #E85D00;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .eq-specs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+    }
+    
+    .eq-spec-item {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(232,93,0,0.1);
+      border-radius: 8px;
+      padding: 16px;
+    }
+    
+    .eq-spec-label {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.5);
+      font-weight: 600;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    
+    .eq-spec-value {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #E85D00;
+    }
+    
+    /* 功能特性 */
+    .eq-features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      margin: 60px 0;
+    }
+    
+    .eq-feature-card {
+      background: rgba(232,93,0,0.06);
+      border: 1px solid rgba(232,93,0,0.15);
+      border-radius: 12px;
+      padding: 28px;
+      transition: all 0.3s;
+    }
+    
+    .eq-feature-card:hover {
+      border-color: rgba(232,93,0,0.4);
+      background: rgba(232,93,0,0.12);
+      transform: translateY(-4px);
+    }
+    
+    .eq-feature-icon {
+      font-size: 2.2rem;
+      margin-bottom: 12px;
+    }
+    
+    .eq-feature-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #E85D00;
+      margin-bottom: 8px;
+    }
+    
+    .eq-feature-desc {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.6;
+    }
+    
+    /* 对比表 */
+    .eq-comparison-card {
+      background: rgba(232,93,0,0.04);
+      border: 1.5px solid rgba(232,93,0,0.2);
+      border-radius: 16px;
+      padding: 36px;
+      margin: 60px 0;
+    }
+    
+    .eq-comparison-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+      margin-top: 24px;
+    }
+    
+    .eq-comparison-col {
+      padding: 24px;
+      background: rgba(255,255,255,0.02);
+      border-radius: 8px;
+      border: 1px solid rgba(232,93,0,0.1);
+    }
+    
+    .eq-comparison-col-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #E85D00;
+      margin-bottom: 16px;
+    }
+    
+    .eq-comparison-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 12px;
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.7);
+    }
+    
+    .eq-comparison-check {
+      color: #FF7A20;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    
+    /* 应用案例 */
+    .eq-case-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin: 40px 0;
+    }
+    
+    .eq-case-card {
+      background: linear-gradient(135deg, rgba(232,93,0,0.1), rgba(232,93,0,0.02));
+      border: 1px solid rgba(232,93,0,0.15);
+      border-radius: 12px;
+      padding: 24px;
+      transition: all 0.3s;
+    }
+    
+    .eq-case-card:hover {
+      border-color: rgba(232,93,0,0.4);
+      transform: translateY(-4px);
+    }
+    
+    .eq-case-icon {
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+    
+    .eq-case-title {
+      font-weight: 700;
+      color: #E85D00;
+      margin-bottom: 8px;
+    }
+    
+    .eq-case-desc {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.6);
+    }
+    
+    @media (max-width: 768px) {
+      .eq-detail-layout {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        margin: 40px 0;
+      }
+      
+      .eq-comparison-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="responsive.css?v=1">
+</head>
+<body class="subpage-body">
+
+<div id="site-nav"></div>
+<script src="nav-shared.js?v=20260404-1958"></script>
+
+<!-- HERO -->
+<section class="fp-hero eq-detail-hero">
+  <div class="fp-hero-bg"></div>
+  <div class="container">
+    <div class="fp-hero-inner">
+      <div class="site-breadcrumb">
+        <a href="index.html" data-i18n="breadcrumbHome">首页</a>
+        <span class="fp-bc-sep">›</span>
+        <a href="equipment-hub.html" data-i18n="equipmentHubTitle">工厂与设备</a>
+        <span class="fp-bc-sep">›</span>
+        <span data-i18n="equipmentKnittingTitle">针织生产线</span>
+      </div>
+      <div class="fp-hero-tag">🧶 设备专题</div>
+      <h1 class="fp-hero-title">
+        <span data-i18n="equipmentKnittingHero1">高精度</span><br/>
+        <span data-i18n="equipmentKnittingHero2">针织编织系统</span>
+      </h1>
+      <p class="fp-hero-sub" data-i18n="equipmentKnittingHeroSub">
+        采用国际领先的Santoni/Jiu Tai针织机，支持3至18针多规格生产，自动化率超95%，确保基布品质的一致性与精准度
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- 核心介绍 -->
+<section style="padding: 80px 0;">
+  <div class="container">
+    <div class="eq-detail-layout">
+      <div class="eq-detail-left">
+        <div>
+          <h2 class="eq-detail-title" data-i18n="equipmentKnittingTitle">针织生产线</h2>
+          <p class="eq-detail-intro" data-i18n="equipmentKnittingIntro">
+            熊猫手护的针织生产线采用国际顶级设备，配合精密工程与严格工艺参数控制，每条产线日产能15000双。通过自动张力控制、图案编程系统和实时质量监测，确保每一批基布都达到最高品质标准。
+          </p>
+        </div>
+        
+        <div class="eq-specs-section">
+          <div class="eq-specs-title">🎯 核心指标</div>
+          <div class="eq-specs-grid">
+            <div class="eq-spec-item">
+              <div class="eq-spec-label" data-i18n="specAutoRate">自动化率</div>
+              <div class="eq-spec-value">95%+</div>
+            </div>
+            <div class="eq-spec-item">
+              <div class="eq-spec-label" data-i18n="specNeedleGauge">针数范围</div>
+              <div class="eq-spec-value">3-18针</div>
+            </div>
+            <div class="eq-spec-item">
+              <div class="eq-spec-label" data-i18n="specDailyCapacity">日产能</div>
+              <div class="eq-spec-value">15000双</div>
+            </div>
+            <div class="eq-spec-item">
+              <div class="eq-spec-label" data-i18n="specPrecision">精密度</div>
+              <div class="eq-spec-value">±0.2mm</div>
+            </div>
+            <div class="eq-spec-item">
+              <div class="eq-spec-label" data-i18n="specTension">张力控制</div>
+              <div class="eq-spec-value">±5g</div>
+            </div>
+            <div class="eq-spec-item">
+              <div class="eq-spec-label" data-i18n="specQualityRate">合格率</div>
+              <div class="eq-spec-value">99.5%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="eq-detail-right">
+        <div class="eq-detail-image">🧶</div>
+        <h4 style="color: #E85D00; font-weight: 700; margin-bottom: 12px;" data-i18n="equipmentKnittingLines">我们拥有 4 条先进产线</h4>
+        <ul style="color: rgba(255,255,255,0.7); line-height: 2; font-size: 0.95rem;">
+          <li>✓ Santoni针织机 × 2条</li>
+          <li>✓ Jiu Tai针织机 × 2条</li>
+          <li>✓ 自动纱线输送系统</li>
+          <li>✓ 实时质量监测系统</li>
+          <li>✓ 智能图案编程系统</li>
+          <li>✓ 自动张力控制系统</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 功能特性 -->
+<section style="padding: 60px 0; background: rgba(232,93,0,0.03);">
+  <div class="container">
+    <h2 style="font-size: 2rem; font-weight: 800; color: #fff; margin-bottom: 12px; text-align: center;">
+      <span data-i18n="equipmentKnittingFeatures">6大核心功能</span>
+    </h2>
+    <p style="text-align: center; color: rgba(255,255,255,0.6); margin-bottom: 48px; font-size: 1.05rem;">
+      <span data-i18n="equipmentKnittingFeaturesSub">领先的自动化系统 + 精密的工艺控制 = 业界最高品质基布</span>
+    </p>
+    
+    <div class="eq-features-grid">
+      <div class="eq-feature-card">
+        <div class="eq-feature-icon">⚙️</div>
+        <h3 class="eq-feature-title" data-i18n="featureAutoTension">自动张力控制</h3>
+        <p class="eq-feature-desc" data-i18n="featureAutoTensionDesc">
+          实时监测纱线张力，精度±5g，自动调节编织速度和张力参数，确保基布厚度和密度均匀性。
+        </p>
+      </div>
+      
+      <div class="eq-feature-card">
+        <div class="eq-feature-icon">🎨</div>
+        <h3 class="eq-feature-title" data-i18n="featurePatternProg">图案编程系统</h3>
+        <p class="eq-feature-desc" data-i18n="featurePatternProgDesc">
+          支持复杂编织图案设计，可实现多色纱线混纺、花纹编织、反向编织等高级工艺。
+        </p>
+      </div>
+      
+      <div class="eq-feature-card">
+        <div class="eq-feature-icon">🔄</div>
+        <h3 class="eq-feature-title" data-i18n="featureMultiSpec">多规格通用</h3>
+        <p class="eq-feature-desc" data-i18n="featureMultiSpecDesc">
+          3-18针全覆盖，支持快速切换规格，换模时间＜5分钟，有效提升生产灵活性。
+        </p>
+      </div>
+      
+      <div class="eq-feature-card">
+        <div class="eq-feature-icon">🌡️</div>
+        <h3 class="eq-feature-title" data-i18n="featureMixFiber">多纤维混纺</h3>
+        <p class="eq-feature-desc" data-i18n="featureMixFiberDesc">
+          支持棉、涤纶、芳纶、UHMWPE等20+种纤维混纺比例精确控制，展现材料特性的最优结合。
+        </p>
+      </div>
+      
+      <div class="eq-feature-card">
+        <div class="eq-feature-icon">📊</div>
+        <h3 class="eq-feature-title" data-i18n="featureQualityMonitoring">实时质量监测</h3>
+        <p class="eq-feature-desc" data-i18n="featureQualityMonitoringDesc">
+          每双基布自动检测孔洞、缺陷、密度异常，99.5%合格率，不合格品实时预警和隔离。
+        </p>
+      </div>
+      
+      <div class="eq-feature-card">
+        <div class="eq-feature-icon">📈</div>
+        <h3 class="eq-feature-title" data-i18n="featureDataTracking">数据追溯系统</h3>
+        <p class="eq-feature-desc" data-i18n="featureDataTrackingDesc">
+          记录每条产线的编织参数、原料批次、质量数据，实现完整追溯与工艺优化。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 技术参数详情 -->
+<section style="padding: 80px 0;">
+  <div class="container">
+    <div class="eq-comparison-card">
+      <h2 style="font-size: 1.6rem; font-weight: 800; color: #fff; margin-bottom: 10px;">
+        <span data-i18n="equipmentKnittingVsIndustry">针织系统对标对比</span>
+      </h2>
+      <p style="color: rgba(255,255,255,0.6); font-size: 0.95rem; margin-bottom: 24px;">
+        <span data-i18n="equipmentKnittingVsIndustrySub">熊猫手护的针织生产线 vs 行业平均水平</span>
+      </p>
+      
+      <div class="eq-comparison-grid">
+        <div class="eq-comparison-col">
+          <div class="eq-comparison-col-title">🐼 熊猫手护优势</div>
+          <div class="eq-comparison-item">
+            <span class="eq-comparison-check">✓</span>
+            <span data-i18n="knittingAdv1">自动化率95%+，领先行业</span>
+          </div>
+          <div class="eq-comparison-item">
+            <span class="eq-comparison-check">✓</span>
+            <span data-i18n="knittingAdv2">张力精度±5g，业界最高</span>
+          </div>
+          <div class="eq-comparison-item">
+            <span class="eq-comparison-check">✓</span>
+            <span data-i18n="knittingAdv3">基布合格率99.5%</span>
+          </div>
+          <div class="eq-comparison-item">
+            <span class="eq-comparison-check">✓</span>
+            <span data-i18n="knittingAdv4">支持20+种纤维混纺</span>
+          </div>
+          <div class="eq-comparison-item">
+            <span class="eq-comparison-check">✓</span>
+            <span data-i18n="knittingAdv5">日产15000双，高效能</span>
+          </div>
+        </div>
+        
+        <div class="eq-comparison-col">
+          <div class="eq-comparison-col-title">📊 行业平均水平</div>
+          <div class="eq-comparison-item">
+            <span class="eq-comparison-check">·</span>
+            <span data-i18n="knittingInd1">自动化率75-85%</span>
+          </div>
+          <div class="eq-comparison-item">
+            <span class="eq-comparison-check">·</span>
+            <span data-i18n="knittingInd2">张力精度±15-20g</span>
+          </div>
+          <div class="eq-comparison-item">
+            <span class="eq-comparison-check">·</span>
+            <span data-i18n="knittingInd3">基布合格率97-98%</span>
+          </div>
+          <div class="eq-comparison-item">
+            <span class="eq-comparison-check">·</span>
+            <span data-i18n="knittingInd4">纤维混纺有限制</span>
+          </div>
+          <div class="eq-comparison-item">
+            <span class="eq-comparison-check">·</span>
+            <span data-i18n="knittingInd5">日产5000-10000双</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 应用案例 -->
+<section style="padding: 60px 0; background: rgba(232,93,0,0.03);">
+  <div class="container">
+    <h2 style="font-size: 2rem; font-weight: 800; color: #fff; margin-bottom: 12px; text-align: center;">
+      <span data-i18n="equipmentKnittingApplications">针织系统的应用</span>
+    </h2>
+    
+    <div class="eq-case-grid" style="margin-top: 48px;">
+      <div class="eq-case-card">
+        <div class="eq-case-icon">🏗️</div>
+        <h3 class="eq-case-title" data-i18n="caseConstruction">建筑工程手套</h3>
+        <p class="eq-case-desc" data-i18n="caseConstructionDesc">采用加密针织基布，提升耐磨性，支持快速换模满足多尺寸需求</p>
+      </div>
+      
+      <div class="eq-case-card">
+        <div class="eq-case-icon">🔬</div>
+        <h3 class="eq-case-title" data-i18n="caseChemical">化工防护手套</h3>
+        <p class="eq-case-desc" data-i18n="caseChemicalDesc">芳纶混纺基布，多层编织增强防化学品性能，精密控制纤维比例</p>
+      </div>
+      
+      <div class="eq-case-card">
+        <div class="eq-case-icon">❄️</div>
+        <h3 class="eq-case-title" data-i18n="caseWinter">防寒工作手套</h3>
+        <p class="eq-case-desc" data-i18n="caseWinterDesc">Thinsulate混纺针织，极低厚度实现最优保温，灵活手感</p>
+      </div>
+      
+      <div class="eq-case-card">
+        <div class="eq-case-icon">⚡</div>
+        <h3 class="eq-case-title" data-i18n="caseElectrical">电气防护手套</h3>
+        <p class="eq-case-desc" data-i18n="caseElectricalDesc">导电纤维混纺编织，均匀分布提升ESD防护，符合IEC标准</p>
+      </div>
+      
+      <div class="eq-case-card">
+        <div class="eq-case-icon">🏥</div>
+        <h3 class="eq-case-title" data-i18n="caseMedical">医疗卫生手套</h3>
+        <p class="eq-case-desc" data-i18n="caseMedicalDesc">超细纤维混纺，柔软舒适基布为涂层手套打造最佳触感</p>
+      </div>
+      
+      <div class="eq-case-card">
+        <div class="eq-case-icon">⚽</div>
+        <h3 class="eq-case-title" data-i18n="caseSports">运动保护手套</h3>
+        <p class="eq-case-desc" data-i18n="caseSportsDesc">高拉伸强度编织基布，支持复杂花纹设计，满足个性化需求</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 认证与标准 -->
+<section style="padding: 60px 0;">
+  <div class="container">
+    <h2 style="font-size: 1.6rem; font-weight: 800; color: #fff; margin-bottom: 30px; text-align: center;">
+      <span data-i18n="equipmentKnittingCertification">质量认证 & 行业标准</span>
+    </h2>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+      <div style="background: rgba(232,93,0,0.08); border: 1px solid rgba(232,93,0,0.2); border-radius: 12px; padding: 24px; text-align: center;">
+        <div style="font-size: 1.8rem; margin-bottom: 12px;">🏅</div>
+        <h4 style="color: #E85D00; font-weight: 700; margin-bottom: 6px;">ISO 13998</h4>
+        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.6);">针织手套基布标准</p>
+      </div>
+      
+      <div style="background: rgba(232,93,0,0.08); border: 1px solid rgba(232,93,0,0.2); border-radius: 12px; padding: 24px; text-align: center;">
+        <div style="font-size: 1.8rem; margin-bottom: 12px;">🏅</div>
+        <h4 style="color: #E85D00; font-weight: 700; margin-bottom: 6px;">EN 388</h4>
+        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.6);">耐磨耐割手套标准</p>
+      </div>
+      
+      <div style="background: rgba(232,93,0,0.08); border: 1px solid rgba(232,93,0,0.2); border-radius: 12px; padding: 24px; text-align: center;">
+        <div style="font-size: 1.8rem; margin-bottom: 12px;">🏅</div>
+        <h4 style="color: #E85D00; font-weight: 700; margin-bottom: 6px;">ASTM D6775</h4>
+        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.6);">纤维含量标准</p>
+      </div>
+      
+      <div style="background: rgba(232,93,0,0.08); border: 1px solid rgba(232,93,0,0.2); border-radius: 12px; padding: 24px; text-align: center;">
+        <div style="font-size: 1.8rem; margin-bottom: 12px;">🏅</div>
+        <h4 style="color: #E85D00; font-weight: 700; margin-bottom: 6px;">ISO 1419</h4>
+        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.6);">纺织纤维符号标准</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="padding: 60px 0;">
+  <div class="container">
+    <div style="background: linear-gradient(135deg, rgba(232,93,0,0.12), rgba(232,93,0,0.04)); border: 1.5px solid rgba(232,93,0,0.25); border-radius: 16px; padding: 48px; text-align: center;">
+      <h2 style="font-size: 1.6rem; font-weight: 800; color: #fff; margin-bottom: 12px;" data-i18n="equipmentCTATitle">了解更多针织生产线信息</h2>
+      <p style="color: rgba(255,255,255,0.7); margin-bottom: 28px; font-size: 1.02rem;" data-i18n="equipmentCTADesc">
+        欢迎参观我们的生产基地，亲眼见证高精度针织系统的运作
+      </p>
+      <div>
+        <a href="equipment-hub.html" style="display: inline-flex; align-items: center; gap: 10px; padding: 14px 36px; background: linear-gradient(135deg, #E85D00, #FF7A20); color: white; border-radius: 8px; font-weight: 700; text-decoration: none; transition: all 0.3s;" data-i18n="equipmentBack">
+          ← 返回设备中心
+        </a>
+        <a href="production-process.html" style="display: inline-flex; align-items: center; gap: 10px; padding: 14px 36px; border: 1.5px solid rgba(232,93,0,0.4); color: #FF7A20; border-radius: 8px; font-weight: 700; text-decoration: none; margin-left: 12px; transition: all 0.3s;" data-i18n="equipmentFlow">
+          📊 查看完整工艺流程
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+<script src="footer-shared.js?v=20260403-1006"></script>
+
+</body>
+</html>

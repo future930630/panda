@@ -1,0 +1,518 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+  <title>购物车 — 熊猫手护</title>
+  <meta name="description" content="熊猫手护购物车，查看已选产品，计算报价，提交询价单获取批量采购优惠。" />
+  <meta name="description" content="Panda Guard shopping cart: review selected products, calculate quotes and submit inquiry for bulk purchase discounts." lang="en" />
+  <meta property="og:title" content="购物车 — 熊猫手护" />
+  <meta property="og:title" content="Shopping Cart — Panda Guard" xml:lang="en" />
+  <meta property="og:description" content="熊猫手护购物车，查看已选产品，计算报价，提交询价单获取批量采购优惠。" />
+  <meta property="og:description" content="Panda Guard shopping cart: review selected products, calculate quotes and submit inquiry for bulk purchase discounts." xml:lang="en" />
+  <meta property="og:url" content="https://www.pandaguard.com/cart.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="熊猫手护" />
+  <meta property="og:site_name" content="Panda Guard" xml:lang="en" />
+  <meta property="og:image" content="https://www.pandaguard.com/image/og-default.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Shopping Cart — Panda Guard" />
+  <meta name="twitter:description" content="Panda Guard shopping cart: review selected products, calculate quotes and submit inquiry for bulk purchase discounts." />
+  <meta name="twitter:image" content="https://www.pandaguard.com/image/og-default.jpg" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css?v=20260423" />
+  <link rel="stylesheet" href="subpage.css" />
+  <script>if (!localStorage.getItem('pg_lang')) localStorage.setItem('pg_lang', 'zh');</script>
+  <script src="i18n.js?v=20260424-avatar"></script>
+  <style>
+  /* ================================================
+     CART PAGE — 采购清单
+     灵感：霍尼韦尔/3M B2B 采购门户
+  ================================================ */
+  * { box-sizing: border-box; }
+
+  /* ── Hero ── */
+  .cart-hero {
+    background: linear-gradient(135deg, #1A1108 0%, #2A1600 100%);
+    padding: 52px 0 40px; position: relative;
+  }
+  .cart-hero::before {
+    content:''; position:absolute; inset:0; pointer-events:none;
+    background: radial-gradient(ellipse 60% 100% at 0% 50%, rgba(232,93,0,0.12) 0%, transparent 65%);
+  }
+  .cart-hero-inner { max-width:none; margin:0; padding:0; position:relative; z-index:2; display:flex; align-items:flex-start; }
+  .cart-hero-left { flex:0 0 16%; }
+  .cart-hero-content { flex:0 0 68%; padding:0 24px; }
+  .cart-hero-right { flex:0 0 16%; }
+  .cart-breadcrumb { font-size:0.82rem; color:rgba(255,255,255,0.4); margin-bottom:12px; }
+  .cart-breadcrumb a { color:rgba(255,255,255,0.5); text-decoration:none; }
+  .cart-breadcrumb a:hover { color:#E85D00; }
+  .cart-breadcrumb span { margin:0 6px; }
+  .cart-hero h1 { font-size:2.2rem; font-weight:900; color:#fff; margin:0 0 6px; }
+  .cart-hero h1 em { color:#E85D00; font-style:normal; }
+  .cart-hero-meta { font-size:0.9rem; color:rgba(255,255,255,0.5); }
+  .cart-hero-meta strong { color:rgba(255,255,255,0.85); }
+
+  /* ── 步骤条 ── */
+  .cart-steps {
+    background:#fff; border-bottom:1px solid #eee;
+    padding:16px 0;
+  }
+  .cart-steps-inner {
+    max-width:1200px; margin:0 auto; padding:0 24px;
+    display:flex; align-items:center; gap:0;
+  }
+  .cart-step {
+    display:flex; align-items:center; gap:8px; flex:1;
+  }
+  .cart-step-num {
+    width:28px; height:28px; border-radius:50%; font-size:0.82rem; font-weight:800;
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
+    transition:0.3s;
+  }
+  .cart-step.active .cart-step-num { background:#E85D00; color:#fff; }
+  .cart-step.done .cart-step-num { background:#0a6e3f; color:#fff; }
+  .cart-step:not(.active):not(.done) .cart-step-num { background:#f0ece4; color:#aaa; }
+  .cart-step-label { font-size:0.83rem; font-weight:600; }
+  .cart-step.active .cart-step-label { color:#E85D00; }
+  .cart-step.done .cart-step-label { color:#0a6e3f; }
+  .cart-step:not(.active):not(.done) .cart-step-label { color:#bbb; }
+  .cart-step-line { flex:1; height:2px; background:#e8e4dc; margin:0 8px; max-width:80px; }
+
+  /* ── 主布局 ── */
+  .cart-body { background:#F5F4F0; }
+  .cart-layout {
+    max-width:1200px; margin:0 auto; padding:28px 24px 60px;
+    display:flex; gap:28px; align-items:flex-start;
+  }
+
+  /* ── 左侧产品列表 ── */
+  .cart-main { flex:1; min-width:0; }
+  .cart-section-title {
+    font-size:0.78rem; font-weight:700; color:#E85D00; letter-spacing:0.1em;
+    text-transform:uppercase; padding:0 0 10px; border-bottom:2px solid #E85D00;
+    display:flex; align-items:center; gap:8px; margin-bottom:16px;
+  }
+
+  /* ── 品牌分组 ── */
+  .cart-brand-group { margin-bottom:20px; }
+  .cart-brand-header {
+    background:#fff; border-radius:12px 12px 0 0;
+    padding:14px 20px; display:flex; align-items:center; gap:12px;
+    border:1px solid rgba(0,0,0,0.06); border-bottom:none;
+  }
+  .cart-brand-tag {
+    font-size:0.78rem; font-weight:700; padding:3px 10px; border-radius:20px;
+    letter-spacing:0.06em;
+  }
+  .cart-brand-name { font-size:1rem; font-weight:700; color:#1A1108; }
+  .cart-brand-count { font-size:0.82rem; color:#999; margin-left:auto; }
+
+  /* ── 产品行 ── */
+  .cart-item {
+    background:#fff; border:1px solid rgba(0,0,0,0.06); border-top:none;
+    padding:16px 20px; display:flex; align-items:center; gap:16px;
+    transition:background 0.2s;
+    position:relative;
+  }
+  .cart-item:last-child { border-radius:0 0 12px 12px; }
+  .cart-item:hover { background:#faf9f6; }
+  .cart-item-select {
+    width:18px; height:18px; accent-color:#E85D00; flex-shrink:0; cursor:pointer;
+  }
+  .cart-item-emoji { font-size:2rem; flex-shrink:0; width:52px; text-align:center; }
+  .cart-item-info { flex:1; min-width:0; }
+  .cart-item-brand {
+    font-size:0.72rem; font-weight:700; color:#E85D00; letter-spacing:0.08em;
+    text-transform:uppercase; background:#fff3ed; padding:2px 7px;
+    border-radius:4px; display:inline-block; margin-bottom:5px;
+  }
+  .cart-item-name { font-size:0.95rem; font-weight:700; color:#1A1108; margin-bottom:4px; }
+  .cart-item-meta { font-size:0.78rem; color:#999; display:flex; gap:12px; flex-wrap:wrap; }
+  .cart-item-meta span { display:flex; align-items:center; gap:4px; }
+  .cart-item-qty {
+    display:flex; align-items:center; gap:0; flex-shrink:0;
+  }
+  .qty-btn {
+    width:30px; height:30px; border:1.5px solid #ddd; background:#fff;
+    font-size:1rem; cursor:pointer; transition:0.2s;
+    display:flex; align-items:center; justify-content:center; color:#555;
+  }
+  .qty-btn:first-child { border-radius:8px 0 0 8px; }
+  .qty-btn:last-child { border-radius:0 8px 8px 0; }
+  .qty-btn:hover { border-color:#E85D00; color:#E85D00; background:#fff8f5; }
+  .qty-input {
+    width:44px; height:30px; border:1.5px solid #ddd; border-left:none; border-right:none;
+    text-align:center; font-size:0.9rem; font-weight:700; color:#1A1108;
+    outline:none; background:#faf9f7;
+  }
+  .cart-item-unit { font-size:0.78rem; color:#aaa; margin-left:6px; }
+  .cart-item-actions { display:flex; flex-direction:column; gap:6px; align-items:flex-end; flex-shrink:0; }
+  .cart-del-btn {
+    width:28px; height:28px; border:none; background:none; cursor:pointer;
+    color:#ccc; transition:color 0.2s; display:flex; align-items:center; justify-content:center;
+  }
+  .cart-del-btn:hover { color:#e00; }
+  .cart-item-note {
+    font-size:0.75rem; color:#aaa; cursor:pointer; white-space:nowrap;
+    background:none; border:none; text-decoration:underline;
+  }
+  .cart-item-note:hover { color:#E85D00; }
+
+  /* 备注展开 */
+  .cart-note-input {
+    display:none; width:100%; margin-top:8px;
+    padding:6px 10px; border:1.5px solid #ddd; border-radius:8px;
+    font-size:0.82rem; color:#333; outline:none; background:#faf9f7;
+    resize:none;
+  }
+  .cart-note-input.show { display:block; }
+  .cart-note-input:focus { border-color:#E85D00; }
+
+  /* 空购物车 */
+  .cart-empty {
+    text-align:center; padding:80px 20px;
+    background:#fff; border-radius:16px; border:1px solid rgba(0,0,0,0.06);
+  }
+  .cart-empty-icon { font-size:4rem; margin-bottom:16px; }
+  .cart-empty h3 { font-size:1.3rem; font-weight:700; color:#1A1108; margin-bottom:8px; }
+  .cart-empty p { color:#999; font-size:0.9rem; margin-bottom:24px; }
+  .cart-empty-cta {
+    display:inline-flex; align-items:center; gap:8px;
+    padding:12px 28px; background:#E85D00; color:#fff;
+    border-radius:10px; font-weight:700; text-decoration:none; font-size:0.95rem;
+    transition:0.2s;
+  }
+  .cart-empty-cta:hover { background:#c94d00; }
+
+  /* ── 批量操作栏 ── */
+  .cart-bulk-bar {
+    background:#fff; border-radius:12px; padding:12px 20px;
+    display:flex; align-items:center; gap:12px; margin-bottom:16px;
+    border:1px solid rgba(0,0,0,0.06); flex-wrap:wrap;
+  }
+  .cart-bulk-check { width:17px; height:17px; accent-color:#E85D00; cursor:pointer; }
+  .cart-bulk-label { font-size:0.88rem; color:#555; font-weight:600; flex:1; }
+  .cart-bulk-btn {
+    padding:6px 14px; border-radius:7px; font-size:0.82rem; font-weight:600;
+    border:1.5px solid #ddd; background:#fff; color:#555; cursor:pointer; transition:0.2s;
+  }
+  .cart-bulk-btn:hover { border-color:#E85D00; color:#E85D00; background:#fff8f5; }
+  .cart-bulk-btn.danger:hover { border-color:#e00; color:#e00; background:#fff8f8; }
+
+  /* ── 推荐产品 ── */
+  .cart-recommend { margin-top:24px; }
+  .cart-rec-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px; margin-top:12px; }
+  .cart-rec-card {
+    background:#fff; border-radius:12px; padding:16px;
+    border:1px solid rgba(0,0,0,0.06); display:flex; flex-direction:column; gap:8px;
+    transition:transform 0.25s, box-shadow 0.25s;
+  }
+  .cart-rec-card:hover { transform:translateY(-3px); box-shadow:0 8px 24px rgba(0,0,0,0.1); }
+  .cart-rec-emoji { font-size:1.8rem; }
+  .cart-rec-brand { font-size:0.7rem; font-weight:700; color:#E85D00; letter-spacing:0.08em; }
+  .cart-rec-name { font-size:0.88rem; font-weight:700; color:#1A1108; line-height:1.3; }
+  .cart-rec-tag { font-size:0.72rem; color:#999; }
+  .cart-rec-add {
+    margin-top:auto; padding:6px 10px; border:1.5px solid #E85D00; color:#E85D00;
+    border-radius:7px; font-size:0.8rem; font-weight:600;
+    background:transparent; cursor:pointer; transition:0.2s; text-align:center;
+  }
+  .cart-rec-add:hover { background:#E85D00; color:#fff; }
+
+  /* ── 右侧汇总栏 ── */
+  .cart-sidebar { width:300px; flex-shrink:0; position:sticky; top:140px; }
+  .cart-summary-card {
+    background:#fff; border-radius:16px; overflow:hidden;
+    box-shadow:0 2px 16px rgba(0,0,0,0.08); border:1px solid rgba(0,0,0,0.05);
+    margin-bottom:16px;
+  }
+  .cart-sum-header {
+    background:linear-gradient(135deg,#E85D00,#c94d00); padding:16px 20px;
+    color:#fff;
+  }
+  .cart-sum-header h3 { font-size:0.95rem; font-weight:800; margin-bottom:2px; }
+  .cart-sum-header p { font-size:0.78rem; opacity:0.8; }
+  .cart-sum-body { padding:20px; }
+  .cart-sum-row {
+    display:flex; justify-content:space-between; align-items:center;
+    padding:7px 0; border-bottom:1px solid #f0ece4; font-size:0.88rem;
+  }
+  .cart-sum-row:last-of-type { border-bottom:none; }
+  .cart-sum-row .label { color:#888; }
+  .cart-sum-row .value { font-weight:700; color:#1A1108; }
+  .cart-sum-total {
+    display:flex; justify-content:space-between; align-items:center;
+    padding:14px 0 0; border-top:2px solid #1A1108; margin-top:4px;
+  }
+  .cart-sum-total .label { font-size:1rem; font-weight:800; color:#1A1108; }
+  .cart-sum-total .value { font-size:1.3rem; font-weight:900; color:#E85D00; }
+  .cart-sum-note { font-size:0.75rem; color:#aaa; margin-top:6px; }
+
+  /* 优惠码 */
+  .cart-coupon {
+    display:flex; gap:8px; margin:14px 0;
+  }
+  .cart-coupon-input {
+    flex:1; padding:9px 12px; border:1.5px solid #ddd; border-radius:8px;
+    font-size:0.85rem; outline:none; transition:border-color 0.2s;
+  }
+  .cart-coupon-input:focus { border-color:#E85D00; }
+  .cart-coupon-btn {
+    padding:9px 14px; background:#1A1108; color:#fff; border:none;
+    border-radius:8px; font-size:0.82rem; font-weight:700; cursor:pointer; transition:0.2s;
+    white-space:nowrap;
+  }
+  .cart-coupon-btn:hover { background:#E85D00; }
+
+  /* 提交按钮 */
+  .cart-submit-btn {
+    width:100%; padding:14px; background:linear-gradient(135deg,#E85D00,#c94d00);
+    color:#fff; border:none; border-radius:10px; font-size:1rem; font-weight:800;
+    cursor:pointer; transition:all 0.25s; letter-spacing:0.02em;
+    box-shadow:0 4px 16px rgba(232,93,0,0.3); margin-bottom:10px;
+    display:flex; align-items:center; justify-content:center; gap:8px;
+  }
+  .cart-submit-btn:hover { transform:translateY(-1px); box-shadow:0 8px 24px rgba(232,93,0,0.45); }
+  .cart-inquiry-btn {
+    width:100%; padding:11px; border:1.5px solid #1A1108; color:#1A1108;
+    border-radius:10px; font-size:0.9rem; font-weight:700;
+    background:transparent; cursor:pointer; transition:0.2s;
+    display:flex; align-items:center; justify-content:center; gap:6px;
+  }
+  .cart-inquiry-btn:hover { background:#1A1108; color:#fff; }
+
+  /* 额外服务 */
+  .cart-services { padding:16px 20px; border-top:1px solid #f0ece4; }
+  .cart-service { display:flex; align-items:center; gap:10px; padding:7px 0; }
+  .cart-service-icon { font-size:1rem; width:24px; text-align:center; flex-shrink:0; }
+  .cart-service-text h5 { font-size:0.82rem; font-weight:700; color:#1A1108; margin-bottom:1px; }
+  .cart-service-text p { font-size:0.75rem; color:#aaa; }
+
+  /* 安全标志 */
+  .cart-secure {
+    display:flex; align-items:center; gap:6px; justify-content:center;
+    font-size:0.75rem; color:#aaa; padding:12px 20px 0;
+  }
+  .cart-secure svg { color:#0a6e3f; }
+
+  /* ── 辅助卡片 ── */
+  .cart-help-card {
+    background:#fff; border-radius:12px; padding:16px 18px;
+    border:1px solid rgba(0,0,0,0.06); margin-bottom:12px;
+  }
+  .cart-help-card h4 { font-size:0.85rem; font-weight:700; color:#1A1108; margin-bottom:8px; display:flex; align-items:center; gap:6px; }
+  .cart-help-card p { font-size:0.8rem; color:#888; line-height:1.5; }
+  .cart-help-card a { color:#E85D00; text-decoration:none; font-weight:600; }
+
+  /* ── 响应式 ── */
+  @media(max-width:900px){
+    .cart-layout { flex-direction:column; }
+    .cart-sidebar { width:100%; position:static; }
+    .cart-rec-grid { grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); }
+  }
+  @media(max-width:540px){
+    .cart-hero h1 { font-size:1.7rem; }
+    .cart-item { flex-wrap:wrap; }
+    .cart-item-emoji { display:none; }
+    .cart-steps-inner { gap:4px; }
+    .cart-step-line { display:none; }
+  }
+  </style>
+  <link rel="stylesheet" href="responsive.css?v=1">
+</head>
+<body class="subpage-body">
+
+<div id="site-nav"></div>
+
+<!-- ═══ HERO ═══ -->
+<section class="cart-hero">
+  <div class="cart-hero-inner">
+    <div class="cart-hero-left"></div>
+    <div class="cart-hero-content">
+      <div class="site-breadcrumb">
+        <a href="index.html" data-i18n="nav_home">首页</a><span>/</span>
+        <a href="products-all.html" data-i18n="nav_all_products">所有产品</a><span>/</span>
+        <span data-i18n="cart_breadcrumb_cart">采购清单</span>
+      </div>
+      <h1 data-i18n="cart_my_list">我的</h1>
+      <p class="cart-hero-meta" data-i18n="cart_hero_meta">共 <strong id="totalItems">5</strong> 款产品 · <strong id="totalQty">23</strong> 双</p>
+    </div>
+    <div class="cart-hero-right"></div>
+  </div>
+</section>
+
+<!-- ── 步骤条 ── -->
+<div class="cart-steps">
+  <div class="cart-steps-inner">
+    <div class="cart-step active">
+      <div class="cart-step-num">1</div>
+      <span class="cart-step-label" data-i18n="cart_step1">确认清单</span>
+    </div>
+    <div class="cart-step-line"></div>
+    <div class="cart-step">
+      <div class="cart-step-num">2</div>
+      <span class="cart-step-label" data-i18n="cart_step2">填写信息</span>
+    </div>
+    <div class="cart-step-line"></div>
+    <div class="cart-step">
+      <div class="cart-step-num">3</div>
+      <span class="cart-step-label" data-i18n="cart_step3">获取报价</span>
+    </div>
+    <div class="cart-step-line"></div>
+    <div class="cart-step">
+      <div class="cart-step-num">4</div>
+      <span class="cart-step-label" data-i18n="cart_step4">确认订单</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ BODY ═══ -->
+<div class="cart-body">
+  <div class="cart-layout">
+
+    <!-- ── 左侧产品列表 ── -->
+    <div class="cart-main">
+
+      <!-- 批量操作 -->
+      <div class="cart-bulk-bar" id="cartBulkBar" style="display:none;">
+        <input type="checkbox" class="cart-bulk-check" id="selectAll" onchange="toggleAll(this)">
+        <span class="cart-bulk-label"><span data-i18n="cart_select_all">全选</span> <span id="selectedCount" style="color:#888;font-weight:400">(<span data-i18n="cart_selected_n">已选 0 项</span>)</span></span>
+        <button class="cart-bulk-btn" onclick="batchDelete()" data-i18n="cart_delete_selected">删除选中</button>
+        <button class="cart-bulk-btn" onclick="addToFav()" data-i18n="cart_move_fav">移至收藏</button>
+        <button class="cart-bulk-btn" onclick="location.href='products-all.html'" data-i18n="cart_continue_shopping">继续选购</button>
+      </div>
+
+      <!-- 动态产品列表区域 -->
+      <div id="cartListArea" style="display:none;">
+        <div id="cartItemsContainer"></div>
+
+        <!-- 推荐产品 -->
+        <div class="cart-recommend">
+          <div class="cart-section-title" data-i18n="cart_rec_title">🎯 您可能还需要</div>
+          <div class="cart-rec-grid">
+            <div class="cart-rec-card">
+              <div class="cart-rec-emoji">🧤</div>
+              <div class="cart-rec-brand">PandaPIERCE™</div>
+              <div class="cart-rec-name" data-i18n="cart_rec_pir_name">PIR-W UHMWPE 耐磨手套</div>
+              <div class="cart-rec-tag" data-i18n="cart_rec_pir_tag">EN 388 · 耐磨4级</div>
+              <button class="cart-rec-add" onclick="addRec(this, 'PIR-W', 'PandaPIERCE™')" data-i18n="cart_rec_add">+ 加入清单</button>
+            </div>
+            <div class="cart-rec-card">
+              <div class="cart-rec-emoji">🧤</div>
+              <div class="cart-rec-brand">PandaHEAT™</div>
+              <div class="cart-rec-name" data-i18n="cart_rec_hea_name">HEA-W 阻燃焊接手套</div>
+              <div class="cart-rec-tag" data-i18n="cart_rec_hea_tag">EN 407 · 阻燃</div>
+              <button class="cart-rec-add" onclick="addRec(this, 'HEA-W', 'PandaHEAT™')" data-i18n="cart_rec_add">+ 加入清单</button>
+            </div>
+            <div class="cart-rec-card">
+              <div class="cart-rec-emoji">🧤</div>
+              <div class="cart-rec-brand">PandaECO™</div>
+              <div class="cart-rec-name" data-i18n="cart_rec_eco_name">ECO-R rPET再生手套</div>
+              <div class="cart-rec-tag" data-i18n="cart_rec_eco_tag">rPET · ESG认证</div>
+              <button class="cart-rec-add" onclick="addRec(this, 'ECO-R', 'PandaECO™')" data-i18n="cart_rec_add">+ 加入清单</button>
+            </div>
+            <div class="cart-rec-card">
+              <div class="cart-rec-emoji">🧤</div>
+              <div class="cart-rec-brand">PandaCHEM™</div>
+              <div class="cart-rec-name" data-i18n="cart_rec_chem_name">CHEM-N 丁腈化学防护手套</div>
+              <div class="cart-rec-tag" data-i18n="cart_rec_chem_tag">ISO 374 · 防化</div>
+              <button class="cart-rec-add" onclick="addRec(this, 'CHEM-N', 'PandaCHEM™')" data-i18n="cart_rec_add">+ 加入清单</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 空购物车 -->
+      <div class="cart-empty" id="cartEmpty">
+        <div class="cart-empty-icon">🧤</div>
+        <h3 data-i18n="cart_empty_title">采购清单是空的</h3>
+        <p data-i18n="cart_empty_desc">还没有添加任何产品，去选品页浏览我们的安全防护手套系列。</p>
+        <a href="products-all.html" class="cart-empty-cta">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <span data-i18n="cart_browse_products">浏览所有产品</span>
+        </a>
+      </div>
+
+    </div><!-- /cart-main -->
+
+    <!-- ── 右侧汇总 ── -->
+    <div class="cart-sidebar">
+
+      <div class="cart-summary-card">
+        <div class="cart-sum-header">
+          <h3 data-i18n="cart_summary_title">采购清单汇总</h3>
+          <p data-i18n="cart_summary_count">含 0 款产品 · 0 双</p>
+        </div>
+        <div class="cart-sum-body">
+          <div class="cart-sum-row"><span class="label" data-i18n="cart_label_qty">产品数量</span><span class="value" id="sumItems">0 款</span></div>
+          <div class="cart-sum-row"><span class="label" data-i18n="cart_label_pairs">总双数</span><span class="value" id="sumQty">0 双</span></div>
+          <div class="cart-sum-row"><span class="label" data-i18n="cart_label_cert">认证证书</span><span class="value" data-i18n="cart_cert_free">免费提供</span></div>
+          <div class="cart-sum-row"><span class="label" data-i18n="cart_label_sample">样品申请</span><span class="value" style="color:#0a6e3f" data-i18n="cart_sample_free">可免费申请</span></div>
+
+          <div class="cart-coupon">
+            <input type="text" class="cart-coupon-input" placeholder="优惠码 / 合同编号" id="couponInput" data-i18n-placeholder="cart_coupon_placeholder">
+            <button class="cart-coupon-btn" onclick="applyCoupon()" data-i18n="cart_apply_coupon">应用</button>
+          </div>
+
+          <div class="cart-sum-total">
+            <span class="label" data-i18n="cart_label_scale">预计采购规模</span>
+            <span class="value" data-i18n="cart_inquiry_pending">询价中</span>
+          </div>
+          <p class="cart-sum-note" data-i18n="cart_price_note">* 最终价格由专属客户经理报价，通常24小时内回复</p>
+        </div>
+
+        <div style="padding:0 20px 16px;">
+          <button class="cart-submit-btn" onclick="submitInquiry()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+            <span data-i18n="cart_submit_inquiry">提交采购询价</span>
+          </button>
+          <button class="cart-inquiry-btn" onclick="downloadList()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span data-i18n="cart_download_pdf">下载清单 PDF</span>
+          </button>
+        </div>
+
+        <div class="cart-services">
+          <div class="cart-service">
+            <span class="cart-service-icon">🚚</span>
+            <div class="cart-service-text"><h5 data-i18n="cart_service_shipping_title">全球直发</h5><p data-i18n="cart_service_shipping_desc">FOB/CIF/DDP，50+ 国家</p></div>
+          </div>
+          <div class="cart-service">
+            <span class="cart-service-icon">📦</span>
+            <div class="cart-service-text"><h5 data-i18n="cart_service_pack_title">定制包装</h5><p data-i18n="cart_service_pack_desc">支持客户品牌OEM贴标</p></div>
+          </div>
+          <div class="cart-service">
+            <span class="cart-service-icon">🔬</span>
+            <div class="cart-service-text"><h5 data-i18n="cart_service_sample_title">免费样品</h5><p data-i18n="cart_service_sample_desc">认证样品申请，5-7个工作日</p></div>
+          </div>
+        </div>
+
+        <div class="cart-secure">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <span data-i18n="cart_secure_text">SSL 加密传输 · 数据安全保障</span>
+        </div>
+      </div>
+
+      <!-- 帮助卡片 -->
+      <div class="cart-help-card">
+        <h4 data-i18n="cart_help1_title">💡 需要帮助？</h4>
+        <p data-i18n="cart_help1_desc">不确定选什么产品？试试我们的 <a href="product-selector.html">智能选品向导</a>，输入行业和人数，自动生成推荐方案。</p>
+      </div>
+
+      <div class="cart-help-card">
+        <h4 data-i18n="cart_help2_title">📞 联系客户经理</h4>
+        <p data-i18n="cart_help2_desc">工作日 9:00-18:00 · <a href="auth.html">在线咨询</a> · 微信扫码</p>
+      </div>
+    </div>
+
+  </div><!-- /cart-layout -->
+</div><!-- /cart-body -->
+
+<div id="site-footer"></div>
+
+<script src="nav-shared.js?v=20260404-1958"></script>
+<script src="footer-shared.js?v=20260403-1006"></script>
+<script src="cart-inline.js?v=20260418"></script>
+</body>
+</html>

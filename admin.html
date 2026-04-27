@@ -1,0 +1,1054 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <title>管理后台 — 熊猫手护</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="admin.css?v=20260421-apple" />
+  <link rel="stylesheet" href="product-publish.css?v=20260417-inline" />
+  <link rel="stylesheet" href="responsive.css?v=20260423" />
+  <script src="i18n.js?v=20260424-avatar"></script>
+<script>
+// 保护脚本：确保 sdashShow 在侧边栏 HTML 解析前就可用
+window.sdashShow = window.sdashShow || function(pageId) {
+  document.querySelectorAll('.asb-gi').forEach(function(el) { el.classList.remove('active'); });
+  var target = document.querySelector('[data-gi="' + pageId + '"]');
+  if (target) target.classList.add('active');
+  document.querySelectorAll('.apage').forEach(function(el) { el.classList.remove('active'); });
+  var page = document.getElementById('apage-' + pageId);
+  if (page) page.classList.add('active');
+  if (pageId === 'brandseries' && window.loadBrandseriesPage) window.loadBrandseriesPage();
+  var pageNames = {'overview':'数据概览','product-publish':'发布产品','product-list':'产品列表','product-draft':'草稿箱','product-trash':'回收站','customers':'客户档案','orders':'订单管理','inquiries':'询盘管理','cust-add':'新增客户','cases':'客户案例','brands':'品牌授权','brandseries':'品牌系列管理','reports':'报表中心','analytics':'数据分析'};
+  var el = document.getElementById('atbCurrentPage');
+  if (el) el.textContent = pageNames[pageId] || pageId;
+};
+window.exportCSV = window.exportCSV || function() {};
+window.adminLogout = window.adminLogout || function() {
+  localStorage.removeItem('panda_token');
+  localStorage.removeItem('panda_user');
+  localStorage.removeItem('panda_admin');
+  location.reload();
+};
+window.toast = window.toast || function(msg) { alert(msg); };
+</script>
+</head>
+<body>
+
+<!-- ===== ADMIN HEADER（独立顶栏，不走共享导航） ===== -->
+<div class="admin-topbar" id="adminTopbar" style="display:none;">
+  <a href="index.html" class="admin-topbar-brand" title="回到首页">
+    <img src="image/logo3.png" alt="熊猫手护" style="height:34px;width:auto;vertical-align:middle;" />
+  </a>
+  <a href="index.html" class="admin-topbar-home">← 回到首页</a>
+  <div class="admin-topbar-user" id="adminTopbarUser"></div>
+  <button class="admin-topbar-logout" id="adminLogoutBtn">退出登录</button>
+</div>
+
+<!-- ===== ADMIN LOGIN — Apple Style ===== -->
+<div class="alogin-wrap" id="aloginWrap">
+  <!-- 背景光效 -->
+  <div class="alogin-glow"></div>
+  
+  <!-- 登录卡片 -->
+  <div class="alogin-card-apple">
+    <!-- Logo -->
+    <div class="alogin-logo-apple">
+      <img src="image/logo3.png" alt="熊猫手护" />
+    </div>
+    <h1 class="alogin-heading">管理员登录</h1>
+    <p class="alogin-subheading">PandaShield Admin Portal</p>
+    
+    <!-- 表单 -->
+    <div class="alogin-form-apple">
+      <div class="alog-field-apple">
+        <input type="text" id="adminUser" placeholder="管理员账号" value="admin@pandashield.com" autocomplete="username" />
+      </div>
+      <div class="alog-field-apple">
+        <input type="password" id="adminPass" placeholder="密码" autocomplete="current-password" />
+      </div>
+      <button class="alog-btn-apple" onclick="adminLogin()">
+        <span>登录</span>
+      </button>
+    </div>
+    
+    <p class="alogin-hint-apple">默认账号：<strong>admin@pandashield.com</strong><br/>默认密码：<strong>admin123!</strong>（注意有感叹号）</p>
+  </div>
+</div>
+
+<!-- ===== ADMIN DASHBOARD ===== -->
+<div class="adash-wrap" id="adashWrap" style="display:none">
+
+  <!-- ===================== LEFT SIDEBAR ===================== -->
+  <aside class="adash-sidebar" id="adashSidebar">
+
+    <!-- Brand -->
+    <a href="index.html" class="asb-brand">
+      <img src="image/logo1.png" alt="熊猫手护" style="height:22px;width:auto;flex-shrink:0;" />
+      <div>
+        <div class="asb-name">熊猫手护</div>
+        <div class="asb-sub">PandaShield Admin</div>
+      </div>
+    </a>
+
+    <!-- Nav Groups -->
+    <nav class="asb-nav" id="asbNav">
+
+      <!-- Group: 首页/概览 -->
+      <div class="asb-group">
+        <div class="asb-gi active" data-gi="overview" onclick="sdashShow('overview')">
+          <svg viewBox="0 0 20 20" fill="currentColor" width="16"><path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zm0 6a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zm8 0a1 1 0 011-1h4a1 1 0 011 1v2a1 1 0 01-1 1h-4a1 1 0 01-1-1v-2zm0 6a1 1 0 011-1h4a1 1 0 011 1v2a1 1 0 01-1 1h-4a1 1 0 01-1-1v-2z"/></svg>
+          <span>数据概览</span>
+        </div>
+      </div>
+
+      <!-- Group: 商品管理 -->
+      <div class="asb-section-label">商品管理</div>
+      <div class="asb-group">
+        <div class="asb-gi" data-gi="product-publish" onclick="sdashShow('product-publish')">
+          <svg viewBox="0 0 20 20" fill="currentColor" width="16"><path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd"/></svg>
+          <span>发布产品</span>
+        </div>
+        <div class="asb-gi" data-gi="product-list" onclick="sdashShow('product-list')">
+          <svg viewBox="0 0 20 20" fill="currentColor" width="16"><path d="M4 4a2 2 0 012-2h8a2 2 0 012 2v2h1a1 1 0 110 2H3a1 1 0 110-2h1V4zm2 0v2h8V4H6zm0 6v8a2 2 0 002 2h4a2 2 0 002-2v-8H6z"/></svg>
+          <span>产品列表</span>
+          <span class="asb-badge" id="asb-prod-count">0</span>
+        </div>
+        <div class="asb-gi" data-gi="product-draft" onclick="sdashShow('product-draft')">
+          <svg viewBox="0 0 20 20" fill="currentColor" width="16"><path fill-rule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 0v12h8V4H6zm2 2a1 1 0 00-1 1v4a1 1 0 102 0V7a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>
+          <span>草稿箱</span>
+          <span class="asb-badge" id="asb-draft-count">0</span>
+        </div>
+        <div class="asb-gi" data-gi="product-trash" onclick="sdashShow('product-trash')">
+          <svg viewBox="0 0 20 20" fill="currentColor" width="16"><path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9z" clip-rule="evenodd"/></svg>
+          <span>回收站</span>
+        </div>
+      </div>
+
+      <!-- Group: 客户管理 -->
+      <div class="asb-section-label">客户管理</div>
+      <div class="asb-group">
+        <div class="asb-gi" data-gi="customers" onclick="sdashShow('customers')">
+          <svg viewBox="0 0 20 20" fill="currentColor" width="16"><path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zm5 2a2 2 0 11-4 0 2 2 0 014 0zm-4 7a4 4 0 00-8 0v1h8v-1zM6 8a2 2 0 11-4 0 2 2 0 014 0zm10 7v-1a4 4 0 00-3-3.874M6 14a4 4 0 00-3 3.874V18h3v-1z"/></svg>
+          <span>客户档案</span>
+          <span class="asb-badge" id="asb-cust-count">0</span>
+        </div>
+        <div class="asb-gi" data-gi="orders" onclick="sdashShow('orders')">
+          <svg viewBox="0 0 20 20" fill="currentColor" width="16"><path d="M3 3h14a1 1 0 011 1v12a1 1 0 01-1 1H3a1 1 0 01-1-1V4a1 1 0 011-1zm1 2v10h12V5H4zm2 2h8v2H6V7zm0 4h5v2H6v-2z"/></svg>
+          <span>订单管理</span>
+          <span class="asb-badge" id="asb-ord-count">0</span>
+        </div>
+        <div class="asb-gi" data-gi="inquiries" onclick="sdashShow('inquiries')">
+          <svg viewBox="0 0 20 20" fill="currentColor" width="16"><path fill-rule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clip-rule="evenodd"/></svg>
+          <span>询盘管理</span>
+          <span class="asb-badge" id="asb-inq-count">0</span>
+        </div>
+        <div class="asb-gi" data-gi="cust-add" onclick="sdashShow('cust-add')">
+          <svg viewBox="0 0 20 20" fill="currentColor" width="16"><path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd"/></svg>
+          <span>新增客户</span>
+        </div>
+      </div>
+
+      <!-- Group: 内容管理 -->
+      <div class="asb-section-label">内容管理</div>
+      <div class="asb-group">
+        <div class="asb-gi" data-gi="cases" onclick="sdashShow('cases')">
+          <svg viewBox="0 0 20 20" fill="currentColor" width="16"><path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zm0 4a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zm0 4a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1z"/></svg>
+          <span>客户案例</span>
+        </div>
+        <!-- 品牌系列管理 -->
+        <div class="asb-gi" data-gi="brandseries" onclick="sdashShow('brandseries')">
+          <svg viewBox="0 0 20 20" fill="currentColor" width="16"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <span>品牌系列管理</span>
+        </div>
+        <div class="asb-dropdown-menu" id="brandDropdownMenu">
+          <div class="asb-dd-item" onclick="editBrand('shd')">🛡️ PandaSHIELD 防切割系列</div>
+          <div class="asb-dd-item" onclick="editBrand('heat')">🔥 PandaHEAT 耐高温系列</div>
+          <div class="asb-dd-item" onclick="editBrand('chem')">⚗️ PandaCHEM 化学防护系列</div>
+          <div class="asb-dd-item" onclick="editBrand('bio')">🦠 PandaBIO 生物防护系列</div>
+          <div class="asb-dd-item" onclick="editBrand('volt')">⚡ PandaVOLT 绝缘防护系列</div>
+          <div class="asb-dd-item" onclick="editBrand('frost')">❄️ PandaFROST 防寒防护系列</div>
+          <div class="asb-dd-item" onclick="editBrand('eco')">🌿 PandaECO 环保经济系列</div>
+          <div class="asb-dd-item" onclick="editBrand('grip')">🤝 PandaGRIP 防滑防护系列</div>
+          <div class="asb-dd-item" onclick="editBrand('impact')">💥 PandaIMPACT 冲击防护系列</div>
+          <div class="asb-dd-item" onclick="editBrand('pierce')">🔪 PandaPIERCE 防刺穿系列</div>
+        </div>
+      </div>
+        <div class="asb-gi" data-gi="reports" onclick="sdashShow('reports')">
+          <svg viewBox="0 0 20 20" fill="currentColor" width="16"><path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zm6-4a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zm6-3a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"/></svg>
+          <span>报表中心</span>
+        </div>
+        <div class="asb-gi" data-gi="analytics" onclick="sdashShow('analytics')">
+          <svg viewBox="0 0 20 20" fill="currentColor" width="16"><path fill-rule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V4a2 2 0 00-2-2H6zm1 2a1 1 0 000 2h6a1 1 0 100-2H7zm6 7a1 1 0 011 1v3a1 1 0 11-2 0v-3a1 1 0 011-1zm-3 3a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zm-3-1a1 1 0 011 1v2a1 1 0 11-2 0v-2a1 1 0 011-1z" clip-rule="evenodd"/></svg>
+          <span>数据分析</span>
+        </div>
+      </div>
+
+      <!-- Group: 系统 -->
+      <div class="asb-section-label">系统</div>
+      <div class="asb-group">
+        <div class="asb-gi asb-gi-export" onclick="exportCSV()">
+          <svg viewBox="0 0 20 20" fill="currentColor" width="16"><path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+          <span>导出数据</span>
+        </div>
+        <div class="asb-gi asb-gi-logout" onclick="adminLogout()">
+          <svg viewBox="0 0 20 20" fill="currentColor" width="16"><path fill-rule="evenodd" d="M3 3a1 1 0 011 1v12a1 1 0 11-2 0V4a1 1 0 011-1zm7.707 3.293a1 1 0 010 1.414L8.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M13 10a1 1 0 01-1-1V6a1 1 0 112 0v3a1 1 0 01-1 1z" clip-rule="evenodd"/></svg>
+          <span>退出登录</span>
+        </div>
+      </div>
+
+    </nav>
+  </aside>
+
+  <!-- ===================== MAIN CONTENT ===================== -->
+  <main class="adash-main">
+
+    <!-- Topbar -->
+    <header class="adash-topbar">
+      <div class="site-breadcrumb" id="atbBreadcrumb">
+        <span>首页</span>
+        <span class="atb-bsep">/</span>
+        <span id="atbCurrentPage">数据概览</span>
+      </div>
+      <div class="atb-right">
+        <a href="index.html" class="atb-home-link">
+          <svg viewBox="0 0 20 20" fill="currentColor" width="14"><path fill-rule="evenodd" d="M9.293 2.293a1 1 0 011.414 0l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414-1.414L13.586 10l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M17.707 10.293a1 1 0 010 1.414l-5 5a1 1 0 01-1.414-1.414l5-5a1 1 0 011.414 0z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M3 17a1 1 0 011-1h8a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"/></svg>
+          返回官网
+        </a>
+        <div class="atb-user" id="atbUser">
+          <span class="atb-avatar" id="atbAvatar">A</span>
+          <span class="atb-username" id="atbUsername">Admin</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- ===================== PAGE: OVERVIEW ===================== -->
+    <div class="apage active" id="apage-overview">
+      <div class="apg-stat-row">
+        <div class="apg-stat-card">
+          <div class="apg-si apg-si-o">
+            <svg viewBox="0 0 20 20" fill="#E85D00" width="22"><path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zm5 2a2 2 0 11-4 0 2 2 0 014 0zm-4 7a4 4 0 00-8 0v1h8v-1zM6 8a2 2 0 11-4 0 2 2 0 014 0zm10 7v-1a4 4 0 00-3-3.874"/></svg>
+          </div>
+          <div class="apg-sd">
+            <div class="apg-sn" id="ov-total">0</div>
+            <div class="apg-sl">注册客户</div>
+          </div>
+        </div>
+        <div class="apg-stat-card">
+          <div class="apg-si apg-si-g">
+            <svg viewBox="0 0 20 20" fill="#28A745" width="22"><path d="M3 3h14a1 1 0 011 1v12a1 1 0 01-1 1H3a1 1 0 01-1-1V4a1 1 0 011-1zm1 2v10h12V5H4z"/></svg>
+          </div>
+          <div class="apg-sd">
+            <div class="apg-sn" id="ov-orders">0</div>
+            <div class="apg-sl">总订单数</div>
+          </div>
+        </div>
+        <div class="apg-stat-card">
+          <div class="apg-si apg-si-o">
+            <svg viewBox="0 0 20 20" fill="#E85D00" width="22"><path fill-rule="evenodd" d="M4.083 9h1.946c.089-1.546.383-2.97.837-4.118A6.004 6.004 0 004.083 9zM10 2a8 8 0 100 16A8 8 0 0010 2zm0 2c-.076 0-.232.032-.465.262-.238.234-.497.623-.737 1.182-.389.907-.673 2.142-.766 3.556h3.936c-.093-1.414-.377-2.649-.766-3.556-.24-.56-.5-.948-.737-1.182C10.232 4.032 10.076 4 10 4z" clip-rule="evenodd"/></svg>
+          </div>
+          <div class="apg-sd">
+            <div class="apg-sn" id="ov-countries">0</div>
+            <div class="apg-sl">覆盖国家</div>
+          </div>
+        </div>
+        <div class="apg-stat-card">
+          <div class="apg-si apg-si-d">
+            <svg viewBox="0 0 20 20" fill="#D4A017" width="22"><path d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z"/><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z" clip-rule="evenodd"/></svg>
+          </div>
+          <div class="apg-sd">
+            <div class="apg-sn" id="ov-amount">$0</div>
+            <div class="apg-sl">总金额 (USD)</div>
+          </div>
+        </div>
+        <div class="apg-stat-card">
+          <div class="apg-si apg-si-p">
+            <svg viewBox="0 0 20 20" fill="#6366F1" width="22"><path d="M4 4a2 2 0 012-2h8a2 2 0 012 2v2h1a1 1 0 110 2H3a1 1 0 110-2h1V4zm2 0v2h8V4H6z"/></svg>
+          </div>
+          <div class="apg-sd">
+            <div class="apg-sn" id="ov-products">0</div>
+            <div class="apg-sl">产品数量</div>
+          </div>
+        </div>
+        <div class="apg-stat-card">
+          <div class="apg-si apg-si-c">
+            <svg viewBox="0 0 20 20" fill="#EC4899" width="22"><path fill-rule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clip-rule="evenodd"/></svg>
+          </div>
+          <div class="apg-sd">
+            <div class="apg-sn" id="ov-inquiries">0</div>
+            <div class="apg-sl">待处理询盘</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent & Distribution -->
+      <div class="apg-two-col">
+        <div class="apg-card">
+          <div class="apg-card-hd">
+            <h3>最新注册客户</h3>
+            <button class="apg-link" onclick="sdashShow('customers')">查看全部 →</button>
+          </div>
+          <table class="apg-tbl">
+            <thead><tr><th>姓名</th><th>公司</th><th>国家</th><th>邮箱</th><th>注册时间</th></tr></thead>
+            <tbody id="recentCustomers"></tbody>
+          </table>
+          <div class="apg-empty" id="recentEmpty">暂无客户数据</div>
+        </div>
+        <div class="apg-card">
+          <div class="apg-card-hd"><h3>国家分布</h3></div>
+          <div class="apg-country-list" id="countryBars"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== PAGE: PRODUCT LIST ===================== -->
+    <div class="apage" id="apage-product-list">
+      <div class="apg-toolbar">
+        <div class="apg-tb-search">
+          <svg viewBox="0 0 20 20" fill="currentColor" width="14"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"/></svg>
+          <input type="text" id="prodSearchInput" placeholder="搜索产品名称或 SKU…" oninput="_filterProductsDebounced()" />
+        </div>
+        <div class="apg-tb-right">
+          <span class="apg-result-count" id="prodResultCount"></span>
+          <button class="apg-btn-primary" onclick="sdashShow('product-publish')">
+            <svg viewBox="0 0 20 20" fill="currentColor" width="14"><path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd"/></svg>
+            发布产品
+          </button>
+        </div>
+      </div>
+      <div class="apg-tbl-wrap">
+        <table class="apg-tbl">
+          <thead>
+            <tr>
+              <th>图片</th><th>SKU</th><th>名称</th><th>品牌</th><th>类别</th>
+              <th>价格 (USD)</th><th>起订量</th><th>库存</th><th>状态</th><th>操作</th>
+            </tr>
+          </thead>
+          <tbody id="productsTableBody"></tbody>
+        </table>
+        <div class="apg-empty" id="productsEmpty">暂无产品数据</div>
+      </div>
+    </div>
+
+    <!-- ===================== PAGE: PRODUCT DRAFT ===================== -->
+    <div class="apage" id="apage-product-draft">
+      <div class="apg-toolbar">
+        <div class="apg-tb-right">
+          <span class="apg-result-count" id="draftResultCount"></span>
+        </div>
+      </div>
+      <div class="apg-tbl-wrap">
+        <table class="apg-tbl">
+          <thead>
+            <tr>
+              <th>SKU</th><th>名称</th><th>品牌</th><th>保存时间</th><th>操作</th>
+            </tr>
+          </thead>
+          <tbody id="draftsTableBody"></tbody>
+        </table>
+        <div class="apg-empty" id="draftsEmpty">暂无草稿</div>
+      </div>
+    </div>
+
+    <!-- ===================== PAGE: PRODUCT TRASH ===================== -->
+    <div class="apage" id="apage-product-trash">
+      <div class="apg-toolbar">
+        <div class="apg-tb-right">
+          <span class="apg-result-count" id="trashResultCount"></span>
+        </div>
+      </div>
+      <div class="apg-tbl-wrap">
+        <table class="apg-tbl">
+          <thead>
+            <tr>
+              <th>图片</th><th>SKU</th><th>名称</th><th>品牌</th><th>删除时间</th><th>操作</th>
+            </tr>
+          </thead>
+          <tbody id="trashTableBody"></tbody>
+        </table>
+        <div class="apg-empty" id="trashEmpty">回收站为空</div>
+      </div>
+    </div>
+
+    <!-- ===================== PAGE: CUSTOMERS ===================== -->
+    <div class="apage" id="apage-customers">
+      <div class="apg-toolbar">
+        <div class="apg-tb-filters">
+          <select id="filterCountry" onchange="filterCustomers()">
+            <option value="">全部国家</option>
+          </select>
+          <select id="filterSource" onchange="filterCustomers()">
+            <option value="">全部来源</option>
+            <option>阿里巴巴国际站</option><option>Google搜索</option>
+            <option>展会/Trade Show</option><option>客户推荐</option>
+            <option>官网直接访问</option>
+          </select>
+          <select id="filterCycle" onchange="filterCustomers()">
+            <option value="">全部周期</option>
+            <option>每月补货</option><option>每季度（3个月）</option>
+            <option>半年一次</option><option>每年一次</option>
+          </select>
+        </div>
+        <div class="apg-tb-right">
+          <div class="apg-tb-search">
+            <svg viewBox="0 0 20 20" fill="currentColor" width="14"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"/></svg>
+            <input type="text" id="custSearchInput" placeholder="搜索客户…" oninput="_filterCustomersDebounced()" />
+          </div>
+          <span class="apg-result-count" id="custResultCount"></span>
+        </div>
+      </div>
+      <div class="apg-tbl-wrap">
+        <table class="apg-tbl">
+          <thead>
+            <tr>
+              <th>姓名</th><th>公司</th><th>国家</th><th>邮箱</th><th>WhatsApp</th>
+              <th>采购类别</th><th>来源</th><th>注册时间</th><th>操作</th>
+            </tr>
+          </thead>
+          <tbody id="customersTableBody"></tbody>
+        </table>
+        <div class="apg-empty" id="customersEmpty">暂无客户数据</div>
+      </div>
+    </div>
+
+    <!-- ===================== PAGE: ORDERS ===================== -->
+    <div class="apage" id="apage-orders">
+      <div class="apg-tbl-wrap">
+        <table class="apg-tbl">
+          <thead>
+            <tr>
+              <th>客户</th><th>国家</th><th>产品</th><th>数量</th>
+              <th>金额 (USD)</th><th>状态</th><th>下单时间</th><th>操作</th>
+            </tr>
+          </thead>
+          <tbody id="allOrdersTableBody"></tbody>
+        </table>
+        <div class="apg-empty" id="allOrdersEmpty">暂无订单数据</div>
+      </div>
+    </div>
+
+    <!-- ===================== PAGE: INQUIRIES ===================== -->
+    <div class="apage" id="apage-inquiries">
+      <div class="apg-tbl-wrap">
+        <table class="apg-tbl">
+          <thead>
+            <tr>
+              <th>客户</th><th>邮箱</th><th>WhatsApp</th><th>公司</th>
+              <th>产品</th><th>意向数量</th><th>用途</th><th>状态</th><th>时间</th><th>操作</th>
+            </tr>
+          </thead>
+          <tbody id="inquiriesTableBody"></tbody>
+        </table>
+        <div class="apg-empty" id="inquiriesEmpty">暂无询盘数据</div>
+      </div>
+    </div>
+
+    <!-- ===================== PAGE: CUST ADD ===================== -->
+    <div class="apage" id="apage-cust-add">
+      <div class="apg-card" style="max-width:960px">
+        <div class="apg-card-hd"><h3>手动新增客户档案</h3></div>
+        <div class="apg-add-form">
+          <div class="aaf-grid">
+            <div class="aaf-gp"><label>姓名 *</label><input id="af_name" placeholder="Full Name" /></div>
+            <div class="aaf-gp"><label>公司 *</label><input id="af_company" placeholder="Company" /></div>
+            <div class="aaf-gp"><label>职位</label><input id="af_title" placeholder="Job Title" /></div>
+            <div class="aaf-gp"><label>国家/地区 *</label>
+              <select id="af_country">
+                <option value="">请选择</option>
+                <option>中国 (China)</option><option>美国 (United States)</option>
+                <option>英国 (United Kingdom)</option><option>德国 (Germany)</option>
+                <option>法国 (France)</option><option>日本 (Japan)</option>
+                <option>韩国 (South Korea)</option><option>澳大利亚 (Australia)</option>
+                <option>加拿大 (Canada)</option><option>印度 (India)</option>
+                <option>巴西 (Brazil)</option><option>东南亚 (Southeast Asia)</option>
+                <option>中东 (Middle East)</option><option>非洲 (Africa)</option>
+                <option>其他 (Others)</option>
+              </select>
+            </div>
+            <div class="aaf-gp"><label>邮箱 *</label><input type="email" id="af_email" placeholder="email@company.com" /></div>
+            <div class="aaf-gp"><label>密码</label><input type="password" id="af_password" placeholder="初始密码" /></div>
+            <div class="aaf-gp"><label>WhatsApp</label><input id="af_whatsapp" placeholder="+1 234 567" /></div>
+            <div class="aaf-gp"><label>LinkedIn</label><input id="af_linkedin" placeholder="linkedin.com/in/…" /></div>
+            <div class="aaf-gp"><label>Facebook</label><input id="af_facebook" placeholder="facebook.com/…" /></div>
+            <div class="aaf-gp"><label>传真</label><input id="af_fax" placeholder="+1 234 567" /></div>
+            <div class="aaf-gp"><label>公司电话</label><input id="af_phone" placeholder="+1 234 567" /></div>
+            <div class="aaf-gp"><label>公司官网</label><input id="af_website" placeholder="https://…" /></div>
+            <div class="aaf-gp" style="grid-column:1/-1"><label>公司地址</label><input id="af_address" placeholder="Company Address" /></div>
+            <div class="aaf-gp"><label>采购用途</label>
+              <select id="af_usage">
+                <option value="">请选择</option>
+                <option>自用（企业员工防护）</option><option>转售/经销（零售商）</option>
+                <option>OEM/ODM贴牌</option><option>项目采购</option>
+                <option>政府/公共机构采购</option><option>试样评估</option>
+              </select>
+            </div>
+            <div class="aaf-gp"><label>预计采购量</label>
+              <select id="af_quantity">
+                <option value="">请选择</option>
+                <option>500以下（样品试用）</option><option>500 – 5,000</option>
+                <option>5,000 – 50,000</option><option>50,000 – 200,000</option>
+                <option>200,000以上</option>
+              </select>
+            </div>
+            <div class="aaf-gp"><label>采购周期</label>
+              <select id="af_cycle">
+                <option value="">请选择</option>
+                <option>每月补货</option><option>每季度（3个月）</option>
+                <option>半年一次</option><option>每年一次</option><option>项目制（不定期）</option>
+              </select>
+            </div>
+            <div class="aaf-gp"><label>来源渠道</label>
+              <select id="af_source">
+                <option value="">请选择</option>
+                <option>阿里巴巴国际站</option><option>Google搜索</option>
+                <option>展会/Trade Show</option><option>客户推荐</option>
+                <option>官网直接访问</option><option>社交媒体</option>
+              </select>
+            </div>
+            <div class="aaf-gp" style="grid-column:1/-1"><label>采购类别（多选，逗号分隔）</label><input id="af_categories" placeholder="切割防护手套, 化学防护手套" /></div>
+            <div class="aaf-gp" style="grid-column:1/-1"><label>备注</label><textarea id="af_notes" rows="3" placeholder="特殊需求或备注…"></textarea></div>
+          </div>
+          <div class="aaf-actions">
+            <button class="apg-btn-primary" onclick="adminAddCustomer()">添加客户</button>
+            <button class="apg-btn-ghost" onclick="clearAddForm()">清空表单</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== PAGE: CASES ===================== -->
+    <div class="apage" id="apage-cases">
+      <div class="apg-toolbar">
+        <div class="apg-tb-right">
+          <button class="apg-btn-primary" onclick="showAddCaseModal()">
+            <svg viewBox="0 0 20 20" fill="currentColor" width="14"><path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd"/></svg>
+            添加案例
+          </button>
+        </div>
+      </div>
+      <div class="apg-tbl-wrap">
+        <table class="apg-tbl">
+          <thead><tr><th>客户名称</th><th>行业</th><th>地区</th><th>案例描述</th><th>时间</th><th>操作</th></tr></thead>
+          <tbody id="casesTableBody"></tbody>
+        </table>
+        <div class="apg-empty" id="casesEmpty">暂无客户案例</div>
+      </div>
+    </div>
+
+    <!-- ===================== PAGE: BRANDS ===================== -->
+    <div class="apage" id="apage-brands">
+      <div class="apg-toolbar">
+        <div class="apg-tb-right">
+          <button class="apg-btn-primary" onclick="showAddBrandModal()">
+            <svg viewBox="0 0 20 20" fill="currentColor" width="14"><path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd"/></svg>
+            添加授权申请
+          </button>
+        </div>
+      </div>
+      <div class="apg-tbl-wrap">
+        <table class="apg-tbl">
+          <thead><tr><th>公司名称</th><th>联系人</th><th>合作模式</th><th>邮箱</th><th>状态</th><th>时间</th><th>操作</th></tr></thead>
+          <tbody id="brandsTableBody"></tbody>
+        </table>
+        <div class="apg-empty" id="brandsEmpty">暂无品牌授权申请</div>
+      </div>
+    </div>
+
+    <!-- ===================== PAGE: BRAND SERIES MANAGEMENT ===================== -->
+    <div class="apage" id="apage-brandseries">
+      <div class="apg-toolbar">
+        <div class="apg-tb-right">
+          <button class="apg-btn-primary" onclick="openAddBrandModal()">
+            <svg viewBox="0 0 20 20" fill="currentColor" width="14"><path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd"/></svg>
+            添加品牌系列
+          </button>
+        </div>
+      </div>
+      <div class="apg-tbl-wrap">
+        <table class="apg-tbl">
+          <thead><tr><th>ID</th><th>品牌名称</th><th>主标题</th><th>颜色</th><th>页面</th><th>操作</th></tr></thead>
+          <tbody id="brandseriesTableBody"></tbody>
+        </table>
+        <div class="apg-empty" id="brandseriesEmpty">暂无品牌数据</div>
+      </div>
+    </div>
+
+    <!-- ===================== PAGE: REPORTS ===================== -->
+    <div class="apage" id="apage-reports">
+      <div class="apg-two-col">
+        <div class="apg-card">
+          <div class="apg-card-hd"><h3>采购类别分布</h3></div>
+          <div class="apg-bar-list" id="catChart"></div>
+        </div>
+        <div class="apg-card">
+          <div class="apg-card-hd"><h3>来源渠道分布</h3></div>
+          <div class="apg-bar-list" id="sourceChart"></div>
+        </div>
+        <div class="apg-card">
+          <div class="apg-card-hd"><h3>采购周期分布</h3></div>
+          <div class="apg-bar-list" id="cycleChart"></div>
+        </div>
+        <div class="apg-card">
+          <div class="apg-card-hd"><h3>预计采购量分布</h3></div>
+          <div class="apg-bar-list" id="qtyChart"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== PAGE: ANALYTICS ===================== -->
+    <div class="apage" id="apage-analytics">
+      <div class="apg-two-col">
+        <div class="apg-card">
+          <div class="apg-card-hd"><h3>月度注册趋势</h3></div>
+          <div class="apg-bar-list" id="monthlyChart"></div>
+        </div>
+        <div class="apg-card">
+          <div class="apg-card-hd"><h3>客户行业分布</h3></div>
+          <div class="apg-bar-list" id="industryChart"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== PAGE: PRODUCT PUBLISH (inline form) ===================== -->
+    <div class="apage" id="apage-product-publish">
+      <form id="admin-pub-form" novalidate>
+        <div class="pub-container admin-pub-wrap">
+
+          <!-- 01 基本信息 -->
+          <section class="pub-section">
+            <h2 class="pub-section-title"><span class="pub-section-num">01</span>基本信息</h2>
+            <div class="pub-grid-3">
+              <div class="pub-field"><label class="pub-label">SKU 型号 *</label><input type="text" id="p-sku" class="pub-input" placeholder="如: SHIELD-CUT5" required></div>
+              <div class="pub-field"><label class="pub-label">品牌系列 *</label>
+                <select id="p-brand" class="pub-select" onchange="window.renderBrandAttrs && window.renderBrandAttrs(this.value)">
+                  <option value="">-- 选择品牌 --</option>
+                  <option value="shield">PandaSHIELD 防切割系列</option>
+                  <option value="heat">PandaHEAT 耐高温系列</option>
+                  <option value="chem">PandaCHEM 化学防护系列</option>
+                  <option value="bio">PandaBIO 生物防护系列</option>
+                  <option value="volt">PandaVOLT 绝缘防护系列</option>
+                  <option value="frost">PandaFROST 防寒防护系列</option>
+                  <option value="eco">PandaECO 环保经济系列</option>
+                </select>
+              </div>
+              <div class="pub-field"><label class="pub-label">产品功能</label>
+                <select id="p-function" class="pub-select">
+                  <option value="">-- 选择功能 --</option>
+                  <option>防切割</option><option>耐高温</option><option>防化学</option>
+                  <option>防静电</option><option>防寒</option><option>防振动</option>
+                  <option>防水</option><option>通用防护</option>
+                </select>
+              </div>
+            </div>
+            <div class="pub-grid-2">
+              <div class="pub-field"><label class="pub-label">产品名称（中文）*</label><input type="text" id="p-name-zh" class="pub-input" placeholder="防切割防护手套 5级" required></div>
+              <div class="pub-field"><label class="pub-label">产品名称（英文）</label><input type="text" id="p-name-en" class="pub-input" placeholder="Cut-Resistant Safety Gloves Level 5"></div>
+            </div>
+            <div class="pub-grid-2">
+              <div class="pub-field"><label class="pub-label">一句话简介（中文）</label><input type="text" id="p-short-zh" class="pub-input" placeholder="一句话概括产品核心卖点"></div>
+              <div class="pub-field"><label class="pub-label">一句话简介（英文）</label><input type="text" id="p-short-en" class="pub-input" placeholder="Brief product highlight"></div>
+            </div>
+            <div class="pub-grid-3">
+              <div class="pub-field"><label class="pub-label">参考价（USD）</label><input type="number" id="p-price" class="pub-input" placeholder="0.00" step="0.01" min="0"></div>
+              <div class="pub-field"><label class="pub-label">最小起订量（MOQ）</label><input type="number" id="p-moq" class="pub-input" placeholder="50" value="50" min="1"></div>
+              <div class="pub-field"><label class="pub-label">货期（天）</label><input type="number" id="p-lead" class="pub-input" placeholder="7" value="7" min="1"></div>
+            </div>
+            <div class="pub-grid-3">
+              <div class="pub-field"><label class="pub-label">状态</label>
+                <select id="p-status" class="pub-select">
+                  <option value="active">直接上架</option>
+                  <option value="draft">存为草稿</option>
+                </select>
+              </div>
+              <div class="pub-field"><label class="pub-label">可见性</label>
+                <select id="p-visibility" class="pub-select">
+                  <option value="visible">公开可见</option>
+                  <option value="hidden">隐藏</option>
+                </select>
+              </div>
+              <div class="pub-field"><label class="pub-label">销售单位</label>
+                <select id="p-unit" class="pub-select">
+                  <option>对（pair）</option><option>双（pair）</option>
+                  <option>只（单只）</option><option>打（12双）</option>
+                  <option>箱（carton）</option>
+                </select>
+              </div>
+            </div>
+          </section>
+
+          <!-- 02 产品规格（重要属性） -->
+          <section class="pub-section">
+            <h2 class="pub-section-title"><span class="pub-section-num">02</span>产品规格（重要属性）</h2>
+            <div class="pub-ali-table">
+              <div class="pub-ali-row">
+                <div class="pub-ali-k">型号</div>
+                <div class="pub-ali-v"><input type="text" id="p-model" class="pub-input" placeholder="PandaShield-G01"></div>
+                <div class="pub-ali-k">面料/材质</div>
+                <div class="pub-ali-v"><input type="text" id="p-material" class="pub-input" placeholder="HPPE 不锈钢丝编织 + 丁腈涂层"></div>
+              </div>
+              <div class="pub-ali-row">
+                <div class="pub-ali-k">克重</div>
+                <div class="pub-ali-v"><input type="text" id="p-weight" class="pub-input" placeholder="65g / pair"></div>
+                <div class="pub-ali-k">长度</div>
+                <div class="pub-ali-v"><input type="text" id="p-length" class="pub-input" placeholder="240mm（可定制）"></div>
+              </div>
+              <div class="pub-ali-row">
+                <div class="pub-ali-k">厚度</div>
+                <div class="pub-ali-v"><input type="text" id="p-thickness" class="pub-input" placeholder="0.8mm（中码参考）"></div>
+                <div class="pub-ali-k">颜色</div>
+                <div class="pub-ali-v"><input type="text" id="p-color" class="pub-input" placeholder="橙色 / 蓝色 / 黄色（可定制）"></div>
+              </div>
+              <div class="pub-ali-row">
+                <div class="pub-ali-k">涂层类型</div>
+                <div class="pub-ali-v"><input type="text" id="p-coating" class="pub-input" placeholder="掌面丁腈微孔浸胶"></div>
+                <div class="pub-ali-k">包装规格</div>
+                <div class="pub-ali-v"><input type="text" id="p-package" class="pub-input" placeholder="12 pairs / 盒，120 pairs / 箱"></div>
+              </div>
+            </div>
+          </section>
+
+          <!-- 02.5 品牌专属属性（动态显示） -->
+          <section class="pub-section" id="brand-attrs-section" style="display:none;">
+            <h2 class="pub-section-title"><span class="pub-section-num">02</span>品牌专属属性</h2>
+            <div id="dynamic-attrs-container">
+              <!-- JS根据品牌动态渲染 -->
+            </div>
+          </section>
+
+          <!-- 03 技术参数 -->
+          <section class="pub-section">
+            <h2 class="pub-section-title"><span class="pub-section-num">03</span>技术参数</h2>
+            <div class="pub-grid-2">
+              <div class="pub-field"><label class="pub-label">防护等级</label><input type="text" id="p-level" class="pub-input" placeholder="如: EN388:2016 Level 5 / ANSI A4"></div>
+              <div class="pub-field"><label class="pub-label">耐温范围</label><input type="text" id="p-temp" class="pub-input" placeholder="如: -10C 至 +80C"></div>
+              <div class="pub-field"><label class="pub-label">尺码范围</label><input type="text" id="p-size" class="pub-input" placeholder="如: S / M / L / XL / 2XL（支持定制）"></div>
+              <div class="pub-field"><label class="pub-label">执行标准</label><input type="text" id="p-standard" class="pub-input" placeholder="如: GB/T 29512-2013 / ISO 13997"></div>
+              <div class="pub-field"><label class="pub-label">适用场景</label><input type="text" id="p-scenes" class="pub-input" placeholder="如: 金属加工 / 玻璃处理 / 机械装配 / 建筑施工"></div>
+              <div class="pub-field"><label class="pub-label">保质期</label><input type="text" id="p-warranty" class="pub-input" placeholder="如: 正常使用条件下 3 年"></div>
+            </div>
+            <div class="pub-field"><label class="pub-label">认证标准（逗号分隔）</label><input type="text" id="p-certs" class="pub-input" placeholder="如: EN388, ANSI A4, CE, REACH, ISO 9001"></div>
+            <div class="pub-grid-3">
+              <div class="pub-field"><label class="pub-label">EN388 耐磨（0-4）</label>
+                <select id="p-en388-abrasion" class="pub-select"><option value="">--</option><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option></select>
+              </div>
+              <div class="pub-field"><label class="pub-label">EN388 防切割（0-5）</label>
+                <select id="p-en388-cut" class="pub-select"><option value="">--</option><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+              </div>
+              <div class="pub-field"><label class="pub-label">EN388 撕裂（N）</label><input type="text" id="p-en388-tear" class="pub-input" placeholder="如: 25N"></div>
+              <div class="pub-field"><label class="pub-label">EN388 穿刺（0-4）</label>
+                <select id="p-en388-puncture" class="pub-select"><option value="">--</option><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option></select>
+              </div>
+              <div class="pub-field"><label class="pub-label">ISO 13997 切割（牛顿）</label><input type="text" id="p-iso-cut" class="pub-input" placeholder="如: 15N"></div>
+              <div class="pub-field"><label class="pub-label">ANSI/ISEA 105 等级</label><input type="text" id="p-ansi-level" class="pub-input" placeholder="如: A4"></div>
+            </div>
+          </section>
+
+          <!-- 04 定制选项 -->
+          <section class="pub-section">
+            <h2 class="pub-section-title"><span class="pub-section-num">04</span>定制选项</h2>
+            <div class="pub-grid-3">
+              <div class="pub-field"><label class="pub-label">定制 Logo</label>
+                <select id="p-custom-logo" class="pub-select"><option value="no">不支持</option><option value="yes">支持定制 Logo</option></select>
+              </div>
+              <div class="pub-field"><label class="pub-label">定制包装</label>
+                <select id="p-custom-pack" class="pub-select"><option value="no">不支持</option><option value="yes">支持定制包装</option></select>
+              </div>
+              <div class="pub-field"><label class="pub-label">图形自定义</label>
+                <select id="p-custom-graphic" class="pub-select"><option value="no">不支持</option><option value="yes">支持图形自定义</option></select>
+              </div>
+            </div>
+            <div class="pub-grid-2">
+              <div class="pub-field"><label class="pub-label">定制最低起订量（pairs）</label><input type="number" id="p-custom-moq" class="pub-input" placeholder="如: 3000" min="1"></div>
+              <div class="pub-field"><label class="pub-label">标签（逗号分隔）</label><input type="text" id="p-tags" class="pub-input" placeholder="如: cut5, heat, chemical, pu-coated"></div>
+            </div>
+            <div class="pub-field"><label class="pub-label">适用行业（逗号分隔）</label><input type="text" id="p-industries" class="pub-input" placeholder="如: 金属加工, 建筑施工, 汽车维修, 食品加工"></div>
+          </section>
+
+          <!-- 05 包装与物流 -->
+          <section class="pub-section">
+            <h2 class="pub-section-title"><span class="pub-section-num">05</span>包装与物流</h2>
+            <div class="pub-grid-3">
+              <div class="pub-field"><label class="pub-label">单个包装尺寸（cm）</label><input type="text" id="p-pkg-size" class="pub-input" placeholder="如: 25X15X1"></div>
+              <div class="pub-field"><label class="pub-label">单个产品毛重（kg）</label><input type="text" id="p-gross-weight" class="pub-input" placeholder="如: 1.000"></div>
+              <div class="pub-field"><label class="pub-label">整箱尺寸（cm）</label><input type="text" id="p-carton-size" class="pub-input" placeholder="如: 50X30X25"></div>
+            </div>
+          </section>
+
+          <!-- 06 产品描述 -->
+          <section class="pub-section">
+            <h2 class="pub-section-title"><span class="pub-section-num">06</span>产品描述</h2>
+            <div class="pub-field"><label class="pub-label">详细描述（中文）</label>
+              <textarea id="p-desc-zh" class="pub-textarea" rows="5" placeholder="详细描述产品功能、材质、使用场景、优势亮点..."></textarea>
+            </div>
+            <div class="pub-field"><label class="pub-label">详细描述（英文）</label>
+              <textarea id="p-desc-en" class="pub-textarea" rows="5" placeholder="Detailed description in English..."></textarea>
+            </div>
+          </section>
+
+          <!-- 07 产品图片 -->
+          <section class="pub-section">
+            <h2 class="pub-section-title"><span class="pub-section-num">07</span>产品图片</h2>
+            <div class="pub-field">
+              <label class="pub-label">产品图片（最多 10 张）</label>
+              <div class="pub-upload-zone" id="pub-upload-zone">
+                <svg viewBox="0 0 48 48" width="40" height="40" fill="none" stroke="#C8C0B8" stroke-width="1.5">
+                  <rect x="6" y="10" width="36" height="30" rx="4"/>
+                  <circle cx="16" cy="22" r="4"/>
+                  <path d="M6 34l10-8 8 6 6-5 12 9"/>
+                </svg>
+                <p class="pub-upload-hint">拖拽图片到此处，或<span class="pub-upload-browse">浏览文件</span></p>
+                <p class="pub-upload-tip">支持 JPG / PNG / WebP，单张不超过 5MB</p>
+                <input type="file" id="p-images" accept="image/*" multiple style="display:none;">
+              </div>
+              <div class="pub-img-preview" id="pub-img-preview"></div>
+            </div>
+          </section>
+
+          <!-- 提交按钮 -->
+          <div class="pub-actions">
+            <button type="button" class="pub-btn-ghost-lg" onclick="sdashShow('product-list')">取消</button>
+            <button type="button" class="pub-btn-ghost-lg" id="admin-pub-draft-btn">存入草稿</button>
+            <button type="submit" class="pub-btn-primary-lg" id="pub-submit-btn">发布产品</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+  </main>
+</div>
+
+<!-- Customer Detail Modal -->
+<div class="amodal-overlay" id="modalOverlay" onclick="closeModal()">
+  <div class="amodal-box" id="modalBox" onclick="event.stopPropagation()">
+    <div class="amodal-hd">
+      <h3 id="modalTitle">客户详情</h3>
+      <button class="amodal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="amodal-bd" id="modalBody"></div>
+    <div class="amodal-ft">
+      <button class="apg-btn-ghost" onclick="closeModal()">关闭</button>
+      <button class="apg-btn-danger" onclick="deleteCustomerModal()">删除此客户</button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="atoast" id="adminToast"></div>
+
+<!-- 品牌系列编辑弹窗 -->
+<div class="brand-edit-modal" id="brandEditModal">
+  <div class="brand-edit-box">
+    <div class="brand-edit-hd">
+      <h3 id="brandEditTitle">编辑品牌系列</h3>
+      <button class="brand-edit-close" onclick="closeBrandEdit()">✕</button>
+    </div>
+    <div class="brand-edit-bd" id="brandEditBody">
+      <!-- 动态填充内容 -->
+    </div>
+    <div class="brand-edit-ft">
+      <a class="brand-btn-preview" id="brandPreviewLink" href="#" target="_blank">预览页面</a>
+      <button class="brand-btn-cancel" onclick="closeBrandEdit()">取消</button>
+      <button class="brand-btn-save" onclick="saveBrandEdit()">保存修改</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// 品牌系列下拉菜单
+window.toggleBrandDropdown = function() {
+  var parent = document.querySelector('.asb-dropdown-parent');
+  var menu = document.getElementById('brandDropdownMenu');
+  if (!parent || !menu) return;
+  var isOpen = parent.classList.contains('open');
+  if (isOpen) {
+    parent.classList.remove('open');
+    menu.classList.remove('show');
+  } else {
+    parent.classList.add('open');
+    menu.classList.add('show');
+  }
+};
+
+// 品牌系列管理页面加载
+window.loadBrandseriesPage = function() {
+  var apiBase = 'http://' + window.location.hostname + ':3001/api';
+  var tbody = document.getElementById('brandseriesTableBody');
+  var empty = document.getElementById('brandseriesEmpty');
+  tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;color:#888;padding:20px;">加载中...</td></tr>';
+  fetch(apiBase + '/brands').then(function(r){ return r.json(); }).then(function(data){
+    var brands = data.brands || {};
+    var ids = Object.keys(brands);
+    if (ids.length === 0) {
+      tbody.innerHTML = '';
+      empty.style.display = 'block';
+      return;
+    }
+    empty.style.display = 'none';
+    tbody.innerHTML = ids.map(function(id){
+      var b = brands[id];
+      var name = b.name || id;
+      var heroTitle = b.heroTitle || '-';
+      var color = b.color || '#E85D00';
+      var pageLink = window._brandPages[id] || '-';
+      return '<tr>' +
+        '<td><code>' + id + '</code></td>' +
+        '<td><b>' + name + '</b></td>' +
+        '<td>' + heroTitle.replace(/<[^>]+>/g, '').substring(0, 30) + '</td>' +
+        '<td><span style="display:inline-block;width:20px;height:20px;background:' + color + ';border-radius:4px;"></span> ' + color + '</td>' +
+        '<td>' + (pageLink !== '-' ? '<a href="' + pageLink + '" target="_blank">打开</a>' : '-') + '</td>' +
+        '<td><button class="apg-btn-ghost" style="padding:4px 10px;font-size:12px;" onclick="editBrand(\'' + id + '\')">编辑</button></td>' +
+        '</tr>';
+    }).join('');
+  }).catch(function(){
+    tbody.innerHTML = '<tr><td colspan="6" style="color:red;text-align:center;">加载失败，请检查 API 服务器是否启动</td></tr>';
+  });
+};
+window._brandPages = {
+  shd: 'pandashield.html', heat: 'pandaheat.html', chem: 'pandachem.html',
+  bio: 'pandabio.html', volt: 'pandavolt.html', frost: 'pandafrost.html',
+  eco: 'pandaeco.html', grip: 'pandagrip.html', impact: 'pandaimpact.html', pierce: 'pandapierce.html'
+};
+
+// 编辑品牌
+window.editBrand = function(brandId) {
+  var brandNames = {
+    shd: 'PandaSHIELD 防切割系列',
+    heat: 'PandaHEAT 耐高温系列',
+    chem: 'PandaCHEM 化学防护系列',
+    bio: 'PandaBIO 生物防护系列',
+    volt: 'PandaVOLT 绝缘防护系列',
+    frost: 'PandaFROST 防寒防护系列',
+    eco: 'PandaECO 环保经济系列',
+    grip: 'PandaGRIP 防滑防护系列',
+    impact: 'PandaIMPACT 冲击防护系列',
+    pierce: 'PandaPIERCE 防刺穿系列'
+  };
+  var brandPages = {
+    shd: 'pandashield.html', heat: 'pandaheat.html', chem: 'pandachem.html',
+    bio: 'pandabio.html', volt: 'pandavolt.html', frost: 'pandafrost.html',
+    eco: 'pandaeco.html', grip: 'pandagrip.html', impact: 'pandaimpact.html',
+    pierce: 'pandapierce.html'
+  };
+  var modal = document.getElementById('brandEditModal');
+  var title = document.getElementById('brandEditTitle');
+  var body = document.getElementById('brandEditBody');
+  var previewLink = document.getElementById('brandPreviewLink');
+  if (!modal) return;
+  title.textContent = '编辑 ' + (brandNames[brandId] || brandId);
+  previewLink.href = brandPages[brandId] || '#';
+  previewLink.style.display = brandPages[brandId] ? 'inline-block' : 'none';
+  body.innerHTML = '<div style="text-align:center;padding:40px;color:#888;">加载中...</div>';
+  modal.classList.add('show');
+  // 关闭下拉
+  document.querySelector('.asb-dropdown-parent') && document.querySelector('.asb-dropdown-parent').classList.remove('open');
+  document.getElementById('brandDropdownMenu') && document.getElementById('brandDropdownMenu').classList.remove('show');
+  // 从 API 加载品牌数据
+  var apiBase = 'http://' + window.location.hostname + ':3001/api';
+  fetch(apiBase + '/brands/' + brandId).then(function(r){ return r.json(); }).then(function(brand){
+    window._currentEditingBrand = brandId;
+    window._currentBrandData = JSON.parse(JSON.stringify(brand));
+    renderBrandEditForm(brand, brandId);
+  }).catch(function(){
+    body.innerHTML = '<div style="color:red;padding:20px;">加载品牌配置失败，请检查 API 服务器是否启动（端口3001）</div>';
+  });
+};
+
+window.openAddBrandModal = function() {
+  alert('添加新品牌系列请联系技术支持。\n一个新品牌需要创建对应的HTML页面文件。');
+};
+
+function renderBrandEditForm(brand, brandId) {
+  var body = document.getElementById('brandEditBody');
+  body.innerHTML = `
+    <div class="brand-edit-section">
+      <h4>🛡️ 顶部标语</h4>
+      <div class="brand-edit-row">
+        <div class="brand-edit-field"><label>品牌缩写</label><input id="be_abbr" value="${brand.abbr || ''}"></div>
+        <div class="brand-edit-field"><label>品牌全称</label><input id="be_name" value="${brand.name || ''}"></div>
+      </div>
+      <div class="brand-edit-row">
+        <div class="brand-edit-field"><label>主标题</label><input id="be_heroTitle" value="${brand.heroTitle || ''}"></div>
+        <div class="brand-edit-field"><label>副标题</label><input id="be_heroSubtitle" value="${brand.heroSubtitle || ''}"></div>
+      </div>
+      <div class="brand-edit-row">
+        <div class="brand-edit-field"><label>统计数字 1</label><input id="be_stat1" value="${brand.stats ? brand.stats[0] : ''}"></div>
+        <div class="brand-edit-field"><label>统计数字 2</label><input id="be_stat2" value="${brand.stats ? brand.stats[1] : ''}"></div>
+      </div>
+      <div class="brand-edit-row">
+        <div class="brand-edit-field"><label>统计数字 3</label><input id="be_stat3" value="${brand.stats ? brand.stats[2] : ''}"></div>
+        <div class="brand-edit-field"><label>统计数字 4</label><input id="be_stat4" value="${brand.stats ? brand.stats[3] : ''}"></div>
+      </div>
+    </div>
+    <div class="brand-edit-section">
+      <h4>📦 产品介绍</h4>
+      <div class="brand-edit-row">
+        <div class="brand-edit-field"><label>小标签</label><input id="be_overline" value="${brand.overline || ''}"></div>
+        <div class="brand-edit-field"><label>颜色（HEX）</label><input type="color" id="be_color" value="${brand.color || '#E85D00'}"></div>
+      </div>
+      <div class="brand-edit-row single">
+        <div class="brand-edit-field"><label>技术说明</label><textarea id="be_techText">${brand.techText || ''}</textarea></div>
+      </div>
+      <div class="brand-edit-row single">
+        <div class="brand-edit-field"><label>CTA按钮文字</label><input id="be_ctaText" value="${brand.ctaText || ''}"></div>
+      </div>
+    </div>
+    <div class="brand-edit-section">
+      <h4>🔗 SEO 信息</h4>
+      <div class="brand-edit-row">
+        <div class="brand-edit-field"><label>页面标题</label><input id="be_seoTitle" value="${brand.seoTitle || ''}"></div>
+        <div class="brand-edit-field"><label>页面描述</label><input id="be_seoDesc" value="${brand.seoDesc || ''}"></div>
+      </div>
+    </div>
+  `;
+}
+
+window.closeBrandEdit = function() {
+  var modal = document.getElementById('brandEditModal');
+  if (modal) modal.classList.remove('show');
+  window._currentEditingBrand = null;
+  window._currentBrandData = null;
+};
+
+window.saveBrandEdit = function() {
+  var brandId = window._currentEditingBrand;
+  var data = window._currentBrandData;
+  if (!brandId || !data) { alert('没有正在编辑的品牌'); return; }
+  // 收集表单数据
+  data.abbr = document.getElementById('be_abbr').value;
+  data.name = document.getElementById('be_name').value;
+  data.heroTitle = document.getElementById('be_heroTitle').value;
+  data.heroSubtitle = document.getElementById('be_heroSubtitle').value;
+  data.stats = [
+    document.getElementById('be_stat1').value,
+    document.getElementById('be_stat2').value,
+    document.getElementById('be_stat3').value,
+    document.getElementById('be_stat4').value
+  ];
+  data.overline = document.getElementById('be_overline').value;
+  data.color = document.getElementById('be_color').value;
+  data.techText = document.getElementById('be_techText').value;
+  data.ctaText = document.getElementById('be_ctaText').value;
+  data.seoTitle = document.getElementById('be_seoTitle').value;
+  data.seoDesc = document.getElementById('be_seoDesc').value;
+  // 通过 API 保存到服务器
+  var apiBase = 'http://' + window.location.hostname + ':3001/api';
+  var token = localStorage.getItem('panda_token');
+  fetch(apiBase + '/brands/' + brandId, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + (token || '') },
+    body: JSON.stringify(data)
+  }).then(function(r){ return r.json();   }).then(function(res){
+    alert('保存成功！');
+    closeBrandEdit();
+    if (document.getElementById('apage-brandseries').classList.contains('active')) {
+      loadBrandseriesPage();
+    }
+  }).catch(function(){
+    alert('保存失败，请检查 API 服务器是否运行');
+  });
+};
+</script>
+<script src="serve_app/wwwroot/api.js?v=20260416-API"></script>
+<script src="attr-config.js?v=20260426-attr"></script>
+<script src="admin.js?v=20260426-dynattr"></script>
+</body>
+</html>

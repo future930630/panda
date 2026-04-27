@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>我的客户中心 — 熊猫手护</title>
+  <meta name="robots" content="noindex,nofollow" />
+  <link rel="stylesheet" href="styles.css?v=20260424-avatar" />
+  <link rel="stylesheet" href="responsive.css?v=20260423" />
+  <link rel="stylesheet" href="subpage.css?v=20260417-cust" />
+  <link rel="stylesheet" href="products-all.css?v=20260418-cust" />
+  <link rel="stylesheet" href="customer.css?v=20260424-profile2" />
+  <script src="i18n.js?v=20260424-avatar"></script>
+  <script src="serve_app/wwwroot/api.js?v=20260416-API"></script>
+</head>
+<body class="subpage-body">
+
+<!-- 共享导航 -->
+<div id="site-nav"></div>
+
+<!-- ═══ HERO ═══ -->
+<section class="pa-hero" style="margin-top: 120px;">
+  <div class="pa-hero-inner">
+    <div class="pa-hero-left">
+      <div class="site-breadcrumb">
+        <a href="index.html">首页</a>
+        <span class="pa-breadcrumb-sep">/</span>
+        <span>客户中心</span>
+      </div>
+      <h1 id="cust-hero-title">我的 <em>客户中心</em></h1>
+      <p class="pa-hero-sub" id="cust-hero-sub">管理您的采购记录、询盘跟进、收货地址及账户信息。</p>
+    </div>
+    <div class="pa-hero-stats">
+      <div class="pa-stat">
+        <span class="pa-stat-num" id="hero-ord-count">—</span>
+        <span class="pa-stat-label">我的订单</span>
+      </div>
+      <div class="pa-stat">
+        <span class="pa-stat-num" id="hero-browse-count">—</span>
+        <span class="pa-stat-label">浏览记录</span>
+      </div>
+      <div class="pa-stat">
+        <span class="pa-stat-num" id="hero-sample-count">—</span>
+        <span class="pa-stat-label">样品申请</span>
+      </div>
+      <div class="pa-stat">
+        <span class="pa-stat-num" id="hero-msg-count">—</span>
+        <span class="pa-stat-label">消息通知</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 主内容 ===== -->
+<div class="cust-page">
+
+  <!-- 左侧竖导航 -->
+  <aside class="cust-sidebar">
+    <div class="cust-sidebar-title">客户中心</div>
+    <nav class="cust-sidebar-nav">
+      <a class="cust-sb-item" data-tab="orders">
+        <svg viewBox="0 0 20 20" fill="currentColor" width="18"><path d="M3 3h14a1 1 0 011 1v12a1 1 0 01-1 1H3a1 1 0 01-1-1V4a1 1 0 011-1zm1 2v10h12V5H4zm2 2h8v2H6V7zm0 4h5v2H6v-2z"/></svg>
+        <span>我的订单</span>
+      </a>
+      <a class="cust-sb-item active" data-tab="browse">
+        <svg viewBox="0 0 20 20" fill="currentColor" width="18"><path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/><path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/></svg>
+        <span>浏览记录</span>
+      </a>
+      <a class="cust-sb-item" data-tab="samples">
+        <svg viewBox="0 0 20 20" fill="currentColor" width="18"><path fill-rule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm2 10a1 1 0 10-2 0v3a1 1 0 102 0v-3zm2-3a1 1 0 011 1v5a1 1 0 11-2 0v-5a1 1 0 011-1zm4-1a1 1 0 10-2 0v7a1 1 0 102 0V8z" clip-rule="evenodd"/></svg>
+        <span>样品申请</span>
+      </a>
+      <a class="cust-sb-item" data-tab="notifications">
+        <svg viewBox="0 0 20 20" fill="currentColor" width="18"><path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z"/></svg>
+        <span>消息通知</span>
+      </a>
+      <a class="cust-sb-item" data-tab="favorites">
+        <svg viewBox="0 0 20 20" fill="currentColor" width="18"><path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"/></svg>
+        <span>我的收藏</span>
+      </a>
+      <a class="cust-sb-item" data-tab="cart">
+        <svg viewBox="0 0 20 20" fill="currentColor" width="18"><path d="M1 2.882C1 2.398 1.387 2 1.857 2H4.5a1.5 1.5 0 110 3H2.236l1.214 4.873a1.5 1.5 0 001.493 1.127H16.5a1.5 1.5 0 110 3H5.071l-.5 2H17a2 2 0 012 2v.5a.5.5 0 01-.5.5H3a1 1 0 01-1-1v-3a1 1 0 00-1-1z"/></svg>
+        <span>购物车</span>
+      </a>
+      <a class="cust-sb-item" data-tab="address">
+        <svg viewBox="0 0 20 20" fill="currentColor" width="18"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
+        <span>收货地址</span>
+      </a>
+      <a class="cust-sb-item" data-tab="security">
+        <svg viewBox="0 0 20 20" fill="currentColor" width="18"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/></svg>
+        <span>账户安全</span>
+      </a>
+      <a class="cust-sb-item" data-tab="profile">
+        <svg viewBox="0 0 20 20" fill="currentColor" width="18"><path d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"/></svg>
+        <span>我的资料</span>
+      </a>
+    </nav>
+  </aside>
+
+  <!-- 右侧内容区 -->
+  <main class="cust-main">
+
+    <!-- ===== 浏览记录 ===== -->
+  <div class="cust-section active" id="sec-browse">
+    <div class="cust-sec-hd">
+      <div class="cust-sec-title">
+        <div class="cust-sec-title-dot"></div>
+        最近浏览
+      </div>
+      <a href="products-all.html" class="cust-sec-action">去逛逛 →</a>
+    </div>
+    <div id="browse-grid" class="cust-browse-grid"></div>
+  </div>
+
+  <!-- ===== 采购记录 ===== -->
+  <div class="cust-section" id="sec-orders">
+    <div class="cust-sec-hd">
+      <div class="cust-sec-title">
+        <div class="cust-sec-title-dot"></div>
+        采购记录
+      </div>
+    </div>
+    <div class="cust-table-wrap">
+      <table class="cust-table">
+        <thead>
+          <tr>
+            <th>订单号</th>
+            <th>金额（USD）</th>
+            <th>状态</th>
+            <th>下单时间</th>
+          </tr>
+        </thead>
+        <tbody id="order-tbody">
+          <tr><td colspan="4" style="text-align:center;padding:32px;color:#867A6D">加载中...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ===== 询盘记录 ===== -->
+  <div class="cust-section" id="sec-inquiries">
+    <div class="cust-sec-hd">
+      <div class="cust-sec-title">
+        <div class="cust-sec-title-dot"></div>
+        询盘记录
+      </div>
+    </div>
+    <div class="cust-table-wrap">
+      <table class="cust-table">
+        <thead>
+          <tr>
+            <th>询盘编号</th>
+            <th>询盘产品 / 主题</th>
+            <th>状态</th>
+            <th>提交时间</th>
+          </tr>
+        </thead>
+        <tbody id="inq-tbody">
+          <tr><td colspan="4" style="text-align:center;padding:32px;color:#867A6D">加载中...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ===== 我的收藏 ===== -->
+  <div class="cust-section" id="sec-favorites">
+    <div class="cust-sec-hd">
+      <div class="cust-sec-title">
+        <div class="cust-sec-title-dot"></div>
+        我的收藏
+      </div>
+      <a href="products-all.html" class="cust-sec-action">去收藏 →</a>
+    </div>
+    <div id="favorites-grid" class="cust-browse-grid"></div>
+  </div>
+
+  <!-- ===== 收货地址 ===== -->
+  <div class="cust-section" id="sec-address">
+    <div class="cust-sec-hd">
+      <div class="cust-sec-title">
+        <div class="cust-sec-title-dot"></div>
+        收货地址
+      </div>
+      <button class="cust-add-btn" id="btn-add-address">+ 新增地址</button>
+    </div>
+    <div id="address-list"></div>
+  </div>
+
+  <!-- ===== 账号安全 ===== -->
+  <div class="cust-section" id="sec-security">
+    <div class="cust-sec-hd">
+      <div class="cust-sec-title">
+        <div class="cust-sec-title-dot"></div>
+        账号安全
+      </div>
+    </div>
+    <div class="cust-security-cards" id="security-cards">
+      <div class="cust-security-card">
+        <div class="cust-security-icon">
+          <svg viewBox="0 0 20 20" fill="currentColor" width="24"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/></svg>
+        </div>
+        <div class="cust-security-info">
+          <div class="cust-security-title">登录密码</div>
+          <div class="cust-security-desc">定期更换密码可以提高账号安全性</div>
+        </div>
+        <button class="cust-security-btn" onclick="alert('修改密码功能开发中')">修改</button>
+      </div>
+      <div class="cust-security-card">
+        <div class="cust-security-icon">
+          <svg viewBox="0 0 20 20" fill="currentColor" width="24"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
+        </div>
+        <div class="cust-security-info">
+          <div class="cust-security-title">绑定邮箱</div>
+          <div class="cust-security-desc" id="security-email">未绑定</div>
+        </div>
+        <button class="cust-security-btn" onclick="alert('邮箱绑定功能开发中')">修改</button>
+      </div>
+      <div class="cust-security-card">
+        <div class="cust-security-icon">
+          <svg viewBox="0 0 20 20" fill="currentColor" width="24"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+        </div>
+        <div class="cust-security-info">
+          <div class="cust-security-title">账号状态</div>
+          <div class="cust-security-desc cust-security-ok">正常</div>
+        </div>
+        <button class="cust-security-btn cust-security-btn-disabled" disabled>正常</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 消息通知 ===== -->
+  <div class="cust-section" id="sec-notifications">
+    <div class="cust-sec-hd">
+      <div class="cust-sec-title">
+        <div class="cust-sec-title-dot"></div>
+        消息通知
+      </div>
+      <button class="cust-sec-action" id="btn-mark-all-read">全部已读</button>
+    </div>
+    <div id="notifications-list"></div>
+  </div>
+
+  <!-- ===== 样品申请 ===== -->
+  <div class="cust-section" id="sec-samples">
+    <div class="cust-sec-hd">
+      <div class="cust-sec-title">
+        <div class="cust-sec-title-dot"></div>
+        样品申请
+      </div>
+      <button class="cust-add-btn" id="btn-apply-sample">+ 申请样品</button>
+    </div>
+    <div class="cust-table-wrap">
+      <table class="cust-table">
+        <thead>
+          <tr>
+            <th>申请编号</th>
+            <th>样品名称</th>
+            <th>状态</th>
+            <th>申请时间</th>
+          </tr>
+        </thead>
+        <tbody id="sample-tbody">
+          <tr><td colspan="4" style="text-align:center;padding:32px;color:#867A6D">加载中...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ===== 消费/采购记录 ===== -->
+  <div class="cust-section" id="sec-spending">
+    <div class="cust-sec-hd">
+      <div class="cust-sec-title">
+        <div class="cust-sec-title-dot"></div>
+        采购记录
+      </div>
+      <div style="font-size:14px;color:var(--ink-soft)">
+        累计消费：<strong id="spending-total" style="color:var(--orange);font-size:16px">$0.00</strong>
+      </div>
+    </div>
+    <div class="cust-table-wrap">
+      <table class="cust-table">
+        <thead>
+          <tr>
+            <th>消费时间</th>
+            <th>金额（USD）</th>
+            <th>状态</th>
+          </tr>
+        </thead>
+        <tbody id="spending-tbody">
+          <tr><td colspan="3" style="text-align:center;padding:32px;color:#867A6D">加载中...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ===== 账户资料 ===== -->
+  <div class="cust-section" id="sec-profile">
+    <div class="cust-sec-hd">
+      <div class="cust-sec-title">
+        <div class="cust-sec-title-dot"></div>
+        账户资料
+      </div>
+    </div>
+    <div class="cust-profile-card" id="profile-card">
+      <div style="color:#867A6D;padding:32px;text-align:center">加载中...</div>
+    </div>
+  </div>
+
+  </main><!-- /cust-main -->
+</div><!-- /cust-page -->
+
+<!-- 共享页脚 -->
+<div id="site-footer"></div>
+
+<script src="nav-shared.js?v=20260424-avatar"></script>
+<script src="footer-shared.js?v=20260424-avatar"></script>
+<script src="script.js?v=20260423-loginfix2"></script>
+<script src="serve_app/wwwroot/api.js?v=20260416-API"></script>
+<script src="customer.js?v=20260424-profile2"></script>
+<script>
+// 客户中心欢迎语：登录后显示用户名
+(function(){
+  function updateWelcome(){
+    var u = localStorage.getItem('panda_user');
+    if(!u) return;
+    try { u = JSON.parse(u); } catch(e) {}
+    var name = (u && (u.company || u.name || u.email || u.username)) || '';
+    if(!name) return;
+    var titleEl = document.getElementById('cust-hero-title');
+    var subEl = document.getElementById('cust-hero-sub');
+    if(titleEl) titleEl.innerHTML = 'Hi <em>' + name + '</em>，欢迎回来';
+    if(subEl) subEl.style.display = 'none';
+  }
+  if(document.readyState === 'complete'){ updateWelcome(); }
+  else { window.addEventListener('load', updateWelcome); }
+})();
+</script>
+</body>
+</html>

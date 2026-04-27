@@ -1,0 +1,757 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+  <title>生产设备 — 熊猫手护</title>
+  <meta name="description" content="熊猫手护引进德国、日本先进生产设备，包括智能化编织机、高精度浸胶生产线、自动化包装系统等，确保产品品质稳定。" />
+  <meta name="description" content="Panda Guard uses advanced equipment from Germany and Japan, including intelligent knitting machines and precision dipping production lines." lang="en" />
+  <meta property="og:title" content="生产设备 — 熊猫手护" />
+  <meta property="og:title" content="Production Equipment — Panda Guard" xml:lang="en" />
+  <meta property="og:description" content="熊猫手护引进德国、日本先进生产设备，包括智能化编织机、高精度浸胶生产线、自动化包装系统等，确保产品品质稳定。" />
+  <meta property="og:description" content="Panda Guard uses advanced equipment from Germany and Japan, including intelligent knitting machines and precision dipping production lines." xml:lang="en" />
+  <meta property="og:url" content="https://www.pandaguard.com/equipment-hub.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="熊猫手护" />
+  <meta property="og:site_name" content="Panda Guard" xml:lang="en" />
+  <meta property="og:image" content="https://www.pandaguard.com/image/og-default.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Production Equipment — Panda Guard" />
+  <meta name="twitter:description" content="Panda Guard uses advanced equipment from Germany and Japan, including intelligent knitting machines and precision dipping production lines." />
+  <meta name="twitter:image" content="https://www.pandaguard.com/image/og-default.jpg" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="equipmentHubTitle">工厂与设备 | Panda Hand Guard Factory Equipment</title>
+  <link rel="stylesheet" href="styles.css?v=20260423" />
+  <link rel="stylesheet" href="subpage.css" />
+  <link rel="stylesheet" href="filter-page.css" />
+  <script>
+    if (!localStorage.getItem('pg_lang')) {
+      localStorage.setItem('pg_lang', 'zh');
+    }
+  </script>
+  <script src="i18n.js?v=20260424-avatar"></script>
+  <style>
+    /* ── 设备中心专用样式 ── */
+    .eq-hub-hero { 
+      background: linear-gradient(135deg, #0D0D0D 0%, #1A0A00 100%);
+      --fp-glow: rgba(232,93,0,0.15);
+      --fp-accent: #E85D00;
+    }
+    
+    /* 设备卡片矩阵 */
+    .eq-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 28px;
+      margin-top: 60px;
+    }
+    
+    .eq-card {
+      background: linear-gradient(135deg, rgba(232,93,0,0.08), rgba(232,93,0,0.02));
+      border: 1.5px solid rgba(232,93,0,0.2);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .eq-card:hover {
+      border-color: rgba(232,93,0,0.5);
+      box-shadow: 0 12px 48px rgba(232,93,0,0.15);
+      transform: translateY(-8px);
+    }
+    
+    .eq-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #E85D00, transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    
+    .eq-card:hover::before {
+      opacity: 1;
+    }
+    
+    .eq-card-header {
+      background: rgba(232,93,0,0.04);
+      padding: 32px 28px;
+      border-bottom: 1px solid rgba(232,93,0,0.1);
+      flex-shrink: 0;
+    }
+    
+    .eq-card-icon {
+      font-size: 2.8rem;
+      margin-bottom: 12px;
+      display: inline-block;
+      transition: transform 0.3s;
+    }
+    
+    .eq-card:hover .eq-card-icon {
+      transform: scale(1.1) rotate(5deg);
+    }
+    
+    .eq-card-title {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #E85D00;
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+    
+    .eq-card-subtitle {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.5);
+      font-weight: 500;
+    }
+    
+    .eq-card-body {
+      padding: 24px 28px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .eq-card-desc {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 20px;
+      flex: 1;
+    }
+    
+    .eq-card-specs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    
+    .eq-spec-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.78rem;
+      padding: 5px 12px;
+      background: rgba(232,93,0,0.12);
+      border-radius: 12px;
+      color: #FF7A20;
+      font-weight: 600;
+    }
+    
+    .eq-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 12px;
+      border-top: 1px solid rgba(232,93,0,0.1);
+    }
+    
+    .eq-card-footer a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #E85D00;
+      font-weight: 600;
+      transition: color 0.2s;
+      cursor: pointer;
+    }
+    
+    .eq-card-footer a:hover {
+      color: #FF7A20;
+    }
+    
+    .eq-arrow {
+      display: inline-block;
+      transition: transform 0.3s;
+      font-size: 1.2em;
+    }
+    
+    .eq-card:hover .eq-arrow {
+      transform: translateX(4px);
+    }
+    
+    .eq-stat-row {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.5);
+    }
+    
+    /* 设备对比区块 */
+    .eq-comparison-section {
+      background: rgba(232,93,0,0.03);
+      border: 1px solid rgba(232,93,0,0.1);
+      border-radius: 16px;
+      padding: 48px;
+      margin-top: 60px;
+    }
+    
+    .eq-comparison-title {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+    
+    .eq-comparison-sub {
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 36px;
+      font-size: 1.02rem;
+    }
+    
+    .eq-comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow-x: auto;
+    }
+    
+    .eq-comparison-table thead {
+      background: rgba(232,93,0,0.08);
+      border-top: 2px solid #E85D00;
+      border-bottom: 2px solid #E85D00;
+    }
+    
+    .eq-comparison-table th {
+      padding: 16px;
+      text-align: left;
+      font-weight: 700;
+      color: #E85D00;
+      font-size: 0.9rem;
+    }
+    
+    .eq-comparison-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid rgba(232,93,0,0.1);
+      color: rgba(255,255,255,0.8);
+    }
+    
+    .eq-comparison-table tr:last-child td {
+      border-bottom: none;
+    }
+    
+    .eq-comparison-table tbody tr:hover {
+      background: rgba(232,93,0,0.04);
+    }
+    
+    /* 流程视图 */
+    .eq-flow-section {
+      padding: 60px 0;
+    }
+    
+    .eq-flow-title {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+    
+    .eq-flow-sub {
+      text-align: center;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 48px;
+    }
+    
+    .eq-flow-timeline {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
+      position: relative;
+    }
+    
+    .eq-flow-step {
+      background: rgba(232,93,0,0.06);
+      border: 1px solid rgba(232,93,0,0.15);
+      border-radius: 12px;
+      padding: 28px;
+      text-align: center;
+      position: relative;
+      transition: all 0.3s;
+    }
+    
+    .eq-flow-step:hover {
+      background: rgba(232,93,0,0.12);
+      border-color: rgba(232,93,0,0.4);
+      transform: translateY(-4px);
+    }
+    
+    .eq-flow-step-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, #E85D00, #FF7A20);
+      color: white;
+      border-radius: 50%;
+      font-weight: 800;
+      font-size: 1.3rem;
+      margin-bottom: 16px;
+    }
+    
+    .eq-flow-step-title {
+      font-weight: 700;
+      color: #E85D00;
+      margin-bottom: 8px;
+    }
+    
+    .eq-flow-step-desc {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.6);
+    }
+    
+    /* CTA 区块 */
+    .eq-cta-section {
+      background: linear-gradient(135deg, rgba(232,93,0,0.12), rgba(232,93,0,0.04));
+      border: 1.5px solid rgba(232,93,0,0.25);
+      border-radius: 16px;
+      padding: 48px 40px;
+      text-align: center;
+      margin-top: 60px;
+    }
+    
+    .eq-cta-title {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+    
+    .eq-cta-desc {
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 28px;
+      font-size: 1.02rem;
+    }
+    
+    .eq-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 36px;
+      background: linear-gradient(135deg, #E85D00, #FF7A20);
+      color: white;
+      border-radius: 8px;
+      font-weight: 700;
+      transition: all 0.3s;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    
+    .eq-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(232,93,0,0.3);
+    }
+    
+    .eq-btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 36px;
+      border: 1.5px solid rgba(232,93,0,0.4);
+      color: #FF7A20;
+      border-radius: 8px;
+      font-weight: 700;
+      transition: all 0.3s;
+      text-decoration: none;
+      cursor: pointer;
+      margin-left: 12px;
+    }
+    
+    .eq-btn-outline:hover {
+      border-color: #E85D00;
+      color: #E85D00;
+    }
+    
+    @media (max-width: 768px) {
+      .eq-cards-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .eq-comparison-section {
+        padding: 32px 24px;
+      }
+      
+      .eq-comparison-table {
+        font-size: 0.9rem;
+      }
+      
+      .eq-comparison-table th,
+      .eq-comparison-table td {
+        padding: 12px 8px;
+      }
+      
+      .eq-cta-section {
+        padding: 32px 24px;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="responsive.css?v=1">
+</head>
+<body class="subpage-body">
+
+<div id="site-nav"></div>
+<script src="nav-shared.js?v=20260404-1958"></script>
+
+<!-- HERO 区块 -->
+<section class="fp-hero eq-hub-hero">
+  <div class="fp-hero-bg"></div>
+  <div class="container">
+    <div class="fp-hero-inner">
+      <div class="site-breadcrumb">
+        <a href="index.html" data-i18n="breadcrumbHome">首页</a>
+        <span class="fp-bc-sep">›</span>
+        <span data-i18n="equipmentHubTitle">工厂与设备</span>
+      </div>
+      <div class="fp-hero-tag" data-i18n="equipmentTag">🏭 智能制造</div>
+      <h1 class="fp-hero-title">
+        <span data-i18n="equipmentHubHero1">熊猫手护</span><br/>
+        <span data-i18n="equipmentHubHero2">设备与工艺体系</span>
+      </h1>
+      <p class="fp-hero-sub" data-i18n="equipmentHubSub">
+        探索我们18条自动化生产线、6大工艺模块、500+套精密设备的完整制造体系，见证安全手套背后的工业精准度
+      </p>
+      <div class="fp-hero-stats">
+        <div class="fp-stat">
+          <span class="fp-stat-val">18</span>
+          <span class="fp-stat-lab" data-i18n="equipmentStatLines">自动化产线</span>
+        </div>
+        <div class="fp-stat">
+          <span class="fp-stat-val">500+</span>
+          <span class="fp-stat-lab" data-i18n="equipmentStatDevices">精密设备</span>
+        </div>
+        <div class="fp-stat">
+          <span class="fp-stat-val">6</span>
+          <span class="fp-stat-lab" data-i18n="equipmentStatModules">工艺模块</span>
+        </div>
+        <div class="fp-stat">
+          <span class="fp-stat-val">99.8%</span>
+          <span class="fp-stat-lab" data-i18n="equipmentStatQuality">合格率</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 设备卡片矩阵 -->
+<section style="padding: 80px 0;">
+  <div class="container">
+    <div style="text-align: center; margin-bottom: 20px;">
+      <h2 style="font-size: 2rem; font-weight: 800; color: #fff; margin-bottom: 12px;" data-i18n="equipmentCardTitle">六大生产工艺体系</h2>
+      <p style="color: rgba(255,255,255,0.6); font-size: 1.05rem;" data-i18n="equipmentCardSub">
+        从原材料到成品，每一步都采用国际领先设备与工艺
+      </p>
+    </div>
+    
+    <div class="eq-cards-grid">
+      <!-- 针织生产线 -->
+      <div class="eq-card">
+        <div class="eq-card-header">
+          <div class="eq-card-icon">🧶</div>
+          <h3 class="eq-card-title" data-i18n="equipmentName1">针织生产线</h3>
+          <p class="eq-card-subtitle" data-i18n="equipmentType1">Knitting Production Line</p>
+        </div>
+        <div class="eq-card-body">
+          <p class="eq-card-desc" data-i18n="equipmentDesc1">
+            采用国际顶尖的Santoni/Jiu tai针织机，支持3至18针多规格生产，自动化率95%以上，可实现复杂编织图案与特殊纤维混纺。
+          </p>
+          <div class="eq-card-specs">
+            <span class="eq-spec-tag">95%+ 自动化</span>
+            <span class="eq-spec-tag">3-18针规格</span>
+            <span class="eq-spec-tag">多纤维混纺</span>
+          </div>
+          <div class="eq-card-footer">
+            <div>
+              <p class="eq-stat-row" data-i18n="equipmentCount1">4条产线</p>
+            </div>
+            <a href="equipment-knitting.html" data-i18n="equipmentViewDetail">
+              查看详情
+              <span class="eq-arrow">→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 涂层浸渍 -->
+      <div class="eq-card">
+        <div class="eq-card-header">
+          <div class="eq-card-icon">🎨</div>
+          <h3 class="eq-card-title" data-i18n="equipmentName2">涂层浸渍线</h3>
+          <p class="eq-card-subtitle" data-i18n="equipmentType2">Coating & Immersion Line</p>
+        </div>
+        <div class="eq-card-body">
+          <p class="eq-card-desc" data-i18n="equipmentDesc2">
+            丁腈、乳胶、PU等12种涂层工艺，配备精密温度控制系统，厚度偏差控制在±0.1mm，满足EN388/EN374国际标准。
+          </p>
+          <div class="eq-card-specs">
+            <span class="eq-spec-tag">12种涂层</span>
+            <span class="eq-spec-tag">±0.1mm精度</span>
+            <span class="eq-spec-tag">温度控制</span>
+          </div>
+          <div class="eq-card-footer">
+            <div>
+              <p class="eq-stat-row" data-i18n="equipmentCount2">3条产线</p>
+            </div>
+            <a href="equipment-coating.html" data-i18n="equipmentViewDetail">
+              查看详情
+              <span class="eq-arrow">→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 裁缝缝制 -->
+      <div class="eq-card">
+        <div class="eq-card-header">
+          <div class="eq-card-icon">✂️</div>
+          <h3 class="eq-card-title" data-i18n="equipmentName3">裁缝缝制车间</h3>
+          <p class="eq-card-subtitle" data-i18n="equipmentType3">Cutting & Sewing Workshop</p>
+        </div>
+        <div class="eq-card-body">
+          <p class="eq-card-desc" data-i18n="equipmentDesc3">
+            配备瑞士裁切机和高速自动缝纫机，支持定制尺寸、异形版型加工，可绣花品牌LOGO，品质稳定性达98%以上。
+          </p>
+          <div class="eq-card-specs">
+            <span class="eq-spec-tag">瑞士裁切机</span>
+            <span class="eq-spec-tag">自动绣花</span>
+            <span class="eq-spec-tag">定制版型</span>
+          </div>
+          <div class="eq-card-footer">
+            <div>
+              <p class="eq-stat-row" data-i18n="equipmentCount3">2条产线</p>
+            </div>
+            <a href="equipment-sewing.html" data-i18n="equipmentViewDetail">
+              查看详情
+              <span class="eq-arrow">→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 热压成型 -->
+      <div class="eq-card">
+        <div class="eq-card-header">
+          <div class="eq-card-icon">🔥</div>
+          <h3 class="eq-card-title" data-i18n="equipmentName4">热压成型设备</h3>
+          <p class="eq-card-subtitle" data-i18n="equipmentType4">Heat Press Forming Equipment</p>
+        </div>
+        <div class="eq-card-body">
+          <p class="eq-card-desc" data-i18n="equipmentDesc4">
+            专业TPR/PVC防护条成型设备，精密模具工艺，公差≤0.5mm，适用于冲击防护、防割等高强度功能部件。
+          </p>
+          <div class="eq-card-specs">
+            <span class="eq-spec-tag">TPR/PVC成型</span>
+            <span class="eq-spec-tag">≤0.5mm公差</span>
+            <span class="eq-spec-tag">精密模具</span>
+          </div>
+          <div class="eq-card-footer">
+            <div>
+              <p class="eq-stat-row" data-i18n="equipmentCount4">2条产线</p>
+            </div>
+            <a href="equipment-pressing.html" data-i18n="equipmentViewDetail">
+              查看详情
+              <span class="eq-arrow">→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 自动化包装 -->
+      <div class="eq-card">
+        <div class="eq-card-header">
+          <div class="eq-card-icon">📦</div>
+          <h3 class="eq-card-title" data-i18n="equipmentName5">自动化包装线</h3>
+          <p class="eq-card-subtitle" data-i18n="equipmentType5">Automated Packaging Line</p>
+        </div>
+        <div class="eq-card-body">
+          <p class="eq-card-desc" data-i18n="equipmentDesc5">
+            全自动扫码匹配、配对检测、防混料系统，支持多语言标签打印，100%包装准确率，单线产能10000双/天。
+          </p>
+          <div class="eq-card-specs">
+            <span class="eq-spec-tag">全自动配对</span>
+            <span class="eq-spec-tag">扫码追溯</span>
+            <span class="eq-spec-tag">10K双/天</span>
+          </div>
+          <div class="eq-card-footer">
+            <div>
+              <p class="eq-stat-row" data-i18n="equipmentCount5">3条产线</p>
+            </div>
+            <a href="equipment-packaging.html" data-i18n="equipmentViewDetail">
+              查看详情
+              <span class="eq-arrow">→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 环保处理 -->
+      <div class="eq-card">
+        <div class="eq-card-header">
+          <div class="eq-card-icon">🌿</div>
+          <h3 class="eq-card-title" data-i18n="equipmentName6">环保处理系统</h3>
+          <p class="eq-card-subtitle" data-i18n="equipmentType6">Environmental Treatment System</p>
+        </div>
+        <div class="eq-card-body">
+          <p class="eq-card-desc" data-i18n="equipmentDesc6">
+            废水零排放处理、多级废气净化、太阳能发电系统，通过ISO 14001认证，年减碳5000吨，污水处理率100%。
+          </p>
+          <div class="eq-card-specs">
+            <span class="eq-spec-tag">零排放</span>
+            <span class="eq-spec-tag">污水率100%</span>
+            <span class="eq-spec-tag">太阳能</span>
+          </div>
+          <div class="eq-card-footer">
+            <div>
+              <p class="eq-stat-row" data-i18n="equipmentCount6">完整系统</p>
+            </div>
+            <a href="equipment-eco.html" data-i18n="equipmentViewDetail">
+              查看详情
+              <span class="eq-arrow">→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 设备对比 -->
+<section style="padding: 80px 0;">
+  <div class="container">
+    <div class="eq-comparison-section">
+      <h2 class="eq-comparison-title" data-i18n="equipmentComparisonTitle">设备对标对比</h2>
+      <p class="eq-comparison-sub" data-i18n="equipmentComparisonSub">
+        熊猫手护的6大生产工艺体系相比行业同类设备的技术优势
+      </p>
+      <table class="eq-comparison-table">
+        <thead>
+          <tr>
+            <th data-i18n="comparisonItem">项目</th>
+            <th data-i18n="comparisonPanda">熊猫手护</th>
+            <th data-i18n="comparisonIndustry">行业平均水平</th>
+            <th data-i18n="comparisonAdvantage">竞争优势</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-i18n="comparisonAutoRate">自动化率</td>
+            <td>95%+ 全产线</td>
+            <td>75-85%</td>
+            <td style="color: #FF7A20; font-weight: 600;">+15-20%</td>
+          </tr>
+          <tr>
+            <td data-i18n="comparisonPrecision">设备精度</td>
+            <td>±0.1-0.5mm</td>
+            <td>±1-2mm</td>
+            <td style="color: #FF7A20; font-weight: 600;">10倍精度</td>
+          </tr>
+          <tr>
+            <td data-i18n="comparisonQualityRate">出货合格率</td>
+            <td>99.8%</td>
+            <td>96-97%</td>
+            <td style="color: #FF7A20; font-weight: 600;">行业领先</td>
+          </tr>
+          <tr>
+            <td data-i18n="comparisonCapacity">日产能</td>
+            <td>100000+ 双</td>
+            <td>50000-70000双</td>
+            <td style="color: #FF7A20; font-weight: 600;">+40%产能</td>
+          </tr>
+          <tr>
+            <td data-i18n="comparisonProcessing">处理工艺</td>
+            <td>12+种涂层工艺</td>
+            <td>5-8种</td>
+            <td style="color: #FF7A20; font-weight: 600;">工艺丰富</td>
+          </tr>
+          <tr>
+            <td data-i18n="comparisonEnvironmental">环保等级</td>
+            <td>ISO 14001 零排放</td>
+            <td>部分达标</td>
+            <td style="color: #FF7A20; font-weight: 600;">绿色认证</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 生产工艺流程 -->
+<section class="eq-flow-section">
+  <div class="container">
+    <h2 class="eq-flow-title" data-i18n="equipmentFlowTitle">从原材料到成品 · 完整流程图</h2>
+    <p class="eq-flow-sub" data-i18n="equipmentFlowSub">
+      熊猫手护的每一双手套，都经过8个核心工艺环节，确保最终产品达到国际标准
+    </p>
+    
+    <div class="eq-flow-timeline">
+      <div class="eq-flow-step">
+        <div class="eq-flow-step-num">1</div>
+        <h4 class="eq-flow-step-title" data-i18n="flowStep1">原材料选取</h4>
+        <p class="eq-flow-step-desc" data-i18n="flowStep1Desc">全球采购顶级纤维、涂层原料，原材料检测通过率99.2%</p>
+      </div>
+      <div class="eq-flow-step">
+        <div class="eq-flow-step-num">2</div>
+        <h4 class="eq-flow-step-title" data-i18n="flowStep2">针织编织</h4>
+        <p class="eq-flow-step-desc" data-i18n="flowStep2Desc">高精度针织机编织基布，精确控制纱线张力与密度</p>
+      </div>
+      <div class="eq-flow-step">
+        <div class="eq-flow-step-num">3</div>
+        <h4 class="eq-flow-step-title" data-i18n="flowStep3">涂层工艺</h4>
+        <p class="eq-flow-step-desc" data-i18n="flowStep3Desc">选择型涂层浸渍，厚度控制±0.1mm，增强防护性能</p>
+      </div>
+      <div class="eq-flow-step">
+        <div class="eq-flow-step-num">4</div>
+        <h4 class="eq-flow-step-title" data-i18n="flowStep4">热压成型</h4>
+        <p class="eq-flow-step-desc" data-i18n="flowStep4Desc">TPR防护条成型，公差≤0.5mm，强度与耐磨性最优</p>
+      </div>
+      <div class="eq-flow-step">
+        <div class="eq-flow-step-num">5</div>
+        <h4 class="eq-flow-step-title" data-i18n="flowStep5">精密裁切</h4>
+        <p class="eq-flow-step-desc" data-i18n="flowStep5Desc">瑞士裁切机精确裁剪，尺寸误差≤1mm</p>
+      </div>
+      <div class="eq-flow-step">
+        <div class="eq-flow-step-num">6</div>
+        <h4 class="eq-flow-step-title" data-i18n="flowStep6">缝制绣花</h4>
+        <p class="eq-flow-step-desc" data-i18n="flowStep6Desc">高速缝纫与自动绣花，支持LOGO定制与防护加固</p>
+      </div>
+      <div class="eq-flow-step">
+        <div class="eq-flow-step-num">7</div>
+        <h4 class="eq-flow-step-title" data-i18n="flowStep7">品质检验</h4>
+        <p class="eq-flow-step-desc" data-i18n="flowStep7Desc">100+道检验关卡，力学/化学/耐磨全覆盖</p>
+      </div>
+      <div class="eq-flow-step">
+        <div class="eq-flow-step-num">8</div>
+        <h4 class="eq-flow-step-title" data-i18n="flowStep8">自动包装</h4>
+        <p class="eq-flow-step-desc" data-i18n="flowStep8Desc">扫码配对、标签打印、防混料，准确率100%</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 了解详情 CTA -->
+<section style="padding: 60px 0;">
+  <div class="container">
+    <div class="eq-cta-section">
+      <h2 class="eq-cta-title" data-i18n="equipmentCTATitle">深入了解熊猫手护的制造实力</h2>
+      <p class="eq-cta-desc" data-i18n="equipmentCTADesc">
+        参观我们的智能工厂，亲眼见证每一双手套的诞生过程。我们欢迎合作伙伴、采购商和媒体来厂考察。
+      </p>
+      <div>
+        <a href="production-process.html" class="eq-btn" data-i18n="equipmentCTAFlow">
+          📊 查看完整流程
+        </a>
+        <a href="quality-control.html" class="eq-btn-outline" data-i18n="equipmentCTAQC">
+          🔍 品质管控体系
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+<script src="footer-shared.js?v=20260403-1006"></script>
+
+</body>
+</html>

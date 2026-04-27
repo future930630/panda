@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>产品对比 - PandaShield</title>
+<link rel="stylesheet" href="./styles.css?v=20260423">
+  <link rel="stylesheet" href="responsive.css?v=20260423" />
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #f5f0ea; font-family: 'PingFang SC', 'Microsoft YaHei', Arial, sans-serif; color: #1A1108; min-height: 100vh; }
+
+/* ── 顶部橙色导航条（三栏对齐）── */
+.compare-topbar {
+  background: #E85D00;
+  padding: 18px 0;
+  display: flex;
+  position: sticky;
+  top: 0;
+  z-index: 200;
+}
+.compare-topbar-left { width: 16%; flex-shrink: 0; }
+.compare-topbar-center { width: calc(100% - 32%); flex-shrink: 0; display: flex; align-items: center; justify-content: space-between; }
+.compare-topbar-right { width: 16%; flex-shrink: 0; display: flex; justify-content: flex-end; padding-right: 32px; }
+
+/* ── 三栏主体容器 ── */
+.compare-outer {
+  display: flex;
+  justify-content: center;
+  padding: 24px 0 60px;
+}
+.compare-left, .compare-right { width: 16%; flex-shrink: 0; }
+.compare-center { width: calc(100% - 16% - 16%); flex-shrink: 0; }
+
+/* ── 五列对比网格（第1列属性标签 + 第2~5列四个产品）── */
+.compare-grid {
+  display: grid;
+  grid-template-columns: 120px repeat(4, 1fr);
+  /* 整表外框 */
+  border: 1px solid #e6dfd7;
+  border-radius: 8px;
+  background: #e6dfd7;
+  box-shadow: 0 4px 20px rgba(0,0,0,.08);
+  position: relative;
+  overflow: hidden;
+  gap: 1px;
+}
+
+/* ── 移动端适配 ── */
+@media (max-width: 768px) {
+  .compare-topbar {
+    flex-wrap: wrap;
+    padding: 12px 16px;
+    gap: 10px;
+  }
+  .compare-topbar-left { display: none; }
+  .compare-topbar-center {
+    width: 100% !important;
+    order: 1;
+  }
+  .compare-topbar-right {
+    width: auto !important;
+    padding-right: 0 !important;
+    order: 2;
+  }
+  .compare-outer {
+    flex-direction: column;
+    padding: 12px 0 40px;
+  }
+  .compare-left, .compare-right { display: none; }
+  .compare-center { width: 100% !important; }
+  .compare-grid {
+    grid-template-columns: 90px repeat(4, minmax(80px, 1fr));
+    overflow-x: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .compare-topbar-center {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .compare-grid {
+    grid-template-columns: 70px repeat(4, minmax(70px, 1fr));
+  }
+}
+
+/* ── 左列标签 ── */
+.compare-col-label {
+  background: #fff;
+  color: #444;
+  font-size: 12px;
+  font-weight: 400;
+  padding: 13px 10px;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  text-align: center;
+  letter-spacing: .3px;
+}
+.compare-col-label.section-head {
+  background: #fff;
+  color: #1A1108;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .5px;
+  padding: 10px 10px;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  text-align: center;
+}
+
+/* ── 左上角"对比产品"标题格 ── */
+.compare-corner-head {
+  background: #fff;
+  color: #666;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* ── 属性行（第一列）── */
+.compare-row-label {
+  background: #fff;
+  color: #5a4d40;
+  font-size: 11.5px;
+  font-weight: 400;
+  padding: 11px 10px;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  text-align: center;
+}
+
+/* ── 产品列 ── */
+.compare-col-prod {
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #e6dfd7;
+}
+.compare-col-prod:last-child { border-right: none; }
+.compare-col-prod.is-empty { background: #fff; }
+
+/* 产品头部 */
+.compare-prod-head {
+  padding: 18px 16px 14px;
+  text-align: center;
+  background: #fff;
+  min-height: 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.compare-prod-icon { width: 48px; height: 48px; margin: 0 auto 8px; }
+.compare-prod-icon svg { width: 100%; height: 100%; }
+.compare-prod-brand { font-size: 10px; font-weight: 700; letter-spacing: .8px; margin-bottom: 4px; }
+.compare-prod-name { font-size: 13px; font-weight: 700; color: #1A1108; line-height: 1.4; margin-bottom: 6px; }
+.compare-prod-link { font-size: 11px; color: #E85D00; text-decoration: none; font-weight: 600; }
+.compare-prod-link:hover { text-decoration: underline; }
+
+/* 空白槽 */
+.compare-slot-empty {
+  padding: 18px 16px;
+  text-align: center;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 140px;
+  background: #fff;
+}
+.compare-slot-empty .plus-box {
+  width: 48px;
+  height: 48px;
+  border: 2px dashed #888;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+  font-size: 24px;
+  font-weight: 200;
+  margin-bottom: 8px;
+}
+.compare-slot-empty .plus-text { font-size: 11px; color: #888; }
+
+/* ── 属性行 ── */
+
+.compare-cell {
+  background: #fff;
+  padding: 11px 16px;
+  font-size: 12px;
+  color: #1A1108;
+  display: flex;
+  align-items: stretch;
+  line-height: 1.5;
+}
+.vcenter { align-items: center !important; }
+.section-head-cell {
+  background: #fff;
+  padding: 10px 16px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #444;
+  letter-spacing: .5px;
+  display: flex;
+  align-items: stretch;
+}
+
+/* ── 空列隐藏内部 ── */
+.compare-col-prod.is-empty .compare-prod-head,
+.compare-col-prod.is-empty .compare-row-label,
+.compare-col-prod.is-empty .compare-cell,
+.compare-col-prod.is-empty .section-head-cell { display: none; }
+.compare-col-prod.is-empty .compare-slot-empty { display: flex; }
+
+/* ── 无数据提示 ── */
+.no-products-tip { text-align: center; padding: 80px 20px; color: #888; font-size: 15px; }
+.no-products-tip a { color: #E85D00; text-decoration: none; margin-top: 12px; display: inline-block; font-weight: 600; }
+
+/* ── 左16%垂直分类导航 ── */
+.compare-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.compare-side-nav {
+  position: sticky;
+  top: 74px;
+  width: 135px;
+  background: #fff;
+  border: 1px solid #e6dfd7;
+  border-radius: 8px;
+}
+.compare-side-nav a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 500;
+  color: #6b5d4d;
+  text-decoration: none;
+  padding: 12px 6px;
+  letter-spacing: .3px;
+  transition: color .15s;
+  text-align: center;
+  border-bottom: 1px solid #e6dfd7;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.compare-side-nav a:last-child { border-bottom: none; }
+.compare-side-nav a:hover { color: #E85D00; }
+.compare-side-nav a.active { color: #E85D00; font-weight: 700; }
+</style>
+</head>
+<body>
+
+<!-- 顶部橙色导航条（三栏对齐） -->
+<div class="compare-topbar">
+  <!-- 左16%空白：移动端隐藏 -->
+  <div class="compare-topbar-left"></div>
+  <!-- 中间：logo在左，四大功能在右 -->
+  <div class="compare-topbar-center">
+    <a href="index.html"><img src="./image/logo1.png" alt="PandaShield" style="height:20px;width:auto;"></a>
+    <div style="display:flex;align-items:center;gap:20px;">
+      <div class="font-size-control">
+        <button class="font-size-btn font-size-small" data-action="decrease" style="color:#fff;">A</button>
+        <button class="font-size-btn font-size-medium" data-action="reset" style="color:#fff;">A</button>
+        <button class="font-size-btn font-size-large" data-action="increase" style="color:#fff;font-size:16px;">A</button>
+      </div>
+      <a href="cart.html" style="color:#fff;text-decoration:none;" title="购物车">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="auth.html" style="color:#fff;text-decoration:none;" title="注册/登录">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <button id="langSelector" style="background:none;border:none;cursor:pointer;color:#fff;display:flex;align-items:center;gap:5px;padding:0;" onclick="window._pandaLangToggle && window._pandaLangToggle(event)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="22" height="22"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <span id="langDisplay" style="font-size:12px;font-weight:600;color:#fff;">中文</span>
+      </button>
+    </div>
+  </div>
+  <!-- 右16%空白：移动端变成返回按钮 -->
+  <div class="compare-topbar-right">
+    <a href="products-all.html" style="color:#fff;text-decoration:none;font-size:13px;font-weight:600;">← 返回所有产品</a>
+  </div>
+</div>
+
+<!-- 三栏主体 -->
+<div class="compare-outer">
+  <div class="compare-left">
+    <div class="compare-side-nav">
+      <a href="#section-basic">基本信息</a>
+      <a href="#section-protect">防护认证</a>
+      <a href="#section-material">材质工艺</a>
+      <a href="#section-special">特种属性</a>
+      <a href="#section-price">价格货期</a>
+    </div>
+  </div>
+
+  <div class="compare-center">
+    <!-- 对比内容 -->
+    <div id="compareWrap"></div>
+  </div>
+
+  <div class="compare-right"></div>
+</div>
+
+<script src="./i18n.js?v=20260424-avatar"></script>
+<script src="./script.js?v=20260415-R10"></script>
+<script src="./products-data.js?v=20260416-100"></script>
+
+<script>
+// ── 品牌映射 ───────────────────────────────────────────────────
+var brandMap = {
+  shield:  { name: 'PandaSHIELD™',  color: '#E85D00', svg: '<svg viewBox="0 0 48 48" fill="none"><path d="M24 4L6 10v14c0 11 8 18 18 20 10-2 18-9 18-20V10L24 4z" fill="#E85D00" opacity=".15" stroke="#E85D00" stroke-width="2"/><path d="M18 24l4 4 8-8" stroke="#E85D00" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>' },
+  pierce:  { name: 'PandaPIERCE™',  color: '#7C3AED', svg: '<svg viewBox="0 0 48 48" fill="none"><path d="M24 6l-4 20h8L24 6z" stroke="#7C3AED" stroke-width="2.5" stroke-linejoin="round" fill="#7C3AED" fill-opacity=".12"/><circle cx="24" cy="38" r="4" stroke="#7C3AED" stroke-width="2" fill="#7C3AED" fill-opacity=".2"/></svg>' },
+  impact:  { name: 'PandaIMPACT™',  color: '#1A1108', svg: '<svg viewBox="0 0 48 48" fill="none"><path d="M14 34l-4 4m28-4l4 4M10 18H4m40 0h-6" stroke="#1A1108" stroke-width="3" stroke-linecap="round"/><circle cx="24" cy="24" r="10" stroke="#1A1108" stroke-width="2.5" fill="#1A1108" fill-opacity=".12"/><path d="M24 18v6l-4 4" stroke="#1A1108" stroke-width="2" stroke-linecap="round"/></svg>' },
+  chem:    { name: 'PandaCHEM™',    color: '#2563EB', svg: '<svg viewBox="0 0 48 48" fill="none"><path d="M16 40V20l8-12 8 12v20" stroke="#2563EB" stroke-width="2.5" fill="#2563EB" fill-opacity=".12"/><path d="M10 40h28" stroke="#2563EB" stroke-width="2.5" stroke-linecap="round"/><circle cx="20" cy="30" r="2" fill="#2563EB"/><circle cx="28" cy="33" r="1.5" fill="#2563EB"/><circle cx="24" cy="27" r="1" fill="#2563EB"/></svg>' },
+  bio:     { name: 'PandaBIO™',     color: '#16A34A', svg: '<svg viewBox="0 0 48 48" fill="none"><path d="M24 40c0-8 6-14 12-14-6 0-10-6-10-12C26 8 20 14 14 26c0-6-4-12-10-12 6 0 12 6 12 14" stroke="#16A34A" stroke-width="2" stroke-linecap="round"/><path d="M24 20v12M20 26l4 6 4-6" stroke="#16A34A" stroke-width="2" stroke-linecap="round"/></svg>' },
+  volt:    { name: 'PandaVOLT™',    color: '#EAB308', svg: '<svg viewBox="0 0 48 48" fill="none"><path d="M26 4L14 24h10l-6 20 20-24H24l2-16z" fill="#EAB308" fill-opacity=".2" stroke="#EAB308" stroke-width="2.5" stroke-linejoin="round"/></svg>' },
+  heat:    { name: 'PandaHEAT™',   color: '#DC2626', svg: '<svg viewBox="0 0 48 48" fill="none"><path d="M24 6c-4 8-10 12-10 20a10 10 0 0020 0c0-8-6-12-10-20z" stroke="#DC2626" stroke-width="2.5" fill="#DC2626" fill-opacity=".15"/><path d="M24 18v6M20 22c0-2 2-3 4-3s4 1 4 3" stroke="#DC2626" stroke-width="2" stroke-linecap="round"/></svg>' },
+  frost:   { name: 'PandaFROST™',  color: '#06B6D4', svg: '<svg viewBox="0 0 48 48" fill="none"><path d="M24 4v40M4 24h40M10 10l28 28M38 10L10 38" stroke="#06B6D4" stroke-width="2" stroke-linecap="round"/><circle cx="24" cy="24" r="4" fill="#06B6D4" fill-opacity=".25" stroke="#06B6D4" stroke-width="2"/></svg>' },
+  grip:    { name: 'PandaGRIP™',   color: '#F59E0B', svg: '<svg viewBox="0 0 48 48" fill="none"><path d="M16 10h16v4c0 10-4 16-8 18-4-2-8-8-8-18v-4z" stroke="#F59E0B" stroke-width="2.5" fill="#F59E0B" fill-opacity=".12"/><path d="M20 22l2 2 6-6" stroke="#F59E0B" stroke-width="2" stroke-linecap="round"/></svg>' },
+  eco:     { name: 'PandaECO™',    color: '#22C55E', svg: '<svg viewBox="0 0 48 48" fill="none"><path d="M12 36c4-8 10-14 20-14-8 0-14-6-14-14 0 6-6 10-14 14 0 8 4 14 8 14z" stroke="#22C55E" stroke-width="2.5" stroke-linecap="round"/><path d="M24 22v14M20 28l4 8 4-8" stroke="#22C55E" stroke-width="2" stroke-linecap="round"/></svg>' },
+};
+
+// ── 从 attributes 取字段 ────────────────────────────────────────
+function attr(p, key) {
+  var a = p.attributes || {};
+  return a[key] || '—';
+}
+
+// ── 属性分类（5组B2B逻辑）───────────────────────────────────────
+var COMPARE_SECTIONS = [
+  {
+    section: '基本信息',
+    rows: [
+      { label: '品牌',      vcenter: true, fn: function(p){ var b = brandMap[p.brand]; return b ? '<span style="color:'+b.color+';font-weight:700">'+b.name+'</span>' : '—'; } },
+      { label: '产品名称',  fn: function(p){ return p.name_zh || p.name || '—'; } },
+      { label: '产品类型',  vcenter: true, fn: function(p){ return attr(p,'产品类型'); } },
+      { label: '型号',      vcenter: true, fn: function(p){ return attr(p,'型号') || p.sku || '—'; } },
+      { label: '原产地',    vcenter: true, fn: function(p){ return attr(p,'原产地'); } },
+    ]
+  },
+  {
+    section: '防护认证',
+    rows: [
+      { label: '防护等级',  vcenter: true, fn: function(p){ return (p.cert||[]).join(', ') || '—'; } },
+      { label: '功能',      vcenter: true, fn: function(p){ return attr(p,'功能'); } },
+      { label: '功能点',    fn: function(p){ return attr(p,'功能点') || attr(p,'其他功能'); } },
+      { label: '应用程序类型', fn: function(p){ return attr(p,'应用程序类型') || attr(p,'应用领域'); } },
+      { label: '应用',       fn: function(p){ return attr(p,'应用') || attr(p,'应用领域') || '—'; } },
+    ]
+  },
+  {
+    section: '材质工艺',
+    rows: [
+      { label: '材料',      fn: function(p){ return attr(p,'材料'); } },
+      { label: '质地',      fn: function(p){ return attr(p,'质地'); } },
+      { label: '纹理位置',  fn: function(p){ return attr(p,'纹理位置'); } },
+      { label: '内衬材质',  fn: function(p){ return attr(p,'衬里材料') || attr(p,'内衬材质') || '—'; } },
+      { label: '涂层材质',  fn: function(p){ return attr(p,'涂层材料') || attr(p,'涂层材质') || '—'; } },
+      { label: '颜色',      fn: function(p){ return attr(p,'颜色'); } },
+      { label: '尺寸',      fn: function(p){ return attr(p,'尺寸') || attr(p,'尺码') || '—'; } },
+    ]
+  },
+  {
+    section: '特种属性',
+    rows: [
+      { label: '无粉',       fn: function(p){ return attr(p,'无粉'); } },
+      { label: '无菌/非无菌', fn: function(p){ return attr(p,'无菌/非无菌') || attr(p,'无菌/啡无菌') || '—'; } },
+      { label: '不含硅',     fn: function(p){ return attr(p,'不含硅'); } },
+      { label: '可定制',     fn: function(p){ return attr(p,'可定制或不'); } },
+    ]
+  },
+  {
+    section: '价格货期',
+    rows: [
+      { label: '起订量',    fn: function(p){ return p.price && p.price.moq ? p.price.moq + ' 双' : '—'; } },
+      { label: '样品价',    fn: function(p){ return (p.price && p.price.sample) ? p.price.sample : '面议'; } },
+      { label: '批量价',    fn: function(p){
+        if (!p.price || !p.price.tiers || !p.price.tiers.length) return '面议';
+        return p.price.tiers[0].price + ' / 双';
+      }},
+    ]
+  },
+];
+
+// ── 从 URL 读取 skus ────────────────────────────────────────────
+function getQuerySkus() {
+  var params = new URLSearchParams(window.location.search);
+  var skus = params.get('skus') || '';
+  return skus ? skus.split(',').filter(Boolean) : [];
+}
+
+// ── 生成四列HTML ───────────────────────────────────────────────
+function buildCompareHtml(skus) {
+  var allProducts = window.__PANDA_PRODUCTS__ || [];
+  var slotCount = 4;
+  var slots = [];
+  for (var i = 0; i < slotCount; i++) {
+    var sku = skus[i];
+    var product = null;
+    if (sku) {
+      for (var j = 0; j < allProducts.length; j++) {
+        if (allProducts[j].sku === sku) { product = allProducts[j]; break; }
+      }
+    }
+    slots.push(product);
+  }
+
+  var html = '<div class="compare-grid">';
+
+  // 左上角"对比产品"
+  html += '<div class="compare-corner-head">对比产品</div>';
+
+  // 产品头部（4列）
+  for (var c = 0; c < slotCount; c++) {
+    html += '<div class="compare-col-prod' + (slots[c] ? '' : ' is-empty') + '">';
+    if (slots[c]) {
+      var p = slots[c];
+      var b = brandMap[p.brand] || brandMap.shield;
+      html += '<div class="compare-prod-head">';
+      html += '<div class="compare-prod-icon" style="color:' + b.color + '">' + b.svg + '</div>';
+      html += '<div class="compare-prod-brand" style="color:' + b.color + '">' + b.name + '</div>';
+      html += '<div class="compare-prod-name">' + (p.name_zh || p.name || p.sku) + '</div>';
+      html += '<a class="compare-prod-link" href="product-detail.html?id=' + p.sku + '" target="_blank">查看详情 →</a>';
+      html += '</div>';
+    } else {
+      html += '<div class="compare-slot-empty">';
+      html += '<div class="plus-box">+</div>';
+      html += '<div class="plus-text">选择产品</div>';
+      html += '</div>';
+    }
+    html += '</div>';
+  }
+
+  // 分类分组行（每组：左侧显示分组名，其他四列空白；然后是各属性行）
+  var sectionIds = ['section-basic','section-protect','section-material','section-special','section-price'];
+
+  for (var s = 0; s < COMPARE_SECTIONS.length; s++) {
+    var sec = COMPARE_SECTIONS[s];
+    // 分组标题行：去掉底色
+    html += '<div class="compare-col-label section-head" id="' + sectionIds[s] + '">' + sec.section + '</div>';
+    for (var c = 0; c < slotCount; c++) {
+      html += '<div class="compare-cell"></div>';
+    }
+    // 属性行
+    for (var r = 0; r < sec.rows.length; r++) {
+      var row = sec.rows[r];
+      var vc = row.vcenter ? ' vcenter' : '';
+      html += '<div class="compare-row-label' + vc + '">' + row.label + '</div>';
+      for (var c = 0; c < slotCount; c++) {
+        var cellVal = slots[c] ? row.fn(slots[c]) : '—';
+        html += '<div class="compare-cell' + vc + '">' + cellVal + '</div>';
+      }
+    }
+  }
+
+  html += '</div>';
+  return html;
+}
+
+// ── 初始化 ──────────────────────────────────────────────────────
+(function init() {
+  var wrap = document.getElementById('compareWrap');
+  var skus = getQuerySkus();
+  if (!skus.length) {
+    wrap.innerHTML = '<div class="no-products-tip">没有选择任何产品<br><a href="products-all.html">返回产品列表</a></div>';
+    return;
+  }
+  wrap.innerHTML = buildCompareHtml(skus);
+})();
+</script>
+</body>
+</html>

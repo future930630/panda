@@ -1,0 +1,1351 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="authPageTitle">注册/登录 - 熊猫手护</title>
+  <meta name="description" content="注册熊猫手护账号，获取产品报价、技术咨询、定制服务与品牌授权合作支持。" />
+  <meta name="description" content="Register a Panda Guard account to get product quotes, technical consultation, customization services and brand authorization support." lang="en" />
+  <meta property="og:title" content="注册 / 登录 — 熊猫手护" />
+  <meta property="og:title" content="Sign Up / Login — Panda Guard" xml:lang="en" />
+  <meta property="og:description" content="注册熊猫手护账号，获取产品报价、技术咨询、定制服务与品牌授权合作支持。" />
+  <meta property="og:description" content="Register a Panda Guard account to get product quotes, technical consultation, customization services and brand authorization support." xml:lang="en" />
+  <meta property="og:url" content="https://www.pandaguard.com/auth.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="熊猫手护" />
+  <meta property="og:site_name" content="Panda Guard" xml:lang="en" />
+  <meta property="og:image" content="https://www.pandaguard.com/image/og-default.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Sign Up / Login — Panda Guard" />
+  <meta name="twitter:description" content="Register a Panda Guard account to get product quotes, technical consultation, customization services and brand authorization support." />
+  <meta name="twitter:image" content="https://www.pandaguard.com/image/og-default.jpg" />
+  <link rel="stylesheet" href="styles.css?v=20260423">
+  <script>
+    if (!localStorage.getItem('pg_lang')) {
+      localStorage.setItem('pg_lang', 'zh');
+    }
+  </script>
+  <style>
+
+    :root {
+      --orange: #E85D00;
+      --orange-light: #FF7A20;
+      --orange-deep: #C04800;
+      --orange-dark-layer: rgba(232, 93, 0, 0.16);
+      --charcoal: #1A1108;
+      --ink: #2F261E;
+      --ink-soft: #5E5348;
+      --muted: #867A6D;
+      --line: rgba(26, 17, 8, 0.12);
+      --line-strong: rgba(26, 17, 8, 0.18);
+      --line-soft: rgba(26, 17, 8, 0.08);
+      --paper: #F7F3EE;
+      --paper-deep: #F1ECE6;
+      --white: #FFFFFF;
+      --font-stack: 'Alibaba PuHuiTi 3.0', 'Alibaba PuHuiTi 2.0', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      --radius: 10px;
+      --transition: 0.24s ease;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+      font-family: var(--font-stack);
+      background: linear-gradient(180deg, #FBF8F4 0%, var(--paper) 100%);
+      color: var(--charcoal);
+      letter-spacing: 0.01em;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    select {
+      font: inherit;
+    }
+
+
+    .auth-layout {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: minmax(0, 1.16fr) minmax(500px, 0.84fr);
+      background: transparent;
+    }
+
+    .auth-visual {
+      position: relative;
+      min-height: 100vh;
+      overflow: hidden;
+      padding: 34px 38px 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      isolation: isolate;
+      background: #120d09;
+    }
+
+    .auth-visual::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('image/huolun.jpg') center center / cover no-repeat;
+      transform: scale(1.03);
+      filter: saturate(0.84) contrast(1.02) brightness(0.92);
+      z-index: 0;
+    }
+
+    .auth-grid-overlay {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      gap: 0;
+      background: transparent;
+      opacity: 0.24;
+      z-index: 1;
+    }
+
+    .auth-flip-cell {
+      position: relative;
+      overflow: hidden;
+      background: transparent;
+      perspective: 1200px;
+    }
+
+    .auth-flip-inner {
+      position: absolute;
+      inset: 0;
+      transform-style: preserve-3d;
+      transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: transform;
+    }
+
+    .auth-flip-cell:hover .auth-flip-inner {
+      animation-play-state: paused;
+      transform: rotateY(180deg);
+    }
+
+    .auth-flip-cell.auto-flip .auth-flip-inner {
+      animation: authGridFlip 9.8s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+      animation-delay: var(--flip-delay, 0s);
+    }
+
+    @keyframes authGridFlip {
+      0%, 16%, 100% {
+        transform: rotateY(0deg);
+      }
+      20%, 48% {
+        transform: rotateY(180deg);
+      }
+      52%, 96% {
+        transform: rotateY(0deg);
+      }
+    }
+
+    .auth-flip-front,
+    .auth-flip-back {
+      position: absolute;
+      inset: 0;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      border-radius: 0;
+      overflow: hidden;
+    }
+
+    .auth-flip-front img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      opacity: 0.36;
+      filter: saturate(0.78) contrast(1.01) brightness(0.9);
+      transform: scale(1.035);
+    }
+
+    .auth-flip-back {
+      transform: rotateY(180deg);
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-start;
+      padding: 12px;
+      background: linear-gradient(145deg, rgba(232, 93, 0, 0.48) 0%, rgba(70, 27, 3, 0.72) 100%);
+    }
+
+    .auth-flip-code {
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      padding: 0 11px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.94);
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+
+    .auth-orange-layer {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(12, 9, 6, 0.82) 0%, rgba(12, 9, 6, 0.5) 40%, rgba(12, 9, 6, 0.2) 100%),
+        linear-gradient(180deg, rgba(232, 93, 0, 0.06) 0%, rgba(26, 17, 8, 0.22) 100%),
+        var(--orange-dark-layer);
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .auth-brand-link,
+    .auth-visual-copy {
+      position: relative;
+      z-index: 3;
+    }
+
+    .auth-brand-link {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+    }
+
+    .auth-brand-link img {
+      width: clamp(200px, 16vw, 270px);
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.18));
+    }
+
+    .auth-visual-copy {
+      max-width: 620px;
+      color: #fff;
+      margin-top: auto;
+      padding-bottom: 28px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .auth-story-lead {
+      max-width: 560px;
+    }
+
+    .auth-story-tag {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      min-height: auto;
+      margin-bottom: 18px;
+      padding: 0 0 0 18px;
+
+      border: none;
+      background: none;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.88);
+    }
+
+    .auth-story-tag::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: 10px;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.52);
+      transform: translateY(-50%);
+    }
+
+    .auth-story-title {
+      margin: 0;
+      max-width: 10ch;
+      font-size: clamp(42px, 4.9vw, 72px);
+      line-height: 1.02;
+      letter-spacing: -0.045em;
+      font-weight: 900;
+      text-wrap: balance;
+      text-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .auth-story-subtitle {
+      margin: 20px 0 0;
+      max-width: 520px;
+      padding-left: 18px;
+      border-left: 1px solid rgba(255, 255, 255, 0.24);
+      font-size: 16px;
+      line-height: 1.85;
+      color: rgba(255, 255, 255, 0.76);
+    }
+
+    .auth-story-divider {
+      width: min(100%, 580px);
+      height: 1px;
+      margin-top: 32px;
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0.46) 0%, rgba(255, 255, 255, 0.12) 72%, transparent 100%);
+    }
+
+    .auth-benefit-list {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px 24px;
+      margin-top: 24px;
+      max-width: 620px;
+    }
+
+    .auth-benefit-item {
+      position: relative;
+      padding: 0 0 0 20px;
+      border-top: none;
+      min-height: 0;
+    }
+
+    .auth-benefit-item::before {
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    .auth-benefit-item:nth-child(1)::before {
+      content: '01';
+    }
+
+    .auth-benefit-item:nth-child(2)::before {
+      content: '02';
+    }
+
+    .auth-benefit-item:nth-child(3)::before {
+      content: '03';
+    }
+
+    .auth-benefit-item strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: #fff;
+    }
+
+    .auth-benefit-item p {
+      margin: 0;
+      font-size: 13px;
+      line-height: 1.8;
+      color: rgba(255, 255, 255, 0.68);
+    }
+
+    .auth-visual-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .auth-contact-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 24px;
+      border-radius: var(--radius);
+      background: var(--orange);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      box-shadow: 0 8px 24px rgba(232, 93, 0, 0.22);
+      transition: transform var(--transition), background var(--transition), box-shadow var(--transition);
+    }
+
+    .auth-contact-link:hover {
+      transform: translateY(-2px);
+      background: var(--orange-deep);
+      box-shadow: 0 12px 28px rgba(232, 93, 0, 0.26);
+    }
+
+
+    .auth-side {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      background: var(--white);
+    }
+
+    .auth-side::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: var(--line);
+    }
+
+    .auth-side-inner {
+      width: min(100%, 510px);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding: 30px 42px 32px;
+    }
+
+    .auth-side-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 42px;
+    }
+
+    .auth-side-links {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+    }
+
+    .auth-side-link {
+      font-size: 13px;
+      color: var(--muted);
+      transition: color var(--transition);
+      white-space: nowrap;
+    }
+
+    .auth-side-link:hover {
+      color: var(--orange);
+    }
+
+    .auth-side-tools {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-left: auto;
+      flex-wrap: nowrap;
+      justify-content: flex-end;
+      flex-shrink: 0;
+    }
+
+    .auth-side-tools .font-size-control {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      padding: 2px 6px;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 10;
+    }
+
+    .auth-side-tools .font-size-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: auto;
+      width: auto;
+      height: auto;
+      padding: 0 2px;
+      border: none;
+      border-radius: 0;
+      background: transparent;
+      color: rgba(26, 17, 8, 0.46);
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: none;
+      transition: color var(--transition), opacity var(--transition);
+    }
+
+    .auth-side-tools .font-size-btn:hover {
+      color: var(--orange);
+      background: transparent;
+    }
+
+    .auth-side-tools #langSelector {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      flex-shrink: 0;
+      align-self: center;
+      width: auto;
+    }
+
+    .auth-side-tools .globe-lang-btn {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 6px 0 6px 4px;
+      border: none;
+      border-radius: 0;
+      background: transparent;
+      color: var(--ink-soft);
+      font-size: 13px;
+      font-weight: 500;
+      font-family: var(--font);
+      cursor: pointer;
+      white-space: nowrap;
+      box-shadow: none;
+      transition: color var(--transition), opacity var(--transition);
+    }
+
+    .auth-side-tools .globe-lang-btn:hover {
+      color: var(--orange);
+    }
+
+    .auth-side-tools .globe-lang-btn svg {
+      flex-shrink: 0;
+    }
+
+    .auth-side-tools .globe-lang-cur {
+      color: inherit;
+      white-space: nowrap;
+    }
+
+
+    .auth-panel {
+      margin: auto 0;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .auth-tabs {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      padding-bottom: 14px;
+      border-bottom: 1.5px solid var(--line-strong);
+    }
+
+    .auth-tab {
+      position: relative;
+      padding: 0 0 10px;
+      border: none;
+      background: transparent;
+      color: var(--muted);
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      transition: color var(--transition);
+    }
+
+    .auth-tab::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -15px;
+      height: 2px;
+      background: transparent;
+      transition: background var(--transition);
+    }
+
+    .auth-tab.active {
+      color: var(--charcoal);
+    }
+
+    .auth-tab.active::after {
+      background: var(--orange);
+    }
+
+    .auth-form {
+      display: none;
+      padding-top: 10px;
+    }
+
+    .auth-form.active {
+      display: block;
+      animation: authFadeIn 0.22s ease;
+    }
+
+    @keyframes authFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .auth-field {
+      margin-bottom: 16px;
+    }
+    .auth-field-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 0;
+    }
+
+    .auth-field label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .auth-input {
+      width: 100%;
+      height: 54px;
+      padding: 0 0 2px;
+      border: none;
+      border-bottom: 1px solid var(--line-strong);
+      outline: none;
+      background: transparent;
+      font-size: 15px;
+      color: var(--ink);
+      transition: border-color var(--transition), color var(--transition);
+    }
+
+    .auth-input:focus {
+      border-bottom-color: var(--orange);
+      color: var(--charcoal);
+    }
+
+    .auth-input::placeholder {
+      color: #A29689;
+    }
+
+    .auth-inline-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 8px 0 26px;
+      flex-wrap: wrap;
+    }
+
+    .auth-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--ink-soft);
+      cursor: pointer;
+    }
+
+    .auth-check input {
+      width: 16px;
+      height: 16px;
+      margin: 0;
+      accent-color: var(--orange);
+    }
+
+    .auth-link {
+      color: var(--orange);
+      font-size: 13px;
+      font-weight: 600;
+      transition: color var(--transition);
+    }
+
+    .auth-link:hover {
+      color: var(--orange-deep);
+    }
+
+    .auth-submit-btn {
+      width: 100%;
+      height: 52px;
+      border: none;
+      border-radius: var(--radius);
+      background: var(--orange);
+      color: #fff;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      box-shadow: 0 8px 22px rgba(232, 93, 0, 0.18);
+      transition: transform var(--transition), background var(--transition), box-shadow var(--transition);
+    }
+
+    .auth-submit-btn:hover {
+      transform: translateY(-2px);
+      background: var(--orange-deep);
+      box-shadow: 0 12px 28px rgba(232, 93, 0, 0.22);
+    }
+
+    .auth-form-legal {
+      margin-top: 14px;
+      font-size: 12px;
+      line-height: 1.8;
+      color: var(--muted);
+    }
+
+    .auth-form-legal a {
+      color: var(--ink-soft);
+    }
+
+    .password-strength {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 6px;
+      margin-top: 14px;
+    }
+
+    .password-strength-bar {
+      height: 4px;
+      border-radius: 999px;
+      background: rgba(26, 17, 8, 0.08);
+      transition: background var(--transition);
+    }
+
+    .password-strength-bar.active {
+      background: var(--orange);
+    }
+
+    .auth-divider {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin: 22px 0 18px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .auth-divider::before,
+    .auth-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--line-soft);
+    }
+
+    .auth-social-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .auth-social-btn {
+      height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 0 14px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #FBF8F4;
+      color: var(--charcoal);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: color var(--transition), border-color var(--transition), background var(--transition), transform var(--transition);
+    }
+
+    .auth-social-btn:hover {
+      color: var(--orange);
+      border-color: rgba(232, 93, 0, 0.32);
+      background: rgba(232, 93, 0, 0.05);
+      transform: translateY(-1px);
+    }
+
+    .auth-social-mark {
+      width: 24px;
+      height: 24px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      background: #fff;
+      border: 1px solid rgba(26, 17, 8, 0.06);
+      color: var(--ink-soft);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .auth-support-block {
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+    }
+
+    .auth-support-block strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--charcoal);
+    }
+
+    .auth-support-block p {
+      margin: 0;
+      font-size: 13px;
+      line-height: 1.8;
+      color: var(--ink-soft);
+    }
+
+    .auth-support-link {
+      display: inline-flex;
+      margin-top: 12px;
+      color: var(--orange);
+      font-size: 13px;
+      font-weight: 700;
+      transition: color var(--transition);
+    }
+
+    .auth-support-link:hover {
+      color: var(--orange-deep);
+    }
+
+
+    html[dir="rtl"] .auth-side-top,
+    html[dir="rtl"] .auth-inline-row,
+    html[dir="rtl"] .auth-form-legal {
+      direction: rtl;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .auth-contact-link,
+      .auth-tab,
+      .auth-submit-btn,
+      .auth-social-btn,
+      .auth-side-link,
+      .auth-link,
+      .auth-flip-inner,
+      .auth-flip-cell.auto-flip .auth-flip-inner,
+      .font-size-btn,
+      .globe-lang-btn {
+        transition: none !important;
+        animation: none !important;
+      }
+
+    }
+
+    /* ===== STEP 3: 企业信息补充 ===== */
+    .auth-step3-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+      border-bottom: 1.5px solid var(--line-strong);
+    }
+
+    .auth-step3-badge {
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--orange);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+    }
+
+    .auth-step3-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--charcoal);
+      margin: 0 0 4px;
+    }
+
+    .auth-step3-sub {
+      font-size: 13px;
+      color: var(--muted);
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    .auth-required {
+      color: var(--orange);
+    }
+
+    .auth-select {
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%235E5348' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      cursor: pointer;
+    }
+
+    .auth-radio-group {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .auth-radio-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border: 1.5px solid var(--line-strong);
+      border-radius: var(--radius);
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink);
+      transition: border-color var(--transition), background var(--transition);
+    }
+
+    .auth-radio-item:hover {
+      border-color: var(--orange);
+      background: rgba(232,93,0,0.04);
+    }
+
+    .auth-radio-item input[type=radio] {
+      accent-color: var(--orange);
+      width: 16px;
+      height: 16px;
+    }
+
+    .auth-radio-item:has(input:checked) {
+      border-color: var(--orange);
+      background: rgba(232,93,0,0.06);
+    }
+
+    .auth-field-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      align-items: start;
+    }
+
+    .auth-phone-row {
+      display: flex;
+      gap: 8px;
+    }
+
+    .auth-phone-code {
+      width: 110px;
+      flex-shrink: 0;
+      font-size: 13px;
+    }
+
+    .auth-phone-num {
+      flex: 1;
+    }
+
+    .auth-skip-link {
+      display: block;
+      text-align: center;
+      margin-top: 14px;
+      font-size: 13px;
+      color: var(--muted);
+      cursor: pointer;
+      transition: color var(--transition);
+    }
+
+    .auth-skip-link:hover {
+      color: var(--orange);
+    }
+
+    .auth-profile-step {
+      padding-top: 4px;
+    }
+
+    @media (max-width: 600px) {
+      .auth-radio-group {
+        grid-template-columns: 1fr 1fr;
+      }
+      .auth-field-pair {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 1280px) {
+      .auth-layout {
+        grid-template-columns: minmax(0, 1fr) minmax(460px, 500px);
+      }
+
+      .auth-side-inner {
+        padding-left: 34px;
+        padding-right: 34px;
+      }
+    }
+
+    @media (max-width: 1160px) {
+      .auth-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .auth-visual {
+        min-height: 62vh;
+      }
+
+      .auth-side,
+      .auth-side-inner {
+        min-height: auto;
+      }
+
+      .auth-side::before {
+        display: none;
+      }
+
+      .auth-side-inner {
+        width: min(100%, 760px);
+        margin: 0 auto;
+        padding-top: 28px;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .auth-benefit-list {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .auth-visual {
+        padding: 24px 18px 22px;
+        min-height: 56vh;
+      }
+
+      .auth-side-inner {
+        padding: 22px 18px 24px;
+      }
+
+      .auth-side-top {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .auth-side-tools {
+        width: 100%;
+        justify-content: space-between;
+        margin-left: 0;
+      }
+
+      .auth-story-title {
+        font-size: clamp(32px, 10vw, 46px);
+      }
+
+      .auth-story-subtitle {
+        font-size: 15px;
+      }
+
+      .auth-social-row,
+      .lang-list {
+        grid-template-columns: 1fr;
+      }
+
+      .lang-dropdown {
+        width: min(220px, calc(100vw - 32px));
+        right: 0;
+      }
+    }
+
+  </style>
+  <link rel="stylesheet" href="responsive.css?v=1">
+</head>
+<body>
+  <div class="auth-layout">
+    <section class="auth-visual">
+      <div class="auth-grid-overlay" id="authGridFlip" aria-hidden="true"></div>
+      <div class="auth-orange-layer" aria-hidden="true"></div>
+
+      <a href="index.html" class="auth-brand-link" aria-label="Panda Hand Guard">
+        <img src="image/logo1.png" alt="">
+      </a>
+
+      <div class="auth-visual-copy">
+        <div class="auth-story-lead">
+          <h1 class="auth-story-title" data-i18n="authBrandTitle">加入熊猫手护
+安全伙伴计划</h1>
+          <p class="auth-story-subtitle" data-i18n="authBrandSubtitle">全球 40+ 国家信赖的工业手套方案，为您的团队保驾护航</p>
+        </div>
+
+        <div class="auth-story-divider" aria-hidden="true"></div>
+
+        <div class="auth-benefit-list">
+          <article class="auth-benefit-item">
+            <strong data-i18n="authBenefit1Title">一站式采购</strong>
+            <p data-i18n="authBenefit1Desc">9大品牌系列，千款产品规格，智能选品</p>
+          </article>
+          <article class="auth-benefit-item">
+            <strong data-i18n="authBenefit2Title">企业级报价</strong>
+            <p data-i18n="authBenefit2Desc">专属价格体系，批量折扣，灵活支付条款</p>
+          </article>
+          <article class="auth-benefit-item">
+            <strong data-i18n="authBenefit3Title">技术支持</strong>
+            <p data-i18n="authBenefit3Desc">专业团队，防护顾问，应用解决方案</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <aside class="auth-side">
+      <div class="auth-side-inner">
+        <div class="auth-side-top">
+          <div class="auth-side-links">
+            <a href="index.html" class="auth-side-link" data-i18n="breadcrumbHome">首页</a>
+            <a href="research-center.html" class="auth-side-link" data-i18n="authNeedHelp">需要帮助？</a>
+          </div>
+
+          <div class="auth-side-tools">
+            <div class="font-size-control" data-i18n-title="fontSizeTitle">
+              <button type="button" class="font-size-btn font-size-small" data-action="decrease" data-i18n-title="fontSizeDecrease">A</button>
+              <button type="button" class="font-size-btn font-size-medium" data-action="reset" data-i18n-title="fontSizeTitle">A</button>
+              <button type="button" class="font-size-btn font-size-large" data-action="increase" data-i18n-title="fontSizeIncrease">A</button>
+            </div>
+
+            <div id="langSelector" class="globe-lang-selector header-lang-inline header-lang-cell">
+              <button type="button" class="globe-lang-btn" data-i18n-title="adminSelectLanguage">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="22" height="22" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                <span id="langDisplay" class="globe-lang-cur">English</span>
+              </button>
+              <div class="lang-dropdown lang-dropdown-compact">
+                <ul class="lang-list"></ul>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <section class="auth-panel">
+          <div class="auth-tabs">
+            <button type="button" class="auth-tab active" data-tab="login" data-i18n="authTabLogin">登录</button>
+            <button type="button" class="auth-tab" data-tab="signup" data-i18n="authTabSignUp">注册</button>
+          </div>
+
+          <form class="auth-form active" id="login-form" novalidate>
+            <div class="auth-field">
+              <label for="login-account" data-i18n="authEmailLabel">邮箱地址 / 手机号</label>
+              <input id="login-account" class="auth-input" type="text" autocomplete="username" data-i18n-placeholder="authEmailPlaceholder" placeholder="email@example.com or +1 234 567 8900">
+            </div>
+
+            <div class="auth-field">
+              <label for="login-password" data-i18n="authPasswordLabel">密码</label>
+              <input id="login-password" class="auth-input" type="password" autocomplete="current-password" data-i18n-placeholder="authPasswordPlaceholder" placeholder="••••••••">
+            </div>
+
+            <div class="auth-inline-row">
+              <label class="auth-check" for="remember-me">
+                <input id="remember-me" type="checkbox">
+                <span data-i18n="authRememberMe">记住我</span>
+              </label>
+              <a href="research-center.html" class="auth-link" data-i18n="authForgotPassword">忘记密码？</a>
+            </div>
+
+            <button type="submit" class="auth-submit-btn" data-i18n="authLoginBtn">登录</button>
+
+            <div class="auth-form-legal">
+              <span data-i18n="authAgreeTerms">我同意</span>
+              <a href="research-center.html" class="auth-link" data-i18n="authTermsLink">服务条款</a>
+              <span data-i18n="authAnd">和</span>
+              <a href="research-center.html" class="auth-link" data-i18n="authPrivacyLink">隐私政策</a>
+            </div>
+
+            <div class="auth-divider"><span data-i18n="authOrContinueWith">或继续使用</span></div>
+
+            <div class="auth-social-row">
+              <button type="button" class="auth-social-btn">
+                <span class="auth-social-mark" aria-hidden="true">W</span>
+                <span data-i18n="authWeChatLogin">WeChat</span>
+              </button>
+              <button type="button" class="auth-social-btn">
+                <span class="auth-social-mark" aria-hidden="true">G</span>
+                <span data-i18n="authGoogleLogin">Google</span>
+              </button>
+            </div>
+          </form>
+
+          <form class="auth-form" id="signup-form" novalidate>
+            <div class="auth-field">
+              <label for="signup-country" data-i18n="authCountryLabel">国家/地区</label>
+              <input id="signup-country" class="auth-input" type="text" autocomplete="country-name" data-i18n-placeholder="authCountryPlaceholder" placeholder="-- 选择 --">
+            </div>
+
+            <div class="auth-field">
+              <label for="signup-email" data-i18n="authEmailLabel">邮箱地址</label>
+              <input id="signup-email" class="auth-input" type="email" autocomplete="email" data-i18n-placeholder="authEmailPlaceholder" placeholder="email@example.com">
+            </div>
+
+            <div class="auth-field">
+              <label for="signup-password" data-i18n="authPasswordLabel">密码</label>
+              <input id="signup-password" class="auth-input" type="password" autocomplete="new-password" data-i18n-placeholder="authPasswordPlaceholder" placeholder="••••••••">
+              <div class="password-strength" aria-hidden="true">
+                <div class="password-strength-bar"></div>
+                <div class="password-strength-bar"></div>
+                <div class="password-strength-bar"></div>
+                <div class="password-strength-bar"></div>
+              </div>
+            </div>
+
+            <button type="submit" class="auth-submit-btn" data-i18n="authSignUpBtn">创建账户</button>
+
+            <div class="auth-form-legal">
+              <span data-i18n="authAgreeTerms">我同意</span>
+              <a href="research-center.html" class="auth-link" data-i18n="authTermsLink">服务条款</a>
+              <span data-i18n="authAnd">和</span>
+              <a href="research-center.html" class="auth-link" data-i18n="authPrivacyLink">隐私政策</a>
+            </div>
+
+            <div class="auth-divider"><span data-i18n="authOrContinueWith">或继续使用</span></div>
+
+            <div class="auth-social-row">
+              <button type="button" class="auth-social-btn">
+                <span class="auth-social-mark" aria-hidden="true">W</span>
+                <span data-i18n="authWeChatLogin">WeChat</span>
+              </button>
+              <button type="button" class="auth-social-btn">
+                <span class="auth-social-mark" aria-hidden="true">L</span>
+                <span data-i18n="authLinkedInLogin">LinkedIn</span>
+              </button>
+            </div>
+          </form>
+
+          <div class="auth-support-block">
+            <strong data-i18n="authEnterpriseTitle">企业采购平台</strong>
+            <p data-i18n="authEnterpriseDesc">申请专属账户享受优惠</p>
+            <a href="research-center.html" class="auth-support-link" data-i18n="authContactSales">联系销售团队</a>
+          </div>
+        </section>
+
+        <!-- ===== STEP 3: 补充企业信息（登录/注册成功后显示）===== -->
+        <section class="auth-panel auth-profile-step" id="profileStep" style="display:none;">
+          <div class="auth-step3-header">
+            <div class="auth-step3-badge">STEP 3</div>
+            <div>
+              <h2 class="auth-step3-title">完善企业信息</h2>
+              <p class="auth-step3-sub">这些信息将帮助我们为您精准推荐产品，完善后即可进入客户中心</p>
+            </div>
+          </div>
+
+          <form id="profile-form" novalidate>
+            <!-- 公司名称 -->
+            <div class="auth-field">
+              <label for="pf-company">公司名称 <span class="auth-required">*</span></label>
+              <input id="pf-company" class="auth-input" type="text" placeholder="请填写与营业执照一致的公司全称" required />
+            </div>
+
+            <!-- 所属行业 -->
+            <div class="auth-field">
+              <label for="pf-industry">所属行业 <span class="auth-required">*</span></label>
+              <select id="pf-industry" class="auth-input auth-select" required>
+                <option value="">-- 请选择行业 --</option>
+                <option value="石油化工">石油化工</option>
+                <option value="汽车制造">汽车制造</option>
+                <option value="建筑施工">建筑施工</option>
+                <option value="食品加工">食品加工</option>
+                <option value="电子电气">电子电气</option>
+                <option value="医疗清洁">医疗清洁</option>
+                <option value="航空航天">航空航天</option>
+                <option value="物流仓储">物流仓储</option>
+                <option value="金属加工">金属加工</option>
+                <option value="消防救援">消防救援</option>
+                <option value="电力能源">电力能源</option>
+                <option value="船舶制造">船舶制造</option>
+                <option value="农业林业">农业林业</option>
+                <option value="实验室科研">实验室科研</option>
+              </select>
+            </div>
+
+            <!-- 公司规模 -->
+            <div class="auth-field">
+              <label>公司规模（员工人数）<span class="auth-required">*</span></label>
+              <div class="auth-radio-group">
+                <label class="auth-radio-item">
+                  <input type="radio" name="company_size" value="1-50人" />
+                  <span>1–50 人</span>
+                </label>
+                <label class="auth-radio-item">
+                  <input type="radio" name="company_size" value="51-200人" />
+                  <span>51–200 人</span>
+                </label>
+                <label class="auth-radio-item">
+                  <input type="radio" name="company_size" value="201-500人" />
+                  <span>201–500 人</span>
+                </label>
+                <label class="auth-radio-item">
+                  <input type="radio" name="company_size" value="500人以上" />
+                  <span>500 人以上</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- 联系人信息 -->
+            <div class="auth-inline-row auth-field-pair">
+              <div class="auth-field">
+                <label for="pf-contact-name">联系人姓名 <span class="auth-required">*</span></label>
+                <input id="pf-contact-name" class="auth-input" type="text" placeholder="主要采购联系人" required />
+              </div>
+              <div class="auth-field">
+                <label for="pf-contact-title">职位</label>
+                <input id="pf-contact-title" class="auth-input" type="text" placeholder="如：采购经理" />
+              </div>
+            </div>
+
+            <!-- 手机号（带国际区号） -->
+            <div class="auth-field">
+              <label for="pf-contact-mobile">手机号码</label>
+              <div class="auth-phone-row">
+                <select id="pf-phone-code" class="auth-input auth-select auth-phone-code">
+                  <option value="+86">🇨🇳 +86</option>
+                  <option value="+1">🇺🇸 +1</option>
+                  <option value="+44">🇬🇧 +44</option>
+                  <option value="+49">🇩🇪 +49</option>
+                  <option value="+33">🇫🇷 +33</option>
+                  <option value="+39">🇮🇹 +39</option>
+                  <option value="+7">🇷🇺 +7</option>
+                  <option value="+81">🇯🇵 +81</option>
+                  <option value="+82">🇰🇷 +82</option>
+                  <option value="+91">🇮🇳 +91</option>
+                  <option value="+55">🇧🇷 +55</option>
+                  <option value="+34">🇪🇸 +34</option>
+                  <option value="+971">🇦🇪 +971</option>
+                  <option value="+966">🇸🇦 +966</option>
+                  <option value="+62">🇮🇩 +62</option>
+                  <option value="+60">🇲🇾 +60</option>
+                  <option value="+65">🇸🇬 +65</option>
+                  <option value="+66">🇹🇭 +66</option>
+                  <option value="+84">🇻🇳 +84</option>
+                  <option value="+20">🇪🇬 +20</option>
+                  <option value="+27">🇿🇦 +27</option>
+                  <option value="+52">🇲🇽 +52</option>
+                  <option value="+61">🇦🇺 +61</option>
+                </select>
+                <input id="pf-contact-mobile" class="auth-input auth-phone-num" type="tel" placeholder="手机号码" />
+              </div>
+            </div>
+
+            <!-- 城市/州 -->
+            <div class="auth-field">
+              <label for="pf-city">公司所在城市 / 州</label>
+              <input id="pf-city" class="auth-input" type="text" placeholder="如：上海、广东省、California" />
+            </div>
+
+            <button type="submit" class="auth-submit-btn" id="profileSubmitBtn">完成并进入客户中心</button>
+            <a href="index.html" class="auth-skip-link" id="profileSkipBtn">暂时跳过，稍后填写</a>
+          </form>
+        </section>
+      </div>
+    </aside>
+  </div>
+
+  <script src="i18n.js?v=20260424-avatar"></script>
+  <script src="serve_app/wwwroot/api.js?v=20260416-API"></script>
+  <script src="auth-inline.js?v=20260418"></script>
+</body>
+</html>
