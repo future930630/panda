@@ -1,0 +1,1174 @@
+// ============================================================
+// GLOBAL NAV INJECT — 全站统一导航
+// 在所有子页面中替换 id="site-nav" 占位元素
+// ============================================================
+(function() {
+  const NAV_HTML = `
+<!-- ========== HEADER / NAV ========== -->
+<header class="header" id="header">
+  <div class="container header-main">
+    <!-- 左侧：Logo + 导航栏 -->
+    <div class="header-left-section">
+      <!-- Logo -->
+      <a href="index.html" class="logo header-logo">
+        <div class="logo-wordmark">
+          <img src="image/logo3.png" alt="熊猫手护" class="logo-img logo-img-default" style="height:52px;margin-right:10px;vertical-align:middle;background:transparent;mix-blend-mode:multiply;transition:transform 0.3s ease;" />
+          <img src="image/logo2.png" alt="熊猫手护" class="logo-img logo-img-scrolled" style="height:52px;margin-right:10px;vertical-align:middle;background:transparent;mix-blend-mode:normal;transition:transform 0.3s ease;display:none;" />
+        </div>
+      </a>
+
+      <!-- 导航栏 -->
+      <nav class="main-nav header-nav-center" id="mainNav">
+      <ul class="nav-list">
+
+
+      <!-- ===== 工厂与设备 MEGA MENU ===== -->
+      <li class="nav-item has-mega">
+        <a href="#" class="nav-link"><span data-i18n="navFactory">工厂与设备</span> <svg class="arrow" viewBox="0 0 12 8"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></a>
+        <div class="mega-menu mega-fullwidth">
+          <div class="mega-fw-inner" data-mega-type="plain" data-mega-mode="plain">
+            <div class="mega-img-panel mega-img-single">
+              <div class="mip-main mip-dark" style="background:linear-gradient(145deg,#0D0D0D,#1A0A00)">
+                <div class="mip-img-wrap" style="background:transparent">
+                  <svg viewBox="0 0 220 180" fill="none" width="220" height="180">
+                    <!-- 工厂建筑轮廓 -->
+                    <rect x="10" y="100" width="200" height="70" fill="rgba(232,93,0,0.06)" rx="4"/>
+                    <rect x="20" y="80" width="50" height="90" fill="rgba(232,93,0,0.12)" rx="2"/>
+                    <rect x="80" y="65" width="60" height="105" fill="rgba(232,93,0,0.15)" rx="2"/>
+                    <rect x="150" y="88" width="55" height="82" fill="rgba(232,93,0,0.1)" rx="2"/>
+                    <!-- 烟囱 -->
+                    <rect x="35" y="50" width="10" height="32" fill="rgba(232,93,0,0.3)" rx="2"/>
+                    <rect x="160" y="62" width="10" height="28" fill="rgba(232,93,0,0.25)" rx="2"/>
+                    <!-- 设备齿轮 -->
+                    <circle cx="110" cy="100" r="20" fill="none" stroke="#E85D00" stroke-width="2" opacity="0.6"/>
+                    <circle cx="110" cy="100" r="8" fill="rgba(232,93,0,0.4)"/>
+                    <line x1="110" y1="76" x2="110" y2="84" stroke="#E85D00" stroke-width="3" stroke-linecap="round"/>
+                    <line x1="110" y1="116" x2="110" y2="124" stroke="#E85D00" stroke-width="3" stroke-linecap="round"/>
+                    <line x1="86" y1="100" x2="94" y2="100" stroke="#E85D00" stroke-width="3" stroke-linecap="round"/>
+                    <line x1="126" y1="100" x2="134" y2="100" stroke="#E85D00" stroke-width="3" stroke-linecap="round"/>
+                    <!-- 标签 -->
+                    <rect x="125" y="30" width="85" height="22" rx="4" fill="rgba(232,93,0,0.9)"/>
+                    <text x="167" y="45" text-anchor="middle" fill="white" font-size="9" font-weight="700" font-family="sans-serif">智能制造基地</text>
+                  </svg>
+                </div>
+                <div class="mip-info">
+                  <span class="mip-tag" style="background:rgba(232,93,0,0.35)" data-i18n="factoryTagSmart">智能制造</span>
+                  <h3 style="color:white" data-i18n="factoryTagTitle">专业生产能力</h3>
+                  <p style="color:rgba(255,255,255,0.7)" data-i18n="factoryTagDesc">现代化生产线 · 精密设备<br/>严格品质管控体系</p>
+                  <a href="factory.html" class="mip-btn" style="border-color:rgba(232,93,0,0.5);color:#FF7A20" data-i18n="factoryVisit">了解工厂 →</a>
+                </div>
+              </div>
+              <div class="mip-industry-bar">
+                <a href="factory.html" class="mib-item"><span>🏭</span><small data-i18n="factoryBarLine">生产线</small></a>
+                <a href="factory.html" class="mib-item"><span>⚙️</span><small data-i18n="factoryBarEquip">设备</small></a>
+                <a href="factory.html" class="mib-item"><span>🔬</span><small data-i18n="factoryBarLab">实验室</small></a>
+                <a href="factory.html" class="mib-item"><span>📦</span><small data-i18n="factoryBarWh">仓储</small></a>
+                <a href="sustainability.html" class="mib-item"><span>🌿</span><small data-i18n="factoryBarEnv">环保</small></a>
+                <a href="factory.html" class="mib-item"><span>📹</span><small data-i18n="factoryBarTour">参观</small></a>
+              </div>
+            </div>
+            <div class="mega-cols-wrap">
+              <div class="mega-col">
+                <h4 data-i18n="factoryColFacility">生产设施</h4>
+                <ul>
+                  <li><a href="equipment-knitting.html" data-i18n="factoryLine1">针织手套生产线</a></li>
+                  <li><a href="equipment-coating.html" data-i18n="factoryLine2">涂层浸渍生产线</a></li>
+                  <li><a href="equipment-sewing.html" data-i18n="factoryLine3">裁缝缝制车间</a></li>
+                  <li><a href="equipment-pressing.html" data-i18n="factoryLine4">热压成型设备</a></li>
+                  <li><a href="equipment-packaging.html" data-i18n="factoryLine5">自动化包装线</a></li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <h4 data-i18n="factoryColQC">品质管控</h4>
+                <ul>
+                  <li><a href="quality-control.html" data-i18n="factoryQC1">力学性能测试室</a></li>
+                  <li><a href="quality-control.html" data-i18n="factoryQC2">化学品耐受测试</a></li>
+                  <li><a href="quality-control.html" data-i18n="factoryQC3">切割等级检测</a></li>
+                  <li><a href="quality-control.html" data-i18n="factoryQC4">阻燃隔热测试</a></li>
+                  <li><a href="quality-control.html" data-i18n="factoryQC5">出货全检标准</a></li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <h4 data-i18n="factoryColCapacity">产能与规模</h4>
+                <ul>
+                  <li><a href="equipment-hub.html" data-i18n="factoryCap1">年产能2000万双</a></li>
+                  <li><a href="equipment-hub.html" data-i18n="factoryCap2">18条自动化产线</a></li>
+                  <li><a href="equipment-hub.html" data-i18n="factoryCap3">5万㎡现代厂房</a></li>
+                  <li><a href="equipment-hub.html" data-i18n="factoryCap4">工厂参观预约</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="mega-footer-bar">
+            <span data-i18n="factoryQuick">快速了解：</span>
+            <a href="production-process.html" data-i18n="factoryFooter1">生产流程视频</a>
+            <a href="equipment-hub.html" data-i18n="factoryFooter2">设备清单</a>
+            <a href="quality-control.html" data-i18n="factoryFooter3">工厂认证</a>
+            <a href="factory.html" class="mega-footer-cta" data-i18n="factoryFooterCTA">预约参观 →</a>
+          </div>
+        </div>
+      </li>
+
+      <!-- ===== 材料与创新 MEGA MENU ===== -->
+      <li class="nav-item has-mega">
+        <a href="#" class="nav-link"><span data-i18n="navMaterial">材料与创新</span> <svg class="arrow" viewBox="0 0 12 8"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></a>
+        <div class="mega-menu mega-fullwidth">
+          <div class="mega-fw-inner" data-mega-type="plain" data-mega-mode="plain">
+            <div class="mega-img-panel mega-img-single">
+              <div class="mip-main mip-dark" style="background:linear-gradient(145deg,#050A18,#0A1A0A)">
+                <div class="mip-img-wrap" style="background:transparent">
+                  <svg viewBox="0 0 220 180" fill="none" width="220" height="180">
+                    <!-- 分子结构背景 -->
+                    <circle cx="80" cy="70" r="12" fill="rgba(232,93,0,0.25)" stroke="#E85D00" stroke-width="1.5"/>
+                    <circle cx="140" cy="60" r="10" fill="rgba(0,180,216,0.2)" stroke="rgba(0,180,216,0.6)" stroke-width="1.5"/>
+                    <circle cx="110" cy="110" r="14" fill="rgba(232,93,0,0.3)" stroke="#E85D00" stroke-width="1.5"/>
+                    <circle cx="55" cy="120" r="8" fill="rgba(100,200,100,0.2)" stroke="rgba(100,200,100,0.6)" stroke-width="1.5"/>
+                    <circle cx="165" cy="115" r="9" fill="rgba(200,100,200,0.2)" stroke="rgba(200,100,200,0.5)" stroke-width="1.5"/>
+                    <!-- 连接键 -->
+                    <line x1="80" y1="70" x2="140" y2="60" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+                    <line x1="80" y1="70" x2="110" y2="110" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+                    <line x1="140" y1="60" x2="110" y2="110" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+                    <line x1="80" y1="70" x2="55" y2="120" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+                    <line x1="110" y1="110" x2="165" y2="115" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+                    <!-- 原子符号 -->
+                    <text x="80" y="74" text-anchor="middle" fill="white" font-size="8" font-weight="700" font-family="sans-serif">Ar</text>
+                    <text x="140" y="64" text-anchor="middle" fill="rgba(0,180,216,0.9)" font-size="8" font-weight="700" font-family="sans-serif">PE</text>
+                    <text x="110" y="114" text-anchor="middle" fill="white" font-size="8" font-weight="700" font-family="sans-serif">NB</text>
+                    <!-- 标签 -->
+                    <rect x="125" y="30" width="85" height="22" rx="4" fill="rgba(232,93,0,0.9)"/>
+                    <text x="167" y="45" text-anchor="middle" fill="white" font-size="9" font-weight="700" font-family="sans-serif">专利材料科学</text>
+                  </svg>
+                </div>
+                <div class="mip-info">
+                  <span class="mip-tag" style="background:rgba(0,180,216,0.35)" data-i18n="materialTagPatent">专利材料</span>
+                  <h3 style="color:white" data-i18n="materialTagTitle">尖端材料科学</h3>
+                  <p style="color:rgba(255,255,255,0.7)" data-i18n="materialTagDesc">芳纶 · UHMWPE · 丁腈<br/>持续研发 · 领先创新</p>
+                  <a href="materials.html" class="mip-btn" style="border-color:rgba(0,180,216,0.5);color:#00B4D8" data-i18n="materialVisit">研究中心 →</a>
+                </div>
+              </div>
+              <div class="mip-industry-bar">
+                <a href="materials.html" class="mib-item"><span>🧪</span><small data-i18n="materialBarAramid">芳纶</small></a>
+                <a href="materials.html" class="mib-item"><span>⚗️</span><small data-i18n="materialBarUHMWPE">UHMWPE</small></a>
+                <a href="materials.html" class="mib-item"><span>🔬</span><small data-i18n="materialBarNitrile">丁腈</small></a>
+                <a href="materials.html" class="mib-item"><span>🌡️</span><small data-i18n="materialBarTherm">隔热棉</small></a>
+                <a href="sustainability.html" class="mib-item"><span>♻️</span><small data-i18n="materialBarEco">rPET</small></a>
+                <a href="research-center.html" class="mib-item"><span>🏆</span><small data-i18n="materialBarPatents">专利</small></a>
+              </div>
+            </div>
+            <div class="mega-cols-wrap">
+              <div class="mega-col">
+                <h4 data-i18n="materialColCore">核心材料</h4>
+                <ul>
+                  <li><a href="materials.html" data-i18n="materialMat1">对位芳纶（Kevlar®同级）</a></li>
+                  <li><a href="materials.html" data-i18n="materialMat2">超高分子量聚乙烯 UHMWPE</a></li>
+                  <li><a href="materials.html" data-i18n="materialMat3">丁腈/氯丁复合橡胶</a></li>
+                  <li><a href="materials.html" data-i18n="materialMat4">Thinsulate™ 隔热棉</a></li>
+                  <li><a href="materials.html" data-i18n="materialMat5">再生 rPET 生态纤维</a></li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <h4 data-i18n="materialColTech">技术创新</h4>
+                <ul>
+                  <li><a href="materials.html" data-i18n="materialTech1">纳米涂层技术</a></li>
+                  <li><a href="materials.html" data-i18n="materialTech2">复合纤维编织工艺</a></li>
+                  <li><a href="materials.html" data-i18n="materialTech3">仿生人机工学设计</a></li>
+                  <li><a href="materials.html" data-i18n="materialTech4">智能传感集成研究</a></li>
+                  <li><a href="materials.html" data-i18n="materialTech5">生物基材料探索</a></li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <h4 data-i18n="materialColRD">研发成果</h4>
+                <ul>
+                  <li><a href="materials.html" data-i18n="materialRD1">120+ 项专利技术</a></li>
+                  <li><a href="research-center.html" data-i18n="materialRD2">全球研究中心</a></li>
+                  <li><a href="materials.html" data-i18n="materialRD3">材料性能白皮书</a></li>
+                  <li><a href="materials.html" data-i18n="materialRD4">与高校联合研发</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="mega-footer-bar">
+            <span data-i18n="materialQuick">快速了解：</span>
+            <a href="materials.html" data-i18n="materialFooter1">材料对比指南</a>
+            <a href="research-center.html" data-i18n="materialFooter2">研究中心</a>
+            <a href="materials.html" data-i18n="materialFooter3">专利列表</a>
+            <a href="materials.html" class="mega-footer-cta" data-i18n="materialFooterCTA">下载技术白皮书 →</a>
+          </div>
+        </div>
+      </li>
+
+        <!-- ===== 认证与服务 MEGA MENU ===== -->
+        <li class="nav-item has-mega">
+          <a href="#" class="nav-link"><span data-i18n="navCertServices">认证与服务</span> <svg class="arrow" viewBox="0 0 12 8"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></a>
+          <div class="mega-menu mega-fullwidth">
+            <div class="mega-fw-inner" data-mega-type="plain" data-mega-mode="plain">
+              <!-- LEFT: 全球服务图 -->
+              <div class="mega-img-panel mega-img-single">
+                <div class="mip-main mip-blue" style="background:linear-gradient(145deg,#1A1108,#2A1A06)">
+                  <div class="mip-img-wrap" style="background:transparent">
+                    <!-- 全球服务网络SVG -->
+                    <svg viewBox="0 0 220 180" fill="none" width="220" height="180">
+                      <!-- 地球轮廓 -->
+                      <circle cx="110" cy="90" r="65" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+                      <circle cx="110" cy="90" r="45" fill="rgba(0,112,243,0.2)" stroke="rgba(0,180,216,0.3)" stroke-width="1"/>
+                      <!-- 经纬线 -->
+                      <ellipse cx="110" cy="90" rx="65" ry="25" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+                      <ellipse cx="110" cy="90" rx="65" ry="50" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+                      <line x1="110" y1="25" x2="110" y2="155" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+                      <line x1="45" y1="90" x2="175" y2="90" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+                      <!-- 服务节点 -->
+                      <circle cx="80" cy="72" r="5" fill="#FF6B00"/>
+                      <circle cx="140" cy="78" r="5" fill="#FF6B00"/>
+                      <circle cx="115" cy="108" r="5" fill="#FF6B00"/>
+                      <circle cx="90" cy="112" r="4" fill="rgba(255,107,0,0.6)"/>
+                      <circle cx="130" cy="100" r="4" fill="rgba(255,107,0,0.6)"/>
+                      <!-- 连线 -->
+                      <path d="M80 72 Q110 60 140 78" stroke="#FF6B00" stroke-width="1" stroke-dasharray="3 3" opacity="0.6"/>
+                      <path d="M140 78 Q130 95 115 108" stroke="#FF6B00" stroke-width="1" stroke-dasharray="3 3" opacity="0.6"/>
+                      <path d="M115 108 Q100 112 90 112" stroke="rgba(255,107,0,0.4)" stroke-width="1" stroke-dasharray="3 3"/>
+                      <!-- 中心标记 -->
+                      <circle cx="110" cy="90" r="8" fill="rgba(255,107,0,0.3)" stroke="#FF6B00" stroke-width="1.5"/>
+                      <circle cx="110" cy="90" r="3" fill="#FF6B00"/>
+                      <!-- 标签 -->
+                      <rect x="140" y="45" width="68" height="22" rx="4" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+                      <text x="174" y="60" text-anchor="middle" fill="white" font-size="8" font-weight="600" font-family="sans-serif">50+ 国家覆盖</text>
+                    </svg>
+                  </div>
+                  <div class="mip-info">
+                    <span class="mip-tag" style="background:rgba(0,112,243,0.4)" data-i18n="svcTagGlobal">7×24全球响应</span>
+                    <h3 style="color:white" data-i18n="svcTagNetwork">全球客户服务网络</h3>
+                    <p style="color:rgba(255,255,255,0.7)" data-i18n="svcTagDesc">50+国家服务覆盖<br/>专属客户成功经理</p>
+                    <a href="auth.html" class="mip-btn" style="border-color:rgba(0,180,216,0.5);color:#00B4D8" data-i18n="svcMemberCenter">会员中心 →</a>
+                  </div>
+                </div>
+                <div class="mip-industry-bar">
+                  <a href="auth.html" class="mib-item"><span>👤</span><small data-i18n="svcBarRegister">注册会员</small></a>
+                  <a href="auth.html" class="mib-item"><span>📋</span><small data-i18n="svcBarProfile">客户档案</small></a>
+                  <a href="auth.html" class="mib-item"><span>🛠️</span><small data-i18n="svcBarTech">技术支持</small></a>
+                  <a href="auth.html" class="mib-item"><span>📦</span><small data-i18n="svcBarSample">样品申请</small></a>
+                  <a href="sustainability.html" class="mib-item"><span>🌿</span><small data-i18n="svcBarSustain">可持续</small></a>
+                  <a href="research-center.html" class="mib-item"><span>🔬</span><small data-i18n="svcBarResearch">研究中心</small></a>
+                </div>
+              </div>
+              <div class="mega-cols-wrap">
+                <div class="mega-col">
+                  <h4 data-i18n="svcColService">客户服务</h4>
+                  <ul>
+                    <li><a href="auth.html" data-i18n="svcTechSupport">技术支持</a></li>
+                    <li><a href="auth.html" data-i18n="svcTraining">产品培训</a></li>
+                    <li><a href="auth.html" data-i18n="svcSafetyConsult">安全咨询</a></li>
+                    <li><a href="auth.html" data-i18n="svcAfterSales">售后服务</a></li>
+                    <li><a href="auth.html" data-i18n="svcProfileMgmt">客户档案管理</a></li>
+                  </ul>
+                </div>
+                <div class="mega-col">
+                  <h4 data-i18n="svcColDownload">资源下载</h4>
+                  <ul>
+                    <li><a href="search.html?q=brochure" data-i18n="svcDlBrochure">产品手册</a></li>
+                    <li><a href="search.html?q=SDS" data-i18n="svcDlSDS">安全数据表(SDS)</a></li>
+                    <li><a href="search.html?q=cert" data-i18n="svcDlCert">合规认证文件</a></li>
+                    <li><a href="search.html?q=guide" data-i18n="svcDlGuide">安装使用指南</a></li>
+                  </ul>
+                </div>
+                <div class="mega-col">
+                  <h4 data-i18n="svcColAbout">关于我们</h4>
+                  <ul>
+                    <li><a href="sustainability.html" data-i18n="svcAboutSustain">可持续发展</a></li>
+                    <li><a href="research-center.html" data-i18n="svcAboutResearch">全球研究中心</a></li>
+                    <li><a href="research-center.html" data-i18n="svcAboutNews">新闻中心</a></li>
+                    <li><a href="auth.html" data-i18n="svcAboutJoin">加入我们</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="mega-footer-bar">
+              <span data-i18n="svcQuickLinks">快速链接：</span>
+              <a href="auth.html" data-i18n="svcFooterRegister">注册会员</a>
+              <a href="auth.html" data-i18n="svcFooterDemo">申请演示</a>
+              <a href="search.html" data-i18n="svcFooterCatalog">下载产品目录</a>
+              <a href="auth.html" class="mega-footer-cta" data-i18n="svcFooterContact">联系我们 →</a>
+            </div>
+          </div>
+        </li>
+
+        <!-- ===== 解决方案 MEGA MENU ===== -->
+        <li class="nav-item has-mega">
+          <a href="#" class="nav-link"><span data-i18n="navSolutions">解决方案</span> <svg class="arrow" viewBox="0 0 12 8"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></a>
+          <div class="mega-menu mega-fullwidth">
+            <div class="mega-fw-inner" data-mega-type="plain" data-mega-mode="plain">
+              <!-- LEFT: 场景图片 -->
+              <div class="mega-img-panel mega-img-single">
+                <div class="mip-main mip-dark" style="background:linear-gradient(145deg,#0A0A0F,#1A0800)">
+                  <div class="mip-img-wrap" style="background:transparent">
+                    <!-- 工业场景写实SVG -->
+                    <svg viewBox="0 0 220 180" fill="none" width="220" height="180">
+                      <!-- 工厂背景 -->
+                      <rect x="10" y="80" width="200" height="90" fill="rgba(255,107,0,0.05)" rx="4"/>
+                      <!-- 工人手持手套 -->
+                      <path d="M50 160 L50 100 Q50 82 62 80 Q68 79 70 84 Q72 79 78 78 Q90 76 90 86 L90 118 Q92 110 99 109 Q107 108 107 117 L107 132 Q103 148 88 154 Q70 160 50 160Z" fill="#FF6B00" opacity="0.85"/>
+                      <!-- 手套纹路 -->
+                      <path d="M55 105 Q65 103 75 105 M55 115 Q65 113 75 115 M55 125 Q65 123 75 125" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+                      <!-- 防护盾图标 -->
+                      <path d="M130 50 L155 60 L155 90 Q155 108 130 118 Q105 108 105 90 L105 60 Z" fill="rgba(255,107,0,0.15)" stroke="#FF6B00" stroke-width="1.5"/>
+                      <path d="M118 88 L127 97 L144 78" stroke="#FF6B00" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      <!-- 装饰线 -->
+                      <path d="M10 75 L210 75" stroke="rgba(255,107,0,0.2)" stroke-width="1" stroke-dasharray="4 4"/>
+                      <!-- 标签 -->
+                      <rect x="130" y="128" width="80" height="24" rx="4" fill="rgba(255,107,0,0.9)"/>
+                      <text x="170" y="144" text-anchor="middle" fill="white" font-size="9" font-weight="700" font-family="sans-serif">全链路安全防护</text>
+                    </svg>
+                  </div>
+                  <div class="mip-info">
+                    <span class="mip-tag" style="background:rgba(255,107,0,0.3)" data-i18n="solTagFullChain">全链路服务</span>
+                    <h3 style="color:white" data-i18n="solTagSystematic">系统化安全防护</h3>
+                    <p style="color:rgba(255,255,255,0.7)" data-i18n="solTagDesc">从风险评估到持续维护<br/>一站式行业解决方案</p>
+                    <a href="industry-hub.html" class="mip-btn" style="border-color:rgba(255,107,0,0.5);color:#FF6B00" data-i18n="solLearnMore">了解更多 →</a>
+                  </div>
+                </div>
+                <!-- 行业图标快速入口 -->
+                <div class="mip-industry-bar">
+                  <a href="ind-petro.html" class="mib-item"><span>🏭</span><small data-i18n="indPetro">石油化工</small></a>
+                  <a href="ind-auto.html" class="mib-item"><span>🚗</span><small data-i18n="indAuto">汽车制造</small></a>
+                  <a href="ind-construction.html" class="mib-item"><span>🏗️</span><small data-i18n="indConstruction">建筑施工</small></a>
+                  <a href="ind-medical.html" class="mib-item"><span>🏥</span><small data-i18n="indMedical">医疗健康</small></a>
+                  <a href="ind-electronics.html" class="mib-item"><span>⚡</span><small data-i18n="indElectronics">电子电气</small></a>
+                  <a href="ind-marine.html" class="mib-item"><span>🌊</span><small data-i18n="indMarine">船舶海工</small></a>
+                </div>
+              </div>
+              <div class="mega-cols-wrap">
+                <div class="mega-col">
+                  <h4 data-i18n="solColIndustry">行业解决方案</h4>
+                  <ul>
+                    <li><a href="industry-hub.html" data-i18n="solIndManufacturing">工业制造整体防护</a></li>
+                    <li><a href="ind-petro.html" data-i18n="solIndHazmat">危化品处理方案</a></li>
+                    <li><a href="factory.html" data-i18n="solIndSmartFactory">智能工厂防护</a></li>
+                    <li><a href="ind-medical.html" data-i18n="solIndMedical">医疗防护解决方案</a></li>
+                    <li><a href="industry-hub.html" data-i18n="solIndMarine">海洋工程防护</a></li>
+                  </ul>
+                </div>
+                <div class="mega-col">
+                  <h4 data-i18n="solColCustom">定制化服务</h4>
+                  <ul>
+                    <li><a href="auth.html" data-i18n="solCustomBulk">企业批量定制</a></li>
+                    <li><a href="auth.html" data-i18n="solCustomOEM">OEM/ODM合作</a></li>
+                    <li><a href="auth.html" data-i18n="solCustomSafety">专业安全评估</a></li>
+                    <li><a href="auth.html" data-i18n="solCustomCompliance">合规认证支持</a></li>
+                  </ul>
+                </div>
+                <div class="mega-col">
+                  <h4 data-i18n="solColValueAdded">增值服务</h4>
+                  <ul>
+                    <li><a href="auth.html" data-i18n="solVARFID">RFID智能追踪</a></li>
+                    <li><a href="auth.html" data-i18n="solVAIoT">IoT数字化管理</a></li>
+                    <li><a href="auth.html" data-i18n="solVATraining">安全培训认证</a></li>
+                    <li><a href="auth.html" data-i18n="solVATrade">以旧换新计划</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="mega-footer-bar">
+              <span data-i18n="solQuickEntry">快速入口：</span>
+              <a href="auth.html" data-i18n="solFreeSafety">免费安全评估</a>
+              <a href="auth.html" data-i18n="solRequestSample">申请样品</a>
+              <a href="auth.html" data-i18n="solCustomQuote">定制报价</a>
+              <a href="auth.html" class="mega-footer-cta" data-i18n="solContactSales">联系销售顾问 →</a>
+            </div>
+          </div>
+        </li>
+
+
+      <!-- ===== 品牌与产品 MEGA MENU ===== -->
+      <li class="nav-item has-mega">
+        <a href="javascript:void(0)" class="nav-link"><span data-i18n="navProducts">品牌与产品</span> <svg class="arrow" viewBox="0 0 12 8"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></a>
+          <div class="mega-menu mega-fullwidth">
+            <div class="mega-fw-inner">
+              <!-- RIGHT: 分类列表 （去掉左侧图片展示） -->
+              <div class="mega-cols-wrap no-divider">
+                <!-- 1. 品牌系列 -->
+                <div class="mega-col mega-brands-col">
+                  <h4><a href="products.html" style="text-decoration:none;color:inherit;cursor:pointer;" data-i18n="menuBrandSeries">品牌系列</a></h4>
+                  <div class="mega-brand-list">
+                    <a href="pandashield.html" class="mega-brand-item">
+                      <span class="mb-tag">PandaSHIELD™</span>
+                      <span class="mb-inline-desc"><span class="mb-code">SHD</span><span class="mb-sep">·</span><span class="mb-desc-text">防切割/撕裂/磨损</span></span>
+                    </a>
+                    <a href="pandapierce.html" class="mega-brand-item">
+                      <span class="mb-tag">PandaPIERCE™</span>
+                      <span class="mb-inline-desc"><span class="mb-code">PIR</span><span class="mb-sep">·</span><span class="mb-desc-text">防穿刺</span></span>
+                    </a>
+                    <a href="pandaimpact.html" class="mega-brand-item">
+                      <span class="mb-tag">PandaIMPACT™</span>
+                      <span class="mb-inline-desc"><span class="mb-code">IMP</span><span class="mb-sep">·</span><span class="mb-desc-text">防冲击</span></span>
+                    </a>
+                    <a href="pandachem.html" class="mega-brand-item">
+                      <span class="mb-tag">PandaCHEM™</span>
+                      <span class="mb-inline-desc"><span class="mb-code">CHM</span><span class="mb-sep">·</span><span class="mb-desc-text">防油污/酸碱/溶剂</span></span>
+                    </a>
+                    <a href="pandabio.html" class="mega-brand-item">
+                      <span class="mb-tag">PandaBIO™</span>
+                      <span class="mb-inline-desc"><span class="mb-code">BIO</span><span class="mb-sep">·</span><span class="mb-desc-text">防生物污染</span></span>
+                    </a>
+                    <a href="pandavolt.html" class="mega-brand-item">
+                      <span class="mb-tag">PandaVOLT™</span>
+                      <span class="mb-inline-desc"><span class="mb-code">VOL</span><span class="mb-sep">·</span><span class="mb-desc-text">防电/绝缘/静电</span></span>
+                    </a>
+                    <a href="pandaheat.html" class="mega-brand-item">
+                      <span class="mb-tag">PandaHEAT™</span>
+                      <span class="mb-inline-desc"><span class="mb-code">HEA</span><span class="mb-sep">·</span><span class="mb-desc-text">防火/阻燃/耐高温</span></span>
+                    </a>
+                    <a href="pandafrost.html" class="mega-brand-item">
+                      <span class="mb-tag">PandaFROST™</span>
+                      <span class="mb-inline-desc"><span class="mb-code">FRS</span><span class="mb-sep">·</span><span class="mb-desc-text">防寒/保暖</span></span>
+                    </a>
+                    <a href="pandagrip.html" class="mega-brand-item">
+                      <span class="mb-tag">PandaGRIP™</span>
+                      <span class="mb-inline-desc"><span class="mb-code">GRP</span><span class="mb-sep">·</span><span class="mb-desc-text">防震/防滑</span></span>
+                    </a>
+                    <a href="pandaeco.html" class="mega-brand-item">
+                      <span class="mb-tag">PandaECO™</span>
+                      <span class="mb-inline-desc"><span class="mb-code">ECO</span><span class="mb-sep">·</span><span class="mb-desc-text">环保可持续</span></span>
+                    </a>
+                  </div>
+                </div>
+                <!-- 2. 按功能和危害 -->
+                <div class="mega-col mega-function-colgroup">
+                  <h4><a href="function-hub.html" style="text-decoration:none;color:inherit;cursor:pointer;">按功能和危害</a></h4>
+                  <div class="mega-function-grid">
+                    <ul class="mega-function-col">
+                      <li><a href="func-cut.html"><span class="mega-flat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 7l5 5"/><path d="M13 13l5 5"/><path d="M14 6l4 4"/><path d="M6 18l4-4"/></svg></span><span data-i18n="hazardCut">切割</span></a></li>
+                      <li><a href="func-puncture.html"><span class="mega-flat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 4l4 8-4 8-4-8 4-8z"/><path d="M12 9v6"/></svg></span><span data-i18n="hazardPuncture">穿刺</span></a></li>
+                      <li><a href="func-tear.html"><span class="mega-flat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 5l4 4-4 4 4 4"/><path d="M17 5l-4 4 4 4-4 4"/></svg></span><span data-i18n="hazardTear">撕裂</span></a></li>
+                      <li><a href="func-wear.html"><span class="mega-flat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2.5"/></svg></span><span data-i18n="hazardWear">磨损</span></a></li>
+                      <li><a href="func-shock.html"><span class="mega-flat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 4l2 5 5 2-5 2-2 5-2-5-5-2 5-2 2-5z"/></svg></span><span data-i18n="hazardImpact">冲击</span></a></li>
+                      <li><a href="func-oil.html"><span class="mega-flat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 4c2 3 4 5 4 8a4 4 0 1 1-8 0c0-3 2-5 4-8z"/><path d="M10 15c.7.5 1.3.7 2 .7"/></svg></span><span data-i18n="hazardOil">油污</span></a></li>
+                      <li><a href="func-solvent.html"><span class="mega-flat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M10 4h4"/><path d="M11 4v5l-4 7a3 3 0 0 0 2.6 4.5h4.8A3 3 0 0 0 17 16l-4-7V4"/><path d="M9 14h6"/></svg></span><span data-i18n="hazardAcid">酸碱</span></a></li>
+                      <li><a href="func-solvent.html"><span class="mega-flat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="8" y="4" width="8" height="16" rx="2"/><path d="M10 8h4"/><path d="M10 12h4"/></svg></span><span data-i18n="hazardSolvent">溶剂</span></a></li>
+                      <li><a href="func-infection.html"><span class="mega-flat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="2.5"/><path d="M12 5v2.5M12 16.5V19M5 12h2.5M16.5 12H19M7.8 7.8l1.8 1.8M14.4 14.4l1.8 1.8M16.2 7.8l-1.8 1.8M9.6 14.4l-1.8 1.8"/></svg></span><span data-i18n="hazardBioCross">生物污染</span></a></li>
+
+                    </ul>
+                    <ul class="mega-function-col">
+                      <li><a href="func-electric.html"><span class="mega-flat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="6" y="4" width="12" height="16" rx="3"/><path d="M12 8l-2 4h3l-1 4 4-6h-3l1-2"/></svg></span><span data-i18n="hazardInsulation">绝缘</span></a></li>
+                      <li><a href="func-static.html"><span class="mega-flat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 4l1.8 4.2L18 10l-4.2 1.8L12 16l-1.8-4.2L6 10l4.2-1.8L12 4z"/><circle cx="18" cy="6" r="1"/><circle cx="6" cy="18" r="1"/></svg></span><span data-i18n="hazardStatic">静电</span></a></li>
+                      <li><a href="func-flame.html"><span class="mega-flat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 4c1.8 2 3.5 3.9 3.5 6.1A3.5 3.5 0 1 1 8.5 10c0-1.8 1.1-3.4 3.5-6z"/><path d="M10.5 13.5c.8-.1 1.6-.5 2.3-1.3"/></svg></span><span data-i18n="hazardFlame">阻燃</span></a></li>
+                      <li><a href="func-heat.html"><span class="mega-flat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 8h6"/><path d="M7 12h8"/><path d="M7 16h6"/><path d="M17 6c1.7 1.7 2.5 3.5 2.5 6s-.8 4.3-2.5 6"/></svg></span><span data-i18n="hazardHeatInsulation">高温</span></a></li>
+                      <li><a href="func-cold.html"><span class="mega-flat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 4v16"/><path d="M5 8l14 8"/><path d="M19 8L5 16"/></svg></span><span data-i18n="hazardCold">极寒</span></a></li>
+                      <li><a href="func-vibration.html"><span class="mega-flat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h3l2-3 4 6 2-3h3"/></svg></span><span data-i18n="hazardVibration">震动</span></a></li>
+                      <li><a href="func-antislip.html"><span class="mega-flat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 8h12"/><path d="M8 12h8"/><path d="M10 16h4"/></svg></span><span data-i18n="hazardGrip">防滑</span></a></li>
+                      <li><a href="func-eco.html"><span class="mega-flat-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 19V10"/><path d="M12 10c0-3-2.5-5-6-5 0 3.5 2 6 6 6z"/><path d="M12 13c0-2.4 2-4.5 5-4.5-.4 2.9-2 4.8-5 4.5z"/></svg></span><span data-i18n="hazardEco">环保</span></a></li>
+                    </ul>
+                  </div>
+                </div>
+
+                <!-- 3. 按行业分类 -->
+                <div class="mega-col mega-col-industry">
+                  <h4><a href="industry-hub.html" style="text-decoration:none;color:inherit;cursor:pointer;" data-i18n="menuByIndustry">按行业</a></h4>
+                  <div class="mega-industry-grid">
+                    <ul class="mega-industry-col">
+                      <li><a href="ind-petro.html"><svg class="mega-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="7" height="12" rx="1"/><rect x="14" y="3" width="7" height="14" rx="1"/><line x1="10" y1="17" x2="14" y2="17"/></svg> <span data-i18n="menuIndPetro">石油化工</span></a></li>
+                      <li><a href="ind-auto.html"><svg class="mega-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h4v9H3zm8-2h4v11h-4zm8 3h4v8h-4z"/><line x1="2" y1="17" x2="22" y2="17"/></svg> <span data-i18n="menuIndAuto">汽车制造</span></a></li>
+                      <li><a href="ind-construction.html"><svg class="mega-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l8 4v10H4V6l8-4z"/><line x1="4" y1="6" x2="20" y2="6"/><line x1="7" y1="10" x2="7" y2="16"/><line x1="12" y1="10" x2="12" y2="16"/><line x1="17" y1="10" x2="17" y2="16"/></svg> <span data-i18n="menuIndConstruction">建筑施工</span></a></li>
+                      <li><a href="ind-food.html"><svg class="mega-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="10" r="7"/><path d="M5 18c-1 2-2 3-2 3h18s-1-1-2-3"/></svg> <span data-i18n="menuIndFood">食品加工</span></a></li>
+                      <li><a href="ind-electronics.html"><svg class="mega-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="1"/><circle cx="6" cy="6" r="1"/><circle cx="18" cy="6" r="1"/><circle cx="18" cy="18" r="1"/><circle cx="6" cy="18" r="1"/><line x1="12" y1="12" x2="6" y2="6"/><line x1="12" y1="12" x2="18" y2="6"/><line x1="12" y1="12" x2="6" y2="18"/><line x1="12" y1="12" x2="18" y2="18"/></svg> <span data-i18n="menuIndElectronics">电子电气</span></a></li>
+                      <li><a href="ind-medical.html"><svg class="mega-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2c-2 0-4 2-4 5v1H6c-1 0-2 1-2 2v9c0 1 1 2 2 2h12c1 0 2-1 2-2v-9c0-1-1-2-2-2h-2V7c0-3-2-5-4-5z"/><circle cx="12" cy="14" r="1.5"/></svg> <span data-i18n="menuIndMedicalCleaning">医疗清洁</span></a></li>
+                      <li><a href="ind-aerospace.html"><svg class="mega-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l6 3.5v5L12 14l-6-3.5v-5L12 2z"/><line x1="6" y1="5.5" x2="6" y2="14"/><line x1="18" y1="5.5" x2="18" y2="14"/><line x1="12" y1="14" x2="12" y2="22"/></svg> <span data-i18n="menuIndAerospace">航空航天</span></a></li>
+                    </ul>
+                    <ul class="mega-industry-col">
+                      <li><a href="ind-logistics.html"><svg class="mega-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 7h5v10H4z"/><path d="M11 4h5v13h-5z"/><path d="M18 9h2v8h-2z"/><line x1="3" y1="17" x2="21" y2="17"/></svg> <span data-i18n="menuIndLogistics">物流仓储</span></a></li>
+                      <li><a href="ind-metal.html"><svg class="mega-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 6h14v4H5z"/><path d="M7 10v8h10v-8"/><line x1="9" y1="14" x2="15" y2="14"/></svg> <span data-i18n="menuIndMetalworking">金属加工</span></a></li>
+                      <li><a href="ind-fire.html"><svg class="mega-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3c3 3 5 5 5 8a5 5 0 1 1-10 0c0-3 2-5 5-8z"/><path d="M12 11c1.5 1.2 2 2.2 2 3.3A2 2 0 1 1 10 14c0-1.1.5-2.1 2-3z"/></svg> <span data-i18n="menuIndFireRescue">消防救援</span></a></li>
+                      <li><a href="ind-energy.html"><svg class="mega-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L6 13h5l-1 9 8-12h-5l0-8z"/></svg> <span data-i18n="menuIndPowerEnergy">电力能源</span></a></li>
+                      <li><a href="ind-marine.html"><svg class="mega-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 15h18"/><path d="M5 15l2-6h8l4 6"/><path d="M9 9V6h4v3"/></svg> <span data-i18n="menuIndShipbuilding">船舶制造</span></a></li>
+                      <li><a href="ind-agriculture.html"><svg class="mega-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20V8"/><path d="M12 8c0-3-2-5-5-5 0 3 2 5 5 5z"/><path d="M12 11c0-2 2-4 5-4-1 3-3 4-5 4z"/><path d="M8 20h8"/></svg> <span data-i18n="menuIndAgriforestry">农业林业</span></a></li>
+                      <li><a href="ind-lab.html"><svg class="mega-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 8h8M8 12h5M8 16h6"/></svg> <span data-i18n="menuIndLabResearch">实验室科研</span></a></li>
+                    </ul>
+                  </div>
+                </div>
+                <!-- 4. 按运动分类 -->
+                <div class="mega-col mega-col-sport">
+                  <h4><a href="sport-hub.html" style="text-decoration:none;color:inherit;cursor:pointer;" data-i18n="menuBySport">按运动</a></h4>
+                  <div class="mega-sport-grid">
+                    <ul class="mega-sport-col">
+                      <li><a href="sport-climbing.html"><svg class="mega-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 5L5 9m10-4l4 4M7 12l5-5M12 12l5-5m-10 8l5-5m-7 10l8-8"/></svg> <span>攀岩/登山</span></a></li>
+                      <li><a href="sport-shooting.html"><svg class="mega-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="6" r="2"/><path d="M8 11h8M8 15h8M6 19h12"/></svg> <span>射击/击剑</span></a></li>
+                      <li><a href="sport-boxing.html"><svg class="mega-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3c-3 0-5 2-5 5 0 4 5 9 5 9s5-5 5-9c0-3-2-5-5-5z"/><circle cx="12" cy="8" r="1.5"/></svg> <span>拳击/搏击</span></a></li>
+                      <li><a href="sport-ball.html"><svg class="mega-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="8"/><path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"/></svg> <span>足球/棒球</span></a></li>
+                      <li><a href="sport-cycling.html"><svg class="mega-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12c0-3 3-5 7-5s7 2 7 5-3 5-7 5-7-2-7-5z"/><line x1="12" y1="2" x2="12" y2="7"/><line x1="12" y1="17" x2="12" y2="22"/></svg> <span>骑行/滑板</span></a></li>
+                      <li><a href="sport-equestrian.html"><svg class="mega-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 10h14v6H5z"/><path d="M7 10L6 5M17 10l1-5M6 16v2M18 16v2"/></svg> <span>骑马/马术</span></a></li>
+                      <li><a href="sport-extreme.html"><svg class="mega-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="1"/><circle cx="6" cy="6" r="1"/><circle cx="18" cy="6" r="1"/><circle cx="18" cy="18" r="1"/><circle cx="6" cy="18" r="1"/><line x1="12" y1="12" x2="6" y2="6"/><line x1="12" y1="12" x2="18" y2="6"/><line x1="12" y1="12" x2="6" y2="18"/><line x1="12" y1="12" x2="18" y2="18"/></svg> <span data-i18n="sportExtreme">极限运动</span></a></li>
+
+                    </ul>
+                    <ul class="mega-sport-col">
+
+                      <li><a href="sport-hunting.html"><svg class="mega-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l3 8h8l-6 5 2 8-7-5-7 5 2-8-6-5h8l3-8z"/></svg> <span data-i18n="sportHunting">狩猎</span></a></li>
+                      <li><a href="sport-running.html"><svg class="mega-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="5" r="2"/><path d="M12 8v8M8 11h8M9 19h6"/></svg> <span data-i18n="sportRunning">跑步</span></a></li>
+                      <li><a href="sport-fishing.html"><svg class="mega-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 10l2-4h12l2 4M5 10v7c0 1 1 2 2 2h10c1 0 2-1 2-2v-7M10 14v3M14 14v3"/></svg> <span data-i18n="sportFishing">钓鱼</span></a></li>
+                      <li><a href="sport-skiing.html"><svg class="mega-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 8L4 4m12 4l2-4m-8 10l-4-4m8 0l4-4m-4 12h6v4H8v-4z"/></svg> <span data-i18n="sportSkiing">滑雪</span></a></li>
+                      <li><a href="sport-fitness.html"><svg class="mega-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 3h2v6H6zM16 3h2v6h-2z"/><rect x="5" y="9" width="14" height="10" rx="1"/><line x1="8" y1="14" x2="16" y2="14"/></svg> <span data-i18n="sportFitness">健身</span></a></li>
+                      <li><a href="sport-tactical.html"><svg class="mega-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 5h18v10H3z"/><line x1="6" y1="5" x2="6" y2="15"/><line x1="12" y1="5" x2="12" y2="15"/><line x1="18" y1="5" x2="18" y2="15"/><path d="M5 15l2 4h10l2-4"/></svg> <span data-i18n="sportTactical">战术</span></a></li>
+                      <li><a href="sport-motorcycle.html"><svg class="mega-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="12" r="4"/><path d="M12 3v18M3 12h18"/></svg> <span data-i18n="sportMotorcycle">摩托车</span></a></li>
+                      <li><a href="sport-golf.html"><svg class="mega-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/></svg> <span data-i18n="sportGolf">高尔夫</span></a></li>
+
+                    </ul>
+                  </div>
+                </div>
+                <!-- 5. 产品对比与图解 -->
+                <div class="mega-col mega-col-compare">
+
+                  <h4 data-i18n="menuComparison">对比与图解</h4>
+
+                  <ul>
+                    <li><a href="products.html" data-i18n="compLevel">防护等级对比表</a></li>
+                    <li><a href="products.html" data-i18n="compParams">性能参数数据</a></li>
+                    <li><a href="materials.html" data-i18n="compMaterial">材料对比指南</a></li>
+                    <li><a href="product-selector.html" data-i18n="compSelection">选型推荐表</a></li>
+                    <li><a href="products.html" data-i18n="compSpecs">产品规格速查</a></li>
+                    <li><a href="products.html" data-i18n="compScenario">应用场景图解</a></li>
+                    <li><a href="search.html?q=认证标准" data-i18n="compCert">认证标准信息</a></li>
+                  </ul>
+
+                </div>
+              </div>
+            </div>
+            <!-- 底部快速导航 -->
+            <div class="mega-footer-bar mega-footer-bar--split">
+              <div class="mega-footer-tags">
+                <span data-i18n="menuHotSearch">热门搜索：</span>
+                <a href="search.html?q=磨损" data-i18n="hotCutA6">磨损</a>
+                <a href="search.html?q=切割" data-i18n="hotChemical">切割</a>
+                <a href="search.html?q=油污" data-i18n="hotWinter">油污</a>
+                <a href="search.html?q=防滑" data-i18n="hotMedical">防滑</a>
+                <a href="search.html?q=冲击" data-i18n="hotChildSafety">冲击</a>
+              </div>
+              <a href="products-all.html" class="mega-view-all-btn">
+                <svg viewBox="0 0 20 20" fill="none" width="16" height="16" style="flex-shrink:0"><rect x="2" y="3" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.6"/><rect x="11" y="3" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.6"/><rect x="2" y="12" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.6"/><rect x="11" y="12" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.6"/></svg>
+                <span data-i18n="menuViewAllProducts">查看所有Panda产品</span>
+                <svg viewBox="0 0 16 16" fill="none" width="14" height="14" style="flex-shrink:0;opacity:0.78"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </div>
+          </div>
+        </li>
+
+
+        <!-- ===== 客户案例 MEGA MENU ===== -->
+        <li class="nav-item has-mega">
+          <a href="#" class="nav-link"><span data-i18n="navCaseStudies">客户案例</span> <svg class="arrow" viewBox="0 0 12 8"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></a>
+          <div class="mega-menu mega-fullwidth">
+            <div class="mega-fw-inner" data-mega-type="plain" data-mega-mode="plain">
+              <!-- LEFT: 客户案例视觉 -->
+              <div class="mega-img-panel mega-img-single">
+                <div class="mip-main mip-dark" style="background:linear-gradient(145deg,#0D1218,#1A0A00)">
+                  <div class="mip-img-wrap" style="background:transparent">
+                    <svg viewBox="0 0 220 180" fill="none" width="220" height="180">
+                      <!-- 引号装饰 -->
+                      <text x="20" y="70" font-size="72" fill="rgba(232,93,0,0.18)" font-family="Georgia,serif">&ldquo;</text>
+                      <!-- 行业图标行 -->
+                      <rect x="30" y="90" width="36" height="36" rx="8" fill="rgba(232,93,0,0.15)" stroke="rgba(232,93,0,0.4)" stroke-width="1.5"/>
+                      <rect x="82" y="90" width="36" height="36" rx="8" fill="rgba(232,93,0,0.10)" stroke="rgba(232,93,0,0.3)" stroke-width="1.5"/>
+                      <rect x="134" y="90" width="36" height="36" rx="8" fill="rgba(232,93,0,0.10)" stroke="rgba(232,93,0,0.3)" stroke-width="1.5"/>
+                      <!-- 工厂图标 -->
+                      <rect x="40" y="104" width="16" height="12" fill="rgba(232,93,0,0.7)" rx="2"/>
+                      <rect x="37" y="100" width="7" height="16" fill="rgba(232,93,0,0.5)" rx="1"/>
+                      <rect x="49" y="98" width="7" height="18" fill="rgba(232,93,0,0.6)" rx="1"/>
+                      <!-- 汽车图标 -->
+                      <path d="M88 108 l6-8 h16 l6 8 v6 H88 z" fill="none" stroke="rgba(232,93,0,0.7)" stroke-width="1.5" stroke-linejoin="round"/>
+                      <circle cx="93" cy="114" r="2.5" fill="rgba(232,93,0,0.7)"/>
+                      <circle cx="113" cy="114" r="2.5" fill="rgba(232,93,0,0.7)"/>
+                      <!-- 医疗十字 -->
+                      <line x1="152" y1="100" x2="152" y2="120" stroke="rgba(232,93,0,0.8)" stroke-width="3" stroke-linecap="round"/>
+                      <line x1="142" y1="110" x2="162" y2="110" stroke="rgba(232,93,0,0.8)" stroke-width="3" stroke-linecap="round"/>
+                      <!-- 五星评分 -->
+                      <text x="30" y="148" font-size="14" fill="rgba(232,93,0,0.85)" font-family="sans-serif">★★★★★</text>
+                      <!-- 标签 -->
+                      <rect x="120" y="32" width="90" height="22" rx="4" fill="rgba(232,93,0,0.9)"/>
+                      <text x="165" y="47" text-anchor="middle" fill="white" font-size="9" font-weight="700" font-family="sans-serif">全球500强合作</text>
+                    </svg>
+                  </div>
+                  <div class="mip-info">
+                    <span class="mip-tag" style="background:rgba(232,93,0,0.35)" data-i18n="caseTagFortune">500强合作</span>
+                    <h3 style="color:white" data-i18n="caseTagTitle">真实客户验证</h3>
+                    <p style="color:rgba(255,255,255,0.7)" data-i18n="caseTagDesc">50+国家企业信赖<br/>行业标杆客户实证</p>
+                    <a href="industry-hub.html" class="mip-btn" style="border-color:rgba(232,93,0,0.5);color:#FF7A20" data-i18n="caseViewAll">查看全部案例 →</a>
+                  </div>
+                </div>
+                <div class="mip-industry-bar">
+                  <a href="ind-petro.html" class="mib-item"><span>🏭</span><small data-i18n="caseIndPetro">石化</small></a>
+                  <a href="ind-auto.html" class="mib-item"><span>🚗</span><small data-i18n="caseIndAuto">汽车</small></a>
+                  <a href="ind-medical.html" class="mib-item"><span>🏥</span><small data-i18n="caseIndMedical">医疗</small></a>
+                  <a href="industry-hub.html" class="mib-item"><span>🔧</span><small data-i18n="caseIndMfg">制造</small></a>
+                  <a href="industry-hub.html" class="mib-item"><span>🌊</span><small data-i18n="caseIndMarine">海工</small></a>
+                  <a href="ind-electronics.html" class="mib-item"><span>⚡</span><small data-i18n="caseIndElec">电气</small></a>
+                </div>
+              </div>
+              <div class="mega-cols-wrap">
+                <!-- 精选案例 -->
+                <div class="mega-col">
+                  <h4 data-i18n="caseColFeatured">精选案例</h4>
+                  <ul>
+                    <li><a href="ind-petro.html" data-i18n="caseOilRefinery">某大型炼油厂切割防护升级</a></li>
+                    <li><a href="ind-auto.html" data-i18n="caseAutoOEM">汽车OEM装配线防护解决方案</a></li>
+                    <li><a href="ind-medical.html" data-i18n="caseMedical">医疗器械厂无菌防护项目</a></li>
+                    <li><a href="ind-construction.html" data-i18n="caseConstructMega">大型基建施工安全计划</a></li>
+                    <li><a href="ind-food.html" data-i18n="caseFoodGlobal">全球食品企业卫生防护</a></li>
+                  </ul>
+                </div>
+                <!-- 行业成功故事 -->
+                <div class="mega-col">
+                  <h4 data-i18n="caseColSuccess">成功故事</h4>
+                  <ul>
+                    <li><a href="sustainability.html" data-i18n="caseStoryROI">防护升级降低工伤率 60%</a></li>
+                    <li><a href="sustainability.html" data-i18n="caseStoryCost">年节约手套采购成本 40%</a></li>
+                    <li><a href="research-center.html" data-i18n="caseStoryComp">通过 EN388/ISO 认证全程支持</a></li>
+                    <li><a href="sustainability.html" data-i18n="caseStoryGreen">ESG绿色采购转型案例</a></li>
+                    <li><a href="auth.html" data-i18n="caseStoryCustom">定制化OEM品牌合作</a></li>
+                  </ul>
+                </div>
+                <!-- 客户评价 -->
+                <div class="mega-col">
+                  <h4 data-i18n="caseColTestimonial">客户评价</h4>
+                  <ul>
+                    <li><a href="ind-petro.html" data-i18n="caseTestiPetro">"性能稳定，降本显著" — 石化集团采购总监</a></li>
+                    <li><a href="ind-auto.html" data-i18n="caseTestiAuto">"交期准时，定制灵活" — 汽车零部件厂</a></li>
+                    <li><a href="ind-food.html" data-i18n="caseTestiFood">"卫生合规，全程追溯" — 国际食品企业</a></li>
+                    <li><a href="ind-medical.html" data-i18n="caseTestiMed">"防护升级，员工认可" — 医疗设备公司</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="mega-footer-bar">
+              <span data-i18n="caseQuickFind">快速查找：</span>
+              <a href="industry-hub.html" data-i18n="caseByIndustry">按行业浏览</a>
+              <a href="products.html" data-i18n="caseByProduct">按产品浏览</a>
+              <a href="search.html?q=case" data-i18n="caseDownloadReport">下载案例报告</a>
+              <a href="auth.html" class="mega-footer-cta" data-i18n="caseSubmitYours">提交您的案例 →</a>
+            </div>
+          </div>
+        </li>
+
+        <!-- ===== 品牌授权 MEGA MENU ===== -->
+        <li class="nav-item has-mega">
+          <a href="brand-licensing.html" class="nav-link"><span data-i18n="navFranchise">品牌授权</span> <svg class="arrow" viewBox="0 0 12 8"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></a>
+          <div class="mega-menu mega-fullwidth">
+            <div class="mega-fw-inner" data-mega-type="plain" data-mega-mode="plain">
+              <!-- LEFT: 品牌加盟视觉 -->
+              <div class="mega-img-panel mega-img-single">
+                <div class="mip-main" style="background:linear-gradient(145deg,#060C1A,#0D2B6B)">
+                  <div class="mip-img-wrap" style="background:transparent;padding:20px 16px 8px">
+                    <svg viewBox="0 0 220 160" fill="none" width="220" height="160">
+                      <!-- 全球地图简化 -->
+                      <circle cx="110" cy="80" r="60" fill="rgba(0,87,255,0.08)" stroke="rgba(0,87,255,0.25)" stroke-width="1"/>
+                      <ellipse cx="110" cy="80" rx="60" ry="22" fill="none" stroke="rgba(0,87,255,0.15)" stroke-width="1"/>
+                      <line x1="110" y1="20" x2="110" y2="140" stroke="rgba(0,87,255,0.15)" stroke-width="1"/>
+                      <!-- 加盟节点 -->
+                      <circle cx="75" cy="62" r="6" fill="#E85D00"/>
+                      <circle cx="145" cy="68" r="6" fill="#E85D00"/>
+                      <circle cx="110" cy="105" r="6" fill="#E85D00"/>
+                      <circle cx="82" cy="100" r="4" fill="rgba(232,93,0,0.6)"/>
+                      <circle cx="138" cy="95" r="4" fill="rgba(232,93,0,0.5)"/>
+                      <circle cx="58" cy="85" r="4" fill="rgba(232,93,0,0.4)"/>
+                      <circle cx="158" cy="88" r="4" fill="rgba(232,93,0,0.4)"/>
+                      <!-- 连线 -->
+                      <path d="M75 62 Q110 50 145 68" stroke="#E85D00" stroke-width="1.2" stroke-dasharray="3 3" opacity=".7"/>
+                      <path d="M145 68 Q135 88 110 105" stroke="#E85D00" stroke-width="1.2" stroke-dasharray="3 3" opacity=".7"/>
+                      <path d="M110 105 Q94 104 82 100" stroke="rgba(232,93,0,.5)" stroke-width="1" stroke-dasharray="3 3"/>
+                      <!-- 中心 PHG 标记 -->
+                      <rect x="96" y="70" width="28" height="20" rx="4" fill="#E85D00"/>
+                      <text x="110" y="84" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="900" fill="white">PHG</text>
+                      <!-- 标签 -->
+                      <rect x="142" y="30" width="72" height="20" rx="4" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+                      <text x="178" y="44" text-anchor="middle" fill="white" font-size="8" font-weight="600" font-family="sans-serif">50+ 国家加盟商</text>
+                    </svg>
+                  </div>
+                  <div class="mip-info">
+                    <span class="mip-tag" style="background:rgba(0,87,255,0.4)" data-i18n="franTagUniform">全球统一形象</span>
+                    <h3 style="color:white" data-i18n="franTagGlobal">品牌全球化输出</h3>
+                    <p style="color:rgba(255,255,255,0.7)" data-i18n="franTagDesc">统一产品 · 统一VI · 统一服务<br/>像麦当劳一样复制成功</p>
+                    <a href="auth.html" class="mip-btn" style="border-color:rgba(232,93,0,0.5);color:#FF7A20" data-i18n="franApply">申请加盟 →</a>
+                  </div>
+                </div>
+                <div class="mip-industry-bar">
+                  <a href="auth.html" class="mib-item"><span>🌍</span><small data-i18n="franMarketEurope">欧洲市场</small></a>
+                  <a href="auth.html" class="mib-item"><span>🌎</span><small data-i18n="franMarketAmerica">美洲市场</small></a>
+                  <a href="auth.html" class="mib-item"><span>🌏</span><small data-i18n="franMarketAsia">亚太市场</small></a>
+                  <a href="auth.html" class="mib-item"><span>🕌</span><small data-i18n="franMarketMiddleEast">中东市场</small></a>
+                  <a href="auth.html" class="mib-item"><span>🌍</span><small data-i18n="franMarketAfrica">非洲市场</small></a>
+                  <a href="auth.html" class="mib-item"><span>📋</span><small data-i18n="franApplyEntry">加盟申请</small></a>
+                </div>
+              </div>
+              <div class="mega-cols-wrap">
+                <div class="mega-col">
+                  <h4 data-i18n="franColModel">加盟模式</h4>
+                  <ul>
+                    <li><a href="auth.html"><strong data-i18n="franModelExclusive">区域独家代理</strong></a></li>
+                    <li><a href="auth.html" data-i18n="franModelNational">国家级总代理商</a></li>
+                    <li><a href="auth.html" data-i18n="franModelCity">城市/省级经销商</a></li>
+                    <li><a href="auth.html" data-i18n="franModelEcom">电商渠道合作</a></li>
+                    <li><a href="auth.html" data-i18n="franModelIndustrial">工业品采购平台</a></li>
+                  </ul>
+                </div>
+                <div class="mega-col">
+                  <h4 data-i18n="franColSupport">品牌支持</h4>
+                  <ul>
+                    <li><a href="auth.html" data-i18n="franSupportVI">全套VI视觉设计手册</a></li>
+                    <li><a href="auth.html" data-i18n="franSupportStore">统一门店形象标准</a></li>
+                    <li><a href="auth.html" data-i18n="franSupportMaterial">多语言营销物料</a></li>
+                    <li><a href="auth.html" data-i18n="franSupportTraining">产品培训认证体系</a></li>
+                    <li><a href="auth.html" data-i18n="franSupportDigital">数字营销支持包</a></li>
+                  </ul>
+                </div>
+                <div class="mega-col">
+                  <h4 data-i18n="franColCondition">加盟条件</h4>
+                  <ul>
+                    <li><a href="auth.html" data-i18n="franCondMinOrder">最低年采购量要求</a></li>
+                    <li><a href="auth.html" data-i18n="franCondTerritory">专属销售区域保护</a></li>
+                    <li><a href="auth.html" data-i18n="franCondInventory">库存管理系统接入</a></li>
+                    <li><a href="auth.html" data-i18n="franCondUpdate">定期产品更新支持</a></li>
+                    <li><a href="auth.html" data-i18n="franCondLegal">法务合规支持</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="mega-footer-bar">
+              <span data-i18n="franQuickLearn">快速了解：</span>
+              <a href="auth.html" data-i18n="franProcess">加盟流程</a>
+              <a href="auth.html" data-i18n="franProfit">利润模型</a>
+              <a href="auth.html" data-i18n="franCases">成功案例</a>
+              <a href="auth.html" data-i18n="franFAQ">常见问答</a>
+              <a href="auth.html" class="mega-footer-cta" data-i18n="franApplyNow">立即申请加盟 →</a>
+            </div>
+          </div>
+        </li>
+
+
+      </ul>
+    </nav>
+      <!-- 结束左侧栏 -->
+    </div>
+
+      <!-- 右侧：汉堡（移动端）+ 购物车/注册/语言 + 搜索图标 -->
+    <div class="header-right-section">
+      <!-- 第一行：汉堡按钮（仅移动端显示） -->
+      <div class="header-hamburger-row">
+        <button class="hamburger" id="hamburger">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+      <!-- 第二行：搜索 + 字体缩放 + 购物车 + 注册 + 语言 -->
+      <div class="header-top-row">
+        <!-- 搜索图标 -->
+        <button type="button" class="header-search-icon-btn" title="搜索" id="headerSearchBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+            <circle cx="11" cy="11" r="8"/>
+            <path d="M21 21l-4.35-4.35" stroke-linecap="round"/>
+          </svg>
+        </button>
+
+        <!-- 字体缩放控制 -->
+        <div class="font-size-control" data-i18n-title="fontSizeTitle">
+          <button class="font-size-btn font-size-small" data-action="decrease" data-i18n-title="fontSizeDecrease">A</button>
+          <button class="font-size-btn font-size-medium" data-action="reset" data-i18n-title="fontSizeTitle">A</button>
+          <button class="font-size-btn font-size-large" data-action="increase" data-i18n-title="fontSizeIncrease">A</button>
+        </div>
+
+        <!-- 购物车图标 -->
+        <a href="cart.html" class="header-cart-icon-btn" title="购物车">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+            <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+
+        <!-- 注册图标 -->
+        <a href="auth.html" class="header-register-icon-btn" title="注册/登录">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+            <circle cx="12" cy="8" r="4"/>
+            <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+
+        <!-- 语言选择器 -->
+        <div id="langSelector" class="globe-lang-selector header-lang-inline header-lang-cell">
+          <button class="globe-lang-btn" title="Language / 语言">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="22" height="22"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            <span id="langDisplay" class="globe-lang-cur">中文</span>
+          </button>
+          <div class="lang-dropdown lang-dropdown-compact">
+            <ul class="lang-list"></ul>
+          </div>
+        </div>
+      </div>
+
+    <!-- 下拉搜索框：点击搜索图标后展开，固定在 header 底部橙线下方 -->
+    <div class="header-search-dropdown" id="headerSearchDropdown" aria-hidden="true">
+      <div class="hsd-inner container">
+        <div class="hsd-search-row">
+          <div class="hsd-input-wrap">
+            <button type="button" class="hsd-submit-icon" id="hsdSubmit" aria-label="搜索">
+              <svg class="hsd-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35" stroke-linecap="round"/>
+              </svg>
+            </button>
+            <input type="text" class="hsd-input" id="hsdInput" placeholder="搜索产品、品牌、产品编号、解决方案……" data-i18n-placeholder="searchPlaceholder" autocomplete="off" />
+          </div>
+          <button type="button" class="hsd-close" id="hsdClose" aria-label="关闭搜索">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M18 6L6 18M6 6l12 12" stroke-linecap="round"/></svg>
+          </button>
+        </div>
+        <!-- 热门搜索标签 -->
+
+        <div class="hsd-hot-tags">
+          <span class="hsd-hot-label" data-i18n="hotSearchLabel">热门：</span>
+          <a href="search.html?q=磨损" class="hsd-tag" data-i18n="hotCutGlove">磨损</a>
+          <a href="search.html?q=切割" class="hsd-tag" data-i18n="hotChemProt">切割</a>
+          <a href="search.html?q=油污" class="hsd-tag" data-i18n="hotHeatResist">油污</a>
+          <a href="search.html?q=防滑" class="hsd-tag" data-i18n="hotWinterWarm">防滑</a>
+          <a href="search.html?q=冲击" class="hsd-tag" data-i18n="hotChildSafety">冲击</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</header>
+`;
+
+  // 找占位元素并替换
+  const placeholder = document.getElementById('site-nav');
+  if (placeholder) {
+    placeholder.outerHTML = NAV_HTML;
+  } else {
+    // 如果没有占位，则插到 body 最前面
+    document.body.insertAdjacentHTML('afterbegin', NAV_HTML);
+  }
+
+  // 二级页面检测：非 index.html 的页面均为二级页面
+  // 自动为 header 添加 subpage-header class，触发固定橙色导航样式
+  (function applySubpageNav() {
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    const isSubpage = currentPage !== 'index.html' && currentPage !== '';
+    if (isSubpage) {
+      const header = document.getElementById('header');
+      if (header) {
+        header.classList.add('subpage-header');
+      }
+    }
+  })();
+  
+  // 导航注入后立即初始化语言选择器并应用翻译
+  // i18n.js 在 <head> 同步加载，PandaI18N 已挂载，可直接调用
+  if (typeof window.__pandaInitNav === 'function') {
+    // 已是 DOMContentLoaded 之后（body 中同步执行），直接调用
+    window.__pandaInitNav();
+  } else {
+    // 兜底：等 DOMContentLoaded 后再初始化
+    document.addEventListener('DOMContentLoaded', function() {
+      if (typeof window.__pandaInitNav === 'function') window.__pandaInitNav();
+    });
+  }
+  
+
+  // 初始化 mega menu 交互
+  document.addEventListener('DOMContentLoaded', function() {
+    let megaTimer = null;
+    const megaHeader = document.getElementById('header');
+    const megaSearchBtn = document.getElementById('headerSearchBtn');
+    function getOuterWidth(element) {
+      if (!element) return 0;
+      const styles = window.getComputedStyle(element);
+      const rect = element.getBoundingClientRect();
+      return rect.width + (parseFloat(styles.marginLeft) || 0) + (parseFloat(styles.marginRight) || 0);
+    }
+
+    function getChildrenIntrinsicWidth(container) {
+      if (!container) return 0;
+      const children = Array.from(container.children).filter(child => window.getComputedStyle(child).display !== 'none');
+      const styles = window.getComputedStyle(container);
+      const gap = parseFloat(styles.columnGap || styles.gap) || 0;
+
+      return children.reduce((total, child, index) => {
+        return total + getOuterWidth(child) + (index < children.length - 1 ? gap : 0);
+      }, 0);
+    }
+
+    function getHeaderLogoVisualRect(root, fallbackRect) {
+      const logo = (root && root.querySelector('.header-logo')) || document.querySelector('.header-logo');
+      if (!logo) return fallbackRect;
+
+      const candidates = Array.from(logo.querySelectorAll('img, svg, .logo-wordmark, .logo-wordmark-main'));
+      const visibleCandidate = candidates.find((element) => {
+        const styles = window.getComputedStyle(element);
+        const rect = element.getBoundingClientRect();
+        return styles.display !== 'none' && styles.visibility !== 'hidden' && rect.width > 0 && rect.height > 0;
+      });
+
+      return visibleCandidate ? visibleCandidate.getBoundingClientRect() : logo.getBoundingClientRect();
+    }
+
+    function syncMegaMenuMode(menu, availableWidth) {
+      const inner = menu.querySelector('.mega-fw-inner');
+      if (!inner) return;
+
+      const directChildren = Array.from(inner.children).filter(child => window.getComputedStyle(child).display !== 'none');
+      const mediaPanel = directChildren.find(child => child.classList.contains('mega-img-panel')) || null;
+      const colsWrap = directChildren.find(child => child.classList.contains('mega-cols-wrap')) || null;
+      if (!colsWrap) return;
+
+      const isProductsMenu = colsWrap.classList.contains('no-divider');
+      inner.dataset.megaType = isProductsMenu ? 'products' : 'plain';
+
+      if (!isProductsMenu) {
+        inner.dataset.megaMode = 'plain';
+        return;
+      }
+
+
+      const innerStyles = window.getComputedStyle(inner);
+      const trackGap = parseFloat(innerStyles.columnGap || innerStyles.gap) || 0;
+      const colsWidth = getChildrenIntrinsicWidth(colsWrap);
+      const mediaWidth = mediaPanel ? getOuterWidth(mediaPanel) : 0;
+      const totalWidth = colsWidth + (mediaPanel ? mediaWidth + trackGap : 0);
+      const mode = totalWidth <= availableWidth ? 'spread' : 'center';
+
+      inner.dataset.megaMode = mode;
+    }
+
+
+    function positionMegaMenus() {
+      if (!megaHeader) return;
+      const headerRect = megaHeader.getBoundingClientRect();
+      const logoRect = getHeaderLogoVisualRect(megaHeader, headerRect);
+      const buttonRect = megaSearchBtn ? megaSearchBtn.getBoundingClientRect() : headerRect;
+      const leftGap = Math.max(16, logoRect.left);
+      const rightGap = Math.max(16, window.innerWidth - buttonRect.right);
+      const availableWidth = Math.max(0, window.innerWidth - leftGap - rightGap);
+      const bottom = Math.round(headerRect.bottom);
+      document.querySelectorAll('.mega-menu').forEach(menu => {
+        menu.style.top = bottom + 'px';
+        menu.style.setProperty('--mega-left-gap', leftGap + 'px');
+        menu.style.setProperty('--mega-right-gap', rightGap + 'px');
+        syncMegaMenuMode(menu, availableWidth);
+      });
+    }
+
+    positionMegaMenus();
+    let megaTicking = false;
+    window.addEventListener('scroll', function() {
+      if (!megaTicking) {
+        window.requestAnimationFrame(function() {
+          positionMegaMenus();
+          megaTicking = false;
+        });
+        megaTicking = true;
+      }
+    }, { passive: true });
+    window.addEventListener('resize', positionMegaMenus);
+    document.querySelectorAll('.nav-item.has-mega').forEach(item => {
+      item.addEventListener('mouseenter', () => {
+        clearTimeout(megaTimer);
+        positionMegaMenus();
+        document.querySelectorAll('.nav-item.has-mega').forEach(other => {
+          if (other !== item) other.classList.remove('mega-open');
+        });
+        item.classList.add('mega-open');
+        
+        // 统计数字动画只在页面加载时执行一次，不再重复触发
+      });
+
+      item.addEventListener('mouseleave', () => {
+        megaTimer = setTimeout(() => item.classList.remove('mega-open'), 150);
+      });
+      const menu = item.querySelector('.mega-menu');
+      if (menu) {
+        menu.addEventListener('mouseenter', () => clearTimeout(megaTimer));
+        menu.addEventListener('mouseleave', () => {
+          megaTimer = setTimeout(() => item.classList.remove('mega-open'), 150);
+        });
+      }
+    });
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.nav-item.has-mega')) {
+        document.querySelectorAll('.nav-item.has-mega').forEach(item => item.classList.remove('mega-open'));
+      }
+    });
+    // ── 汉堡菜单（移动端抽屉） ──────────────────────────────────
+    const hamburger = document.getElementById('hamburger');
+    const mainNav = document.getElementById('mainNav');
+
+    // 创建遮罩层
+    let mobileOverlay = document.getElementById('mobileNavOverlay');
+    if (!mobileOverlay) {
+      mobileOverlay = document.createElement('div');
+      mobileOverlay.id = 'mobileNavOverlay';
+      mobileOverlay.className = 'mobile-nav-overlay';
+      document.body.appendChild(mobileOverlay);
+    }
+
+    // 在抽屉内注入关闭按钮
+    let mobileCloseBtn = mainNav && mainNav.querySelector('.mobile-nav-close-btn');
+    if (mainNav && !mobileCloseBtn) {
+      mobileCloseBtn = document.createElement('button');
+      mobileCloseBtn.className = 'mobile-nav-close-btn';
+      mobileCloseBtn.setAttribute('aria-label', 'Close menu');
+      mobileCloseBtn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>';
+      mainNav.insertBefore(mobileCloseBtn, mainNav.firstChild);
+    }
+
+    function openMobileNav() {
+      if (!mainNav) return;
+      mainNav.classList.add('mobile-nav-drawer', 'mobile-open');
+      mobileOverlay.classList.add('active');
+      hamburger && hamburger.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMobileNav() {
+      if (!mainNav) return;
+      mainNav.classList.remove('mobile-open');
+      mobileOverlay.classList.remove('active');
+      hamburger && hamburger.classList.remove('is-open');
+      document.body.style.overflow = '';
+    }
+
+    if (hamburger && mainNav) {
+      // 清除旧内联样式（如果有）
+      mainNav.style.display = '';
+      mainNav.style.flexDirection = '';
+      mainNav.style.position = '';
+      mainNav.style.top = '';
+      mainNav.style.left = '';
+      mainNav.style.right = '';
+      mainNav.style.background = '';
+      mainNav.style.padding = '';
+      mainNav.style.boxShadow = '';
+      mainNav.style.zIndex = '';
+
+      hamburger.addEventListener('click', () => {
+        const isOpen = mainNav.classList.contains('mobile-open');
+        isOpen ? closeMobileNav() : openMobileNav();
+      });
+    }
+
+    // 遮罩点击关闭
+    mobileOverlay.addEventListener('click', closeMobileNav);
+    // 关闭按钮点击
+    mobileCloseBtn && mobileCloseBtn.addEventListener('click', closeMobileNav);
+    // ESC 关闭
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && mainNav && mainNav.classList.contains('mobile-open')) closeMobileNav();
+    });
+    // 窗口resize：超过768px 自动关闭移动菜单
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768 && mainNav && mainNav.classList.contains('mobile-open')) {
+        closeMobileNav();
+      }
+    });
+    // Header scroll
+    const header = document.getElementById('header');
+    if (header) {
+      window.addEventListener('scroll', () => {
+        header.classList.toggle('scrolled', window.scrollY > 60);
+      });
+    }
+    
+    // ============================================================
+    // 搜索交互 — 点击图标展开下拉搜索框（header 橙线下方）
+    // ============================================================
+    const searchBtn = document.getElementById('headerSearchBtn');
+    const searchDropdown = document.getElementById('headerSearchDropdown');
+    const hsdInput = document.getElementById('hsdInput');
+    const hsdSubmit = document.getElementById('hsdSubmit');
+    const hsdClose = document.getElementById('hsdClose');
+
+    function positionSearchDropdown() {
+      if (!searchDropdown) return;
+      const hdr = document.getElementById('header');
+      if (!hdr) return;
+
+      const headerRect = hdr.getBoundingClientRect();
+      const logoRect = getHeaderLogoVisualRect(hdr, headerRect);
+      const buttonRect = searchBtn ? searchBtn.getBoundingClientRect() : headerRect;
+
+      searchDropdown.style.top = Math.round(headerRect.bottom) + 'px';
+      searchDropdown.style.setProperty('--hsd-left-gap', Math.max(16, logoRect.left) + 'px');
+      searchDropdown.style.setProperty('--hsd-right-gap', Math.max(16, window.innerWidth - buttonRect.right) + 'px');
+    }
+
+    function openSearch() {
+      if (!searchDropdown) return;
+      positionSearchDropdown();
+      searchDropdown.classList.add('hsd-open');
+      searchDropdown.setAttribute('aria-hidden', 'false');
+      if (searchBtn) searchBtn.classList.add('search-active');
+      setTimeout(function() { if (hsdInput) hsdInput.focus(); }, 50);
+    }
+
+
+    function closeSearch() {
+      if (!searchDropdown) return;
+      searchDropdown.classList.remove('hsd-open');
+      searchDropdown.setAttribute('aria-hidden', 'true');
+      if (searchBtn) searchBtn.classList.remove('search-active');
+      if (hsdInput) hsdInput.value = '';
+    }
+
+    function doSearch() {
+      const q = hsdInput ? hsdInput.value.trim() : '';
+      closeSearch();
+      if (q) {
+        window.location.href = 'search.html?q=' + encodeURIComponent(q);
+      } else {
+        window.location.href = 'search.html';
+      }
+    }
+
+    if (searchBtn) {
+      searchBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (searchDropdown && searchDropdown.classList.contains('hsd-open')) {
+          closeSearch();
+        } else {
+          // 关闭所有 mega menu
+          document.querySelectorAll('.nav-item.has-mega').forEach(function(it) { it.classList.remove('mega-open'); });
+          openSearch();
+        }
+      });
+    }
+    if (hsdClose) {
+      hsdClose.addEventListener('click', function(e) {
+        e.stopPropagation();
+        closeSearch();
+      });
+    }
+    if (hsdSubmit) {
+      hsdSubmit.addEventListener('click', function(e) {
+        e.preventDefault();
+        doSearch();
+      });
+    }
+    if (hsdInput) {
+      hsdInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') { e.preventDefault(); doSearch(); }
+        if (e.key === 'Escape') { closeSearch(); }
+      });
+    }
+    // 点击 dropdown 外部关闭
+    document.addEventListener('click', function(e) {
+      if (searchDropdown && searchDropdown.classList.contains('hsd-open')) {
+        if (!searchDropdown.contains(e.target) && e.target !== searchBtn && !searchBtn.contains(e.target)) {
+          closeSearch();
+        }
+      }
+    });
+    // 窗口滚动/缩放时更新下拉框位置
+    window.addEventListener('scroll', function() {
+      if (searchDropdown && searchDropdown.classList.contains('hsd-open')) {
+        positionSearchDropdown();
+      }
+    }, { passive: true });
+
+    window.addEventListener('resize', function() {
+      if (searchDropdown && searchDropdown.classList.contains('hsd-open')) {
+        positionSearchDropdown();
+      }
+    });
+
+  });
+})();
