@@ -26,8 +26,9 @@
     'heat': 'heat',
     'pandaimpact': 'impact',
     'impact': 'impact',
-    'pandapierce': 'pir',
-    'pir': 'pir',
+    'pandapierce': 'pierce',
+    'pierce': 'pierce',
+    'pir': 'pierce',
     'pandavolt': 'volt',
     'volt': 'volt'
   };
@@ -35,7 +36,7 @@
   var configKey = brandMap[brandId] || brandId;
 
   // 加载 brands-config.json（使用绝对路径）
-  fetch('/brands-config.json?v=20260426')
+  fetch('/brands-config.json?v=20260427-certs2')
     .then(function(response) { return response.json(); })
     .then(function(allBrands) {
       var brand = allBrands[configKey];
@@ -76,6 +77,14 @@
       if (statsContainer) {
         statsContainer.innerHTML = brand.hero.stats.map(function(s) {
           return '<div class="bp-stat"><span class="bp-stat-val" style="color:' + brand.heroAccent + ';">' + s.val + '</span><span class="bp-stat-label">' + s.label + '</span></div>';
+        }).join('');
+      }
+
+      // Certs（认证徽章）
+      var certsContainer = heroSection.querySelector('.bp-cert-row');
+      if (certsContainer && brand.hero.certs && brand.hero.certs.length > 0) {
+        certsContainer.innerHTML = brand.hero.certs.map(function(cert) {
+          return '<span class="bp-cert-badge">' + cert + '</span>';
         }).join('');
       }
 
