@@ -1,0 +1,259 @@
+/* product-publish.css */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+.pub-body {
+  background: #F5F2EE;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  color: #1A1108;
+  min-height: 100vh;
+}
+
+/* Header */
+.pub-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #1A1108;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  padding: 0 28px;
+  gap: 20px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+}
+.pub-back {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255,255,255,0.65);
+  text-decoration: none;
+  font-size: 13px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.15);
+  transition: all 0.2s;
+}
+.pub-back:hover { color: #fff; border-color: rgba(255,255,255,0.35); }
+.pub-title-block {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 auto;
+}
+.pub-logo-icon { font-size: 24px; }
+.pub-title-main { color: #fff; font-size: 15px; font-weight: 700; }
+.pub-title-sub { color: rgba(255,255,255,0.45); font-size: 11px; }
+.pub-header-right { display: flex; gap: 10px; }
+.pub-btn-ghost {
+  background: transparent;
+  color: rgba(255,255,255,0.65);
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.pub-btn-ghost:hover { color: #fff; border-color: rgba(255,255,255,0.4); }
+
+/* Container */
+.pub-container {
+  max-width: 860px;
+  margin: 36px auto;
+  padding: 0 20px 60px;
+}
+
+/* Section */
+.pub-section {
+  background: transparent;
+  border-radius: 0;
+  padding: 0;
+  margin-bottom: 28px;
+  border: none;
+  box-shadow: none;
+}
+
+/* 阿里风格四列表格 */
+.pub-ali-table {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #EBEBEB;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.pub-ali-row {
+  display: grid;
+  grid-template-columns: 120px 1fr 120px 1fr;
+  border-bottom: 1px solid #EBEBEB;
+}
+.pub-ali-row:last-child { border-bottom: none; }
+.pub-ali-k {
+  padding: 8px 12px;
+  font-size: 12px;
+  color: #867A6D;
+  background: #FAFAF8;
+  border-right: 1px solid #EBEBEB;
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+}
+.pub-ali-v {
+  padding: 6px 10px;
+  display: flex;
+  align-items: center;
+}
+.pub-section-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1A1108;
+  margin-bottom: 22px;
+  padding-bottom: 14px;
+  border-bottom: 2px solid #E85D00;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.pub-section-num {
+  background: #E85D00;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 2px 7px;
+  border-radius: 4px;
+  letter-spacing: 0.03em;
+}
+
+/* Grid */
+.pub-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 14px; }
+.pub-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 14px; }
+.pub-field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+.pub-field:last-child { margin-bottom: 0; }
+
+.pub-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #5E5348;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.pub-input,
+.pub-select,
+.pub-textarea {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1.5px solid rgba(26,17,8,0.15);
+  border-radius: 8px;
+  font-size: 13px;
+  font-family: inherit;
+  color: #1A1108;
+  background: #fff;
+  transition: border-color 0.2s;
+  appearance: none;
+  -webkit-appearance: none;
+}
+.pub-input:focus,
+.pub-select:focus,
+.pub-textarea:focus {
+  outline: none;
+  border-color: #E85D00;
+  box-shadow: 0 0 0 3px rgba(232,93,0,0.1);
+}
+.pub-input::placeholder,
+.pub-textarea::placeholder { color: #B8B0A8; }
+.pub-select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23867A6D' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 32px;
+  cursor: pointer;
+}
+.pub-textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
+
+/* Upload zone */
+.pub-upload-zone {
+  border: 2px dashed #E0D9D2;
+  border-radius: 12px;
+  padding: 36px 24px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: #FAF8F6;
+}
+.pub-upload-zone:hover { border-color: #E85D00; background: rgba(232,93,0,0.03); }
+.pub-upload-hint { color: #5E5348; font-size: 14px; margin: 12px 0 6px; }
+.pub-upload-browse { color: #E85D00; font-weight: 600; }
+.pub-upload-tip { color: #B8B0A8; font-size: 12px; }
+
+.pub-img-preview {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+.pub-img-thumb {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1.5px solid #E0D9D2;
+}
+.pub-img-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.pub-img-thumb span {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  background: rgba(26,17,8,0.7);
+  color: #fff;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+/* Actions */
+.pub-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 14px;
+  padding: 24px 0 0;
+}
+.pub-btn-ghost-lg {
+  background: #fff;
+  color: #5E5348;
+  border: 1.5px solid rgba(26,17,8,0.2);
+  padding: 12px 28px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+.pub-btn-ghost-lg:hover { border-color: rgba(26,17,8,0.35); color: #1A1108; }
+.pub-btn-primary-lg {
+  background: #E85D00;
+  color: #fff;
+  border: none;
+  padding: 12px 36px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 4px 14px rgba(232,93,0,0.35);
+  font-family: inherit;
+}
+.pub-btn-primary-lg:hover { background: #C04800; box-shadow: 0 4px 18px rgba(232,93,0,0.45); transform: translateY(-1px); }
+.pub-btn-primary-lg:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+@media (max-width: 700px) {
+  .pub-grid-3, .pub-grid-2 { grid-template-columns: 1fr; }
+  .pub-section { padding: 20px 18px; }
+  .pub-container { margin-top: 20px; }
+}

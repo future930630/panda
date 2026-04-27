@@ -1,0 +1,386 @@
+/* ============================================================
+   FILTER PAGE SHARED CSS — 按功能/行业/运动 通用样式
+   熊猫手护 Panda Hand Guard
+   ============================================================ */
+
+/* ── Hub Hero ── */
+.fp-hero {
+  background: linear-gradient(135deg, #1A1108 0%, #251608 55%, #1A1108 100%);
+  padding: 100px 0 72px;
+  position: relative;
+  overflow: hidden;
+}
+.fp-hero-bg {
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 60% 80% at 10% 50%, var(--fp-glow, rgba(232,93,0,0.10)) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 50% at 90% 20%, rgba(255,200,50,0.03) 0%, transparent 70%);
+}
+.fp-hero-inner { position: relative; z-index: 2; }
+.fp-breadcrumb {
+  font-size: 0.88rem; color: rgba(255,255,255,0.45);
+  margin-bottom: 24px; display: flex; align-items: center; gap: 6px;
+}
+.fp-breadcrumb a { color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.2s; }
+.fp-breadcrumb a:hover { color: var(--fp-accent, #E85D00); }
+.fp-bc-sep { opacity: 0.4; }
+.fp-hero-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 5px 14px; border-radius: 20px;
+  background: rgba(232,93,0,0.15); border: 1px solid rgba(232,93,0,0.3);
+  color: #FF7A20; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.04em;
+  margin-bottom: 18px;
+}
+.fp-hero-title {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 800; color: #fff;
+  line-height: 1.1; margin: 0 0 16px;
+}
+.fp-hero-title span { color: var(--fp-accent, #E85D00); }
+.fp-hero-sub {
+  font-size: 1.08rem; color: rgba(255,255,255,0.7);
+  max-width: 600px; line-height: 1.7; margin: 0 0 36px;
+}
+.fp-hero-stats {
+  display: flex; gap: 32px; flex-wrap: wrap;
+}
+.fp-stat { display: flex; flex-direction: column; gap: 4px; }
+.fp-stat-val {
+  font-size: 1.6rem; font-weight: 800;
+  color: var(--fp-accent, #E85D00); line-height: 1;
+}
+.fp-stat-label { font-size: 0.78rem; color: rgba(255,255,255,0.5); }
+
+/* ── Hub Grid ── */
+.fp-grid-section {
+  padding: 72px 0 80px;
+  background: #fafaf8;
+}
+.fp-section-header {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  margin-bottom: 40px;
+}
+.fp-section-title {
+  font-size: 1.7rem; font-weight: 800; color: #1A1108;
+  margin: 0;
+}
+.fp-section-title span { color: var(--fp-accent, #E85D00); }
+.fp-section-sub {
+  font-size: 0.92rem; color: #777; margin: 6px 0 0;
+}
+.fp-view-all {
+  color: var(--fp-accent, #E85D00); font-size: 0.9rem; font-weight: 600;
+  text-decoration: none; white-space: nowrap;
+}
+.fp-view-all:hover { text-decoration: underline; }
+
+/* Hub cards grid */
+.fp-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 24px;
+}
+.fp-card {
+  background: #fff;
+  border-radius: 16px;
+  border: 1.5px solid #ede8e2;
+  overflow: hidden;
+  transition: transform 0.22s, box-shadow 0.22s, border-color 0.22s;
+  cursor: pointer;
+  text-decoration: none;
+  display: flex; flex-direction: column;
+}
+.fp-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(232,93,0,0.12);
+  border-color: var(--card-accent, #E85D00);
+}
+.fp-card-header {
+  padding: 28px 24px 20px;
+  background: linear-gradient(135deg, var(--card-bg, #1A1108) 0%, var(--card-bg2, #2e1e0e) 100%);
+  position: relative;
+  min-height: 100px;
+  display: flex; align-items: center; gap: 16px;
+}
+.fp-card-icon {
+  width: 52px; height: 52px; border-radius: 14px;
+  background: rgba(255,255,255,0.12);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.6rem; flex-shrink: 0;
+}
+.fp-card-htitle {
+  font-size: 1.2rem; font-weight: 800; color: #fff;
+  margin: 0; line-height: 1.2;
+}
+.fp-card-hsub {
+  font-size: 0.78rem; color: rgba(255,255,255,0.55);
+  margin: 4px 0 0;
+}
+.fp-card-badge {
+  position: absolute; top: 14px; right: 14px;
+  padding: 3px 10px; border-radius: 10px;
+  background: var(--card-accent, #E85D00);
+  color: #fff; font-size: 0.72rem; font-weight: 700;
+}
+.fp-card-body { padding: 20px 24px 24px; flex: 1; display: flex; flex-direction: column; }
+.fp-card-desc {
+  font-size: 0.9rem; color: #555; line-height: 1.6; margin: 0 0 16px; flex: 1;
+}
+.fp-card-tags {
+  display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px;
+}
+.fp-tag {
+  padding: 3px 10px; border-radius: 8px;
+  background: #f4f0eb; color: #666; font-size: 0.76rem; font-weight: 500;
+}
+.fp-card-link {
+  color: var(--card-accent, #E85D00); font-size: 0.85rem; font-weight: 600;
+  display: flex; align-items: center; gap: 4px; text-decoration: none;
+  margin-top: auto;
+}
+.fp-card:hover .fp-card-link { text-decoration: underline; }
+
+/* ── Detail Page Hero (inherited from fp-hero but lighter) ── */
+.fp-detail-hero {
+  background: linear-gradient(135deg, #1A1108 0%, #241508 55%, #1A1108 100%);
+  padding: 90px 0 60px;
+  position: relative; overflow: hidden;
+}
+.fp-detail-hero .fp-hero-bg {
+  background:
+    radial-gradient(ellipse 55% 70% at 5% 50%, var(--fp-glow, rgba(232,93,0,0.14)) 0%, transparent 70%),
+    radial-gradient(ellipse 30% 40% at 95% 20%, rgba(255,200,50,0.04) 0%, transparent 70%);
+}
+.fp-detail-hero-inner {
+  position: relative; z-index: 2;
+  display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: start;
+}
+.fp-detail-title {
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 800; color: #fff; margin: 0 0 14px; line-height: 1.15;
+}
+.fp-detail-title span { color: var(--fp-accent, #E85D00); }
+.fp-detail-sub {
+  font-size: 1rem; color: rgba(255,255,255,0.7); line-height: 1.7; margin: 0 0 32px;
+  max-width: 580px;
+}
+.fp-detail-stats {
+  display: flex; gap: 28px; flex-wrap: wrap;
+}
+.fp-detail-stat { display: flex; flex-direction: column; gap: 4px; }
+.fp-detail-stat-val {
+  font-size: 1.5rem; font-weight: 800; color: var(--fp-accent, #E85D00); line-height: 1;
+}
+.fp-detail-stat-label { font-size: 0.76rem; color: rgba(255,255,255,0.45); }
+.fp-hero-visual {
+  width: 200px; text-align: center; flex-shrink: 0;
+}
+.fp-hero-icon-big {
+  font-size: 5rem; line-height: 1;
+  filter: drop-shadow(0 0 32px var(--fp-glow, rgba(232,93,0,0.4)));
+}
+
+/* ── Section Layout ── */
+.fp-section {
+  padding: 64px 0;
+}
+.fp-section-alt { background: #f7f4f0; }
+.fp-section-dark { background: #1A1108; }
+.fp-h2 {
+  font-size: 1.65rem; font-weight: 800; color: #1A1108;
+  margin: 0 0 8px;
+}
+.fp-h2 span { color: var(--fp-accent, #E85D00); }
+.fp-h2-dark { color: #fff; }
+.fp-lead {
+  font-size: 0.95rem; color: #666; line-height: 1.7; margin: 0 0 36px;
+}
+.fp-lead-dark { color: rgba(255,255,255,0.6); }
+
+/* ── Product Grid on detail page ── */
+.fp-product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 22px;
+}
+.fp-product-card {
+  background: #fff; border-radius: 14px;
+  border: 1.5px solid #ede8e2; overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  text-decoration: none;
+}
+.fp-product-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(232,93,0,0.10);
+  border-color: var(--fp-accent, #E85D00);
+}
+.fp-pc-header {
+  padding: 20px 20px 14px;
+  background: linear-gradient(135deg, #1A1108, #2e1e0e);
+  display: flex; align-items: center; gap: 12px;
+}
+.fp-pc-badge {
+  padding: 4px 12px; border-radius: 12px;
+  background: var(--fp-accent, #E85D00);
+  color: #fff; font-size: 0.78rem; font-weight: 700; white-space: nowrap;
+}
+.fp-pc-name { font-size: 0.92rem; color: rgba(255,255,255,0.85); font-weight: 600; }
+.fp-pc-body { padding: 16px 20px 20px; }
+.fp-pc-desc { font-size: 0.88rem; color: #555; line-height: 1.6; margin: 0 0 14px; }
+.fp-pc-specs {
+  display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px;
+}
+.fp-pc-spec {
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 0.82rem;
+}
+.fp-pc-spec-key { color: #999; }
+.fp-pc-spec-val { color: #1A1108; font-weight: 600; }
+.fp-pc-link {
+  color: var(--fp-accent, #E85D00); font-size: 0.82rem; font-weight: 600;
+  display: flex; align-items: center; gap: 4px; text-decoration: none;
+}
+
+/* ── Scenario Cards ── */
+.fp-scenario-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 18px;
+}
+.fp-scenario-card {
+  background: rgba(255,255,255,0.06); border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 20px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.fp-scenario-icon { font-size: 1.8rem; line-height: 1; }
+.fp-scenario-name { font-size: 0.95rem; font-weight: 700; color: #fff; }
+.fp-scenario-desc { font-size: 0.82rem; color: rgba(255,255,255,0.55); line-height: 1.6; }
+
+/* ── Risk Table ── */
+.fp-risk-table {
+  width: 100%; border-collapse: collapse;
+  background: #fff; border-radius: 12px; overflow: hidden;
+  box-shadow: 0 2px 16px rgba(26,17,8,0.08);
+}
+.fp-risk-table th {
+  background: #1A1108; color: rgba(255,255,255,0.85);
+  padding: 14px 18px; font-size: 0.85rem; font-weight: 600;
+  text-align: left; border: none;
+}
+.fp-risk-table td {
+  padding: 12px 18px; font-size: 0.88rem; color: #444;
+  border-bottom: 1px solid #f0ebe4;
+  vertical-align: middle;
+}
+.fp-risk-table tr:last-child td { border-bottom: none; }
+.fp-risk-table tr:hover td { background: #fdf8f4; }
+.fp-risk-level {
+  display: inline-block; padding: 3px 10px; border-radius: 8px;
+  font-size: 0.75rem; font-weight: 700; white-space: nowrap;
+}
+.fp-risk-high { background: #fde8e0; color: #c0392b; }
+.fp-risk-mid  { background: #fef3cd; color: #856404; }
+.fp-risk-low  { background: #d4edda; color: #1e7e34; }
+
+/* ── CTA Band ── */
+.fp-cta {
+  background: linear-gradient(135deg, #E85D00 0%, #FF7A20 100%);
+  padding: 56px 0;
+  text-align: center;
+}
+.fp-cta-title {
+  font-size: 1.8rem; font-weight: 800; color: #fff; margin: 0 0 12px;
+}
+.fp-cta-sub { color: rgba(255,255,255,0.85); margin: 0 0 28px; font-size: 1rem; }
+.fp-cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.fp-btn-white {
+  padding: 13px 28px; border-radius: 8px;
+  background: #fff; color: #E85D00; font-weight: 700; font-size: 0.95rem;
+  text-decoration: none; transition: transform 0.18s, box-shadow 0.18s;
+}
+.fp-btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
+.fp-btn-outline-white {
+  padding: 13px 28px; border-radius: 8px;
+  border: 2px solid rgba(255,255,255,0.7); color: #fff;
+  font-weight: 700; font-size: 0.95rem; text-decoration: none;
+  transition: background 0.18s;
+}
+.fp-btn-outline-white:hover { background: rgba(255,255,255,0.12); }
+
+/* ── Related brands strip ── */
+.fp-brands-strip {
+  display: flex; gap: 12px; flex-wrap: wrap; margin-top: 32px;
+}
+.fp-brand-chip {
+  padding: 6px 16px; border-radius: 20px;
+  background: #fff; border: 1.5px solid #ede8e2;
+  font-size: 0.82rem; font-weight: 700; color: #1A1108;
+  text-decoration: none; transition: all 0.18s;
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.fp-brand-chip:hover {
+  border-color: var(--fp-accent, #E85D00);
+  color: var(--fp-accent, #E85D00);
+  box-shadow: 0 4px 12px rgba(232,93,0,0.12);
+}
+.fp-brand-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--fp-accent, #E85D00);
+}
+
+/* ── Standards / Cert strip ── */
+.fp-cert-list {
+  display: flex; gap: 14px; flex-wrap: wrap;
+}
+.fp-cert-badge {
+  padding: 8px 16px; border-radius: 10px;
+  background: #fff; border: 1.5px solid #ddd;
+  font-size: 0.82rem; font-weight: 700; color: #444;
+  display: flex; align-items: center; gap: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.fp-cert-badge span { color: var(--fp-accent, #E85D00); font-size: 1rem; }
+
+/* ── Summary info box ── */
+.fp-infobox {
+  background: linear-gradient(135deg, #1A1108 0%, #2e1e0e 100%);
+  border-radius: 16px; padding: 32px; color: rgba(255,255,255,0.85);
+  border-left: 4px solid var(--fp-accent, #E85D00);
+}
+.fp-infobox-title { font-size: 1.1rem; font-weight: 700; color: #fff; margin: 0 0 12px; }
+.fp-infobox p { font-size: 0.9rem; line-height: 1.7; margin: 0; }
+
+/* ── Two-col layout ── */
+.fp-two-col {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start;
+}
+.fp-three-col {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 28px;
+}
+@media (max-width: 900px) {
+  .fp-two-col, .fp-three-col { grid-template-columns: 1fr; }
+  .fp-hero-visual { display: none; }
+  .fp-detail-hero-inner { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .fp-cards { grid-template-columns: 1fr; }
+  .fp-product-grid { grid-template-columns: 1fr; }
+  .fp-scenario-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* ── 480px 极限手机 ── */
+@media (max-width: 480px) {
+  .fp-hero { padding: 52px 0 32px; }
+  .fp-hero-title { font-size: clamp(20px, 6vw, 28px); }
+  .fp-scenario-grid { grid-template-columns: 1fr; }
+  .fp-cards { grid-template-columns: 1fr; }
+  /* 参数对比横滑 */
+  .fp-compare-table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .fp-compare-table-wrap table { min-width: 400px; }
+  /* 功能卡片列表 */
+  .fp-product-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+}
+

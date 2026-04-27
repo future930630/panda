@@ -1,0 +1,902 @@
+/*
+ * responsive.css — 全局响应式补丁
+ * 覆盖断点：1280px / 1024px / 900px / 768px / 480px / 375px
+ * 作用范围：全站共用元素（导航、Hero、Stats-bar、页脚、通用卡片）
+ * 专项补丁：product-detail、products-all 手机端
+ *
+ * 引用规则：在所有页面 <head> 中最后引入（在 styles.css / subpage.css 之后）
+ *   <link rel="stylesheet" href="responsive.css?v=2">
+ */
+
+/* ── 全局基础规则（始终生效，不在任何 @media 内） ── */
+/* 关闭按钮：桌面端默认隐藏，仅在移动抽屉内显示 */
+.mobile-nav-close-btn { display: none; }
+
+/* ============================================================
+   0. CSS 变量 & 全局基础
+   ============================================================ */
+:root {
+  --rsp-transition: 0.26s cubic-bezier(0.4, 0, 0.2, 1);
+  --rsp-nav-height-mobile: 64px;
+}
+
+/* 防止横向溢出 */
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+/* 图片/视频最大宽度保护 */
+img, video, iframe, embed, object {
+  max-width: 100%;
+}
+
+
+/* ============================================================
+   1. 导航 — 移动端全屏侧滑抽屉
+   手机端 768px 以下，汉堡菜单打开后呈现全屏覆盖抽屉，
+   替代旧版"内联 flex-column 下拉"方案
+   ============================================================ */
+
+/* 遮罩层 */
+.mobile-nav-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(26, 17, 8, 0.55);
+  z-index: 9800;
+  opacity: 0;
+  transition: opacity var(--rsp-transition);
+  backdrop-filter: blur(2px);
+}
+.mobile-nav-overlay.active {
+  display: block;
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  /* 主导航抽屉：从顶部滑下 */
+  #mainNav.mobile-nav-drawer {
+    display: flex !important;
+    flex-direction: column !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: auto !important;
+    max-height: 90dvh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    background: #fff !important;
+    padding: 72px 20px 24px !important;
+    box-shadow: 0 12px 40px rgba(26,17,8,0.18) !important;
+    z-index: 9900 !important;
+    transform: translateY(-110%);
+    transition: transform var(--rsp-transition) !important;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+  }
+  #mainNav.mobile-nav-drawer.mobile-open {
+    transform: translateY(0) !important;
+  }
+
+  /* 关闭按钮 —— 注入到抽屉顶部 */
+  .mobile-nav-close-btn {
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #f5f5f5;
+    border: none;
+    cursor: pointer;
+    color: #333;
+    z-index: 1;
+  }
+  .mobile-nav-close-btn:hover {
+    background: #ffe8d6;
+    color: #E85D00;
+  }
+
+  /* 导航项 */
+  /* 抽屉内显示关闭按钮 */
+  #mainNav.mobile-nav-drawer .mobile-nav-close-btn {
+    display: flex;
+  }
+
+  #mainNav.mobile-nav-drawer .nav-item {
+    border-bottom: 1px solid rgba(26,17,8,0.07);
+  }
+  #mainNav.mobile-nav-drawer .nav-item:last-child {
+    border-bottom: none;
+  }
+  #mainNav.mobile-nav-drawer .nav-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 4px !important;
+    font-size: 15px !important;
+    font-weight: 600;
+    color: #1A1108 !important;
+    width: 100%;
+    text-decoration: none;
+  }
+  #mainNav.mobile-nav-drawer .nav-link:hover {
+    color: #E85D00 !important;
+  }
+  /* 隐藏桌面端 mega menu */
+  #mainNav.mobile-nav-drawer .mega-menu,
+  #mainNav.mobile-nav-drawer .mega-fw-wrap {
+    display: none !important;
+  }
+
+  /* 首页（深色导航）：抽屉背景用深色 */
+  .header:not(.subpage-header) #mainNav.mobile-nav-drawer {
+    background: #1A1108 !important;
+    color: #fff;
+  }
+  .header:not(.subpage-header) #mainNav.mobile-nav-drawer .nav-link {
+    color: rgba(255,255,255,0.88) !important;
+  }
+  .header:not(.subpage-header) #mainNav.mobile-nav-drawer .nav-link:hover {
+    color: #E85D00 !important;
+  }
+  .header:not(.subpage-header) #mainNav.mobile-nav-drawer .nav-item {
+    border-bottom-color: rgba(255,255,255,0.08);
+  }
+  .header:not(.subpage-header) #mainNav.mobile-nav-drawer .mobile-nav-close-btn {
+    background: rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.8);
+  }
+  .header:not(.subpage-header) #mainNav.mobile-nav-drawer .mobile-nav-close-btn:hover {
+    background: rgba(232,93,0,0.2);
+    color: #E85D00;
+  }
+  .hamburger.is-open .hamburger-line:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .hamburger.is-open .hamburger-line:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  .hamburger.is-open .hamburger-line:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+  .hamburger-line {
+    transition: transform 0.22s ease, opacity 0.22s ease;
+  }
+}
+
+
+/* ============================================================
+   2. Header — 通用手机端收紧
+   ============================================================ */
+@media (max-width: 768px) {
+  /* 确保 header 不横向溢出 */
+  .header {
+    overflow: visible;
+  }
+  .header-inner,
+  .header-container {
+    overflow: visible;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  /* logo 保护：不超出屏幕 */
+  .header-logo img {
+    max-height: 44px;
+    width: auto;
+  }
+
+  /* top-bar 隐藏（已有，确认） */
+  .top-bar { display: none !important; }
+}
+
+@media (max-width: 480px) {
+  .header-logo img {
+    max-height: 36px;
+  }
+}
+
+
+/* ============================================================
+   3. Hero 区域
+   ============================================================ */
+@media (max-width: 768px) {
+  .hero-split {
+    min-height: 65vh;
+    height: auto;
+  }
+  .hero-split-inner {
+    padding-top: 100px;
+    padding-bottom: 32px;
+  }
+  .hero-title-clean {
+    font-size: clamp(22px, 6vw, 34px);
+    line-height: 1.22;
+  }
+  .hero-desc {
+    font-size: 14px;
+    line-height: 1.55;
+  }
+  .hero-cta-group {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .hero-cta-group .btn {
+    min-width: 140px;
+    flex: 1 1 140px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-split {
+    min-height: 55vh;
+  }
+  .hero-split-inner {
+    padding-top: 80px;
+    padding-bottom: 24px;
+  }
+  .hero-title-clean {
+    font-size: clamp(20px, 6.5vw, 28px);
+    margin-bottom: 12px;
+  }
+  .hero-cta-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .hero-cta-group .btn {
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+}
+
+
+/* ============================================================
+   4. 产品卡片 Grid
+   ============================================================ */
+@media (max-width: 768px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px;
+  }
+  .product-img { height: 130px; }
+}
+
+@media (max-width: 400px) {
+  .product-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .product-img { height: 180px; }
+}
+
+
+/* ============================================================
+   5. Stats Bar (首页深色统计栏)
+   ============================================================ */
+@media (max-width: 768px) {
+  .stats-bar {
+    height: auto !important;
+    padding: 0;
+  }
+  .stats-bar-inner {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 0;
+    max-width: 100% !important;
+    padding: 16px 20px !important;
+  }
+  .sb-sep { display: none !important; }
+  .sb-item {
+    border-right: 1px solid rgba(255,255,255,0.1);
+    padding: 8px 12px;
+    flex: none !important;
+  }
+  .sb-item:nth-child(5),
+  .sb-item:last-child {
+    border-right: none;
+  }
+  .sb-num { font-size: 22px !important; }
+  .sb-num sup { font-size: 12px !important; }
+  .sb-label { font-size: 11px !important; margin-top: 4px !important; }
+}
+
+@media (max-width: 480px) {
+  .stats-bar-inner {
+    grid-template-columns: repeat(3, 1fr) !important;
+    padding: 12px 12px !important;
+    gap: 0;
+  }
+  .sb-item {
+    padding: 6px 8px;
+  }
+  .sb-num { font-size: 18px !important; }
+  .sb-label { font-size: 10px !important; }
+}
+
+
+/* ============================================================
+   6. 品牌 / 行业 / 解决方案卡片
+   ============================================================ */
+@media (max-width: 768px) {
+  .brand-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px;
+  }
+  .industry-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px;
+  }
+  .solutions-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px;
+  }
+  .news-grid {
+    grid-template-columns: 1fr !important;
+    gap: 14px;
+  }
+}
+
+@media (max-width: 400px) {
+  .brand-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .industry-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+
+/* ============================================================
+   7. 页脚
+   ============================================================ */
+@media (max-width: 768px) {
+  .footer-top-inner {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 28px 16px;
+  }
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+  .footer-bottom-inner {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+    align-items: center;
+  }
+  .footer-legal {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-top-inner {
+    grid-template-columns: 1fr !important;
+  }
+  .footer-top {
+    padding: 32px 0 20px;
+  }
+}
+
+
+/* ============================================================
+   8. 通用容器 & 间距
+   ============================================================ */
+@media (max-width: 768px) {
+  .container {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+  .section-header { margin-bottom: 22px; }
+  .section-header h2 { font-size: clamp(20px, 5.5vw, 28px); }
+  .section-header p { font-size: 13px; }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+  }
+}
+
+@media (max-width: 375px) {
+  .container {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+}
+
+
+/* ============================================================
+   9. 按钮 & 表单元素触控优化
+   ============================================================ */
+@media (max-width: 768px) {
+  /* 最小触控目标 44px */
+  .btn,
+  button,
+  [role="button"],
+  a.btn,
+  .tab-btn {
+    min-height: 44px;
+    touch-action: manipulation;
+  }
+
+  /* 输入框 16px 防止 iOS 自动缩放 */
+  input[type="text"],
+  input[type="email"],
+  input[type="search"],
+  input[type="tel"],
+  input[type="number"],
+  textarea,
+  select {
+    font-size: 16px !important;
+  }
+}
+
+
+/* ============================================================
+   10. 二级页面 Hero (subpage.css 补充)
+   ============================================================ */
+@media (max-width: 768px) {
+  .sp-hero {
+    padding: 60px 0 40px;
+  }
+  .sp-hero-title {
+    font-size: clamp(22px, 6vw, 36px) !important;
+  }
+  .sp-hero-sub {
+    font-size: 14px;
+  }
+  .sp-hero-kpi {
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .sp-kpi-item {
+    min-width: 80px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .sp-hero {
+    padding: 48px 0 32px;
+  }
+  .sp-hero-title {
+    font-size: clamp(20px, 6vw, 28px) !important;
+  }
+}
+
+
+/* ============================================================
+   11. 品牌页 (brand-page.css 补充)
+   ============================================================ */
+@media (max-width: 768px) {
+  .bp-hero-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .bp-hero-visual {
+    display: none;
+  }
+  .bp-product-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px;
+  }
+  .bp-spec-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .bp-cert-row {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .bp-product-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+
+/* ============================================================
+   12. 产品详情页 (product-detail.html 内嵌样式补充)
+   ============================================================ */
+
+/* 12.1 采购卡手机端全宽 */
+@media (max-width: 768px) {
+  .ali-buy-card,
+  .pd-buy-card {
+    position: static !important;
+    border-left: none !important;
+    border-top: 1px solid rgba(26,17,8,0.1) !important;
+    padding-top: 20px !important;
+    margin-top: 20px !important;
+    width: 100% !important;
+    padding-left: 0 !important;
+    border-radius: 0 !important;
+  }
+
+  /* 阶梯价格格子竖排 */
+  .ali-price-tier-row {
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+  .ali-price-tier {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 10px 14px !important;
+    border-radius: 10px !important;
+    border: 1px solid rgba(26,17,8,0.1) !important;
+  }
+
+  /* CTA 按钮竖排 */
+  .ali-cta-row {
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+  .ali-cta-row .ali-btn-primary,
+  .ali-cta-row .ali-btn-secondary {
+    width: 100% !important;
+    text-align: center !important;
+    min-height: 48px !important;
+  }
+
+  /* 卖家信息条竖排 */
+  .pd-seller-strip,
+  .pd-market-meta {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 10px !important;
+  }
+
+  /* 规格参数表 */
+  .pd-spec,
+  .ali-spec-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* 相关产品 2列 */
+  .pd-related-grid,
+  .pd-mini-related-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+  }
+
+  /* 认证下载格子 */
+  .pd-cert-download-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* 主图最小高度 */
+  .pd-main-visual,
+  .pd-main-image-link {
+    min-height: 320px !important;
+  }
+
+  /* WhatsApp 悬浮按钮调整位置，避开底部 tab bar */
+  #pdWhatsappFloat {
+    bottom: 76px !important;
+    right: 16px !important;
+    padding: 10px 14px 10px 10px !important;
+    font-size: 12px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* 主图更小 */
+  .pd-main-visual,
+  .pd-main-image-link {
+    min-height: 260px !important;
+  }
+
+  /* 相关产品还是2列，减小 gap */
+  .pd-related-grid,
+  .pd-mini-related-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+  }
+
+  /* FAQ 手风琴按钮 */
+  .ali-faq-q {
+    font-size: 13px !important;
+    padding: 14px 12px !important;
+  }
+
+  /* 评价区 */
+  .pd-review-card {
+    padding: 14px !important;
+  }
+
+  /* 锚点导航 tab 可横滑 */
+  .ali-tab-bar,
+  .pd-detail-tabs {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    flex-wrap: nowrap !important;
+  }
+  .ali-tab-bar::-webkit-scrollbar,
+  .pd-detail-tabs::-webkit-scrollbar {
+    display: none !important;
+  }
+}
+
+
+/* ============================================================
+   13. products-all.html 筛选面板手机端折叠
+   ============================================================ */
+@media (max-width: 860px) {
+  /* 筛选面板在手机端变为顶部可折叠条 */
+  .pa-layout {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0 !important;
+  }
+
+  /* 筛选面板收起 */
+  .pa-sidebar {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    position: relative !important;
+    top: auto !important;
+    order: -1;
+  }
+
+  /* 筛选栏容器可折叠 */
+  .pa-filter-wrap {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.32s ease;
+  }
+  .pa-filter-wrap.expanded {
+    max-height: 2000px;
+  }
+
+  /* 移动端顶部"筛选"触发按钮 */
+  .pa-filter-toggle-btn {
+    display: flex !important;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 12px 16px;
+    background: #fff;
+    border: 1px solid rgba(26,17,8,0.12);
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #1A1108;
+    cursor: pointer;
+    margin-bottom: 12px;
+    justify-content: space-between;
+  }
+  .pa-filter-toggle-btn:hover {
+    border-color: #E85D00;
+    color: #E85D00;
+  }
+  .pa-filter-toggle-btn svg {
+    transition: transform 0.22s ease;
+    flex-shrink: 0;
+  }
+  .pa-filter-toggle-btn.active svg.toggle-chevron {
+    transform: rotate(180deg);
+  }
+
+  /* 产品网格全宽 */
+  .pa-main {
+    width: 100% !important;
+  }
+  .pa-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+  }
+}
+
+/* 默认隐藏移动端筛选按钮（桌面端） */
+.pa-filter-toggle-btn {
+  display: none;
+}
+
+@media (max-width: 520px) {
+  .pa-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+  }
+  .pa-card-img {
+    height: 140px !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .pa-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .pa-card-img {
+    height: 200px !important;
+  }
+}
+
+
+/* ============================================================
+   14. auth.html 登录/注册页
+   ============================================================ */
+@media (max-width: 768px) {
+  .auth-split {
+    grid-template-columns: 1fr !important;
+  }
+  .auth-left {
+    display: none !important;
+  }
+  .auth-right {
+    min-height: 100dvh;
+    padding: 32px 20px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .auth-card {
+    width: 100% !important;
+    max-width: 420px;
+    padding: 28px 20px !important;
+    border-radius: 20px !important;
+  }
+}
+
+
+/* ============================================================
+   15. 设备/工厂/品牌子页面通用补丁
+   ============================================================ */
+@media (max-width: 900px) {
+  /* 两列 → 单列 */
+  .eq-intro-grid,
+  .factory-intro-grid,
+  .eq-spec-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .eq-intro-visual,
+  .factory-intro-visual {
+    display: none;
+  }
+  /* 设备卡片 3→2 列 */
+  .eq-machine-grid,
+  .equipment-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .eq-machine-grid,
+  .equipment-grid {
+    grid-template-columns: 1fr !important;
+  }
+  /* 流程时间轴竖排 */
+  .process-steps {
+    flex-direction: column !important;
+    gap: 0 !important;
+  }
+  .process-step-arrow {
+    transform: rotate(90deg);
+    margin: 4px auto;
+  }
+}
+
+
+/* ============================================================
+   16. 子页面 (research / sustainability / children-safety)
+   ============================================================ */
+@media (max-width: 768px) {
+  /* 两列内容折叠 */
+  .sgp-grid,
+  .rc-ov-grid,
+  .two-col-grid {
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+  }
+  .sgp-visual,
+  .rc-ov-visual {
+    display: none !important;
+  }
+
+  /* 认证路线图时间线 */
+  .roadmap-timeline::before {
+    left: 16px !important;
+  }
+  .rt-dot {
+    left: 7px !important;
+  }
+  .rt-year {
+    min-width: 40px;
+    font-size: 11px;
+  }
+}
+
+
+/* ============================================================
+   17. 搜索结果页 (search.html)
+   ============================================================ */
+@media (max-width: 768px) {
+  .search-result-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .search-filter-bar {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .search-filter-chip {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+}
+
+
+/* ============================================================
+   18. 横向滚动容器通用修复
+   ============================================================ */
+@media (max-width: 768px) {
+  /* tab-bar / 锚点导航横向滚动 */
+  .tab-bar,
+  .pd-detail-tabs,
+  .ali-anchor-nav {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none !important;
+    white-space: nowrap !important;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+  }
+  .tab-bar::-webkit-scrollbar,
+  .pd-detail-tabs::-webkit-scrollbar,
+  .ali-anchor-nav::-webkit-scrollbar {
+    display: none !important;
+  }
+  .tab-btn,
+  .pd-detail-tab {
+    flex-shrink: 0 !important;
+    scroll-snap-align: start;
+  }
+
+  /* 表格横向滚动 */
+  .table-wrap,
+  .spec-table-wrap,
+  .overflow-x-auto {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  .spec-table-wrap table,
+  .overflow-x-auto table {
+    min-width: 480px;
+  }
+}
+
+
+/* ============================================================
+   19. 打印媒体（最后）
+   ============================================================ */
+@media print {
+  .header,
+  .footer,
+  .back-to-top,
+  #pdWhatsappFloat,
+  .mobile-nav-overlay,
+  .pa-filter-toggle-btn {
+    display: none !important;
+  }
+  body {
+    font-size: 12pt;
+    color: #000;
+  }
+  .container {
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+}
